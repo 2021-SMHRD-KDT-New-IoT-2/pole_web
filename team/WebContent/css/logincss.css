@@ -1,0 +1,93 @@
+	logincss.css
+	/*공통태그*/
+	
+	
+	body {
+    background: #002c5f;
+    background-size: cover;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+ 	}
+  
+    h1 {
+    margin: 0 0 20px;
+    text-align: center;
+    line-height: 1;
+    color: hsl(190, 3%, 40%);
+    font-weight: 400;
+    font-size: 27px;
+    }
+
+    p {
+    margin: 0 0 20px;
+    text-align: center;
+    line-height: 1;
+    color: hsl(190, 3%, 40%);
+    font-size: 13px;
+    font-weight: 400;
+    }
+      
+    input {
+    outline: none;
+    display:  block;
+    width: 100%;
+    margin: 0 0 20px;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    color: #ccc;
+    box-sizing: border-box;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: 0.2s linear;
+    }
+        
+	.tb{
+     width: 100%;
+ 	}
+  
+  	.form {
+    position: relative;
+    margin : 12% auto;
+    background: rgb(255, 255, 255);
+    width: 555px;
+	padding: 40px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  	}
+
+    #img{
+    margin-right: 100px;
+    }
+
+    #checkid {
+    width : 10%;
+    display : inline-block;
+    }
+      
+    #submit {
+    cursor: pointer;
+    background:  #002C5F;
+    width: 100%;
+    padding: 10px 15px;
+    border: 0;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 400;
+    }
+
+    #findinfo{
+   	position : relative;
+    padding : 10px;
+    margin-left : 10%;
+    }
+    
+  	#copyright{
+ 	text-align: center; 
+  	margin-top : -10%;
+  	}    
+  	
+    #footer{
+    clear : both;  
+    text-align: center;
+    }
+    
