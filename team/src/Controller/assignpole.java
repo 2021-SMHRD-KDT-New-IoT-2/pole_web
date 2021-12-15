@@ -21,6 +21,7 @@ public class assignpole extends HttpServlet {
 
 		request.setCharacterEncoding("euc-kr");		
 		String pole_code = request.getParameter("pole_code");
+		String mac_code = request.getParameter("pole_code");
 		String pole_height = request.getParameter("pole_height");
 		String pole_addr = request.getParameter("pole_addr");
 		String pole_high = request.getParameter("pole_high");
@@ -31,34 +32,36 @@ public class assignpole extends HttpServlet {
 		String pole_level = request.getParameter("pole_level");
 
 		poleDAO dao = new poleDAO();
-
-		int cnt = dao.addpole(pole_code, pole_height, pole_addr, pole_high, pole_down, pole_com, transformer_yn, pole_level, emp_id);
-
 		
+		int cnt = dao.addmachine(mac_code);
+		
+		if(cnt>0) {
+
+			System.out.println("가입성공!");
+
+		} else {
+
+			System.out.println("가입실패!");
+
+		}
+
+		cnt = dao.addpole(pole_code, mac_code, pole_height, pole_addr, pole_high, pole_down, pole_com, transformer_yn, pole_level, emp_id);
 
 		if(cnt>0) {
 
 			System.out.println("가입성공!");
 
-			
-
 			//forward 방식으로 페이지 이동
 
 			RequestDispatcher rd = request.getRequestDispatcher("assignPole.jsp");
-
-			
 
 			//request영역에 기억해야할 데이터 설정
 
 			request.setAttribute("pole_code", pole_code);
 
-			
-
 			//페이지 이동할 시 request, response객체 전달
 
 			rd.forward(request, response);
-
-			
 
 		} else {
 

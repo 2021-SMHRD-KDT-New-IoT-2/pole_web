@@ -26,17 +26,11 @@
 </style>
 <body>
 <%
-	poleVO pvo = (poleVO)session.getAttribute("pole");
-	
+	poleVO pvo = (poleVO)session.getAttribute("pole");	
 	//Date date = pvo.getPole_date(request.setAttribute(name, "Date"));
-	
-	
-	
-	poleDAO pdao = new poleDAO();
-	
+	poleDAO pdao = new poleDAO();	
 	ArrayList<poleVO> arrpVO = pdao.pole_selectAll();
 %>
-
 
     <div id="header">
         <a href="Main.jsp">
@@ -93,7 +87,6 @@
         <div>
             <input onkeyup="filter()" type="text" id="value" placeholder="전주 번호 입력" class="filter">
         </div>
-
 
         <div class="search_container" style="text-align: center;">
             <table id="poletable" style="text-align:center; margin:auto; border: 2px solid black;">

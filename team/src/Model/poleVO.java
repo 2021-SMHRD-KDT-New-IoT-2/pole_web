@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class poleVO {
 	private String pole_code;
+	private String mac_code;
 	private String pole_height;
 	private String pole_addr;
 	private Date pole_date;
@@ -20,6 +21,14 @@ public class poleVO {
 	
 	}
 	
+	public String getMac_code() {
+		return mac_code;
+	}
+	
+	
+	public void setMac_code(String mac_code) {
+		this.mac_code = mac_code;
+	}
 	
 	public String getPole_code() {
 		return pole_code;
@@ -88,11 +97,12 @@ public class poleVO {
 		this.pole_office = pole_office;
 	}
 	
-	public poleVO(String pole_code, String pole_height, String pole_addr, Date pole_date, String pole_high,
+	public poleVO(String pole_code,String mac_code, String pole_height, String pole_addr, Date pole_date, String pole_high,
 			String pole_down, String pole_com, String transformer_yn, String emp_id, String pole_level,
 			String pole_office) {
 		
 		this.pole_code = pole_code;
+		this.mac_code = mac_code;
 		this.pole_height = pole_height;
 		this.pole_addr = pole_addr;
 		this.pole_date = pole_date;
