@@ -253,8 +253,10 @@ public class poleDAO {
 				String getpole_down = rs.getString("pole_down");
 				String getPole_coment = rs.getString("pole_coment");
 				String getPole_eday = rs.getString("pole_eday");
+				String getPole_office= rs.getString("pole_office");
+				String getPole_level = rs.getString("pole_level");
 
-				vo = new poleVO(getPole_code, getMac_code, getPole_height, getPole_addr, getPole_date, getEmp_id, getTransformer_yn, getPole_com, getpole_high, getpole_down, getPole_coment, getPole_eday);
+				vo = new poleVO(getPole_code, getMac_code, getPole_height, getPole_addr, getPole_date, getEmp_id, getTransformer_yn, getPole_com, getpole_high, getpole_down, getPole_coment, getPole_eday, getPole_office, getPole_level);
 
 
 //	   	            vo°ªÀ» al¿¡ add

@@ -15,7 +15,30 @@ public class poleVO {
 	private String pole_down;
 	private String pole_coment;
 	private String pole_eday;
+	private String pole_level;
+	private String pole_office;
 	
+	
+	public String getPole_level() {
+		return pole_level;
+	}
+
+
+	public void setPole_level(String pole_level) {
+		this.pole_level = pole_level;
+	}
+
+
+	public String getPole_office() {
+		return pole_office;
+	}
+
+
+	public void setPole_office(String pole_office) {
+		this.pole_office = pole_office;
+	}
+
+
 	public poleVO() {
 		
 	}
@@ -93,13 +116,22 @@ public class poleVO {
 	public void setPole_eday(String pole_eday) {
 		this.pole_eday = pole_eday;
 	}
-	
 
-	
-	
+
+	@Override
+	public String toString() {
+		return "poleVO [pole_code=" + pole_code + ", mac_code=" + mac_code + ", pole_height=" + pole_height
+				+ ", pole_addr=" + pole_addr + ", pole_date=" + pole_date + ", emp_id=" + emp_id + ", transformer_yn="
+				+ transformer_yn + ", pole_com=" + pole_com + ", pole_high=" + pole_high + ", pole_down=" + pole_down
+				+ ", pole_coment=" + pole_coment + ", pole_eday=" + pole_eday + ", pole_level=" + pole_level
+				+ ", pole_office=" + pole_office + "]";
+	}
+
+
 	public poleVO(String pole_code, String mac_code, String pole_height, String pole_addr, Date pole_date,
 			String emp_id, String transformer_yn, String pole_com, String pole_high, String pole_down,
-			String pole_coment, String pole_eday) {
+			String pole_coment, String pole_eday, String pole_level, String pole_office) {
+		super();
 		this.pole_code = pole_code;
 		this.mac_code = mac_code;
 		this.pole_height = pole_height;
@@ -112,16 +144,13 @@ public class poleVO {
 		this.pole_down = pole_down;
 		this.pole_coment = pole_coment;
 		this.pole_eday = pole_eday;
+		this.pole_level = pole_level;
+		this.pole_office = pole_office;
 	}
+	
 
 
-	@Override
-	public String toString() {
-		return "poleVO [pole_code=" + pole_code + ", mac_code=" + mac_code + ", pole_height=" + pole_height
-				+ ", pole_addr=" + pole_addr + ", pole_date=" + pole_date + ", emp_id=" + emp_id + ", transformer_yn="
-				+ transformer_yn + ", pole_com=" + pole_com + ", pole_high=" + pole_high + ", pole_down=" + pole_down
-				+ ", pole_coment=" + pole_coment + ", pole_eday=" + pole_eday + "]";
-	}
+
 
 	
 }
