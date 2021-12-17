@@ -304,5 +304,58 @@ public class poleDAO {
 
 	}
 	
+	public List polelists(poleVO poleVO) {
+		List<poleVO> polelist = new ArrayList<poleVO>();
+		String pole_code = poleVO.getPole_code();
+		try {
+			connection();
+			String sql = "select * from pole_info";
+			if((pole_code != null && pole_code.length() != 0)) {
+				sql += "where pole_code = ?";
+				psmt = conn.prepareStatement(sql);
+				psmt.setNString(1, pole_code);
+			}else {
+				psmt = conn.prepareStatement(sql);
+			}
+			ResultSet rs = psmt.executeQuery();
+			while(rs.next()) {
+				String getPole_code = rs.getString("pole_code");
+				String getMac_code = rs.getString("mac_code");
+				String getPole_height = rs.getString("pole_height"); 
+				String getPole_addr = rs.getString("pole_addr");
+				Date getPole_date = rs.getDate("pole_date");
+				String getEmp_id = rs.getString("emp_id");
+				String getTransformer_yn = rs.getString("transformer_yn");
+				String getPole_com = rs.getString("pole_com");
+				String getpole_high = rs.getString("pole_high");
+				String getpole_down = rs.getString("pole_down");
+				String getPole_coment = rs.getString("pole_coment");
+				String getPole_eday = rs.getString("pole_eday");
+				
+			Model.poleVO pvo = new poleVO();
+				
+				pvo.setPole_code(getPole_code);
+				pvo.setMac_code(getMac_code);
+				pvo.setPole_height(getPole_height);
+				pvo.setPole_addr(getPole_addr);
+				pvo.setPole_date(getPole_date);
+				pvo.setEmp_id(getEmp_id);
+				pvo.setTransformer_yn(getTransformer_yn);
+				pvo.setPole_com(getPole_com);
+				pvo.setPole_high(getpole_high);
+				pvo.setPole_down(getpole_down);
+				pvo.setPole_coment(getPole_coment);
+				pvo.setPole_eday(getPole_eday);	
+				
+				polelist.add(pvo);
+			}
+			rs.close();
+			psmt.close();
+			conn.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return polelist;
+	}
 
 }
