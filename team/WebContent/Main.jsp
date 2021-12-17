@@ -58,16 +58,15 @@
 <body>
 
 <%
+
 	poleVO pvo = (poleVO)session.getAttribute("pole");
 	poleDAO pdao = new poleDAO();
 	
 	String pole_height = request.getParameter("pole_height");
+
 	ArrayList<poleVO> arrpVO = pdao.pole_selectAll();
 	
 %>
-
-
-
       <div id="nav">
         <nav>
             <!-- if login : LoginMain, else : Main -->
@@ -329,6 +328,11 @@
 	<div id="notice">
         <h4>공지사항</h4>
         <div>공지사항 내용</div>
+<!-- ======= -->
+<!--     <div id="header">
+        <a href="Main.jsp">
+        <img src="./images/upoplogo.PNG" width="100px" height="100px" id="logo"></a>
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-IoT-2/pole_web.git -->
     </div>
     <div id="alarm">
         <h4>알림메세지</h4>
@@ -385,7 +389,6 @@
         <div>
             <input onkeyup="filter()" type="text" id="value" placeholder="전주 번호 입력" class="filter">
         </div>
-
 
         <div class="search_container" style="text-align: center;">
             <table id="poletable" style="text-align:center; margin:auto; border: 2px solid black;">

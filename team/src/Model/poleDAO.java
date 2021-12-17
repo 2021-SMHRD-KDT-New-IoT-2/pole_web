@@ -51,13 +51,6 @@ public class poleDAO {
 		}
 
 	}
-
-	
-	
-	
-	
-	
-	
 	
 	//필터
 	public poleVO filter(String pole_height, String pole_date, String emp_id, String transformer_yn, String pole_office) {
@@ -120,28 +113,46 @@ public class poleDAO {
 		}
 		return vo;
 	}
-
 	
-	
-
-
-	
-	
+	//기기 추가
+	public int addmachine(String mac_code) {
+		
+		try {
+			
+			connection();
+			
+			String sql = "insert into machine_info value (?)";
+			
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(1, mac_code);
+			
+			cnt = psmt.executeUpdate();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("등록실패");
+		}finally {
+			close();
+		}
+		
+		return cnt;
+	}
 	
 	
 	
 	// 전주 추가
-	public int addpole(String pole_code, String pole_height, String pole_addr, String pole_high, String pole_down, String pole_com, String transformer_yn, String pole_level, String emp_id) {
+	public int addpole(String pole_code,String mac_code, String pole_height, String pole_addr, String pole_high, String pole_down, String pole_com, String transformer_yn, String pole_level, String emp_id) {
 		try {
 
 			connection();
 
 //	   	         3. 실행할 sql문 정의 (실행할때마다 값이 달라지는 부분은 ? 작성)
 
-			String sql = "insert into pole_info (pole_code,pole_height,"
+			String sql = "insert into pole_info (pole_code,mac_code,pole_height,"
 					+ "pole_addr,pole_date,pole_high,pole_down,"
-					+ "pole_com,transformer_yn,emp_id,pole_level) "
-					+ "values(?,?,?,now(),?,?,?,?,?,?)";
+					+ "pole_com,transformer_yn,emp_id) "
+					+ "values(?,?,?,?,now(),?,?,?,?,?)";
 
 //	   	         4. sql문 실행객체 (PreparedStatment)생성
 
@@ -150,14 +161,14 @@ public class poleDAO {
 //	   	         5. 바인드 변수(?) 채우기
 
 			psmt.setString(1, pole_code);
-			psmt.setString(2, pole_height);
-			psmt.setString(3, pole_addr);
-			psmt.setString(4, pole_high);
-			psmt.setString(5, pole_down);
-			psmt.setString(6, pole_com);
-			psmt.setString(7, transformer_yn);
-			psmt.setString(8, emp_id);
-			psmt.setString(9, pole_level);
+			psmt.setString(2, pole_code);
+			psmt.setString(3, pole_height);
+			psmt.setString(4, pole_addr);
+			psmt.setString(5, pole_high);
+			psmt.setString(6, pole_down);
+			psmt.setString(7, pole_com);
+			psmt.setString(8, transformer_yn);
+			psmt.setString(9, emp_id);
 
 //	   	         6. sql문 실행 후 결과처리
 
@@ -245,6 +256,7 @@ public class poleDAO {
 
 				vo = new poleVO(getPole_code, getMac_code, getPole_height, getPole_addr, getPole_date, getEmp_id, getTransformer_yn, getPole_com, getpole_high, getpole_down, getPole_coment, getPole_eday);
 
+
 //	   	            vo값을 al에 add
 
 				al.add(vo);
@@ -260,6 +272,9 @@ public class poleDAO {
 		}
 		return al;
 	}
+	
+	
+	
 
 	// 전주 삭제
 

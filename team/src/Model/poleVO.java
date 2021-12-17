@@ -19,6 +19,8 @@ public class poleVO {
 	public poleVO() {
 		
 	}
+
+
 	public String getPole_code() {
 		return pole_code;
 	}
@@ -92,17 +94,17 @@ public class poleVO {
 		this.pole_eday = pole_eday;
 	}
 	
+
 	
 	
-	public poleVO(String pole_code, String mac_code, String pole_height, String pole_addr, Date getPole_date,
+	public poleVO(String pole_code, String mac_code, String pole_height, String pole_addr, Date pole_date,
 			String emp_id, String transformer_yn, String pole_com, String pole_high, String pole_down,
 			String pole_coment, String pole_eday) {
-		super();
 		this.pole_code = pole_code;
 		this.mac_code = mac_code;
 		this.pole_height = pole_height;
 		this.pole_addr = pole_addr;
-		this.pole_date = getPole_date;
+		this.pole_date = pole_date;
 		this.emp_id = emp_id;
 		this.transformer_yn = transformer_yn;
 		this.pole_com = pole_com;
@@ -111,8 +113,8 @@ public class poleVO {
 		this.pole_coment = pole_coment;
 		this.pole_eday = pole_eday;
 	}
-	
-	
+
+
 	@Override
 	public String toString() {
 		return "poleVO [pole_code=" + pole_code + ", mac_code=" + mac_code + ", pole_height=" + pole_height
