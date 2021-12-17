@@ -101,7 +101,7 @@
                         </tr>
 
                         <tr height="30">
-                            <td class="wid1"><img src="./check2.png" width="25px"; height="25px";></td>
+                            <td class="wid1"><img src="./images/check2.png" width="25px"; height="25px";></td>
                             <td>사원번호 부여</td>
                             <td><input type="text" name="User_ID"
                                     style="margin-left: 12.2%; width: 250px;" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
@@ -113,7 +113,7 @@
                             </td>
                         </tr>
                         <tr height="30">
-                            <td class="wid1"><img src="./check2.png" width="25px"; height="25px";></td>
+                            <td class="wid1"><img src="./images/check2.png" width="25px"; height="25px";></td>
                             <td class="wid2">비밀번호</td>
                             <td><input type="password" name="User_PW" id="pw"
                                     style="margin-left: -20%; width: 250px;" />
@@ -384,7 +384,7 @@
 	<% if(request.getParameter("pole_height")==null) {%>
      <div id="wrapper">
         <div id="img">
-            <img src="./images/search.png" width="40px" height="40px" id="searchimg">
+            <img src="./images/search.png" width="40px" height="40px">
         </div>
         <div>
             <input onkeyup="filter()" type="text" id="value" placeholder="전주 번호 입력" class="filter">
