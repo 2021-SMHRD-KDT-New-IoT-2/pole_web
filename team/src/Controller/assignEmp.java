@@ -28,6 +28,13 @@ public class assignEmp extends HttpServlet {
 		String emp_phone = request.getParameter("emp_phone");
 		String admin_yesno = request.getParameter("admin_yesno");
 		
+		System.out.println(emp_id);
+		System.out.println(emp_pw);	
+		System.out.println(emp_name);
+		System.out.println(emp_office);
+		System.out.println(emp_phone);
+		System.out.println(admin_yesno);
+		
 		emp_infoDAO dao = new emp_infoDAO();
 
 		int cnt = dao.addemp(emp_id, emp_pw, emp_name, emp_office, emp_phone, admin_yesno);
@@ -61,7 +68,7 @@ public class assignEmp extends HttpServlet {
 
 			System.out.println("가입실패!");
 
-			response.sendRedirect("assignPole.jsp");
+			response.sendRedirect("Main.jsp");
 
 		}
 

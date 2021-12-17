@@ -8,8 +8,7 @@
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.DriverManager"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!DOCTYPE html>
 <html>
@@ -19,51 +18,13 @@
 <link rel="stylesheet" href="css/Maincss.css">
 <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 </head>
-<style>
-    *{
-        font-family: 'Nanum Gothic', sans-serif;
-        
-    }
-
-    #notice {
-        padding : 10px;
-        width : 30%;
-        float : left;
-        height: 20%;
-        border : 1px solid black;
-        margin-bottom : 5%;
-        text-align : center;
-        margin : 0 auto;
-        margin-left : 10%;
-    }
-    
-    #alarm{
-        padding : 10px;
-		float : right;
-        width : 30%;
-        height: 20%;
-        border : 1px solid black;
-        text-align : center;
-        margin-bottom : 5%;
-        margin-right : 10%;
-    }
-    
-    fieldset{
-        text-align : center;
-        margin : 0 10%;
-        display : inline-block;
-        width : 78%;
-    }
-</style>
 <body>
 
 <%
-
+	request.setCharacterEncoding("utf-8");
 	poleVO pvo = (poleVO)session.getAttribute("pole");
-	poleDAO pdao = new poleDAO();
-	
+	poleDAO pdao = new poleDAO();	
 	String pole_height = request.getParameter("pole_height");
-
 	ArrayList<poleVO> arrpVO = pdao.pole_selectAll();
 	
 %>
@@ -84,12 +45,12 @@
            <!----------------------------------------------- 사용자 등록 모달 공간 -------------------------------------------->
         <center>
             <div id="modal">
-                <form action="" method="post" name="" class="emp_form">
+                <form action="assignEmp" method="post" class="emp_form">
                     <table width="900" height="1000" class="tb_body" cellpadding="0" style="border-collapse:collapse;">
                         <tr height="100">
 
                             <td colspan="3" align="center" style="font-size: 30px;">
-                                <img src="./img4.png" width="40px" height="40px">
+                                <img src="./images/img4.png" width="40px" height="40px">
                                 	사용자 등록
                             </td>
                         </tr>
@@ -103,9 +64,9 @@
                         <tr height="30">
                             <td class="wid1"><img src="./images/check2.png" width="25px"; height="25px";></td>
                             <td>사원번호 부여</td>
-                            <td><input type="text" name="User_ID"
+                            <td><input type="text" name="emp_id"
                                     style="margin-left: 12.2%; width: 250px;" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
-                                    href="" style="text-decoration: none;">중복 검사 ✅</a></td>
+                                    href="LoginCheckService" style="text-decoration: none;">중복 검사 ✅</a></td>
                         </tr>
                         <tr height="7">
                             <td colspan="3">
@@ -115,7 +76,7 @@
                         <tr height="30">
                             <td class="wid1"><img src="./images/check2.png" width="25px"; height="25px";></td>
                             <td class="wid2">비밀번호</td>
-                            <td><input type="password" name="User_PW" id="pw"
+                            <td><input type="password" name="emp_pw" id="pw"
                                     style="margin-left: -20%; width: 250px;" />
                             </td>
                         </tr>
@@ -125,7 +86,7 @@
                             </td>
                         </tr>
                         <tr height="30">
-                            <td class="wid1"><img src="./check2.png" width="25px"; height="25px";></td>
+                            <td class="wid1"><img src="./images/check2.png" width="25px"; height="25px";></td>
                             <td class="wid2">비밀번호 확인</td>
                             <td><input type="password" name="wUserPWConfirm" id="pwCheck"
                                     style="margin-left: -20%; width: 250px;" />
@@ -137,9 +98,9 @@
                             </td>
                         </tr>
                         <tr height="30">
-                            <td class="wid1"><img src="./check2.png" width="25px"; height="25px";></td>
+                            <td class="wid1"><img src="./images/check2.png" width="25px"; height="25px";></td>
                             <td class="wid2">사원 이름</td>
-                            <td><input type="text" name="wUserName" style="margin-left: -20%; width: 250px;" /></td>
+                            <td><input type="text" name="emp_name" style="margin-left: -20%; width: 250px;" /></td>
                         </tr>
                         <tr height="7">
                             <td colspan="3">
@@ -147,9 +108,9 @@
                             </td>
                         </tr>
                         <tr height="30">
-                            <td class="wid1"><img src="./check2.png" width="25px"; height="25px";></td>
+                            <td class="wid1"><img src="./images/check2.png" width="25px"; height="25px";></td>
                             <td class="wid2">사원 연락처</td>
-                            <td><input type="tel" name="user_phone" style="margin-left: -20%; width: 250px;" /></td>
+                            <td><input type="tel" name="emp_phone" style="margin-left: -20%; width: 250px;" /></td>
 
                         </tr>
                         <tr height="7">
@@ -158,9 +119,9 @@
                             </td>
                         </tr>
                         <tr height="30">
-                            <td class="wid1"><img src="./check2.png" width="25px"; height="25px";></td>
+                            <td class="wid1"><img src="./images/check2.png" width="25px"; height="25px";></td>
                             <td class="wid2">사원 가입일자</td>
-                            <td><input type="date" name="user_date" style="margin-left: -20%; width: 250px;" /></td>
+                            <td><input type="date" name="emp_joindate" style="margin-left: -20%; width: 250px;" /></td>
                         </tr>
                         <tr height="7">
                             <td colspan="3">
@@ -168,9 +129,9 @@
                             </td>
                         </tr>
                         <tr height="30">
-                            <td class="wid1"><img src="./check2.png" width="25px"; height="25px";></td>
+                            <td class="wid1"><img src="./images/check2.png" width="25px"; height="25px";></td>
                             <td class="wid2">사업소 명</td>
-                            <td><input type="text" name="use_office" style="margin-left: -20%; width: 250px;" /></td>
+                            <td><input type="text" name="emp_office" style="margin-left: -20%; width: 250px;" /></td>
                         </tr>
                         <tr height="7">
                             <td colspan="3">
@@ -178,10 +139,10 @@
                             </td>
                         </tr>
                         <tr height="30">
-                            <td class="wid1"><img src="./check2.png" width="25px"; height="25px";></td>
+                            <td class="wid1"><img src="./images/check2.png" width="25px"; height="25px";></td>
                             <td class="wid2">관리자 여부</td>
-                            <td><input type="radio" name="admin" value="관리자" class="input_focus" style="margin-left: -20%; width: 20px;">관리자
-                                &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="admin" class="input_focus" value="사용자" style="width: 20px;"> 사용자
+                            <td><input type="radio" name="admin_yesno" value="Y" class="input_focus" style="margin-left: -20%; width: 20px;">관리자
+                                &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="admin_yesno" class="input_focus" value="N" style="width: 20px;"> 사용자
                             </td>
 
                         <tr height="7">
@@ -193,7 +154,7 @@
                         <tr height="80">
                             <td colspan="3"><input type="button" name="rol" value="취소하기" id="uncheck"
                                     class="rol">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <input type="submit" name="suc" value="등록하기" class="suc" id="check">
+                                <input type="submit" value="등록하기" class="suc" id="check">
                             </td>
                         </tr>
                     </table>
@@ -208,13 +169,13 @@
         <!----------------------------------------------- 전주 등록 모달 공간 -------------------------------------------->
         <center>
             <div id="modal2">
-                <form action="" method="post" name="" class="pole_form">
+                <form action="assignpole" method="post" class="pole_form">
                     <table width="700" height="800" class="pole_tb_body" cellpadding="0"
                         style="border-collapse:collapse;">
                         <tr height="100px">
 
                             <td colspan="3" align="center" style="font-size: 30px;">
-                                <img src="./pole.png" width="40px" height="40px">
+                                <img src="./images/pole.png" width="40px" height="40px">
                                 전주 등록
                             </td>
                         </tr>
@@ -225,7 +186,7 @@
                         </tr>
 
                         <tr height="25">
-                            <td class="wid3"><img src="./check2.png" width="25px"; height="25px";></td>
+                            <td class="wid3"><img src="./images/check2.png" width="25px"; height="25px";></td>
                             <td class="wid4">전주번호 부여</td>
                             <td><input type="text" name="pole_code" style="margin-left: -15%;">
                             </td>
@@ -238,7 +199,7 @@
                         </tr>
 
                         <tr height="25">
-                            <td class="wid3"><img src="./check2.png" width="25px"; height="25px";></td>
+                            <td class="wid3"><img src="./images/check2.png" width="25px"; height="25px";></td>
                             <td class="wid4">전주 높이</td>
                             <td><input type="text" name="pole_height" style="margin-left: -15%;" /></td>
                         </tr>
@@ -250,7 +211,7 @@
                         </tr>
 
                         <tr height="25">
-                            <td class="wid3"><img src="./check2.png" width="25px"; height="25px";></td>
+                            <td class="wid3"><img src="./images/check2.png" width="25px"; height="25px";></td>
                             <td class="wid4">전주 주소</td>
                             <td><input type="text" name="pole_addr" style="margin-left: -15%;" /></td>
                         </tr>
@@ -262,7 +223,7 @@
                         </tr>
 
                         <tr height="25">
-                            <td class="wid3"><img src="./check2.png" width="25px"; height="25px";></td>
+                            <td class="wid3"><img src="./images/check2.png" width="25px"; height="25px";></td>
                             <td class="wid4">설치 일자</td>
                             <td><input type="date" name="pole_date" style="margin-left: -15%; width: 222px;" /></td>
                         </tr>
@@ -275,7 +236,7 @@
 
 
                         <tr height="25">
-                            <td class="wid3"><img src="./check2.png" width="25px"; height="25px";></td>
+                            <td class="wid3"><img src="./images/check2.png" width="25px"; height="25px";></td>
                             <td class="wid4">담당자 사원번호</td>
                             <td><input type="text" name="emp_id" style="margin-left: -15%;" /></td>
                         </tr>
@@ -287,10 +248,9 @@
                         </tr>
 
                         <tr height="25">
-                            <td class="wid3"><img src="./check2.png" width="25px"; height="25px";></td>
-                            <td class="wid4"></td>
-                            <td><input type="checkbox" class="input_focus" name="transformer_yn" value="Y"
-                                    style="margin-left: -50%; width: 20px;"><a>변압기</a>
+                            <td class="wid3"><img src="./images/check2.png" width="25px"; height="25px";></td>
+                            <td style="text-align:center;"><input type="checkbox" class="input_focus" name="transformer_yn" value="Y"
+                                    style="margin-left: 4%; width: 20px;"><a>변압기</a>
                                 <input type="hidden" name="transformer_yn" value='N'>
                                 <input type="checkbox" class="input_focus" name="pole_com" value="Y"
                                     style="margin-left: 4%; width: 20px;">통신선
@@ -312,7 +272,7 @@
                         <tr height="70">
                             <td colspan="3"><input type="button" name="rol" value="취소하기" id="uncheck2"
                                     class="rol2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <input type="submit" name="suc" value="등록하기" class="suc2" id="check2">
+                                <input type="submit" value="등록하기" class="suc2" id="check2">
                             </td>
                         </tr>
                     </table>
@@ -323,21 +283,10 @@
             </div>
         </center>
         <!-- --------------------------------------------- 전주 등록 모달 공간 ------------------------------------------ -->
-	
-	<div id="divbox">
-	<div id="notice">
-        <h4>공지사항</h4>
-        <div>공지사항 내용</div>
-<!-- ======= -->
-<!--     <div id="header">
-        <a href="Main.jsp">
-        <img src="./images/upoplogo.PNG" width="100px" height="100px" id="logo"></a>
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-IoT-2/pole_web.git -->
-    </div>
+
     <div id="alarm">
         <h4>알림메세지</h4>
         <div>알림 내용</div>
-    </div>
     </div>
 	
 	

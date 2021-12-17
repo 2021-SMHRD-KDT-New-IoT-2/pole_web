@@ -1,8 +1,38 @@
-body {
+	*{
+        font-family: 'Nanum Gothic', sans-serif;
+        
+    }
+    
+    a {
+    text-align : center;
+    }
+    
+
+    #alarm{
+        padding : 10px;
+		float : right;
+        width : 30%;
+        height: 20%;
+        border : 1px solid black;
+        text-align : center;
+        margin-bottom : 5%;
+        margin-right : 10%;
+    }
+    
+    fieldset{
+        text-align : center;
+        margin : 0 10%;
+        display : inline-block;
+        width : 78%;
+    }
+	
+	body {
     background-color: #ffffff;
     
-} 
-   *{font-family: 'Nanum Gothic', sans-serif;}
+	} 
+   *{
+   font-family: 'Nanum Gothic', sans-serif;
+   }
    
    .number {   
       text-align : center;
@@ -436,9 +466,7 @@ tr,td,th,input{
     width: 15%;
 }
 
-.wid4{
-    width: 25%;
-}
+
 
 .suc2, .rol2 {
     height: auto;
