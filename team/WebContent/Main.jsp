@@ -37,10 +37,15 @@
             <a href=""><img src="./images/bell.png" class="img" width="30px" height="30px" style="margin-top: 1%;"></a>
         </nav>
 
+        <!--수정부분1217 -->
         <div id="header">
-            <h1><a href="Main.jsp"><img src="./images/upoplogo.PNG" width="100px" height="100px" id="logo"></a>전주 통합 관리
-                시스템</h1>
+            <div class="header_img"><img src="./images/upoplogo.PNG" width="100px" height="100px" id="logo"></div>
+            <div class="header_h1">
+                <h1>전주 통합 관리 시스템</h1>
+                <h4>POLE MANAGEMENT SYSTEM</h4>
+            </div>
         </div>
+        <!--수정부분1217 -->
         
            <!----------------------------------------------- 사용자 등록 모달 공간 -------------------------------------------->
         <center>
@@ -284,50 +289,61 @@
         </center>
         <!-- --------------------------------------------- 전주 등록 모달 공간 ------------------------------------------ -->
 
-    <div id="alarm">
-        <h4>알림메세지</h4>
-        <div>알림 내용</div>
-    </div>
-	
-	
-	<!-- 필터  -->
-    <form action = "Main.jsp" method="post" id="searchBar">
-    <fieldset>
-        <legend>필터</legend>
-        <h2>광주광역시</h2>
-        <label>담당 사업소</label>
-            <select name = "pole_office">
-            <option value="동구">동구</option>
-            <option value="서구">서구</option>
-            <option value="남구">남구</option>
-            <option value="북구">북구</option>
-            <option value="광산구">광산구</option>           
-            </select>
-            
-        <label>관리자</label>
-            <select name = "emp_id">
-            <%for(int i = 0; i<arrpVO.size();i++){ %>
-                <option value="<%=arrpVO.get(i).getEmp_id()%>" selected><%=arrpVO.get(i).getEmp_id() %></option>
-			<%} %>
-			
-            </select>
-        <label>설치 일자</label>
-            <input type="date" name="pole_date">
-        <label>높이</label>
-             <select name = "pole_height">
-            <%for(int i = 0; i<arrpVO.size();i++){ %>
-                <option value="<%=arrpVO.get(i).getPole_height()%>" selected><%=arrpVO.get(i).getPole_height() %></option>
-			<%} %>
-            </select>
-        <label>변압기 유무</label>
-        	 <select name = "transformer_yn">
-            <option value="Y">Y</option>
-            <option value="N">N</option>
-            </select>
-        <input type="submit" name="filter" value="검색">
-    </fieldset> 
-    </form>                 
-    </div>
+        <!-- 필터  -->
+        <!-- 수정부분 1217 -->
+        <div id="searchBar">
+            <div id="field_area">
+                <form action="SearchBar" method="post">
+                    <fieldset>
+                        <h2>광주광역시</h2>
+                        <label>담당 사업소</label>
+                        <select name="pole_office">
+                            <!-- <% request.setCharacterEncoding("EUC-KR"); %> -->
+                            <option value="동구">동구</option>
+                            <option value="서구">서구</option>
+                            <option value="남구">남구</option>
+                            <option value="북구">북구</option>
+                            <option value="광산구">광산구</option>
+
+                        </select>
+
+                        <label>관리자</label>
+                        <select name="emp_id">
+                            <%for(int i=0; i<arrpVO.size();i++){ %>
+                                <option value="<%=arrpVO.get(i).getEmp_id()%>" selected>
+                                    <%=arrpVO.get(i).getEmp_id() %>
+                                </option>
+                                <%} %>
+
+                                    </select>
+                                    <label>설치 일자</label>
+                                    <input type="date" name="pole_date">
+                                    <label>높이</label>
+                                    <select name="pole_height">
+                                        <%for(int i=0; i<arrpVO.size();i++){ %>
+                                            <option value="<%=arrpVO.get(i).getPole_height()%>" selected>
+                                                <%=arrpVO.get(i).getPole_height() %>
+                                            </option>
+                                            <%} %>
+                                    </select>
+                                    <label>변압기 유무</label>
+                                    <select name="transformer_yn">
+                                        <option value="Y">Y</option>
+                                        <option value="N">N</option>
+                                    </select>
+                                    <input type="submit" name="filter" value="검색">
+                    </fieldset>
+                </form>
+            </div>
+            <div id="alarm">
+                <h4>알림메세지</h4>
+                <div>알림 내용</div>
+            </div>
+        </div>
+
+
+
+        <!-- 수정부분 1217 -->
    
      <!-- 검색 전 pole_info 전체결과 -->
 	<% if(request.getParameter("pole_height")==null) {%>

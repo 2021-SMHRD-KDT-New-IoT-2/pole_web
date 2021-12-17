@@ -1,63 +1,17 @@
-	*{
-        font-family: 'Nanum Gothic', sans-serif;
-        
-    }
-    
-    a {
-    text-align : center;
-    }
-    
-
-    #alarm{
-        padding : 10px;
-		float : right;
-        width : 30%;
-        height: 20%;
-        border : 1px solid black;
-        text-align : center;
-        margin-bottom : 5%;
-        margin-right : 10%;
-    }
-    
-    fieldset{
-        text-align : center;
-        margin : 0 10%;
-        display : inline-block;
-        width : 78%;
-    }
-	
-	body {
+body {
     background-color: #ffffff;
     
-	} 
-   *{
-   font-family: 'Nanum Gothic', sans-serif;
-   }
+} 
+   *{font-family: 'Nanum Gothic', sans-serif;}
    
    .number {   
       text-align : center;
    }
-   .copyright > p {
-      margin : 0px;
-   }
-   .coyright > h3 {
-   margin : 20px 0px;
-   }
-   .copyright {
-   margin-top:20%;
-   }
+
    footer {
    margin-top : 10%;
    }
    
-   fieldset{
-    text-align : center;
-    margin : 0 10%;
-    display : inline-block;
-    width : 78%;
-   }
-   
-
 
 #logincheck{
     width: 100%;
@@ -66,21 +20,6 @@
     margin-right: 10%;
     margin-bottom: -10%;
    }
-
-    h1{
-        text-align: center;
-        margin: 3% auto;
-        font-size: 40px;
-    }
-
-ul,
-li,
-ol {   
-    margin :auto;
-    padding : 0px;
-    list-style : none;
-    text-align: center;
-}
 
 
 #loginsection{
@@ -108,7 +47,6 @@ ol {
 
 /* 검색창 안에 돋보기 사진 위치 */
 #img{
-   position : absolute;
     margin-top: 40px;
     margin-left: 10.5%;
     margin-bottom: -4.7%;
@@ -204,6 +142,39 @@ input, select{
 }
 
 /* -----------nav-------------  */
+#header{
+    background-color: #ffffff;
+}
+/* 수정부분1217 */
+h1{
+    text-align: left;
+    font-size: 42px;
+}
+
+.header_img{
+    text-align: right;
+    height: 100px;
+    width: 40%;
+    float: left;
+}
+.header_h1{
+    width: 60%;
+    height: 60px;
+    margin-top: -0.5%;
+    float: left;
+    height: 100px;
+}
+.header_h1 > h4{
+    margin-top: -2%;
+    margin-left: 2%;
+    font-size: 25px;
+} 
+
+/* 수정부분1217 */
+
+
+
+
 nav > button{
     background-color: #4e1f1f00;
     border: none;
@@ -281,9 +252,44 @@ nav>button{
   }
 
   /* -----------Searchfilter-------------  */
+  
+  /* 수정부분 1217 */
   #searchBar{
-  display : block;
+      float: left;
+      width: 100%;
+      margin-top: 5%;
   }
+
+
+  #field_area{
+    width: 50%;
+    margin-left: 10%;
+    float: left;
+    text-align : center;
+}
+fieldset{
+    height: 300px;
+}
+
+  #alarm{
+    margin-inline-start: 2px;
+    margin-inline-end: 2px;
+    padding-block-start: 0.35em;
+    padding-inline-start: 0.75em;
+    padding-inline-end: 0.75em;
+    padding-block-end: 0.625em;
+    min-inline-size: min-content;
+    border-width: 2px;
+    border-style: groove;
+    border-image: initial;
+    float: left;
+    width: 30%;
+    height: 300px;
+}
+
+
+  /* 수정부분 1217 */
+  
   #Searchfilter{
      text-align : center;
   }
@@ -466,7 +472,9 @@ tr,td,th,input{
     width: 15%;
 }
 
-
+.wid4{
+    width: 25%;
+}
 
 .suc2, .rol2 {
     height: auto;
