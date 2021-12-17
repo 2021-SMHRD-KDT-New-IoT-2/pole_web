@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 
 public class poleDAO {
 	Connection conn = null;
@@ -58,7 +59,7 @@ public class poleDAO {
 	
 	
 	
-	//필터?.. 내가안함
+	//필터
 	public poleVO filter(String pole_height, String pole_date, String emp_id, String transformer_yn, String pole_office) {
 		try {
 			connection();
@@ -222,7 +223,7 @@ public class poleDAO {
 			connection();
 
 			String sql = "select * from pole_info";
-
+			
 			psmt = conn.prepareStatement(sql);
 
 			rs = psmt.executeQuery();
@@ -230,18 +231,19 @@ public class poleDAO {
 			while (rs.next()) {
 
 				String getPole_code = rs.getString("pole_code");
+				String getMac_code = rs.getString("mac_code");
 				String getPole_height = rs.getString("pole_height"); 
 				String getPole_addr = rs.getString("pole_addr");
 				Date getPole_date = rs.getDate("pole_date");
+				String getEmp_id = rs.getString("emp_id");
+				String getTransformer_yn = rs.getString("transformer_yn");
+				String getPole_com = rs.getString("pole_com");
 				String getpole_high = rs.getString("pole_high");
 				String getpole_down = rs.getString("pole_down");
-				String getPole_com = rs.getString("pole_com");
-				String getTransformer_yn = rs.getString("transformer_yn");
-				String getEmp_id = rs.getString("emp_id");
-				String getPole_level = rs.getString("pole_level");
-				String getPole_office = rs.getString("pole_office");
+				String getPole_coment = rs.getString("pole_coment");
+				String getPole_eday = rs.getString("pole_eday");
 
-				vo = new poleVO(getPole_code, getPole_height, getPole_addr, getPole_date, getpole_high, getpole_down, getPole_com, getTransformer_yn, getEmp_id, getPole_level, getPole_office);
+				vo = new poleVO(getPole_code, getMac_code, getPole_height, getPole_addr, getPole_date, getEmp_id, getTransformer_yn, getPole_com, getpole_high, getpole_down, getPole_coment, getPole_eday);
 
 //	   	            vo값을 al에 add
 
@@ -285,4 +287,5 @@ public class poleDAO {
 
 	}
 	
+
 }

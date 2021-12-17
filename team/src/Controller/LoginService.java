@@ -35,12 +35,12 @@ public class LoginService extends HttpServlet {
 
 			HttpSession session = request.getSession();
 			session.setAttribute("admin", vo);
-			response.sendRedirect("exMain.jsp");
+			response.sendRedirect("Main.jsp");
 
 		} else {
 			PrintWriter out = response.getWriter();
 
-			out.println("<script>alert('로그인 정보가 일치하지 않습니다.'); location.href='LoginMainFinal.jsp'</script>");
+			out.println("<script>alert('로그인 정보가 일치하지 않습니다.'); location.href='LoginMain.jsp'</script>");
 			out.flush();
 
 		}

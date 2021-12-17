@@ -9,118 +9,447 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.DriverManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="shorcut icon" type="image/x-icon" href="./images/upoplogo.PNG" type="text/css">
-<title>POLE OF PISA ¿¸¡÷∞¸∏Æ Ω√Ω∫≈€</title>
+<title>POLE OF PISA Ï†ÑÏ£ºÍ¥ÄÎ¶¨ ÏãúÏä§ÌÖú</title>
 <link rel="stylesheet" href="css/Maincss.css">
+<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 </head>
 <style>
     *{
         font-family: 'Nanum Gothic', sans-serif;
         
     }
+
+    #notice {
+        padding : 10px;
+        width : 30%;
+        float : left;
+        height: 20%;
+        border : 1px solid black;
+        margin-bottom : 5%;
+        text-align : center;
+        margin : 0 auto;
+        margin-left : 10%;
+    }
+    
+    #alarm{
+        padding : 10px;
+		float : right;
+        width : 30%;
+        height: 20%;
+        border : 1px solid black;
+        text-align : center;
+        margin-bottom : 5%;
+        margin-right : 10%;
+    }
+    
+    fieldset{
+        text-align : center;
+        margin : 0 10%;
+        display : inline-block;
+        width : 78%;
+    }
 </style>
 <body>
+
 <%
 	poleVO pvo = (poleVO)session.getAttribute("pole");
-	
-	//Date date = pvo.getPole_date(request.setAttribute(name, "Date"));
-	
-	
-	
 	poleDAO pdao = new poleDAO();
 	
+	String pole_height = request.getParameter("pole_height");
 	ArrayList<poleVO> arrpVO = pdao.pole_selectAll();
+	
 %>
 
 
-    <div id="header">
-        <a href="Main.jsp">
-        <img src="./images/upoplogo.PNG" width="100px" height="100px" id="logo"></a>
+
+      <div id="nav">
+        <nav>
+            <!-- if login : LoginMain, else : Main -->
+            <button>Ìôà</button>
+            <button id="modal_pole">Ï†ÑÏ£º Îì±Î°ù</button>
+            <button id="modal_emp">ÏÇ¨Ïö©Ïûê Îì±Î°ù</button> <!-- href="assignEmp.jsp" -->
+            <a href=""><img src="./images/bell.png" class="img" width="30px" height="30px" style="margin-top: 1%;"></a>
+        </nav>
+
+        <div id="header">
+            <h1><a href="Main.jsp"><img src="./images/upoplogo.PNG" width="100px" height="100px" id="logo"></a>Ï†ÑÏ£º ÌÜµÌï© Í¥ÄÎ¶¨
+                ÏãúÏä§ÌÖú</h1>
+        </div>
+        
+           <!----------------------------------------------- ÏÇ¨Ïö©Ïûê Îì±Î°ù Î™®Îã¨ Í≥µÍ∞Ñ -------------------------------------------->
+        <center>
+            <div id="modal">
+                <form action="" method="post" name="" class="emp_form">
+                    <table width="900" height="1000" class="tb_body" cellpadding="0" style="border-collapse:collapse;">
+                        <tr height="100">
+
+                            <td colspan="3" align="center" style="font-size: 30px;">
+                                <img src="./img4.png" width="40px" height="40px">
+                                	ÏÇ¨Ïö©Ïûê Îì±Î°ù
+                            </td>
+                        </tr>
+
+                        <tr height="7">
+                            <td colspan="3">
+                                <hr>
+                            </td>
+                        </tr>
+
+                        <tr height="30">
+                            <td class="wid1"><img src="./check2.png" width="25px"; height="25px";></td>
+                            <td>ÏÇ¨ÏõêÎ≤àÌò∏ Î∂ÄÏó¨</td>
+                            <td><input type="text" name="User_ID"
+                                    style="margin-left: 12.2%; width: 250px;" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+                                    href="" style="text-decoration: none;">Ï§ëÎ≥µ Í≤ÄÏÇ¨ ‚úÖ</a></td>
+                        </tr>
+                        <tr height="7">
+                            <td colspan="3">
+                                <hr />
+                            </td>
+                        </tr>
+                        <tr height="30">
+                            <td class="wid1"><img src="./check2.png" width="25px"; height="25px";></td>
+                            <td class="wid2">ÎπÑÎ∞ÄÎ≤àÌò∏</td>
+                            <td><input type="password" name="User_PW" id="pw"
+                                    style="margin-left: -20%; width: 250px;" />
+                            </td>
+                        </tr>
+                        <tr height="7">
+                            <td colspan="3">
+                                <hr />
+                            </td>
+                        </tr>
+                        <tr height="30">
+                            <td class="wid1"><img src="./check2.png" width="25px"; height="25px";></td>
+                            <td class="wid2">ÎπÑÎ∞ÄÎ≤àÌò∏ ÌôïÏù∏</td>
+                            <td><input type="password" name="wUserPWConfirm" id="pwCheck"
+                                    style="margin-left: -20%; width: 250px;" />
+                            </td>
+                        </tr>
+                        <tr height="7">
+                            <td colspan="3">
+                                <hr />
+                            </td>
+                        </tr>
+                        <tr height="30">
+                            <td class="wid1"><img src="./check2.png" width="25px"; height="25px";></td>
+                            <td class="wid2">ÏÇ¨Ïõê Ïù¥Î¶Ñ</td>
+                            <td><input type="text" name="wUserName" style="margin-left: -20%; width: 250px;" /></td>
+                        </tr>
+                        <tr height="7">
+                            <td colspan="3">
+                                <hr />
+                            </td>
+                        </tr>
+                        <tr height="30">
+                            <td class="wid1"><img src="./check2.png" width="25px"; height="25px";></td>
+                            <td class="wid2">ÏÇ¨Ïõê Ïó∞ÎùΩÏ≤ò</td>
+                            <td><input type="tel" name="user_phone" style="margin-left: -20%; width: 250px;" /></td>
+
+                        </tr>
+                        <tr height="7">
+                            <td colspan="3">
+                                <hr />
+                            </td>
+                        </tr>
+                        <tr height="30">
+                            <td class="wid1"><img src="./check2.png" width="25px"; height="25px";></td>
+                            <td class="wid2">ÏÇ¨Ïõê Í∞ÄÏûÖÏùºÏûê</td>
+                            <td><input type="date" name="user_date" style="margin-left: -20%; width: 250px;" /></td>
+                        </tr>
+                        <tr height="7">
+                            <td colspan="3">
+                                <hr />
+                            </td>
+                        </tr>
+                        <tr height="30">
+                            <td class="wid1"><img src="./check2.png" width="25px"; height="25px";></td>
+                            <td class="wid2">ÏÇ¨ÏóÖÏÜå Î™Ö</td>
+                            <td><input type="text" name="use_office" style="margin-left: -20%; width: 250px;" /></td>
+                        </tr>
+                        <tr height="7">
+                            <td colspan="3">
+                                <hr />
+                            </td>
+                        </tr>
+                        <tr height="30">
+                            <td class="wid1"><img src="./check2.png" width="25px"; height="25px";></td>
+                            <td class="wid2">Í¥ÄÎ¶¨Ïûê Ïó¨Î∂Ä</td>
+                            <td><input type="radio" name="admin" value="Í¥ÄÎ¶¨Ïûê" class="input_focus" style="margin-left: -20%; width: 20px;">Í¥ÄÎ¶¨Ïûê
+                                &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="admin" class="input_focus" value="ÏÇ¨Ïö©Ïûê" style="width: 20px;"> ÏÇ¨Ïö©Ïûê
+                            </td>
+
+                        <tr height="7">
+                            <td colspan="3">
+                                <hr />
+                            </td>
+                        </tr>
+
+                        <tr height="80">
+                            <td colspan="3"><input type="button" name="rol" value="Ï∑®ÏÜåÌïòÍ∏∞" id="uncheck"
+                                    class="rol">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input type="submit" name="suc" value="Îì±Î°ùÌïòÍ∏∞" class="suc" id="check">
+                            </td>
+                        </tr>
+                    </table>
+
+                </form>
+
+                <div class="modal_layer"></div>
+            </div>
+        </center>
+        <!----------------------------------------------- ÏÇ¨Ïö©Ïûê Îì±Î°ù Î™®Îã¨ Í≥µÍ∞Ñ -------------------------------------------->
+
+        <!----------------------------------------------- Ï†ÑÏ£º Îì±Î°ù Î™®Îã¨ Í≥µÍ∞Ñ -------------------------------------------->
+        <center>
+            <div id="modal2">
+                <form action="" method="post" name="" class="pole_form">
+                    <table width="700" height="800" class="pole_tb_body" cellpadding="0"
+                        style="border-collapse:collapse;">
+                        <tr height="100px">
+
+                            <td colspan="3" align="center" style="font-size: 30px;">
+                                <img src="./pole.png" width="40px" height="40px">
+                                Ï†ÑÏ£º Îì±Î°ù
+                            </td>
+                        </tr>
+                        <tr height="7">
+                            <td colspan="3">
+                                <hr />
+                            </td>
+                        </tr>
+
+                        <tr height="25">
+                            <td class="wid3"><img src="./check2.png" width="25px"; height="25px";></td>
+                            <td class="wid4">Ï†ÑÏ£ºÎ≤àÌò∏ Î∂ÄÏó¨</td>
+                            <td><input type="text" name="pole_code" style="margin-left: -15%;">
+                            </td>
+                        </tr>
+
+                        <tr height="7">
+                            <td colspan="3">
+                                <hr />
+                            </td>
+                        </tr>
+
+                        <tr height="25">
+                            <td class="wid3"><img src="./check2.png" width="25px"; height="25px";></td>
+                            <td class="wid4">Ï†ÑÏ£º ÎÜíÏù¥</td>
+                            <td><input type="text" name="pole_height" style="margin-left: -15%;" /></td>
+                        </tr>
+
+                        <tr height="7">
+                            <td colspan="3">
+                                <hr />
+                            </td>
+                        </tr>
+
+                        <tr height="25">
+                            <td class="wid3"><img src="./check2.png" width="25px"; height="25px";></td>
+                            <td class="wid4">Ï†ÑÏ£º Ï£ºÏÜå</td>
+                            <td><input type="text" name="pole_addr" style="margin-left: -15%;" /></td>
+                        </tr>
+
+                        <tr height="7">
+                            <td colspan="3">
+                                <hr />
+                            </td>
+                        </tr>
+
+                        <tr height="25">
+                            <td class="wid3"><img src="./check2.png" width="25px"; height="25px";></td>
+                            <td class="wid4">ÏÑ§Ïπò ÏùºÏûê</td>
+                            <td><input type="date" name="pole_date" style="margin-left: -15%; width: 222px;" /></td>
+                        </tr>
+                        <tr height="7">
+                            <td colspan="3">
+                                <hr />
+                            </td>
+                        </tr>
+
+
+
+                        <tr height="25">
+                            <td class="wid3"><img src="./check2.png" width="25px"; height="25px";></td>
+                            <td class="wid4">Îã¥ÎãπÏûê ÏÇ¨ÏõêÎ≤àÌò∏</td>
+                            <td><input type="text" name="emp_id" style="margin-left: -15%;" /></td>
+                        </tr>
+
+                        <tr height="7">
+                            <td colspan="3">
+                                <hr />
+                            </td>
+                        </tr>
+
+                        <tr height="25">
+                            <td class="wid3"><img src="./check2.png" width="25px"; height="25px";></td>
+                            <td class="wid4"></td>
+                            <td><input type="checkbox" class="input_focus" name="transformer_yn" value="Y"
+                                    style="margin-left: -50%; width: 20px;"><a>Î≥ÄÏïïÍ∏∞</a>
+                                <input type="hidden" name="transformer_yn" value='N'>
+                                <input type="checkbox" class="input_focus" name="pole_com" value="Y"
+                                    style="margin-left: 4%; width: 20px;">ÌÜµÏã†ÏÑ†
+                                <input type="hidden" name="pole_com" value='N'>
+                                <input type="checkbox" class="input_focus" name="pole_high" value="Y"
+                                    style="margin-left: 4%; width: 20px;">Í≥†ÏïïÏÑ†
+                                <input type="hidden" name="pole_high" value='N'>
+                                <input type="checkbox" class="input_focus" name="pole_down" value="Y"
+                                    style="margin-left: 4%; width: 20px;">Ï†ÄÏïïÏÑ†
+                                <input type="hidden" name="pole_down" value='N'>
+                            </td>
+
+                        <tr height="7">
+                            <td colspan="3">
+                                <hr />
+                            </td>
+                        </tr>
+
+                        <tr height="70">
+                            <td colspan="3"><input type="button" name="rol" value="Ï∑®ÏÜåÌïòÍ∏∞" id="uncheck2"
+                                    class="rol2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input type="submit" name="suc" value="Îì±Î°ùÌïòÍ∏∞" class="suc2" id="check2">
+                            </td>
+                        </tr>
+                    </table>
+
+                </form>
+
+                <div class="modal_layer"></div>
+            </div>
+        </center>
+        <!-- --------------------------------------------- Ï†ÑÏ£º Îì±Î°ù Î™®Îã¨ Í≥µÍ∞Ñ ------------------------------------------ -->
+	
+	<div id="divbox">
+	<div id="notice">
+        <h4>Í≥µÏßÄÏÇ¨Ìï≠</h4>
+        <div>Í≥µÏßÄÏÇ¨Ìï≠ ÎÇ¥Ïö©</div>
     </div>
-    <div id="Searchfilter">
-    <h1>¿¸¡÷ ≈Î«’ ∞¸∏Æ Ω√Ω∫≈€</h1>
-    <br>
-    <form action = "SearchBar" method="post">
+    <div id="alarm">
+        <h4>ÏïåÎ¶ºÎ©îÏÑ∏ÏßÄ</h4>
+        <div>ÏïåÎ¶º ÎÇ¥Ïö©</div>
+    </div>
+    </div>
+	
+	
+	<!-- ÌïÑÌÑ∞  -->
+    <form action = "Main.jsp" method="post" id="searchBar">
     <fieldset>
-        <legend>« ≈Õ</legend>
-        <h4>±§¡÷</h4>
-        <label>¥„¥Á ªÁæ˜º“</label>
+        <legend>ÌïÑÌÑ∞</legend>
+        <h2>Í¥ëÏ£ºÍ¥ëÏó≠Ïãú</h2>
+        <label>Îã¥Îãπ ÏÇ¨ÏóÖÏÜå</label>
             <select name = "pole_office">
-            <% request.setCharacterEncoding("EUC-KR"); %>
-            <option value="µø±∏">µø±∏</option>
-            <option value="º≠±∏">º≠±∏</option>
-            <option value="≥≤±∏">≥≤±∏</option>
-            <option value="∫œ±∏">∫œ±∏</option>
-            <option value="±§ªÍ±∏">±§ªÍ±∏</option>
-            
+            <option value="ÎèôÍµ¨">ÎèôÍµ¨</option>
+            <option value="ÏÑúÍµ¨">ÏÑúÍµ¨</option>
+            <option value="ÎÇ®Íµ¨">ÎÇ®Íµ¨</option>
+            <option value="Î∂ÅÍµ¨">Î∂ÅÍµ¨</option>
+            <option value="Í¥ëÏÇ∞Íµ¨">Í¥ëÏÇ∞Íµ¨</option>           
             </select>
-        <label>∞¸∏Æ¿⁄</label>
+            
+        <label>Í¥ÄÎ¶¨Ïûê</label>
             <select name = "emp_id">
             <%for(int i = 0; i<arrpVO.size();i++){ %>
                 <option value="<%=arrpVO.get(i).getEmp_id()%>" selected><%=arrpVO.get(i).getEmp_id() %></option>
 			<%} %>
 			
             </select>
-        <label>º≥ƒ° ¿œ¿⁄</label>
+        <label>ÏÑ§Ïπò ÏùºÏûê</label>
             <input type="date" name="pole_date">
-        <label>≥Ù¿Ã</label>
+        <label>ÎÜíÏù¥</label>
              <select name = "pole_height">
             <%for(int i = 0; i<arrpVO.size();i++){ %>
                 <option value="<%=arrpVO.get(i).getPole_height()%>" selected><%=arrpVO.get(i).getPole_height() %></option>
 			<%} %>
             </select>
-        <label>∫Øæ–±‚ ¿Øπ´</label>
+        <label>Î≥ÄÏïïÍ∏∞ Ïú†Î¨¥</label>
         	 <select name = "transformer_yn">
             <option value="Y">Y</option>
             <option value="N">N</option>
             </select>
-        <input type="submit" name="filter" value="∞Àªˆ">
+        <input type="submit" name="filter" value="Í≤ÄÏÉâ">
     </fieldset> 
     </form>                 
     </div>
    
-     <!-- ∞Àªˆ div -->
+     <!-- Í≤ÄÏÉâ Ï†Ñ pole_info Ï†ÑÏ≤¥Í≤∞Í≥º -->
+	<% if(request.getParameter("pole_height")==null) {%>
      <div id="wrapper">
-        <!-- ¿¸¡÷ π¯»£ ¿‘∑¬ div, ∞¸∏Æ¥ÎªÛ π¯»£ ¿‘∑¬, ¬˜»ƒ ∞¸∏Æ∆‰¿Ã¡ˆ∑Œ ¿Ãµø¿€æ˜ « ø‰-->
         <div id="img">
             <img src="./images/search.png" width="40px" height="40px" id="searchimg">
         </div>
         <div>
-            <input onkeyup="filter()" type="text" id="value" placeholder="¿¸¡÷ π¯»£ ¿‘∑¬" class="filter">
+            <input onkeyup="filter()" type="text" id="value" placeholder="Ï†ÑÏ£º Î≤àÌò∏ ÏûÖÎ†•" class="filter">
         </div>
 
 
         <div class="search_container" style="text-align: center;">
             <table id="poletable" style="text-align:center; margin:auto; border: 2px solid black;">
          <tr>
-         	<td>¿¸¡÷π¯»£</td>
-         	<td>∞¸«“¡ˆ±∏</td>
-         	<td>º≥ƒ°¿œ¿⁄</td>
-         	<td>∞¸∏Æ¿⁄</td>
+         	<th>Ï†ÑÏ£ºÎ≤àÌò∏</th>
+         	<th>Í¥ÄÌï†ÏßÄÍµ¨</th>
+         	<th>ÏÑ§ÏπòÏùºÏûê</th>
+         	<th>Í¥ÄÎ¶¨Ïûê</th>
+         	<th>ÏµúÏ¢Ö ÏàòÏ†ïÏùºÏûê</th>
          </tr>             
          <%for(int i = 0; i<arrpVO.size();i++){ %>
          <tr>
-         	<td><%=arrpVO.get(i).getPole_code() %></td>
-         	<td><%=arrpVO.get(i).getPole_office() %></td>
+         	
+         	<td><a href="managePole.jsp"><%=arrpVO.get(i).getPole_code() %></a></td>
+         	<td><%=arrpVO.get(i).getPole_addr() %></td>
          	<td><%=arrpVO.get(i).getPole_date() %></td>
          	<td><%=arrpVO.get(i).getEmp_id() %></td>
+         	<td><%=arrpVO.get(i).getPole_eday() %></td>
          </tr>
          <%} %>
             </table>
         </div>
 
     </div>
+    <% } else {%>
+     <div id="wrapper">
+        <div id="img">
+            <img src="./images/search.png" width="40px" height="40px" id="searchimg">
+        </div>
+        <div>
+            <input onkeyup="filter()" type="text" id="value" placeholder="Ï†ÑÏ£º Î≤àÌò∏ ÏûÖÎ†•" class="filter">
+        </div>
+
+
+        <div class="search_container" style="text-align: center;">
+            <table id="poletable" style="text-align:center; margin:auto; border: 2px solid black;">
+         <tr>
+         	<th>Ï†ÑÏ£ºÎ≤àÌò∏  <% out.println(request.getParameter("pole_height")); %></th>
+         	<th>Í¥ÄÌï†ÏßÄÍµ¨</th>
+         	<th>ÏÑ§ÏπòÏùºÏûê</th>
+         	<th>Í¥ÄÎ¶¨Ïûê</th>
+         	<th>ÏµúÏ¢Ö ÏàòÏ†ïÏùºÏûê</th>
+         </tr>             
+         <%for(int i = 0; i<arrpVO.size();i++){ %>
+         <tr>
+         	
+         	<td><a href="managePole.jsp"><%=arrpVO.get(i).getPole_code() %></a></td>
+         	<td><%=arrpVO.get(i).getPole_addr() %></td>
+         	<td><%=arrpVO.get(i).getPole_date() %></td>
+         	<td><%=arrpVO.get(i).getEmp_id() %></td>
+         	<td><%=arrpVO.get(i).getPole_eday() %></td>
+         </tr>
+         <%} %>
+            </table>
+        </div>
+
+    </div>
+    <% } %>
 
     <!-- footer -->
     <footer>
         <div class="copyright" style="text-align: center;">
             <h3 style="color:rgba(202, 202, 202, 0.733)">
-                ∞¸∏Æ¿⁄∏¶ ¿ß«— Ω√Ω∫≈€¿∏∑Œº≠ ¿Œ∞°µ» ∫–∏∏ ªÁøÎ «“ ºˆ ¿÷Ω¿¥œ¥Ÿ.</h3>
+                Í¥ÄÎ¶¨ÏûêÎ•º ÏúÑÌïú ÏãúÏä§ÌÖúÏúºÎ°úÏÑú Ïù∏Í∞ÄÎêú Î∂ÑÎßå ÏÇ¨Ïö© Ìï† Ïàò ÏûàÏäµÎãàÎã§.</h3>
             <p style="color:rgba(202, 202, 202, 0.733)">Copyright 2021, Pole Of Pisa, LTD. All right Reserved.</p>
         </div>
     </footer>
@@ -130,5 +459,23 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 
+    <!-- ÏÇ¨Ïö©Ïûê Îì±Î°ù Î™®Îã¨ -->
+    <script>
+        $("#modal_emp").click(function () {
+            $("#modal").fadeIn();
+        });
+        $("#uncheck").click(function () {
+            $("#modal").fadeOut();
+        });
+    </script>
+    <script>
+        // Ï†ÑÏ£º Îì±Î°ù Î™®Îã¨
+        $("#modal_pole").click(function () {
+            $("#modal2").fadeIn();
+        });
+        $("#uncheck2").click(function () {
+            $("#modal2").fadeOut();
+        });
+    </script>
 </body>
 </html>

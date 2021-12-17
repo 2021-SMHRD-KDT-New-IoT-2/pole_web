@@ -32,6 +32,13 @@ public class SearchBar extends HttpServlet {
 		System.out.println(pole_office);
 		
 		
+		if(pole_height!=null) {
+			String sql = "Select * from pole_info where 1=1 DESC limit 10";
+		}else {
+			String sql = "Select * from pole_info where pole_height = ? and pole_date = ? transformer_yn = ? emp_id = ? pole_office = ?";
+		}
+		
+		
 	}
 
 }

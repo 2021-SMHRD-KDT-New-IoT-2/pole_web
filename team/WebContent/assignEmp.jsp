@@ -11,7 +11,7 @@
 <body>
 		
 		
-		<div id = "header">
+		<div id = "header" >
         <img src="./images/upoplogo.PNG" width="125px" height="125px">
         </div>
         
@@ -130,6 +130,7 @@
 
         </form>
 	</div>
+	
 
  
 
