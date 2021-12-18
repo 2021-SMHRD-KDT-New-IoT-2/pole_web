@@ -15,6 +15,7 @@ public class poleDAO {
 	poleVO vo = null;
 	int cnt = 0;
 	ArrayList<poleVO> al = null;
+	ArrayList<poleVO> lal = null;
 	boolean check = false;
 
 	public void connection() {
@@ -53,8 +54,11 @@ public class poleDAO {
 	}
 	
 	//필터
-	public poleVO filter(String pole_height, String pole_date, String emp_id, String transformer_yn, String pole_office) {
+	public ArrayList<poleVO> filter(String pole_height, String pole_date, String emp_id, String transformer_yn, String pole_office) {
 		try {
+			
+			lal = new ArrayList<poleVO>();
+			
 			connection();
 			String sql = "select * from pole_info where 1=1";
 			// 조건이 추가 될 때마다 쿼리를 추가
@@ -70,10 +74,10 @@ public class poleDAO {
 
 			rs = psmt.executeQuery();
 
-			if (rs.next()) {
+			while(rs.next()) {
 
 				String getpole_height = rs.getString("pole_height");
-				String getpole_date = rs.getString("pole_date");
+				Date getpole_date = rs.getDate("pole_date");
 				String gettransformer_yn = rs.getString("transformer_yn");
 				String getemp_id = rs.getString("emp_id");
 				String getpole_office = rs.getString("pole_office");
@@ -99,10 +103,9 @@ public class poleDAO {
 
 				sql += addQuery;
 
-				vo = new poleVO();
-
-			} else {
-				System.out.println("필터링 실패");
+				vo = new poleVO(getpole_height,getpole_date,gettransformer_yn,getemp_id,getpole_office);
+				
+				lal.add(vo);
 			}
 		} catch (Exception e) {
 			System.out.println("오류로 인한 필터링 실패");
@@ -111,7 +114,7 @@ public class poleDAO {
 		} finally {
 			close();
 		}
-		return vo;
+		return lal;
 	}
 	
 	//기기 추가

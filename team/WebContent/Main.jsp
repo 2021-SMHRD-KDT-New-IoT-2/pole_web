@@ -27,6 +27,10 @@
 	poleVO pvo = (poleVO)session.getAttribute("pole");
 	poleDAO pdao = new poleDAO();	
 	String pole_height = request.getParameter("pole_height");
+	String pole_date = request.getParameter("pole_date");
+	String emp_id = request.getParameter("emp_id");
+	String transformer_yn = request.getParameter("transformer_yn");
+	String pole_office = request.getParameter("pole_office");
 	ArrayList<poleVO> arrpVO = pdao.pole_selectAll();
 	
 	/* ArrayList<poleVO> selVO = pdao.pole_ser_sel();
@@ -45,6 +49,7 @@
 	      }
 	   }
 	 */
+	 ArrayList<poleVO> filter = pdao.filter(pole_height, pole_date, emp_id, transformer_yn, pole_office);
 %>
 
 	<div id="nav">
@@ -436,7 +441,7 @@
 		</div>
 
 	</div>
-	<% } else {%>
+	<% } else {%> <!-- 검색 후 전주정보 -->
 	<div id="wrapper">
 		<div id="img">
 			<img src="./images/search.png" width="40px" height="40px"
@@ -452,7 +457,7 @@
 			<table id="poletable"
 				style="text-align: center; margin: auto; border: 2px solid black;">
 				<tr>
-					<th>전주번호 <% out.println(request.getParameter("pole_height")); %></th>
+					<th>전주번호</th>
 					<th>관할지구</th>
 					<th>설치일자</th>
 					<th>관리자</th>
