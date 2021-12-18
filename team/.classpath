@@ -8,8 +8,8 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="/Users/dohoon/Desktop/coding/mySQL/mysql-connector-java-8.0.26/mysql-connector-java-8.0.26.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v8.5(1)"/>
-	<classpathentry kind="lib" path="/Users/dohoon/Desktop/coding/androidServer/gson-2.8.6.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v8.5"/>
+	<classpathentry kind="lib" path="C:/Users/smhrd/Downloads/gson-2.8.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/smhrd/Desktop/mysql-connector-java-8.0.27.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

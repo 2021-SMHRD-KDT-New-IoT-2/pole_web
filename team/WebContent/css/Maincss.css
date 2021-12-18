@@ -19,6 +19,10 @@ body {
 	}
    
 
+button{
+	cursor:pointer
+}
+
 #logincheck{
     width: 100%;
     text-align: right;
@@ -81,13 +85,6 @@ footer {
 	height: 25px;
 }
 
-/* 검색창 안에 돋보기 사진 위치 */
-#img {
-	margin-top: 40px;
-	margin-left: 10.5%;
-	margin-bottom: -4.7%;
-	z-index: 1;
-}
 
 input, select {
 	display: inline-block;
@@ -196,16 +193,25 @@ input, select {
 	margin-right: 8px;
 }
 
+
+/* 검색창 안에 돋보기 사진 위치 */
+#img {
+    margin-top: 26.3%;
+    margin-left: -23%;
+    margin-bottom: -5%;
+}
+
 .filter {
-	margin-left: 10%;
-	width: 79.7%;
-	margin-top: 2%;
-	text-align: center;
-	border-color: rgb(122, 122, 122);
+	width: 20%;
+    text-align: center;
+    border-color: rgb(122, 122, 122);
+    float: left;
+    margin: 0 auto 1% 40%;
 }
 
 /* -----------nav-------------  */
 #header {
+	margin-top:2%;
 	background-color: #ffffff;
 }
 /* 수정부분1217 */
@@ -230,18 +236,19 @@ h1 {
 }
 
 .header_h1>h4 {
+	float:left;
 	margin-top: -2%;
 	margin-left: 2%;
 	font-size: 25px;
 }
 
 /* 수정부분1217 */
-nav>button {
+nav>a, button {
 	background-color: #4e1f1f00;
 	border: none;
 }
 
-nav>button:hover {
+nav>a, button:hover {
 	color: #5b5b5b;
 }
 
@@ -249,11 +256,11 @@ nav>button:hover {
 	color: #5b5b5b;
 }
 
-nav>button:active {
+nav>a, button:active {
 	color: #2b2b2b;
 }
 
-nav>button:visited {
+nav> a, button:visited {
 	color: #2b2b2b;
 }
 
@@ -263,14 +270,14 @@ ul {
 }
 
 nav {
-	margin-left: 70%;
+	margin-left: 65%;
 	margin-top: 2%;
 	display: block;
 }
 
-nav>button {
+nav>a, button{
 	font-size: 20px;
-	margin-right: 10%;
+	margin-right: 7%;
 	text-decoration: none;
 	color: #5b5b5b;
 }
@@ -314,7 +321,7 @@ nav>button {
 #searchBar {
 	float: left;
 	width: 100%;
-	margin-top: 5%;
+	margin-top: 3%;
 }
 
 #field_area {
@@ -342,6 +349,9 @@ fieldset {
 	float: left;
 	width: 28.4%;
 	height: 300px;
+}
+#alarm > h3, div{
+	text-align:center;
 }
 
 /* 수정부분 1217 */
@@ -531,7 +541,7 @@ tr, td, th, input {
 	text-transform: uppercase;
 	margin-bottom: 1.5%;
 	cursor: pointer;
-	background: #002c5f;
+	background: #002c5f; 
 	box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 	padding: 10px 25px;
 	border: 0px;
