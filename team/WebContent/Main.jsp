@@ -254,8 +254,8 @@
 
                         <tr height="25">
                             <td class="wid3"><img src="./images/check2.png" width="25px"; height="25px";></td>
-                            <td style="text-align:center;"><input type="checkbox" class="input_focus" name="transformer_yn" value="Y"
-                                    style="margin-left: 4%; width: 20px;"><a>변압기</a>
+                            <td colspan="2" style="text-align:center;"><input type="checkbox" class="input_focus" name="transformer_yn" value="Y"
+                                    style="margin-left: 4%; width: 20px;">변압기
                                 <input type="hidden" name="transformer_yn" value='N'>
                                 <input type="checkbox" class="input_focus" name="pole_com" value="Y"
                                     style="margin-left: 4%; width: 20px;">통신선
