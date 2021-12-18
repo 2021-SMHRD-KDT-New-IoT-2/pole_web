@@ -26,18 +26,18 @@ public class assignEmp extends HttpServlet {
 		String emp_name = request.getParameter("emp_name");
 		String emp_office = request.getParameter("emp_office");
 		String emp_phone = request.getParameter("emp_phone");
-		String admin_yesno = request.getParameter("admin_yesno");
+		String emp_yesno = request.getParameter("emp_yesno");
 		
 		System.out.println(emp_id);
 		System.out.println(emp_pw);	
 		System.out.println(emp_name);
 		System.out.println(emp_office);
 		System.out.println(emp_phone);
-		System.out.println(admin_yesno);
+		System.out.println(emp_yesno);
 		
 		emp_infoDAO dao = new emp_infoDAO();
 
-		int cnt = dao.addemp(emp_id, emp_pw, emp_name, emp_office, emp_phone, admin_yesno);
+		int cnt = dao.addemp(emp_id, emp_pw, emp_name, emp_office, emp_phone, emp_yesno);
 		
 
 		if(cnt>0) {
