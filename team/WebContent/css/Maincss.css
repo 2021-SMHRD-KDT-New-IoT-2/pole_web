@@ -1,5 +1,43 @@
 body {
 	background-color: #ffffff;
+    background-color: #ffffff;
+   
+} 
+   *{font-family: 'Nanum Gothic', sans-serif;}
+   
+   .number {   
+      text-align : center;
+   }
+
+   #footer {
+   
+   margin-top:50%;
+   }
+   
+   #empas{
+	margin-bottom : 30px;
+	}
+   
+
+#logincheck{
+    width: 100%;
+    text-align: right;
+    float : right;
+    margin-right: 10%;
+    margin-bottom: -10%;
+   }
+
+
+#loginsection{
+    position:relative;
+    width:100%;
+    height:600px;
+    background-color:#9785857c;
+    text-align:center;
+    margin-top:30%;
+    left:50%;
+    transform: translate(-50%,-50%);
+
 }
 
 * {
@@ -70,6 +108,7 @@ input, select {
 }
 
 /* ------------footer 공간-------------- */
+
 #footer {
 	clear: both;
 	text-align: center;
@@ -80,9 +119,12 @@ input, select {
 	margin: 0 auto;
 	background-color: #FFFFFF;
 }
+
 /* ------------------------------------- */
 
 /* -------테이블 붙이는중-------- */
+
+	
 #poletable {
 	width: 100%;
 	background-color: #ffffff;
@@ -90,6 +132,31 @@ input, select {
 	text-align: left;
 	line-height: 1.5;
 	border: 1px solid rgb(122, 122, 122);
+	}
+	
+  #poletable th {
+    
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    font-size: 20px;
+  }
+  #poletable td {
+    padding: 10px;
+    vertical-align: top;
+    font-size: 18px;
+  }
+  #poletable .even {
+    background: #efefef;
+  }
+
+
+.search_container{
+    width: 80%;
+    /* border : 1px solid black; */
+    margin: 2% auto;
+    background-color : #FFFFFF;
+
 }
 
 #poletable th {
