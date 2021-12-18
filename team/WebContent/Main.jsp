@@ -55,8 +55,10 @@
                         <tr height="100">
 
                             <td colspan="3" align="center" style="font-size: 30px;">
+                            	<div id="empas">
                                 <img src="./images/img4.png" width="40px" height="40px">
-                                	사용자 등록
+                                	<p>사용자 등록</p>
+                                </div>
                             </td>
                         </tr>
 
@@ -70,8 +72,8 @@
                             <td class="wid1"><img src="./images/check2.png" width="25px"; height="25px";></td>
                             <td>사원번호 부여</td>
                             <td><input type="text" name="emp_id"
-                                    style="margin-left: 12.2%; width: 250px;" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
-                                    href="LoginCheckService" style="text-decoration: none;">중복 검사 ✅</a></td>
+                                    style="margin-left: 6%; width: 250px;" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+                                    href="LoginCheckService" style="text-decoration: none;">중복 검사</a></td>
                         </tr>
                         <tr height="7">
                             <td colspan="3">
@@ -414,13 +416,13 @@
     <% } %>
 
     <!-- footer -->
-    <footer>
+    <div id="footer">
         <div class="copyright" style="text-align: center;">
             <h3 style="color:rgba(202, 202, 202, 0.733)">
                 관리자를 위한 시스템으로서 인가된 분만 사용 할 수 있습니다.</h3>
             <p style="color:rgba(202, 202, 202, 0.733)">Copyright 2021, Pole Of Pisa, LTD. All right Reserved.</p>
         </div>
-    </footer>
+    </div>
 
     <!--fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">

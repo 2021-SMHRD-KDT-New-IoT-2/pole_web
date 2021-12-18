@@ -8,9 +8,14 @@ body {
       text-align : center;
    }
 
-   footer {
-   margin-top : 10%;
+   #footer {
+   
+   margin-top:50%;
    }
+   
+   #empas{
+	margin-bottom : 30px;
+	}
    
 
 #logincheck{
@@ -73,12 +78,8 @@ input, select{
 }
 
 /* ------------footer °ø°£-------------- */
-#footer{
-    clear : both;  
-    text-align: center;
-    
-}
 .copyright{
+	
      width: 80%;
      margin: 0 auto;
     background-color: #FFFFFF;
@@ -117,7 +118,6 @@ input, select{
     width: 80%;
     /* border : 1px solid black; */
     margin: 2% auto;
-    display: flex;
     background-color : #FFFFFF;
 }
 
