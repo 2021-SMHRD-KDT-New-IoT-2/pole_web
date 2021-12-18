@@ -27,6 +27,22 @@
 	String pole_height = request.getParameter("pole_height");
 	ArrayList<poleVO> arrpVO = pdao.pole_selectAll();
 	
+	/* ArrayList<poleVO> selVO = pdao.pole_ser_sel();
+	   
+	   ArrayList<String> officeList = new ArrayList<String>();
+	   ArrayList<String> result = new ArrayList<String>();
+	   
+	   
+	   for(int i=0; i<selVO.size(); i++){
+	      officeList.add(selVO.get(i).getPole_office());
+	   }
+	   
+	   for(int i=0; i<officeList.size(); i++){
+	      if(!result.contains(officeList.get(i))){
+	         result.add(officeList.get(i));
+	      }
+	   }
+	 */
 %>
       <div id="nav">
         <nav>
@@ -34,6 +50,7 @@
             <button>홈</button>
             <button id="modal_pole">전주 등록</button>
             <button id="modal_emp">사용자 등록</button> <!-- href="assignEmp.jsp" -->
+            <a href="LogoutService">로그아웃</a>
             <a href=""><img src="./images/bell.png" class="img" width="30px" height="30px" style="margin-top: 1%;"></a>
         </nav>
 
