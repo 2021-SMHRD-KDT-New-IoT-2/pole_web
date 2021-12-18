@@ -9,7 +9,6 @@ public class emp_infoVO {
 	private String emp_name;
 	private String emp_office;
 	private String emp_phone;
-	private Date emp_joindate;
 	private String admin_yesno;
 
 	public emp_infoVO() {		
@@ -44,7 +43,7 @@ public class emp_infoVO {
 	@Override
 	public String toString() {
 		return "emp_infoVO [emp_id=" + emp_id + ", emp_pw=" + emp_pw + ", emp_name=" + emp_name + ", emp_office="
-				+ emp_office + ", emp_phone=" + emp_phone + ", emp_joindate=" + emp_joindate + ", admin_yesno="
+				+ emp_office + ", emp_phone=" + emp_phone + ", emp_joindate=" + ", admin_yesno="
 				+ admin_yesno + "]";
 	}
 
@@ -89,16 +88,6 @@ public class emp_infoVO {
 
 	public void setEmp_phone(String emp_phone) {
 		this.emp_phone = emp_phone;
-	}
-
-	public Date getEmp_joindate() {
-		return emp_joindate;
-	}
-
- 
-
-	public void setEmp_joindate(Date emp_joindate) {
-		this.emp_joindate = emp_joindate;
 	}
 
 	public String getAdmin_yesno() {
