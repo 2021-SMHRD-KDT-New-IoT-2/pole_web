@@ -10,9 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import Model.emp_infoDAO;
 
-
- 
-
 @WebServlet("/assignEmp")
 
 public class assignEmp extends HttpServlet { 
