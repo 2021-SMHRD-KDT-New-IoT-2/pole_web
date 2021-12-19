@@ -28,22 +28,7 @@
 	poleDAO pdao = new poleDAO();	
 
 	ArrayList<poleVO> arrpVO = pdao.pole_selectAll();
-	/* ArrayList<poleVO> selVO = pdao.pole_ser_sel();
-	   
-	   ArrayList<String> officeList = new ArrayList<String>();
-	   ArrayList<String> result = new ArrayList<String>();
-	   
-	   
-	   for(int i=0; i<selVO.size(); i++){
-	      officeList.add(selVO.get(i).getPole_office());
-	   }
-	   
-	   for(int i=0; i<officeList.size(); i++){
-	      if(!result.contains(officeList.get(i))){
-	         result.add(officeList.get(i));
-	      }
-	   }
-	 */
+	
 	String pole_height = request.getParameter("pole_height");
 	String pole_date = request.getParameter("pole_date");
 	String emp_id = request.getParameter("emp_id");
@@ -428,6 +413,11 @@
 				<tr>
 
 					<td><a href="managePole.jsp?pole_code=<%= arrpVO.get(i).getPole_code()%>"><%=arrpVO.get(i).getPole_code() %></a></td>
+<<<<<<< HEAD
+=======
+					<td><%=arrpVO.get(i).getPole_addr() %></td>
+					<td><%=arrpVO.get(i).getPole_date() %></td>
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-IoT-2/pole_web.git
 					<td><%=arrpVO.get(i).getEmp_id() %></td>
 					<td><%=arrpVO.get(i).getPole_office() %></td>
 					<td><%=arrpVO.get(i).getPole_date() %></td>

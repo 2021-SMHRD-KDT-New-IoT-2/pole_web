@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@page import="Model.poleDAO"%>
@@ -42,15 +43,16 @@
 <%
 	request.setCharacterEncoding("utf-8");
 	String pole_code = request.getParameter("pole_code");
-	poleVO poleVO = new poleVO();
-	poleVO.setPole_code(pole_code);
-	poleDAO pdao = new poleDAO();
-	List polelist = pdao.polelists(poleVO);
+	poleDAO pdao = new poleDAO();	
+	poleVO pvo = pdao.pole_selectONE(pole_code);
+	
+	SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+	String pole_date = df.format(pvo.getPole_date());
 %>
 	
     <section >
         <div class="tb_name">
-            <p style="font-size:20px; padding: 20px"><b>* 테이블 제목</b></p>
+            <p style="font-size:20px; padding: 20px"><b>테이블 제목</b></p>
         </div>
         <div class="tb_body">
             <form action = "Main.jsp" name="pole_tb" class="fom_tb" method="post">
@@ -67,36 +69,20 @@
                         <th>변압기 유무</th>
                         <th>관리등급</th>
                     </tr>
-                 <%
-                 for(int i = 0; i < polelist.size() ; i++){
-                	 poleVO pvo = (poleVO) polelist.get(i);
-                	 String pole_code1 = pvo.getPole_code();
-                	 String pole_height = pvo.getPole_height();
-                	 String pole_addr = pvo.getPole_addr();
-                	 Date pole_date = pvo.getPole_date();
-                	 String pole_office = pvo.getPole_office();
-                	 String pole_high = pvo.getPole_high();
-                	 String pole_down = pvo.getPole_down();
-                	 String pole_com = pvo.getPole_com();
-                	 String transformer_yn = pvo.getTransformer_yn();
-                	 String pole_level = pvo.getPole_level();
-                	 
-                 
-                 %>
+                
                      <tr>
-                        <td><%=pole_code%></td>
-                        <td><%=pole_height %></td>
-                        <td><%=pole_addr %></td>
-                        <td><%=pole_date %></td>
-                        <td><%=pole_office %></td>
-                        <td><%=pole_high%></td>
-                        <td><%=pole_down %></td>
-                        <td><%=pole_com %></td>
-                        <td><%=transformer_yn %></td>
-                        <td><%=pole_level%></td>
+                    	<td><%=pvo.getPole_code()%></td>
+                        <td><%=pvo.getPole_height()%></td>
+                        <td><%=pvo.getPole_addr()%></td>
+                        <td><%=pole_date%></td>
+                        <td><%=pvo.getPole_office()%></td>
+                        <td><%=pvo.getPole_high()%></td>
+                        <td><%=pvo.getPole_down()%></td>
+                        <td><%=pvo.getPole_com()%></td>
+                        <td><%=pvo.getTransformer_yn()%></td>
+                        <td><%=pvo.getPole_level()%></td>
                     </tr>  
-                    <%
-                    }%>
+         
               </form>
 
 		
