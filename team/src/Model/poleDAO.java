@@ -1,5 +1,6 @@
 package Model;
 
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -56,66 +57,56 @@ public class poleDAO {
 	//필터
 	@SuppressWarnings("null")
 	public ArrayList<poleVO> filter(String pole_height, String pole_date, String emp_id, String transformer_yn, String pole_office) {
-		try {
-			
-			lal = new ArrayList<poleVO>();
-			
+		ArrayList<poleVO> al = new ArrayList<poleVO>();
+		
+		try {		
+			vo = new poleVO();
 			connection();
 			String sql = "select * from pole_info where 1=1";
 			// 조건이 추가 될 때마다 쿼리를 추가
-
+			String addQuery = "";
+			
+			if (pole_office != null || !pole_office.equals("")) {
+				addQuery += " AND pole_office like'%" + pole_office + "%'";
+			}
+			if (emp_id != null || !emp_id.equals("")) {
+				addQuery += " AND emp_id like '%" + emp_id + "%'";
+			}
+			if (pole_date != null || !pole_date.equals("")) {
+				addQuery += " AND pole_date like '%" + pole_date + "%'";
+			}
+			if (pole_height != null || !pole_height.equals("")) {
+				addQuery += " AND pole_height like '%" + pole_height + "%'";
+			}
+			if (transformer_yn != null || !transformer_yn.equals("")) {
+				addQuery += " AND transformer_yn like '%" + transformer_yn + "%'";
+			}
+			
+			sql += addQuery;
+			System.out.println(sql);
 			psmt = conn.prepareStatement(sql);
 
-			// 웹에서 가져오는 검색 조건의 값만 바인딩
-			
-			/*
-			 * psmt.setString(1, pole_height); psmt.setString(2, pole_date);
-			 * psmt.setString(3, transformer_yn); psmt.setString(4, emp_id);
-			 * psmt.setString(5, pole_office);
-			 */
-			 
-
 			rs = psmt.executeQuery();
+			// 컬럼의 값이 null인지 check, !null이라면 addQuery해서 검색 값 필터링
+			
 
 			while(rs.next()) {
-
-				String getpole_height = rs.getString("pole_height");
-				String gettransformer_yn = rs.getString("transformer_yn");
 				
-				//성민
+				//해원
 				String getpole_code = rs.getString("pole_code");
 				String getpole_office = rs.getString("pole_office");
+				String getemp_id = rs.getString("emp_id");		
 				Date getpole_date = rs.getDate("pole_date");
-				String getemp_id = rs.getString("emp_id");
-				String getpole_eday = rs.getString("pole_eday");
-				
-				String addQuery = "";
+				String getpole_height = rs.getString("pole_height");
+				String gettransformer_yn = rs.getString("transformer_yn");	
 
-				// 컬럼의 값이 null인지 check, !null이라면 addQuery해서 검색 값 필터링
-				if (pole_office != null || !pole_office.equals("")) {
-					addQuery += " AND" + getpole_office + "like '%" + pole_office + "%'";
-				}
-				if (emp_id != null || !emp_id.equals("")) {
-					addQuery += " AND" + getemp_id + "like '%" + emp_id + "%'";
-				}
-				if (pole_date != null || !pole_date.equals("")) {
-					addQuery += " AND" + getpole_date + "like '%" + pole_date + "%'";
-				}
-				if (pole_height != null || !pole_height.equals("")) {
-					addQuery += " AND" + getpole_height + "like '%" + pole_height + "%'";
-				}
-				if (transformer_yn != null || !transformer_yn.equals("")) {
-					addQuery += " AND" + gettransformer_yn + "like '%" + transformer_yn + "%'";
-				}
-
-				sql += addQuery;
-
-				vo = new poleVO(getpole_code,getpole_date,getemp_id,getpole_eday,getpole_office);
+				vo = new poleVO(getpole_code,getpole_office, getemp_id, getpole_date, getpole_height, gettransformer_yn);
 				
-				lal.add(vo);				
-				
-				System.out.println(sql);
+				al.add(vo);
 			}
+			
+
+			
 		} catch (Exception e) {
 			System.out.println("오류로 인한 필터링 실패");
 			e.printStackTrace();
@@ -123,7 +114,7 @@ public class poleDAO {
 		} finally {
 			close();
 		}
-		return lal;
+		return al;
 	}
 	
 	//기기 추가

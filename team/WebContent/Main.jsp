@@ -27,13 +27,17 @@
 	poleVO pvo = (poleVO)session.getAttribute("pole");
 	poleDAO pdao = new poleDAO();	
 
+	
 	ArrayList<poleVO> arrpVO = pdao.pole_selectAll();
 	
+	String pole_code = request.getParameter("pole_code");
 	String pole_height = request.getParameter("pole_height");
 	String pole_date = request.getParameter("pole_date");
 	String emp_id = request.getParameter("emp_id");
 	String transformer_yn = request.getParameter("transformer_yn");
 	String pole_office = request.getParameter("pole_office");
+	
+	ArrayList<poleVO> filter = pdao.filter(pole_height,pole_date,emp_id,transformer_yn,pole_office);
 %>
 
 	<div id="nav">
@@ -352,14 +356,15 @@
 				<fieldset>
 					<h2>광주광역시</h2>
 					<label>담당 사업소</label> <select name="pole_office">
-						<%-- <!-- <% request.setCharacterEncoding("EUC-KR"); %> --> --%>
-						<%for(int i=0; i<arrpVO.size();i++){ %>
-						<option value="<%=arrpVO.get(i).getPole_office() %>" selected>
-							<%=arrpVO.get(i).getPole_office() %>
-						</option>
-						<%} %>
-						
-					</select> <label>관리자</label> <select name="emp_id">
+						<option value="">선택하세요</option>
+						<option value="동구">동구</option>
+						<option value="서구">서구</option>
+						<option value="남구">남구</option>
+						<option value="북구">북구</option>
+						<option value="광산구">광산구</option>	
+					</select>
+					
+						<label>관리자</label> <select name="emp_id">
 						<%for(int i=0; i<arrpVO.size();i++){ %>
 						<option value="<%=arrpVO.get(i).getEmp_id()%>" selected>
 							<%=arrpVO.get(i).getEmp_id() %>
@@ -367,17 +372,20 @@
 						<%} %>
 
 					</select> <label>설치 일자</label> <input type="date" name="pole_date">
+					
 					<label>높이</label> <select name="pole_height">
 						<%for(int i=0; i<arrpVO.size();i++){ %>
 						<option value="<%=arrpVO.get(i).getPole_height()%>" selected>
 							<%=arrpVO.get(i).getPole_height() %>
 						</option>
 						<%} %>
+						
 					</select> <label>변압기 유무</label> <select name="transformer_yn">
 						<option value="Y">Y</option>
 						<option value="N">N</option>
+						
 					</select> <input type="submit" name="filter" value="검색">
-					<button id="min_test">필터링</button>
+				
 				</fieldset>
 			</form>
 		</div>
@@ -413,11 +421,6 @@
 				<tr>
 
 					<td><a href="managePole.jsp?pole_code=<%= arrpVO.get(i).getPole_code()%>"><%=arrpVO.get(i).getPole_code() %></a></td>
-<<<<<<< HEAD
-=======
-					<td><%=arrpVO.get(i).getPole_addr() %></td>
-					<td><%=arrpVO.get(i).getPole_date() %></td>
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-IoT-2/pole_web.git
 					<td><%=arrpVO.get(i).getEmp_id() %></td>
 					<td><%=arrpVO.get(i).getPole_office() %></td>
 					<td><%=arrpVO.get(i).getPole_date() %></td>
@@ -433,10 +436,9 @@
 	
 	<div id="min_wrapper">
 	
-	<% ArrayList<poleVO> filter = pdao.filter(pole_height, pole_date, emp_id, transformer_yn, pole_office); %>
+
 		<div id="img">
-			<img src="./images/search.png" width="40px" height="40px"
-				id="searchimg">
+			<img src="./images/search.png" width="40px" height="40px" id="searchimg">
 		</div>
 		<div>
 			<input onkeyup="filter()" type="text" id="value"
@@ -449,19 +451,20 @@
 				style="text-align: center; margin: auto; border: 2px solid black;">
 				<tr>
 					<th>전주번호</th>
-					<th>관할지구</th>
-					<th>설치일자</th>
 					<th>관리자</th>
-					<th>최종 수정일자</th>
+					<th>담당 사업소</th>
+					<th>설치일자</th>
+					<th>높이</th>
+					<th>변압기 유무</th>
 				</tr>
-				<%for(int i = 0; i<filter.size();i++){ %>
+				<%for(int i = 0; i<filter.size(); i++){ %>
 				<tr>
-
 					<td><a href="managePole.jsp"><%=filter.get(i).getPole_code() %></a></td>
+					<td><%=filter.get(i).getEmp_id() %></td>
 					<td><%=filter.get(i).getPole_office() %></td>
 					<td><%=filter.get(i).getPole_date() %></td>
-					<td><%=filter.get(i).getEmp_id() %></td>
-					<td><%=filter.get(i).getPole_eday() %></td>
+					<td><%=filter.get(i).getPole_height() %></td>
+					<td><%=filter.get(i).getTransformer_yn() %></td>
 				</tr>
 				<%} %>
 			</table>
