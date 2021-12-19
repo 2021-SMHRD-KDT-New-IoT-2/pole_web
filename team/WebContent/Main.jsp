@@ -459,7 +459,7 @@
 				</tr>
 				<%for(int i = 0; i<filter.size(); i++){ %>
 				<tr>
-					<td><a href="managePole.jsp"><%=filter.get(i).getPole_code() %></a></td>
+					<td><a href="managePole.jsp?pole_code=<%=filter.get(i).getPole_code()%>"><%=filter.get(i).getPole_code() %></a></a></td>
 					<td><%=filter.get(i).getEmp_id() %></td>
 					<td><%=filter.get(i).getPole_office() %></td>
 					<td><%=filter.get(i).getPole_date() %></td>
