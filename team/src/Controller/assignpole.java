@@ -30,6 +30,7 @@ public class assignpole extends HttpServlet {
 		String transformer_yn = request.getParameter("transformer_yn");
 		String emp_id = request.getParameter("emp_id");
 		String pole_level = request.getParameter("pole_level");
+		String pole_office = request.getParameter("pole_office");
 
 		poleDAO dao = new poleDAO();
 		
@@ -45,7 +46,7 @@ public class assignpole extends HttpServlet {
 
 		}
 
-		cnt = dao.addpole(pole_code, mac_code, pole_height, pole_addr, pole_high, pole_down, pole_com, transformer_yn, pole_level, emp_id);
+		cnt = dao.addpole(pole_code, mac_code, pole_height, pole_addr, pole_high, pole_down, pole_com, transformer_yn, pole_level, emp_id, pole_office);
 
 		if(cnt>0) {
 
@@ -67,7 +68,7 @@ public class assignpole extends HttpServlet {
 
 			System.out.println("가입실패!");
 
-			response.sendRedirect("assignPole.jsp");
+			response.sendRedirect("Main.jsp");
 
 		}
 
