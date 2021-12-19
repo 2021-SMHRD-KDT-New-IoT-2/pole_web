@@ -149,14 +149,17 @@ public class poleVO {
 	}
 
 
-	public poleVO(String pole_height, Date pole_date, String emp_id, String transformer_yn, String pole_office) {
+	public poleVO(String pole_code, Date pole_date, String emp_id, String pole_eday, String pole_office) {
 		super();
-		this.pole_height = pole_height;
+		this.pole_code = pole_code;
 		this.pole_date = pole_date;
-		this.transformer_yn = transformer_yn;
 		this.emp_id = emp_id;
+		this.pole_eday = pole_eday;
 		this.pole_office = pole_office;
 	}
+
+
+	
 
 	
 }

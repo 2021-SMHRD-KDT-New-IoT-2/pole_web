@@ -54,6 +54,7 @@ public class poleDAO {
 	}
 	
 	//필터
+	@SuppressWarnings("null")
 	public ArrayList<poleVO> filter(String pole_height, String pole_date, String emp_id, String transformer_yn, String pole_office) {
 		try {
 			
@@ -66,44 +67,50 @@ public class poleDAO {
 			psmt = conn.prepareStatement(sql);
 
 			// 웹에서 가져오는 검색 조건의 값만 바인딩
-			psmt.setString(1, pole_height);
-			psmt.setString(2, pole_date);
-			psmt.setString(3, transformer_yn);
-			psmt.setString(4, emp_id);
-			psmt.setString(5, pole_office);
+			
+			/*
+			 * psmt.setString(1, pole_height); psmt.setString(2, pole_date);
+			 * psmt.setString(3, transformer_yn); psmt.setString(4, emp_id);
+			 * psmt.setString(5, pole_office);
+			 */
+			 
 
 			rs = psmt.executeQuery();
 
 			while(rs.next()) {
 
 				String getpole_height = rs.getString("pole_height");
-				Date getpole_date = rs.getDate("pole_date");
 				String gettransformer_yn = rs.getString("transformer_yn");
-				String getemp_id = rs.getString("emp_id");
+				
+				//성민
+				String getpole_code = rs.getString("pole_code");
 				String getpole_office = rs.getString("pole_office");
-
+				Date getpole_date = rs.getDate("pole_date");
+				String getemp_id = rs.getString("emp_id");
+				String getpole_eday = rs.getString("pole_eday");
+				
 				String addQuery = "";
 
 				// 컬럼의 값이 null인지 check, !null이라면 addQuery해서 검색 값 필터링
-				if (pole_height != null || !pole_height.equals("")) {
-					addQuery += " AND" + pole_height + "like '%" + getpole_height + "%'";
-				}
-				if (pole_date != null || !pole_date.equals("")) {
-					addQuery += " AND" + pole_date + "like '%" + getpole_date + "%'";
+				if (pole_office != null || !pole_office.equals("")) {
+					addQuery += " AND" + getpole_office + "like '%" + pole_office + "%'";
 				}
 				if (emp_id != null || !emp_id.equals("")) {
-					addQuery += " AND" + emp_id + "like '%" + getemp_id + "%'";
+					addQuery += " AND" + getemp_id + "like '%" + emp_id + "%'";
+				}
+				if (pole_date != null || !pole_date.equals("")) {
+					addQuery += " AND" + getpole_date + "like '%" + pole_date + "%'";
+				}
+				if (pole_height != null || !pole_height.equals("")) {
+					addQuery += " AND" + getpole_height + "like '%" + pole_height + "%'";
 				}
 				if (transformer_yn != null || !transformer_yn.equals("")) {
-					addQuery += " AND" + transformer_yn + "like '%" + gettransformer_yn + "%'";
-				}
-				if (pole_office != null || !pole_office.equals("")) {
-					addQuery += " AND" + pole_office + "like '%" + getpole_office + "%'";
+					addQuery += " AND" + gettransformer_yn + "like '%" + transformer_yn + "%'";
 				}
 
 				sql += addQuery;
 
-				vo = new poleVO(getpole_height,getpole_date,gettransformer_yn,getemp_id,getpole_office);
+				vo = new poleVO(getpole_code,getpole_date,getemp_id,getpole_eday,getpole_office);
 				
 				lal.add(vo);
 			}
@@ -259,7 +266,7 @@ public class poleDAO {
 				String getPole_office= rs.getString("pole_office");
 				String getPole_level = rs.getString("pole_level");
 
-				vo = new poleVO(getPole_code, getMac_code, getPole_height, getPole_addr, getPole_date, getEmp_id, getTransformer_yn, getPole_com, getpole_high, getpole_down, getPole_coment, getPole_eday, getPole_office, getPole_level);
+				vo = new poleVO(getPole_code, getMac_code, getPole_height, getPole_addr, getPole_date, getEmp_id, getTransformer_yn, getPole_com, getpole_high, getpole_down, getPole_coment, getPole_eday, getPole_level, getPole_office);
 
 
 //	   	            vo값을 al에 add
@@ -278,7 +285,53 @@ public class poleDAO {
 		return al;
 	}
 	
-	
+	// 전주정보
+
+		public poleVO pole_selectONE(String pole_code) {
+
+			try {
+				connection();
+
+				String sql = "select * from pole_info where pole_code = ?";
+				
+				psmt = conn.prepareStatement(sql);
+				
+				psmt.setString(1, pole_code);
+
+				rs = psmt.executeQuery();
+
+				while (rs.next()) {
+
+					String getPole_code = rs.getString("pole_code");
+					String getMac_code = rs.getString("mac_code");
+					String getPole_height = rs.getString("pole_height"); 
+					String getPole_addr = rs.getString("pole_addr");
+					Date getPole_date = rs.getDate("pole_date");
+					String getEmp_id = rs.getString("emp_id");
+					String getTransformer_yn = rs.getString("transformer_yn");
+					String getPole_com = rs.getString("pole_com");
+					String getpole_high = rs.getString("pole_high");
+					String getpole_down = rs.getString("pole_down");
+					String getPole_coment = rs.getString("pole_coment");
+					String getPole_eday = rs.getString("pole_eday");
+					String getPole_office= rs.getString("pole_office");
+					String getPole_level = rs.getString("pole_level");
+
+					vo = new poleVO(getPole_code, getMac_code, getPole_height, getPole_addr, getPole_date, getEmp_id, getTransformer_yn, getPole_com, getpole_high, getpole_down, getPole_coment, getPole_eday,getPole_level, getPole_office);
+
+				}
+
+			} catch (Exception e) {
+				System.out.println("조회실패");
+				e.printStackTrace();
+
+			} finally {
+				close();
+			}
+			return vo;
+		}
+		
+		
 	
 
 	// 전주 삭제
@@ -307,58 +360,6 @@ public class poleDAO {
 
 	}
 	
-	public List polelists(poleVO poleVO) {
-		List<poleVO> polelist = new ArrayList<poleVO>();
-		String pole_code = poleVO.getPole_code();
-		try {
-			connection();
-			String sql = "select * from pole_info";
-			if((pole_code != null && pole_code.length() != 0)) {
-				sql += "where pole_code = ?";
-				psmt = conn.prepareStatement(sql);
-				psmt.setNString(1, pole_code);
-			}else {
-				psmt = conn.prepareStatement(sql);
-			}
-			ResultSet rs = psmt.executeQuery();
-			while(rs.next()) {
-				String getPole_code = rs.getString("pole_code");
-				String getMac_code = rs.getString("mac_code");
-				String getPole_height = rs.getString("pole_height"); 
-				String getPole_addr = rs.getString("pole_addr");
-				Date getPole_date = rs.getDate("pole_date");
-				String getEmp_id = rs.getString("emp_id");
-				String getTransformer_yn = rs.getString("transformer_yn");
-				String getPole_com = rs.getString("pole_com");
-				String getpole_high = rs.getString("pole_high");
-				String getpole_down = rs.getString("pole_down");
-				String getPole_coment = rs.getString("pole_coment");
-				String getPole_eday = rs.getString("pole_eday");
-				
-			Model.poleVO pvo = new poleVO();
-				
-				pvo.setPole_code(getPole_code);
-				pvo.setMac_code(getMac_code);
-				pvo.setPole_height(getPole_height);
-				pvo.setPole_addr(getPole_addr);
-				pvo.setPole_date(getPole_date);
-				pvo.setEmp_id(getEmp_id);
-				pvo.setTransformer_yn(getTransformer_yn);
-				pvo.setPole_com(getPole_com);
-				pvo.setPole_high(getpole_high);
-				pvo.setPole_down(getpole_down);
-				pvo.setPole_coment(getPole_coment);
-				pvo.setPole_eday(getPole_eday);	
-				
-				polelist.add(pvo);
-			}
-			rs.close();
-			psmt.close();
-			conn.close();
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-		return polelist;
-	}
+	
 
 }

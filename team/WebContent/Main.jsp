@@ -26,13 +26,7 @@
 	request.setCharacterEncoding("utf-8");
 	poleVO pvo = (poleVO)session.getAttribute("pole");
 	poleDAO pdao = new poleDAO();	
-	String pole_height = request.getParameter("pole_height");
-	String pole_date = request.getParameter("pole_date");
-	String emp_id = request.getParameter("emp_id");
-	String transformer_yn = request.getParameter("transformer_yn");
-	String pole_office = request.getParameter("pole_office");
 	ArrayList<poleVO> arrpVO = pdao.pole_selectAll();
-	
 	/* ArrayList<poleVO> selVO = pdao.pole_ser_sel();
 	   
 	   ArrayList<String> officeList = new ArrayList<String>();
@@ -49,7 +43,11 @@
 	      }
 	   }
 	 */
-	 ArrayList<poleVO> filter = pdao.filter(pole_height, pole_date, emp_id, transformer_yn, pole_office);
+	String pole_height = request.getParameter("pole_height");
+	String pole_date = request.getParameter("pole_date");
+	String emp_id = request.getParameter("emp_id");
+	String transformer_yn = request.getParameter("transformer_yn");
+	String pole_office = request.getParameter("pole_office");
 %>
 
 	<div id="nav">
@@ -364,17 +362,17 @@
 	<!-- 수정부분 1217 -->
 	<div id="searchBar">
 		<div id="field_area">
-			<form action="SearchBar" method="post">
+			<form>
 				<fieldset>
 					<h2>광주광역시</h2>
 					<label>담당 사업소</label> <select name="pole_office">
-						<!-- <% request.setCharacterEncoding("EUC-KR"); %> -->
-						<option value="동구">동구</option>
-						<option value="서구">서구</option>
-						<option value="남구">남구</option>
-						<option value="북구">북구</option>
-						<option value="광산구">광산구</option>
-
+						<%-- <!-- <% request.setCharacterEncoding("EUC-KR"); %> --> --%>
+						<%for(int i=0; i<arrpVO.size();i++){ %>
+						<option value="<%=arrpVO.get(i).getPole_office() %>" selected>
+							<%=arrpVO.get(i).getPole_office() %>
+						</option>
+						<%} %>
+						
 					</select> <label>관리자</label> <select name="emp_id">
 						<%for(int i=0; i<arrpVO.size();i++){ %>
 						<option value="<%=arrpVO.get(i).getEmp_id()%>" selected>
@@ -393,6 +391,7 @@
 						<option value="Y">Y</option>
 						<option value="N">N</option>
 					</select> <input type="submit" name="filter" value="검색">
+					<button id="min_test">필터링</button>
 				</fieldset>
 			</form>
 		</div>
@@ -402,12 +401,8 @@
 		</div>
 	</div>
 
-
-
-	<!-- 수정부분 1217 -->
-
 	<!-- 검색 전 pole_info 전체결과 -->
-	<% if(request.getParameter("pole_height")==null) {%>
+	<% if(pole_height==null) {%>
 	<div id="wrapper">
 		<div id="img">
 			<img src="./images/search.png" width="40px" height="40px">
@@ -430,7 +425,7 @@
 				<%for(int i = 0; i<arrpVO.size();i++){ %>
 				<tr>
 
-					<td><a href="managePole.jsp"><%=arrpVO.get(i).getPole_code() %></a></td>
+					<td><a href="managePole.jsp?pole_code=<%= arrpVO.get(i).getPole_code()%>"><%=arrpVO.get(i).getPole_code() %></a></td>
 					<td><%=arrpVO.get(i).getPole_addr() %></td>
 					<td><%=arrpVO.get(i).getPole_date() %></td>
 					<td><%=arrpVO.get(i).getEmp_id() %></td>
@@ -439,10 +434,13 @@
 				<%} %>
 			</table>
 		</div>
-
+		
 	</div>
-	<% } else {%> <!-- 검색 후 전주정보 -->
-	<div id="wrapper">
+	 <% } else {%> <!-- 검색 후 전주정보 -->
+	
+	<div id="min_wrapper">
+	
+	<% ArrayList<poleVO> filter = pdao.filter(pole_height, pole_date, emp_id, transformer_yn, pole_office); %>
 		<div id="img">
 			<img src="./images/search.png" width="40px" height="40px"
 				id="searchimg">
@@ -463,14 +461,14 @@
 					<th>관리자</th>
 					<th>최종 수정일자</th>
 				</tr>
-				<%for(int i = 0; i<arrpVO.size();i++){ %>
+				<%for(int i = 0; i<filter.size();i++){ %>
 				<tr>
 
-					<td><a href="managePole.jsp"><%=arrpVO.get(i).getPole_code() %></a></td>
-					<td><%=arrpVO.get(i).getPole_addr() %></td>
-					<td><%=arrpVO.get(i).getPole_date() %></td>
-					<td><%=arrpVO.get(i).getEmp_id() %></td>
-					<td><%=arrpVO.get(i).getPole_eday() %></td>
+					<td><a href="managePole.jsp"><%=filter.get(i).getPole_code() %></a></td>
+					<td><%=filter.get(i).getPole_office() %></td>
+					<td><%=filter.get(i).getPole_date() %></td>
+					<td><%=filter.get(i).getEmp_id() %></td>
+					<td><%=filter.get(i).getPole_eday() %></td>
 				</tr>
 				<%} %>
 			</table>
@@ -514,5 +512,7 @@
             $("#modal2").fadeOut();
         });
     </script>
+    
+     	
 </body>
 </html>
