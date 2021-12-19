@@ -421,6 +421,10 @@
 				<tr>
 
 					<td><a href="managePole.jsp?pole_code=<%= arrpVO.get(i).getPole_code()%>"><%=arrpVO.get(i).getPole_code() %></a></td>
+<<<<<<< HEAD
+
+=======
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-IoT-2/pole_web.git
 					<td><%=arrpVO.get(i).getEmp_id() %></td>
 					<td><%=arrpVO.get(i).getPole_office() %></td>
 					<td><%=arrpVO.get(i).getPole_date() %></td>

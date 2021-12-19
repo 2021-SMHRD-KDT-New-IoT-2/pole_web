@@ -102,7 +102,9 @@
         </div>
         <p style="font-size:20px; padding: 20px"><b>* 특이사항 기록</b></p>
         <div class="text_area">
-            <h3>특이사항 적을 수 있는 공간 있어야 함</h3>
+            <textarea>
+            
+            </textarea>
         </div>
         <div class="text_save">
             <input type="submit" name="save2" value="저장">
