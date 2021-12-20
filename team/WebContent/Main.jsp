@@ -460,9 +460,7 @@ width : 60px;
 				</tr>
 				<%for(int i = 0; i<arrpVO.size();i++){ %>
 				<tr>
-
 					<td><a href="managePole.jsp?pole_code=<%= arrpVO.get(i).getPole_code()%>"><%=arrpVO.get(i).getPole_code() %></a></td>
-
 					<td><%=arrpVO.get(i).getEmp_id() %></td>
 					<td><%=arrpVO.get(i).getPole_office() %></td>
 					<td><%=arrpVO.get(i).getPole_date() %></td>
