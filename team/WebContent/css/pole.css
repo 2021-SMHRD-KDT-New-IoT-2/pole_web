@@ -1,3 +1,4 @@
+
 *{
     margin:0 auto;
     font-family: 'Nanum Gothic', sans-serif;
@@ -11,24 +12,50 @@ body{
 }
 
 
-/* -------------------헤더 부분--------------------- */
-nav{
-    text-align: right;
-    width: 100%;
-    height:30px;
-    background: #232526;
-    background: -webkit-linear-gradient(to right, #232526, #626466); 
-    background: linear-gradient(to right, #232526, #626466);
+/* -------------------�뿤�뜑 遺�遺�--------------------- */
 
+
+
+nav>a, button {
+	background-color: #4e1f1f00;
+	border: none;
 }
 
-nav > a{
-    padding: 10px;
-    font-size: 18px;
+nav>a, button:hover {
+	color: #5b5b5b;
 }
-nav > a:hover{
-    color: gold;
+
+.number:hover {
+	color: #5b5b5b;
 }
+
+nav>a, button:active {
+	color: #2b2b2b;
+}
+
+nav> a, button:visited {
+	color: #2b2b2b;
+}
+
+ul {
+	display: inline-block;
+	text-align: center;
+}
+
+nav {
+	margin-left: 65%;
+	margin-top: 2%;
+	margin-bottom : 2%;
+	display: block;
+}
+
+nav>a, button{
+	font-size: 20px;
+	margin-right: 4%;
+	text-decoration: none;
+	color: #5b5b5b;
+}
+/* -----------nav-------------  */
 
 header{
     width: 100%;
@@ -46,7 +73,7 @@ h2,h3 {
     float: left;
 }
 .logo > img{
-    margin-top: -20%;
+    margin-top: -10%;
     margin-left : 20px;
     padding : 10px;
 }
@@ -59,10 +86,10 @@ h2,h3 {
     font-size: 25px;
     margin-left: 4%;
 }
-/* -------------------헤더 부분--------------------- */
+/* -------------------�뿤�뜑 遺�遺�--------------------- */
 
 
-/* -------------------왼쪽--------------------- */
+/* -------------------�쇊履�--------------------- */
 
 section{
     float:left; width:50%;
@@ -93,11 +120,11 @@ th, td{
     display: flex;
 }
 
-.tb_nav{ /* 수정부분 */
+.tb_nav{ /* �닔�젙遺�遺� */
     margin : auto;
     text-align: center;
 }
-.tb_nav > input{  /* 수정부분 */
+.tb_nav > input{  /* �닔�젙遺�遺� */
     margin : 0 50px;  
     margin-top: 1%;  
     color: white;
@@ -107,9 +134,9 @@ th, td{
     padding: 7px;
 
 }
-/* -------------------왼쪽--------------------- */
+/* -------------------�쇊履�--------------------- */
 
-/* -------------------오른쪽--------------------- */
+/* -------------------�삤瑜몄そ--------------------- */
 
 aside{
     float: right;
@@ -129,15 +156,21 @@ h1{
     margin: 0 auto;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
     width: 90%;
-    height: 250px;
+    height: 200px;
+    background-color: #ffffff;
+    color: #000000;
+    text-align: center;
+
 }
 .text_area{
     margin: 0 auto;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
     width: 90%;
     height: 163px;
+    margin-bottom : 10px;
+    
 }
-.text_save{  /* 수정부분 */
+.text_save{  /* �닔�젙遺�遺� */
     margin: 0 auto;
     text-align: center;
 
@@ -152,7 +185,7 @@ h1{
 
 }
 
-/* —————————오른쪽——————————-------------------------------------- */
+/* �붴�붴�붴�붴�붴�붴�붴�붴�붿삤瑜몄そ�붴�붴�붴�붴�붴�붴�붴�붴�붴��-------------------------------------- */
 
 #footer{
     margin : 5% 20% 3% ; 
@@ -166,16 +199,16 @@ h1{
 
 
 
-/* —————————아래——————————---------------------------------------- */
+/* �붴�붴�붴�붴�붴�붴�붴�붴�붿븘�옒�붴�붴�붴�붴�붴�붴�붴�붴�붴��---------------------------------------- */
 
-/* 사진 공간 */
+/* �궗吏� 怨듦컙 */
 .slideshow-container {
     margin : 0 15%; 
     width: 70%;
     float: left;
     height:600px;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
-    text-align: center; /* 사진 가운데로 적용한 부분 */
+    text-align: center; /* �궗吏� 媛��슫�뜲濡� �쟻�슜�븳 遺�遺� */
 } 
 .mySlides > img{
     margin-top: 3%;

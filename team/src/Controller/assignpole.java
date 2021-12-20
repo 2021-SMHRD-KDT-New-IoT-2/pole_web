@@ -54,7 +54,7 @@ public class assignpole extends HttpServlet {
 
 			//forward 방식으로 페이지 이동
 
-			RequestDispatcher rd = request.getRequestDispatcher("assignPole.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("Main.jsp");
 
 			//request영역에 기억해야할 데이터 설정
 

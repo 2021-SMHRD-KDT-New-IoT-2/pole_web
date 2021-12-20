@@ -22,15 +22,31 @@
 	*{
         font-family: 'Nanum Gothic', sans-serif;
     }
+    
+    textarea{
+    resize: none;
+    width : 100%;
+    height : 100%;
+    
+    }
+    .tb_name{
+    margin-left : 10px;
+    }
 </style>
 <body >
-<nav >
-		<!-- if login : LoginMain, else : Main -->
-        <a href="LoginMain.jsp">홈</a>
-        <a a href="javascript:void(0);" onclick="iframe();">등록관리</a>
-        <a href="assignemp.jsp">관리자 기능</a>
-        <a href=""><img src="./images/bell.png" class="img" width="30px" height="30px" style="margin-top: 1%;"></a>
-    </nav>
+<div id="nav">
+		<nav>
+			<!-- if login : LoginMain, else : Main -->
+			<button>HOME</button>
+			<button id="modal_pole">전주 등록</button>
+			<button id="modal_emp">사용자 등록</button>
+			
+			<!-- href="assignEmp.jsp" -->
+			<a href="LogoutService">로그아웃</a> 
+			<a href=""><img src="./images/bell.png" class="img" width="30px" height="30px"
+				style="margin-top: 1%;"></a>
+		</nav>
+	</div>
 
 
     <header >
@@ -41,18 +57,20 @@
         </div>
     </header>
 <%
-	request.setCharacterEncoding("utf-8");
-	String pole_code = request.getParameter("pole_code");
-	poleDAO pdao = new poleDAO();	
-	poleVO pvo = pdao.pole_selectONE(pole_code);
-	
-	SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-	String pole_date = df.format(pvo.getPole_date());
+request.setCharacterEncoding("utf-8");
+String pole_code = request.getParameter("pole_code");
+String pole_coment = request.getParameter("pole_coment");
+poleDAO pdao = new poleDAO();	
+poleVO pvo = pdao.pole_selectONE(pole_code);
+
+SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+String pole_date = df.format(pvo.getPole_date());
 %>
 	
-    <section >
+    <section>
         <div class="tb_name">
-            <p style="font-size:20px; padding: 20px"><b>테이블 제목</b></p>
+        
+            <p style="font-size:20px; padding: 20px"><strong><%=pvo.getPole_code() %>번 전주 상세정보</strong></p>
         </div>
         <div class="tb_body">
             <form action = "Main.jsp" name="pole_tb" class="fom_tb" method="post">
@@ -82,11 +100,10 @@
                         <td><%=pvo.getTransformer_yn()%></td>
                         <td><%=pvo.getPole_level()%></td>
                     </tr>  
-         
-              </form>
-
+        
 		
-         </table>
+        		 </table>
+          	</form>
         </div>
         <div class="tb_nav">
             <input type="button" class="btn1" value="이전">
@@ -96,25 +113,29 @@
    
 
     <aside>
-        <p style="font-size:20px; padding: 20px"><b>* 기울기 변화</b></p>
+        <p style="font-size:20px; padding: 20px"><b>&nbsp;&nbsp;기울기 변화</b></p>
         <div class="graph">
             <h3>그래프 들어가야하고</h3><br>
         </div>
-        <p style="font-size:20px; padding: 20px"><b>* 특이사항 기록</b></p>
+        <p style="font-size:20px; padding: 20px"><b>&nbsp;&nbsp;특이사항 기록</b></p>
+        
+        <form action="pole_Memo" method="post">
         <div class="text_area">
-            <textarea>
+            <textarea name="pole_coment">
             
             </textarea>
         </div>
         <div class="text_save">
             <input type="submit" name="save2" value="저장">
         </div>
+        </form>
+        
     </aside>
 
 
     <!-- <div id = "footer"> -->
     <div id="footer">
-        <p style="color: black; font-size:20px; padding: 20px"><b>* 사진</b></p>
+        <p style="color: black; font-size:20px; padding: 20px"><b>사진</b></p>
     </div>
 
 
@@ -151,7 +172,14 @@
 		}
 	
 	</script>
+	
     <script src="./js/managePole.js"></script>
+    
+    	<!--fonts-->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"
+		rel="stylesheet">
 
 </body>
 </html>

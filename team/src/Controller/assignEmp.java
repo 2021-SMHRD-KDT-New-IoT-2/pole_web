@@ -45,7 +45,7 @@ public class assignEmp extends HttpServlet {
 
 			//forward 방식으로 페이지 이동
 
-			RequestDispatcher rd = request.getRequestDispatcher("assignEmp.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("Main.jsp");
 
 			
 

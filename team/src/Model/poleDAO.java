@@ -355,6 +355,29 @@ public class poleDAO {
 
 	}
 	
+	// 전주 상세 페이지 메모 등록
+	public int webmemo(String pole_memo,String pole_code) {
+		try{
+			connection();
+
+		String sql = "UPDATE pole_info SET pole_coment = ? WHERE pole_code = ?";
+
+		psmt = conn.prepareStatement(sql);
+
+		psmt.setString(1, pole_memo);
+		psmt.setString(2, pole_code);
+
+		cnt = psmt.executeUpdate();
+
+	} catch (Exception e) {
+		System.out.println("기입실패");
+		e.printStackTrace();
+	} finally {
+		close();
+	}
+	return cnt;
+	}
+	
 	
 
 }
