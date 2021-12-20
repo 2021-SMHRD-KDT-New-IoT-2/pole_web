@@ -19,37 +19,6 @@
 <title>POLE OF PISA 전주관리 시스템</title>
 <link rel="stylesheet" href="css/pole.css">
 <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
-
-<!-- 기울기 변화 그래프 소스 ----------------------------------------------------------------------- -->
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Year', '기울기'],
-          ['8월',  90],
-          ['9월',  88],
-          ['10월',  85.5],
-          ['11월',  84.5],
-          ['12월',  81.2]
-        ]);
-
-        var options = {
-          title: '기울기 변화 그래프',
-          curveType: 'function',
-          legend: { position: 'bottom' }
-        };
-
-        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-
-        chart.draw(data, options);
-      }
-    </script>
-<!-- 기울기 변화 그래프 소스 ----------------------------------------------------------------------- -->
-
-
 </head>
 <style>
 * {
@@ -233,6 +202,36 @@ textarea {
             $("#modal").fadeOut();
         });
     </script>
+
+<!-- 기울기 변화 그래프 소스 ----------------------------------------------------------------------- -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['M', '기울기'],
+          ['8월',  90],
+          ['9월',  88],
+          ['10월',  85.5],
+          ['11월',  84.5],
+          ['12월',  81.2]
+        ]);
+
+        var options = {
+          title: '기울기 변화 그래프',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+<!-- 기울기 변화 그래프 소스 ----------------------------------------------------------------------- -->
 
 </body>
 </html>

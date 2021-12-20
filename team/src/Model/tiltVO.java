@@ -1,49 +1,42 @@
 package Model;
 
+import java.sql.Date;
+
 public class tiltVO {
 	
-	private int change_num;
-	private String pole_num;
-	private String location;
-	private int change_tilt;
-	private String change_date;
-	private String shock_date;
+	private String mac_code;
+	private double tilt_value;
+	private Date tilt_date;
 	
-	public int getChange_num() {
-		return change_num;
+	public tiltVO () {
+		
 	}
-	public void setChange_num(int change_num) {
-		this.change_num = change_num;
+	
+	public tiltVO(String mac_code, double tilt_value, Date tilt_date) {
+		super();
+		this.mac_code = mac_code;
+		this.tilt_value = tilt_value;
+		this.tilt_date = tilt_date;
 	}
-	public String getPole_num() {
-		return pole_num;
+	public String getMac_code() {
+		return mac_code;
 	}
-	public void setPole_num(String pole_num) {
-		this.pole_num = pole_num;
+	public void setMac_code(String mac_code) {
+		this.mac_code = mac_code;
 	}
-	public String getLocation() {
-		return location;
+	public double getTilt_value() {
+		return tilt_value;
 	}
-	public void setLocation(String location) {
-		this.location = location;
+	public void setTilt_value(double tilt_value) {
+		this.tilt_value = tilt_value;
 	}
-	public int getChange_tilt() {
-		return change_tilt;
+	public Date getTilt_date() {
+		return tilt_date;
 	}
-	public void setChange_tilt(int change_tilt) {
-		this.change_tilt = change_tilt;
+	public void setTilt_date(Date tilt_date) {
+		this.tilt_date = tilt_date;
 	}
-	public String getChange_date() {
-		return change_date;
-	}
-	public void setChange_date(String change_date) {
-		this.change_date = change_date;
-	}
-	public String getShock_date() {
-		return shock_date;
-	}
-	public void setShock_date(String shock_date) {
-		this.shock_date = shock_date;
-	}
+	
+	
 
 }
