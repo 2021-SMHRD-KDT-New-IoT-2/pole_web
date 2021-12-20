@@ -2,7 +2,13 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.mysql.cj.protocol.Resultset"%>
 <%@page import="Model.poleDAO"%>
+<%@page import="Model.tiltDAO"%>
+<%@page import="Model.cameraDAO"%>
+<%@page import="Model.impactDAO"%>
 <%@page import="Model.poleVO"%>
+<%@page import="Model.tiltVO"%>
+<%@page import="Model.impactVO"%>
+<%@page import="Model.cameraVO"%>
 <%@page import="com.mysql.cj.xdevapi.Result"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
@@ -32,17 +38,24 @@ z-index : 1;
 #searchtext{
 height : 50px;
 width : 60px;
-}
+}ss
 </style>
 <body>
 
 	<%
 	request.setCharacterEncoding("utf-8");
 	poleVO pvo = (poleVO)session.getAttribute("pole");
+	
 	poleDAO pdao = new poleDAO();	
 
 	
 	ArrayList<poleVO> arrpVO = pdao.pole_selectAll();
+	
+	tiltDAO tdao = new tiltDAO();
+	impactDAO idao = new impactDAO();
+	cameraDAO cdao = new cameraDAO();
+	
+	
 	
 	String pole_code = request.getParameter("pole_code");
 	String pole_height = request.getParameter("pole_height");
@@ -53,6 +66,9 @@ width : 60px;
 	String pole_high = request.getParameter("pole_high");
 	String pole_down = request.getParameter("pole_down");
 	String pole_com = request.getParameter("pole_com");
+	
+	String mac_code = request.getParameter("mac_code");
+	String tilt_value = request.getParameter("tilt_value");
 	
 	ArrayList<poleVO> filter = pdao.filter(pole_height,pole_date,emp_id,transformer_yn,pole_office);
 %>
@@ -69,7 +85,11 @@ width : 60px;
 			<a href="javascript:;" id="togglebtn"><img src="./images/bell.png" class="img" width="30px" height="30px"
 				style="margin-top: 1%;"></a>
 		</nav>
-			<div id="Toggle" style="display:none; border:1px solid black;">나와라</div>
+			<div id="Toggle" style="display:none; border:1px solid black;">
+				<div id="tiltdb"></div>
+				<div id="impactdb"><%= %></div>
+				<div id="cameradb"></div>
+			</div>
 	</div>
 
 
