@@ -20,6 +20,20 @@
 <link rel="stylesheet" href="css/Maincss.css">
 <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 </head>
+<style>
+#Toggle {
+
+width : 400px;
+height : 100%;
+float : right;
+z-index : 1;
+}
+
+#searchtext{
+height : 50px;
+width : 60px;
+}
+</style>
 <body>
 
 	<%
@@ -36,6 +50,9 @@
 	String emp_id = request.getParameter("emp_id");
 	String transformer_yn = request.getParameter("transformer_yn");
 	String pole_office = request.getParameter("pole_office");
+	String pole_high = request.getParameter("pole_high");
+	String pole_down = request.getParameter("pole_down");
+	String pole_com = request.getParameter("pole_com");
 	
 	ArrayList<poleVO> filter = pdao.filter(pole_height,pole_date,emp_id,transformer_yn,pole_office);
 %>
@@ -49,9 +66,10 @@
 			
 			<!-- href="assignEmp.jsp" -->
 			<a href="LogoutService">로그아웃</a> 
-			<a href=""><img src="./images/bell.png" class="img" width="30px" height="30px"
+			<a href="javascript:;" id="togglebtn"><img src="./images/bell.png" class="img" width="30px" height="30px"
 				style="margin-top: 1%;"></a>
 		</nav>
+			<div id="Toggle" style="display:none; border:1px solid black;">나와라</div>
 	</div>
 
 
@@ -146,19 +164,7 @@
 						<td><input type="tel" name="emp_phone"
 							style="margin-left: -20%; width: 250px;" /></td>
 
-					</tr>
-					<tr height="7">
-						<td colspan="3">
-							<hr />
-						</td>
-					</tr>
-					<tr height="30">
-						<td class="wid1"><img src="./images/check2.png" width="25px"
-							; height="25px";></td>
-						<td class="wid2">사원 가입일자</td>
-						<td><input type="date" name="emp_joindate"
-							style="margin-left: -20%; width: 250px;" /></td>
-					</tr>
+					</tr>		
 					<tr height="7">
 						<td colspan="3">
 							<hr />
@@ -168,8 +174,14 @@
 						<td class="wid1"><img src="./images/check2.png" width="25px"
 							; height="25px";></td>
 						<td class="wid2">사업소 명</td>
-						<td><input type="text" name="emp_office"
-							style="margin-left: -20%; width: 250px;" /></td>
+						<td><select name = "emp_office" style="width: 250px; margin-left : -120px;">
+						<option >선택하세요</option>
+						<option value="북구">북구</option>
+						<option value="남구">남구</option>
+						<option value="동구">동구</option>
+						<option value="서구">서구</option>
+						<option value="광산구" >광산구</option>
+						</select></td>
 					</tr>
 					<tr height="7">
 						<td colspan="3">
@@ -183,7 +195,7 @@
 						<td><input type="radio" name="admin_yesno" value="Y"
 							class="input_focus" style="margin-left: -20%; width: 20px;">관리자
 							&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="admin_yesno"
-							class="input_focus" value="N" style="width: 20px;"> 사용자</td>
+							class="input_focus" value="N" style="width: 20px;">사용자</td>
 					<tr height="7">
 						<td colspan="3">
 							<hr />
@@ -272,8 +284,14 @@
 						<td class="wid3"><img src="./images/check2.png" width="25px"
 							; height="25px";></td>
 						<td class="wid4">담당 사업소</td>
-						<td><input type="text" name="pole_office"
-							style="margin-left: -15%;" /></td>
+						<td><select name = "pole_office" style="width: 225px; margin-left : -70px;">
+						<option >선택하세요</option>
+						<option value="북구">북구</option>
+						<option value="남구">남구</option>
+						<option value="동구">동구</option>
+						<option value="서구">서구</option>
+						<option value="광산구" >광산구</option>
+						</select></td>
 					</tr>
 
 					<tr height="7">
@@ -302,12 +320,13 @@
 						<td class="wid3"><img src="./images/check2.png" width="25px"
 							; height="25px";></td>
 						<td class="wid4">설치 일자</td>
-						<td><input type="date" name="pole_date"
+						<td><input type="text" name="pole_date"
 							style="margin-left: -15%; width: 222px;" /></td>
 					</tr>
 					<tr height="7">
 						<td colspan="3">
 							<hr />
+							
 						</td>
 					</tr>
 
@@ -364,30 +383,45 @@
 						<option value="광산구">광산구</option>	
 					</select>
 					
-						<label>관리자</label> <select name="emp_id">
-						<option value="" selected>선택</option>
-						<%for(int i=0; i<arrpVO.size();i++){ %>
-						<option value="<%=arrpVO.get(i).getEmp_id()%>">
-							<%=arrpVO.get(i).getEmp_id() %>
-						</option>
-						<%} %>
+						<label>관리자</label>
+						<input type="text" name="emp_id" style="width : 100px ; height : 50px;">
 
-					</select> <label>설치 일자</label> <input type="date" name="pole_date">
+						<label>설치 일자</label> 
+						<input type="text" name="pole_date" id="searchtext">
 					
-					<label>높이</label> <select name="pole_height">
-					<option value="" selected>선택</option>
-						<%for(int i=0; i<arrpVO.size();i++){ %>
-						<option value="<%=arrpVO.get(i).getPole_height()%>">
-							<%=arrpVO.get(i).getPole_height() %>
-						</option>
-						<%} %>
+						<label>높이</label>
+						<input type="text" name="pole_height" id="searchtext">
 						
-					</select> <label>변압기 유무</label> <select name="transformer_yn">
+				
+						<br>
+						<label> 변압기 유무</label> 
+						<select name="transformer_yn">
 						<option value="">선택</option>
 						<option value="Y">Y</option>
 						<option value="N">N</option>
+						</select>
 						
-					</select> <input type="submit" name="filter" value="검색">
+						<label> 고압선 유무</label> 
+						<select name="pole_high">
+						<option value="">선택</option>
+						<option value="Y">Y</option>
+						<option value="N">N</option>
+						</select>
+						
+						<label> 저압선 유무</label> 
+						<select name="pole_down">
+						<option value="">선택</option>
+						<option value="Y">Y</option>
+						<option value="N">N</option>
+						</select>
+						
+						<label> 통신선 유무</label> 
+						<select name="pole_com">
+						<option value="">선택</option>
+						<option value="Y">Y</option>
+						<option value="N">N</option>
+						</select>
+						<input type="submit" name="filter" value="검색">
 				
 				</fieldset>
 			</form>
@@ -418,7 +452,11 @@
 					<th>담당 사업소</th>
 					<th>설치일자</th>
 					<th>높이</th>
-					<th>변압기 유무</th>
+					<th>변압기</th>
+					<th>고압선</th>
+					<th>저압선</th>
+					<th>통신선</th>
+					
 				</tr>
 				<%for(int i = 0; i<arrpVO.size();i++){ %>
 				<tr>
@@ -429,6 +467,9 @@
 					<td><%=arrpVO.get(i).getPole_date() %></td>
 					<td><%=arrpVO.get(i).getPole_height() %></td>
 					<td><%=arrpVO.get(i).getTransformer_yn() %></td>
+					<td><%=arrpVO.get(i).getPole_high() %></td>
+					<td><%=arrpVO.get(i).getPole_down() %></td>
+					<td><%=arrpVO.get(i).getPole_com() %></td>
 				</tr>
 				<%} %>
 			</table>
@@ -458,7 +499,10 @@
 					<th>담당 사업소</th>
 					<th>설치일자</th>
 					<th>높이</th>
-					<th>변압기 유무</th>
+					<th>변압기</th>
+					<th>고압선</th>
+					<th>저압선</th>
+					<th>통신선</th>
 				</tr>
 				<%for(int i = 0; i<filter.size(); i++){ %>
 				<tr>
@@ -468,6 +512,9 @@
 					<td><%=filter.get(i).getPole_date() %></td>
 					<td><%=filter.get(i).getPole_height() %></td>
 					<td><%=filter.get(i).getTransformer_yn() %></td>
+					<td><%=arrpVO.get(i).getPole_high() %></td>
+					<td><%=arrpVO.get(i).getPole_down() %></td>
+					<td><%=arrpVO.get(i).getPole_com() %></td>
 				</tr>
 				<%} %>
 			</table>
@@ -511,7 +558,12 @@
             $("#modal2").fadeOut();
         });
     </script>
-    
-     	
+    <script>
+    $(function (){
+    	$("#togglebtn").click(function(){
+    	$("#Toggle").toggle();	
+    	});
+    });
+    </script>
 </body>
 </html>

@@ -82,7 +82,7 @@ public class poleDAO {
 				addQuery += " AND transformer_yn like '%" + transformer_yn + "%'";
 			}
 			
-			sql += addQuery;
+			sql += addQuery+"order by pole_date desc";
 			System.out.println(sql);
 			psmt = conn.prepareStatement(sql);
 
@@ -96,7 +96,7 @@ public class poleDAO {
 				String getpole_code = rs.getString("pole_code");
 				String getpole_office = rs.getString("pole_office");
 				String getemp_id = rs.getString("emp_id");		
-				Date getpole_date = rs.getDate("pole_date");
+				String getpole_date = rs.getString("pole_date");
 				String getpole_height = rs.getString("pole_height");
 				String gettransformer_yn = rs.getString("transformer_yn");	
 
@@ -145,7 +145,7 @@ public class poleDAO {
 	
 	
 	// 전주 추가
-	public int addpole(String pole_code,String mac_code, String pole_height, String pole_addr, String pole_high, String pole_down, String pole_com, String transformer_yn, String pole_level, String emp_id, String pole_office) {
+	public int addpole(String pole_code,String mac_code, String pole_height, String pole_addr, String pole_high, String pole_down, String pole_com, String transformer_yn, String pole_level, String emp_id, String pole_office, String pole_date) {
 		try {
 
 			connection();
@@ -153,9 +153,9 @@ public class poleDAO {
 //	   	         3. 실행할 sql문 정의 (실행할때마다 값이 달라지는 부분은 ? 작성)
 
 			String sql = "insert into pole_info (pole_code,mac_code,pole_height,"
-					+ "pole_addr,pole_date,pole_high,pole_down,"
-					+ "pole_com,transformer_yn,emp_id, pole_office) "
-					+ "values(?,?,?,?,now(),?,?,?,?,?,?)";
+					+ "pole_addr, pole_high, pole_down,"
+					+ "pole_com,transformer_yn,emp_id, pole_office, pole_date) "
+					+ "values(?,?,?,?,?,?,?,?,?,?,?)";
 
 //	   	         4. sql문 실행객체 (PreparedStatment)생성
 
@@ -164,7 +164,7 @@ public class poleDAO {
 //	   	         5. 바인드 변수(?) 채우기
 
 			psmt.setString(1, pole_code);
-			psmt.setString(2, pole_code);
+			psmt.setString(2, mac_code);
 			psmt.setString(3, pole_height);
 			psmt.setString(4, pole_addr);
 			psmt.setString(5, pole_high);
@@ -173,6 +173,7 @@ public class poleDAO {
 			psmt.setString(8, transformer_yn);
 			psmt.setString(9, emp_id);
 			psmt.setString(10, pole_office);
+			psmt.setString(11, pole_date);
 			
 
 //	   	         6. sql문 실행 후 결과처리
@@ -238,7 +239,7 @@ public class poleDAO {
 
 			connection();
 
-			String sql = "select * from pole_info";
+			String sql = "select * from pole_info order by pole_date desc";
 			
 			psmt = conn.prepareStatement(sql);
 
@@ -250,18 +251,18 @@ public class poleDAO {
 				String getMac_code = rs.getString("mac_code");
 				String getPole_height = rs.getString("pole_height"); 
 				String getPole_addr = rs.getString("pole_addr");
-				Date getPole_date = rs.getDate("pole_date");
+				String getPole_date = rs.getString("pole_date");
 				String getEmp_id = rs.getString("emp_id");
 				String getTransformer_yn = rs.getString("transformer_yn");
 				String getPole_com = rs.getString("pole_com");
 				String getpole_high = rs.getString("pole_high");
 				String getpole_down = rs.getString("pole_down");
-				String getPole_coment = rs.getString("pole_coment");
+				String getPole_comment = rs.getString("pole_comment");
 				String getPole_eday = rs.getString("pole_eday");
 				String getPole_office= rs.getString("pole_office");
 				String getPole_level = rs.getString("pole_level");
 
-				vo = new poleVO(getPole_code, getMac_code, getPole_height, getPole_addr, getPole_date, getEmp_id, getTransformer_yn, getPole_com, getpole_high, getpole_down, getPole_coment, getPole_eday, getPole_level, getPole_office);
+				vo = new poleVO(getPole_code, getMac_code, getPole_height, getPole_addr, getPole_date, getEmp_id, getTransformer_yn, getPole_com, getpole_high, getpole_down, getPole_comment, getPole_eday, getPole_level, getPole_office);
 
 
 //	   	            vo값을 al에 add
@@ -301,18 +302,18 @@ public class poleDAO {
 					String getMac_code = rs.getString("mac_code");
 					String getPole_height = rs.getString("pole_height"); 
 					String getPole_addr = rs.getString("pole_addr");
-					Date getPole_date = rs.getDate("pole_date");
+					String getPole_date = rs.getString("pole_date");
 					String getEmp_id = rs.getString("emp_id");
 					String getTransformer_yn = rs.getString("transformer_yn");
 					String getPole_com = rs.getString("pole_com");
 					String getpole_high = rs.getString("pole_high");
 					String getpole_down = rs.getString("pole_down");
-					String getPole_coment = rs.getString("pole_coment");
+					String getPole_comment = rs.getString("pole_comment");
 					String getPole_eday = rs.getString("pole_eday");
 					String getPole_office= rs.getString("pole_office");
 					String getPole_level = rs.getString("pole_level");
 
-					vo = new poleVO(getPole_code, getMac_code, getPole_height, getPole_addr, getPole_date, getEmp_id, getTransformer_yn, getPole_com, getpole_high, getpole_down, getPole_coment, getPole_eday,getPole_level, getPole_office);
+					vo = new poleVO(getPole_code, getMac_code, getPole_height, getPole_addr, getPole_date, getEmp_id, getTransformer_yn, getPole_com, getpole_high, getpole_down, getPole_comment, getPole_eday,getPole_level, getPole_office);
 
 				}
 
@@ -360,7 +361,7 @@ public class poleDAO {
 		try{
 			connection();
 
-		String sql = "UPDATE pole_info SET pole_coment = ? WHERE pole_code = ?";
+		String sql = "UPDATE pole_info SET pole_comment = ? WHERE pole_code = ?";
 
 		psmt = conn.prepareStatement(sql);
 

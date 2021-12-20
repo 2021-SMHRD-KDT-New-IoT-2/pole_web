@@ -31,6 +31,7 @@ public class assignpole extends HttpServlet {
 		String emp_id = request.getParameter("emp_id");
 		String pole_level = request.getParameter("pole_level");
 		String pole_office = request.getParameter("pole_office");
+		String pole_date = request.getParameter("pole_date");
 
 		poleDAO dao = new poleDAO();
 		
@@ -46,7 +47,7 @@ public class assignpole extends HttpServlet {
 
 		}
 
-		cnt = dao.addpole(pole_code, mac_code, pole_height, pole_addr, pole_high, pole_down, pole_com, transformer_yn, pole_level, emp_id, pole_office);
+		cnt = dao.addpole(pole_code, mac_code, pole_height, pole_addr, pole_high, pole_down, pole_com, transformer_yn, pole_level, emp_id, pole_office, pole_date);
 
 		if(cnt>0) {
 

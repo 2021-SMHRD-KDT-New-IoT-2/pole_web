@@ -23,14 +23,7 @@ public class poleInfo extends HttpServlet {
 		String pole_height = request.getParameter("pole_height");
 		String pole_addr = request.getParameter("pole_addr");
 		String pole_date = request.getParameter("pole_date");
-		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
-		Date to = null;
 		
-		try {
-			to = (Date) transFormat.parse(pole_date);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
 		
 		String pole_office = request.getParameter("pole_office");
 		String pole_high = request.getParameter("pole_high");
