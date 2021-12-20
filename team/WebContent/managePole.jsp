@@ -119,7 +119,7 @@ String pole_date = df.format(pvo.getPole_date());
         </div>
         <p style="font-size:20px; padding: 20px"><b>&nbsp;&nbsp;특이사항 기록</b></p>
         
-        <form action="pole_Memo" method="post">
+        <form action="pole_Memo?pole_code=<%=pole_code %>" method="post">
         <div class="text_area">
             <textarea name="pole_coment">
             

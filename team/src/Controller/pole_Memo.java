@@ -23,11 +23,7 @@ public class pole_Memo extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-		HttpSession session = request.getSession();
-		poleVO vo = (poleVO)session.getAttribute("pole");
-		
-		String pole_code = vo.getPole_code();
-		System.out.println(vo.getPole_code());
+		String pole_code = request.getParameter("pole_code");
 		String pole_coment = request.getParameter("pole_coment");
 
 		
@@ -41,9 +37,6 @@ public class pole_Memo extends HttpServlet {
 			System.out.println("수정성공");
 			
 			//수정된 값 출력하도록 세션수정
-			poleVO vo2 = new poleVO(pole_coment, pole_code);
-			
-			session.setAttribute("pole", vo2);
 			
 			response.sendRedirect("managePole.jsp");
 			

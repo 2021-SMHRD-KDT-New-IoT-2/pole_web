@@ -12,11 +12,12 @@
         font-family: 'Nanum Gothic', sans-serif;
     }
     
-    body{
-    background-image : url("./images/ppt3.png");
-    background-repeat : no-repeat;
+body{
     background-size: cover;
-    }
+    background-image: url("./images/ppt3.png");
+ 	background-repeat: no-repeat;
+ 	}
+
 </style>
 <body>
     <section class="form">
@@ -47,9 +48,9 @@
 
     <footer>
         <div id="copyright">
-            <h3 style="color:#002c5f">관리자를 위한 시스템으로서 인가된 분만 사용 할 수 있습니다.</h3>
+            <h4 style="color: #ffffff;">관리자를 위한 시스템으로서 인가된 분만 사용 할 수 있습니다.</h3>
             <br>
-            <p>Copyright 2021, Pole Of Pisa, LTD. All right Reserved.</p>
+            <p style="color: #ffffff;">Copyright 2021, Pole Of Pisa, LTD. All right Reserved.</p>
         </div>
     </footer>
 
