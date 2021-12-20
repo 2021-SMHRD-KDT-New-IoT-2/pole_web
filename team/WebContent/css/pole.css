@@ -12,7 +12,7 @@ body{
 }
 
 
-/* -------------------�뿤�뜑 遺�遺�--------------------- */
+/* -------------------占쎈엘占쎈쐭 �겫占썽겫占�--------------------- */
 
 
 
@@ -65,6 +65,7 @@ header{
     background: linear-gradient(to right, #232526, #626466);
 }
 
+
 h2,h3 {
 	text-align : center;
 }
@@ -86,10 +87,10 @@ h2,h3 {
     font-size: 25px;
     margin-left: 4%;
 }
-/* -------------------�뿤�뜑 遺�遺�--------------------- */
+/* -------------------占쎈엘占쎈쐭 �겫占썽겫占�--------------------- */
 
 
-/* -------------------�쇊履�--------------------- */
+/* -------------------占쎌뇢筌잞옙--------------------- */
 
 section{
     float:left; width:50%;
@@ -120,11 +121,11 @@ th, td{
     display: flex;
 }
 
-.tb_nav{ /* �닔�젙遺�遺� */
+.tb_nav{ /* 占쎈땾占쎌젟�겫占썽겫占� */
     margin : auto;
     text-align: center;
 }
-.tb_nav > input{  /* �닔�젙遺�遺� */
+.tb_nav > input{  /* 占쎈땾占쎌젟�겫占썽겫占� */
     margin : 0 50px;  
     margin-top: 1%;  
     color: white;
@@ -134,9 +135,9 @@ th, td{
     padding: 7px;
 
 }
-/* -------------------�쇊履�--------------------- */
+/* -------------------占쎌뇢筌잞옙--------------------- */
 
-/* -------------------�삤瑜몄そ--------------------- */
+/* -------------------占쎌궎�몴紐꾠걹--------------------- */
 
 aside{
     float: right;
@@ -170,7 +171,7 @@ h1{
     margin-bottom : 10px;
     
 }
-.text_save{  /* �닔�젙遺�遺� */
+.text_save{  /* 占쎈땾占쎌젟�겫占썽겫占� */
     margin: 0 auto;
     text-align: center;
 
@@ -185,7 +186,7 @@ h1{
 
 }
 
-/* �붴�붴�붴�붴�붴�붴�붴�붴�붿삤瑜몄そ�붴�붴�붴�붴�붴�붴�붴�붴�붴��-------------------------------------- */
+/* 占쎈떪占쎈떪占쎈떪占쎈떪占쎈떪占쎈떪占쎈떪占쎈떪占쎈뗄�궎�몴紐꾠걹占쎈떪占쎈떪占쎈떪占쎈떪占쎈떪占쎈떪占쎈떪占쎈떪占쎈떪占쏙옙-------------------------------------- */
 
 #footer{
     margin : 5% 20% 3% ; 
@@ -199,16 +200,16 @@ h1{
 
 
 
-/* �붴�붴�붴�붴�붴�붴�붴�붴�붿븘�옒�붴�붴�붴�붴�붴�붴�붴�붴�붴��---------------------------------------- */
+/* 占쎈떪占쎈떪占쎈떪占쎈떪占쎈떪占쎈떪占쎈떪占쎈떪占쎈뗄釉섓옙�삋占쎈떪占쎈떪占쎈떪占쎈떪占쎈떪占쎈떪占쎈떪占쎈떪占쎈떪占쏙옙---------------------------------------- */
 
-/* �궗吏� 怨듦컙 */
+/* 占쎄텢筌욑옙 �⑤벀而� */
 .slideshow-container {
     margin : 0 15%; 
     width: 70%;
     float: left;
     height:600px;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
-    text-align: center; /* �궗吏� 媛��슫�뜲濡� �쟻�슜�븳 遺�遺� */
+    text-align: center; /* 占쎄텢筌욑옙 揶쏉옙占쎌뒲占쎈쑓嚥∽옙 占쎌읅占쎌뒠占쎈립 �겫占썽겫占� */
 } 
 .mySlides > img{
     margin-top: 3%;
@@ -268,4 +269,79 @@ h1{
 /* On smaller screens, decrease text size */
 @media only screen and (width: 300px) {
   .prev, .next{font-size: 11px}
+}
+
+
+/*--------------------------------camera 모달 ------------------------------------*/
+*{
+    font-family: 'Nanum Gothic', sans-serif;
+    text-align: center;
+    font-size: 15px;
+}
+/* ------------------------------------------------------------------------------*/
+
+
+
+/* cameraMove */
+#cameraMove{
+	background: none;
+	color : white;
+	width:10%;
+	font-size:20px;
+	padding:10px;
+	margin-top:-5%;
+	float: right;
+}
+#cameraView{
+
+    background-color: white;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 600px;
+    margin-left: 20%;
+    font-size: 15px;
+}
+#uncheck, #check{
+	font-size:20px;
+	margin-left: 30%;
+    margin-top: 3%;
+}
+
+/* ------------------------------------------------------------------------------*/
+
+#modal {
+    display: none;
+    margin-left: 30%;
+    position: relative;
+    width: 100%;
+    height: 700px;
+    z-index: 1;
+}
+
+#modal h2 {
+    margin: 0;
+}
+
+#modal button {
+    display: inline-block;
+    width: 100px;
+    margin-left: calc(100% - 100px - 10px);
+}
+
+#modal .modal_content {
+    width: 300px;
+    margin: 100px auto;
+    padding: 20px 10px;
+    background: #fff;
+    border: 2px solid #666;
+}
+
+#modal .modal_layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.705);
+    z-index: -1;
 }

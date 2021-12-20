@@ -350,7 +350,6 @@
 
 	<!-- 필터  -->
 	<!-- 수정부분 1217 -->
-	/border: 1px solid #ccc;/
 	<div id="searchBar">
 		<div id="field_area">
 			<form>
