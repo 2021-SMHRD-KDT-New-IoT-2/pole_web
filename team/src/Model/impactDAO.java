@@ -5,14 +5,15 @@ import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
-public class tiltDAO {
+public class impactDAO {
 	Connection conn = null;
 	PreparedStatement psmt = null;
 	ResultSet rs = null;
-	tiltVO vo = null;
+	impactVO vo = null;
 	int cnt = 0;
-	
+
 	public void connection() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -45,30 +46,28 @@ public class tiltDAO {
 		} catch (Exception e2) {
 			e2.printStackTrace();
 		}
-		
+
 	} 
 	
-	// 기울기 업데이트
-	public int tiltupdate(String mac_code, String tilt_value) {
+	//충격감지 업데이트
+	public int impactupdate(String mac_code, Date impact_date) {
 		try {
 			connection();
 			
-			String sql = "UPDATE pole_tilt_info SET tilt_value = ? where mac_code = ?";
+			String sql = "UPDATE pole_impact_info SET impact_date = ? where mac_code = ?";
 			
 			psmt = conn.prepareStatement(sql);
 			
-			psmt.setString(1, tilt_value);
+			psmt.setDate(1, impact_date);
 			psmt.setString(2, mac_code);
 			
 			cnt = psmt.executeUpdate();
 		} catch (Exception e) {
-			System.out.println("기울기 업데이트 실패");
+			System.out.println("충격감지 업데이트 실패");
 			e.printStackTrace();
 		}finally {
 			close();
 		}
 		return cnt;
 	}
-	
 }
-

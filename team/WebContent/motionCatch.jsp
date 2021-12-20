@@ -1,6 +1,6 @@
 <%@ page import="java.io.File" %>
 <%@ page import="java.util.Enumeration" %>
-<%@page import="Model.motionVO"%>
+<%@page import="Model.impactVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -19,7 +19,7 @@
 <body>
 
 <%
-	motionVO mvo = (motionVO)session.getAttribute("motion");
+	impactVO mvo = (impactVO)session.getAttribute("motion");
 %>
 
 <form method="post" encType = "multipart/form-data" action="writeAction.jsp?boardID=<%-- <%=user_id%> --%>&keyValue=multipart">

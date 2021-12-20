@@ -6,11 +6,11 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class tiltDAO {
+public class cameraDAO {
 	Connection conn = null;
 	PreparedStatement psmt = null;
 	ResultSet rs = null;
-	tiltVO vo = null;
+	poleVO vo = null;
 	int cnt = 0;
 	
 	public void connection() {
@@ -45,24 +45,24 @@ public class tiltDAO {
 		} catch (Exception e2) {
 			e2.printStackTrace();
 		}
-		
+
 	} 
 	
-	// 기울기 업데이트
-	public int tiltupdate(String mac_code, String tilt_value) {
+	// 모션감지 업데이트
+	public int camupdate(String mac_code, Date camera_date) {
 		try {
 			connection();
 			
-			String sql = "UPDATE pole_tilt_info SET tilt_value = ? where mac_code = ?";
+			String sql = "UPDATE pole_camera_info SET camera_date = ? where mac_code = ?";
 			
 			psmt = conn.prepareStatement(sql);
 			
-			psmt.setString(1, tilt_value);
+			psmt.setDate(1, camera_date);
 			psmt.setString(2, mac_code);
 			
 			cnt = psmt.executeUpdate();
 		} catch (Exception e) {
-			System.out.println("기울기 업데이트 실패");
+			System.out.println("모션감지 업데이트 실패");
 			e.printStackTrace();
 		}finally {
 			close();
@@ -71,4 +71,3 @@ public class tiltDAO {
 	}
 	
 }
-
