@@ -60,7 +60,7 @@ width : 60px;
 	<div id="nav">
 		<nav>
 			<!-- if login : LoginMain, else : Main -->
-			<button>HOME</button>
+			<button><a href="Main.jsp" style="text-decoration:none">HOME</a></button>
 			<button id="modal_pole">전주 등록</button>
 			<button id="modal_emp">사용자 등록</button>
 			
@@ -445,7 +445,7 @@ width : 60px;
 
 		<div class="search_container" style="text-align: center;">
 			<table id="poletable"
-				style="text-align: center; margin: auto; border: 2px solid black;">
+				style="text-align: center; margin: auto; border: 1px solid #ccc;">
 				<tr>
 					<th>전주번호</th>
 					<th>관리자</th>
@@ -462,6 +462,7 @@ width : 60px;
 				<tr>
 
 					<td><a href="managePole.jsp?pole_code=<%= arrpVO.get(i).getPole_code()%>"><%=arrpVO.get(i).getPole_code() %></a></td>
+
 					<td><%=arrpVO.get(i).getEmp_id() %></td>
 					<td><%=arrpVO.get(i).getPole_office() %></td>
 					<td><%=arrpVO.get(i).getPole_date() %></td>
