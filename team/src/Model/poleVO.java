@@ -39,10 +39,6 @@ public class poleVO {
 	}
 
 
-	public poleVO() {
-		
-	}
-
 
 	public String getPole_code() {
 		return pole_code;
@@ -161,6 +157,16 @@ public class poleVO {
 	}
 
 
+	public poleVO() {
+		
+	}
+
+
+	public poleVO(String mac_code, String pole_coment) {
+		super();
+		this.mac_code = mac_code;
+		this.pole_coment = pole_coment;
+	}
 	
 
 	

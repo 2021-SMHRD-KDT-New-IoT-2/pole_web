@@ -356,7 +356,7 @@
 				<fieldset>
 					<h2>광주광역시</h2>
 					<label>담당 사업소</label> <select name="pole_office">
-						<option value="">선택하세요</option>
+						<option value="">선택</option>
 						<option value="동구">동구</option>
 						<option value="서구">서구</option>
 						<option value="남구">남구</option>
@@ -365,8 +365,9 @@
 					</select>
 					
 						<label>관리자</label> <select name="emp_id">
+						<option value="" selected>선택</option>
 						<%for(int i=0; i<arrpVO.size();i++){ %>
-						<option value="<%=arrpVO.get(i).getEmp_id()%>" selected>
+						<option value="<%=arrpVO.get(i).getEmp_id()%>">
 							<%=arrpVO.get(i).getEmp_id() %>
 						</option>
 						<%} %>
@@ -374,13 +375,15 @@
 					</select> <label>설치 일자</label> <input type="date" name="pole_date">
 					
 					<label>높이</label> <select name="pole_height">
+					<option value="" selected>선택</option>
 						<%for(int i=0; i<arrpVO.size();i++){ %>
-						<option value="<%=arrpVO.get(i).getPole_height()%>" selected>
+						<option value="<%=arrpVO.get(i).getPole_height()%>">
 							<%=arrpVO.get(i).getPole_height() %>
 						</option>
 						<%} %>
 						
 					</select> <label>변압기 유무</label> <select name="transformer_yn">
+						<option value="">선택</option>
 						<option value="Y">Y</option>
 						<option value="N">N</option>
 						
