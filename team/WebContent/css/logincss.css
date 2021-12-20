@@ -65,7 +65,7 @@
       
     #submit {
     cursor: pointer;
-    background:  #002C5F;
+    background: hsl(190, 3%, 40%);
     width: 100%;
     padding: 10px 15px;
     border: 0;

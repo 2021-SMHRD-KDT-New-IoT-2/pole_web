@@ -350,6 +350,7 @@
 
 	<!-- 필터  -->
 	<!-- 수정부분 1217 -->
+	/border: 1px solid #ccc;/
 	<div id="searchBar">
 		<div id="field_area">
 			<form>
@@ -411,7 +412,7 @@
 
 		<div class="search_container" style="text-align: center;">
 			<table id="poletable"
-				style="text-align: center; margin: auto; border: 2px solid black;">
+				style="text-align: center; margin: auto; border: 1px solid #ccc;">
 				<tr>
 					<th>전주번호</th>
 					<th>관리자</th>
@@ -424,6 +425,7 @@
 				<tr>
 
 					<td><a href="managePole.jsp?pole_code=<%= arrpVO.get(i).getPole_code()%>"><%=arrpVO.get(i).getPole_code() %></a></td>
+
 					<td><%=arrpVO.get(i).getEmp_id() %></td>
 					<td><%=arrpVO.get(i).getPole_office() %></td>
 					<td><%=arrpVO.get(i).getPole_date() %></td>
