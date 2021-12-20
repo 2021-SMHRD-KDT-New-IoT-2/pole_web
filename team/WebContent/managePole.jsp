@@ -119,7 +119,7 @@ String pole_date = df.format(pvo.getPole_date());
         </div>
         <p style="font-size:20px; padding: 20px"><b>&nbsp;&nbsp;특이사항 기록</b></p>
         
-        <form action="pole_Memo" method="post">
+        <form action="pole_Memo?pole_code=<%=pole_code %>" method="post">
         <div class="text_area">
             <textarea name="pole_coment">
             
@@ -165,13 +165,7 @@ String pole_date = df.format(pvo.getPole_date());
     </div>
 	
 	<script src="./js/jquery-3.6.0.min.js"></script>
-	<script type="text/javascript">
-		function iframe(){
-			console.log("test");
-			$("#html").append("<iframe src='assignEmp.jsp' style='position:absolute; width:100%; height:100%;'></iframe>")
-		}
-	
-	</script>
+
 	
     <script src="./js/managePole.js"></script>
     

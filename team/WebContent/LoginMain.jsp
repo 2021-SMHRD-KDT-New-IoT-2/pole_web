@@ -11,10 +11,13 @@
     *{
         font-family: 'Nanum Gothic', sans-serif;
     }
-    body{
-        background-size: cover;
+    
+body{
+    background-size: cover;
     background-image: url("./images/ppt3.png");
- 	background-repeat: no-repeat;}
+ 	background-repeat: no-repeat;
+ 	}
+
 </style>
 <body>
     <section class="form">
@@ -22,6 +25,7 @@
             <tr>
                 <td class="img">
                     <img src="./images/upoplogo.PNG" width="150px" height="150px">
+                    
                 </td>
                 <td>
                     <h1><strong>전주 관리 시스템</strong></h1>
