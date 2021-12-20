@@ -67,19 +67,19 @@ public class emp_infoDAO {
 
    // 관리자 추가
 
-   public int addemp(String emp_id,String emp_pw,String emp_name, String emp_office, String emp_phone, String admin_yesno) {
+   public int addemp(String emp_id,String emp_pw,String emp_name, String emp_phone,String emp_office, String admin_yesno) {
    
       try {
          connection();         
 
-         String sql = "insert into emp_info values (?,?,?,?,?,now(),?)";
+         String sql = "insert into emp_info values (?,?,?,?,?,?)";
          psmt = conn.prepareStatement(sql);
          psmt.setString(1,emp_id);
          psmt.setString(2,emp_pw);
          psmt.setString(3,emp_name);
-         psmt.setString(4,emp_office);
-         psmt.setString(5,emp_phone);
-         psmt.setString(6, admin_yesno);
+         psmt.setString(4,emp_phone);
+         psmt.setString(5,emp_office);
+         psmt.setString(6,admin_yesno);
 
          cnt = psmt.executeUpdate();
 

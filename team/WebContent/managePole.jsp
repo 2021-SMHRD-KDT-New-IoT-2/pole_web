@@ -97,12 +97,9 @@ textarea {
 	<%
 request.setCharacterEncoding("utf-8");
 String pole_code = request.getParameter("pole_code");
-String pole_coment = request.getParameter("pole_coment");
+String pole_comment = request.getParameter("pole_comment");
 poleDAO pdao = new poleDAO();	
 poleVO pvo = pdao.pole_selectONE(pole_code);
-
-SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-String pole_date = df.format(pvo.getPole_date());
 %>
 
 	<section>
@@ -146,7 +143,7 @@ String pole_date = df.format(pvo.getPole_date());
 						<td><%=pvo.getPole_code()%></td>
 						<td><%=pvo.getPole_height()%></td>
 						<td><%=pvo.getPole_addr()%></td>
-						<td><%=pole_date%></td>
+						<td><%=pvo.getPole_date()%></td>
 						<td><%=pvo.getPole_office()%></td>
 						<td><%=pvo.getPole_high()%></td>
 						<td><%=pvo.getPole_down()%></td>
@@ -175,6 +172,7 @@ String pole_date = df.format(pvo.getPole_date());
 		<form action="pole_Memo?pole_code=<%=pole_code %>" method="post">
 			<div class="text_area">
 				<textarea name="pole_coment">
+
             
             </textarea>
 			</div>
