@@ -19,30 +19,35 @@ import Model.poleVO;
 public class pole_Memo extends HttpServlet {
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
+		request.setCharacterEncoding("EUC-KR");
+		response.setCharacterEncoding("EUC-KR");
 		
 		String pole_code = request.getParameter("pole_code");
-		String pole_coment = request.getParameter("pole_coment");
+		String pole_comment = request.getParameter("pole_comment");
+		String pole_memo = request.getParameter("pole_memo");
 
+		if(pole_comment == null || pole_comment.equals("null")) {
+			pole_comment="";
+		}
 		
 		poleDAO dao = new poleDAO();
 		
-		int cnt = dao.webmemo(pole_coment, pole_code);
+		int cnt = dao.webmemo(pole_memo, pole_comment, pole_code);
 		
-		System.out.println(pole_coment);
+		System.out.println(pole_comment);
 		System.out.println(pole_code);
+		System.out.println(pole_memo);
+		
 		if(cnt>0) {
 			System.out.println("수정성공");
 			
 			//수정된 값 출력하도록 세션수정
 			
-			response.sendRedirect("managePole.jsp");
+			response.sendRedirect("managePole.jsp?pole_code="+pole_code);
 			
 		}else {
 			System.out.println("수정실패");
-			response.sendRedirect("managePole.jsp");
+			response.sendRedirect("managePole.jsp?pole_code="+pole_code);
 		}
 	}
 

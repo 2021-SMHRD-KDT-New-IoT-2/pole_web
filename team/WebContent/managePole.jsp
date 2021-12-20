@@ -95,12 +95,12 @@ textarea {
 		</div>
 	</header>
 	<%
-request.setCharacterEncoding("utf-8");
-String pole_code = request.getParameter("pole_code");
-String pole_comment = request.getParameter("pole_comment");
-poleDAO pdao = new poleDAO();	
-poleVO pvo = pdao.pole_selectONE(pole_code);
-%>
+		request.setCharacterEncoding("utf-8");
+		String pole_code = request.getParameter("pole_code");
+		String pole_comment = request.getParameter("pole_comment");
+		poleDAO pdao = new poleDAO();	
+		poleVO pvo = pdao.pole_selectONE(pole_code);
+	%>
 
 	<section>
 	<!------------------------------------ 모달 --------------------------------------->
@@ -151,8 +151,6 @@ poleVO pvo = pdao.pole_selectONE(pole_code);
 						<td><%=pvo.getTransformer_yn()%></td>
 						<td><%=pvo.getPole_level()%></td>
 					</tr>
-
-
 				</table>
 			</form>
 		</div>
@@ -161,22 +159,20 @@ poleVO pvo = pdao.pole_selectONE(pole_code);
 				type="submit" class="sub1" value="수정">
 		</div>
 	</section>
-
-
+	
 	<aside>
 		<div id="curve_chart" style="width: 100%; height: 310px"></div>
 		<p style="font-size: 20px; padding: 20px">
 			<b>&nbsp;&nbsp;특이사항 기록</b>
 		</p>
 
-		<form action="pole_Memo?pole_code=<%=pole_code %>" method="post">
+		<form action="pole_Memo" method="post">
 			<div class="text_area">
-				<textarea name="pole_coment">
-
-            
-            </textarea>
+				<textarea name="pole_memo"></textarea>
 			</div>
 			<div class="text_save">
+				<input type="hidden" name="pole_code" value="<%=pole_code %>">
+				<input type="hidden" name="pole_comment" value="<%=pvo.getPole_comment() %>">
 				<input type="submit" name="save2" value="저장">
 			</div>
 		</form>
