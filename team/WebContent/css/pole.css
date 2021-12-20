@@ -19,6 +19,8 @@ body{
 nav>a, button {
 	background-color: #4e1f1f00;
 	border: none;
+	font-size: 20px;
+	text-decoration:none;
 }
 
 nav>a, button:hover {
@@ -301,9 +303,14 @@ h1{
     margin-left: 20%;
     font-size: 15px;
 }
-#uncheck, #check{
-	font-size:20px;
-	margin-left: 30%;
+#uncheck{
+	background-color: rgb(143, 143, 143);
+	border : none;
+	color : white;
+	font-size:15px;
+	padding : 5px;
+	width : 100px;
+	margin-left: 43%;
     margin-top: 3%;
 }
 

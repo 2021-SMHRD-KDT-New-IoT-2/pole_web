@@ -19,6 +19,37 @@
 <title>POLE OF PISA 전주관리 시스템</title>
 <link rel="stylesheet" href="css/pole.css">
 <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+
+<!-- 기울기 변화 그래프 소스 ----------------------------------------------------------------------- -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', '기울기'],
+          ['8월',  90],
+          ['9월',  92],
+          ['10월',  95],
+          ['11월',  97],
+          ['12월',  93]
+        ]);
+
+        var options = {
+          title: '기울기 변화 그래프',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+<!-- 기울기 변화 그래프 소스 ----------------------------------------------------------------------- -->
+
+
 </head>
 <style>
 * {
@@ -39,7 +70,7 @@ textarea {
 	<div id="nav">
 		<nav>
 			<!-- if login : LoginMain, else : Main -->
-			<button>HOME</button>
+			<button><a href="Main.jsp" style="text-decoration:none">HOME</a></button>
 			<button id="modal_pole">전주 등록</button>
 			<button id="modal_emp">사용자 등록</button>
 
@@ -82,8 +113,7 @@ String pole_date = df.format(pvo.getPole_date());
 			<div id="cameraView">
 			</div>
 
-			<input type="button" name="rol" value="이전" id="uncheck" class="rol">
-			<input type="submit" name="suc" value="촬영" class="suc" id="check">
+			<input type="button" name="rol" value="뒤로" id="uncheck" class="rol">
 
 
 			<div class="modal_layer"></div>
@@ -92,7 +122,7 @@ String pole_date = df.format(pvo.getPole_date());
 <!------------------------------------ 모달 --------------------------------------->
 		<div class="tb_name">
 
-			<p style="font-size: 20px; padding: 20px">
+			<p style="font-size: 20px; padding: 20px" >
 				<strong><%=pvo.getPole_code() %>번 전주 상세정보</strong>
 			</p>
 		</div>
@@ -137,13 +167,7 @@ String pole_date = df.format(pvo.getPole_date());
 
 
 	<aside>
-		<p style="font-size: 20px; padding: 20px">
-			<b>&nbsp;&nbsp;기울기 변화</b>
-		</p>
-		<div class="graph">
-			<h3>그래프 들어가야하고</h3>
-			<br>
-		</div>
+		<div id="curve_chart" style="width: 100%; height: 310px"></div>
 		<p style="font-size: 20px; padding: 20px">
 			<b>&nbsp;&nbsp;특이사항 기록</b>
 		</p>

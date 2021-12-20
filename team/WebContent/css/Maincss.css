@@ -245,6 +245,7 @@ h1 {
 nav>a, button {
    background-color: #4e1f1f00;
    border: none;
+   
 }
 
 nav>a, button:hover {

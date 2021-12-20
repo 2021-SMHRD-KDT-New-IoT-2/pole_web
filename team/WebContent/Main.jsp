@@ -43,7 +43,7 @@
 	<div id="nav">
 		<nav>
 			<!-- if login : LoginMain, else : Main -->
-			<button>HOME</button>
+			<button><a href="Main.jsp" style="text-decoration:none">HOME</a></button>
 			<button id="modal_pole">전주 등록</button>
 			<button id="modal_emp">사용자 등록</button>
 			
