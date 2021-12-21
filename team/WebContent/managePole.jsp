@@ -282,21 +282,11 @@
 			var chart = new google.visualization.LineChart(document
 					.getElementById('curve_chart'));
 
-<<<<<<< HEAD
+
         chart.draw(data, options);
       }
     </script>
-<!-- 기울기 변화 그래프 소스 ----------------------------------------------------------------------- -->
- <!-- modal.js -->
-	<script src="js/modal.js"></script>
-=======
-			chart.draw(data, options);
-		}
 
-	</script>
-	<!-- 기울기 변화 그래프 소스 ----------------------------------------------------------------------- -->
-
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-IoT-2/pole_web.git
 </body>
 </html>
 
