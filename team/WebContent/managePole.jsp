@@ -1,3 +1,6 @@
+<%@page import="org.json.simple.JSONArray"%>
+<%@page import="com.google.gson.GsonBuilder"%>
+<%@page import="org.json.simple.JSONObject"%>
 <%@page import="com.google.gson.JsonParser"%>
 <%@page import="com.google.gson.JsonIOException"%>
 <%@page import="com.google.gson.JsonObject"%>
@@ -75,21 +78,21 @@ textarea {
 	<%
 		request.setCharacterEncoding("utf-8");
 		String pole_code = request.getParameter("pole_code");
-		String pole_comment = request.getParameter("pole_comment");
 		poleDAO pdao = new poleDAO();	
 		poleVO pvo = pdao.pole_selectONE(pole_code);
 		
 		tiltDAO tdao = new tiltDAO();
 		ArrayList<tiltVO> tal = tdao.tilt_info(pole_code);
 		
-		Gson gson = new Gson();
-		String result = gson.toJson(tal);
-		JsonParser jp = new JsonParser();
+		Gson gson1 = new Gson();
+		String result = gson1.toJson(tal);
 		System.out.println(result);
-		JsonArray jsonArray = (JsonArray)jp.parse(result);
-		System.out.print(jsonArray);
+		
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		String result1 = gson.toJson(tal);
+		System.out.print(result1);
+		
 	%>
-
 	<section>
 	<!------------------------------------ 모달 --------------------------------------->
 		<div id="modal">
@@ -125,11 +128,6 @@ textarea {
 						<th>통신선 유무</th>
 						<th>변압기 유무</th>
 						<th>관리등급</th>
-
-				        <%for(int i=0;i<jsonArray.size();i++){
-				        JsonObject object = (JsonObject)jsonArray.get(i);%>
-				       <th><%=object.get("tilt_value").getAsDouble()+object.get("tilt_date").getAsString() %> </th>
-				       <%} %>
 					</tr>
 
 					<tr>
@@ -222,23 +220,45 @@ textarea {
     </script>
 <!-- 기울기 변화 그래프 소스 ----------------------------------------------------------------------- -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script>
+  
+		const jsonData = JSON.parse('<%=result%>');
+		console.log(JSON.stringify(jsonData));
+		
+		console.log(jsonData); 
+		console.log("jsondata : ",jsonData);
+		console.log(jsonData.tilt_date);
+		var val = jsonData;
+		var val1 = [];
+		
+		for(var i = 0; i < <%=tal.size() %>;i++){
+			val1=JSON.stringify(jsonData);
+			
+		}
+		
+		console.log("val : "+ typeof val);
+		console.log("val1 : "+ val1['tilt_date']);
+		console.log(typeof jsonData);
+		
+	</script> 
     <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['M', '기울기'],
-          for (var i = 0;i<jsonArray.size();i++) {
-        	  JsonObject object = (JsonObject)jsonArray.get(i);	  	
-        	  if(i==jsonArray.size()-1){
-        		[object.get("tilt_date").getAsString()+,+object.get("tilt_value").getAsDouble()]
-        	  }else{
-        		[object.get("tilt_date").getAsString()+,+object.get("tilt_value").getAsDouble()],
-        	  }
-          }
+	var data = google.visualization.arrayToDataTable([
+		['월','값'],
+		['1',90],
+		['2',85],
+		['3',80],
+		['4',90]
+		/* 	['10',1]
+			for (var key in jsonData) { 
+				console.log(key, obj[key]);
+			}
+ 		*/
         ]);
-        
+       
         var options = {
           title: '기울기 변화 그래프',
           curveType: 'function',

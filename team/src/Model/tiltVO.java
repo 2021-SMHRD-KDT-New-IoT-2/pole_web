@@ -38,6 +38,12 @@ public class tiltVO {
 		this.tilt_date = tilt_date;
 	}
 
+	public tiltVO(double tilt_value, Date tilt_date) {
+		super();
+		this.tilt_value = tilt_value;
+		this.tilt_date = tilt_date;
+	}
+
 	public tiltVO() {
 		
 	}

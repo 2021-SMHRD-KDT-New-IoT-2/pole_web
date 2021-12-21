@@ -70,7 +70,7 @@ public class tiltDAO {
 		}
 		return cnt;
 	}
-	
+	//±×·¡ÇÁ
 	public ArrayList<tiltVO> tilt_info(String pole_code) {
 		tiltVO vo = null;
 		ArrayList<tiltVO> tal = new ArrayList<tiltVO>();
@@ -87,11 +87,10 @@ public class tiltDAO {
 
 			while (rs.next()) {
 				
-				String mac_code=rs.getString("mac_code");
 				double tilt_value=rs.getDouble("tilt_value");
 				Date tilt_date=rs.getDate("tilt_date");
 
-				vo= new tiltVO(mac_code,tilt_value,tilt_date);
+				vo= new tiltVO(tilt_value,tilt_date);
 				
 				tal.add(vo);
 			}
