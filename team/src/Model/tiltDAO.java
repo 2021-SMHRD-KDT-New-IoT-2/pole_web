@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class tiltDAO {
 	Connection conn = null;
@@ -68,6 +69,42 @@ public class tiltDAO {
 			close();
 		}
 		return cnt;
+	}
+	
+	public ArrayList<tiltVO> tilt_info(String pole_code) {
+		tiltVO vo = null;
+		ArrayList<tiltVO> tal = new ArrayList<tiltVO>();
+		try {
+			connection();
+
+			String sql = "select * from pole_tilt_info where mac_code = ?";
+			
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(1, pole_code);
+
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+				
+				String mac_code=rs.getString("mac_code");
+				double tilt_value=rs.getDouble("tilt_value");
+				Date tilt_date=rs.getDate("tilt_date");
+
+				vo= new tiltVO(mac_code,tilt_value,tilt_date);
+				
+				tal.add(vo);
+			}
+
+		} catch (Exception e) {
+			System.out.println("조회실패");
+			e.printStackTrace();
+
+		} finally {
+			close();
+		}
+		
+		return tal;
 	}
 	
 }

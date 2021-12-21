@@ -1,3 +1,10 @@
+<%@page import="com.google.gson.JsonParser"%>
+<%@page import="com.google.gson.JsonIOException"%>
+<%@page import="com.google.gson.JsonObject"%>
+<%@page import="com.google.gson.Gson"%>
+<%@page import="com.google.gson.JsonArray"%>
+<%@page import="Model.tiltVO"%>
+<%@page import="Model.tiltDAO"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
@@ -19,6 +26,8 @@
 <title>POLE OF PISA 전주관리 시스템</title>
 <link rel="stylesheet" href="css/pole.css">
 <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+<script src="./js/jquery-3.6.0.min.js"></script>
+<script src="./js/managePole.js"></script>
 </head>
 <style>
 * {
@@ -69,6 +78,16 @@ textarea {
 		String pole_comment = request.getParameter("pole_comment");
 		poleDAO pdao = new poleDAO();	
 		poleVO pvo = pdao.pole_selectONE(pole_code);
+		
+		tiltDAO tdao = new tiltDAO();
+		ArrayList<tiltVO> tal = tdao.tilt_info(pole_code);
+		
+		Gson gson = new Gson();
+		String result = gson.toJson(tal);
+		JsonParser jp = new JsonParser();
+		System.out.println(result);
+		JsonArray jsonArray = (JsonArray)jp.parse(result);
+		System.out.print(jsonArray);
 	%>
 
 	<section>
@@ -106,6 +125,11 @@ textarea {
 						<th>통신선 유무</th>
 						<th>변압기 유무</th>
 						<th>관리등급</th>
+
+				        <%for(int i=0;i<jsonArray.size();i++){
+				        JsonObject object = (JsonObject)jsonArray.get(i);%>
+				       <th><%=object.get("tilt_value").getAsDouble()+object.get("tilt_date").getAsString() %> </th>
+				       <%} %>
 					</tr>
 
 					<tr>
@@ -181,12 +205,6 @@ textarea {
 			<input type="button" value="사진 바꾸기">
 		</div>
 	</div>
-
-	<script src="./js/jquery-3.6.0.min.js"></script>
-
-
-	<script src="./js/managePole.js"></script>
-
 	<!--fonts-->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -202,24 +220,25 @@ textarea {
             $("#modal").fadeOut();
         });
     </script>
-
 <!-- 기울기 변화 그래프 소스 ----------------------------------------------------------------------- -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
 
-      
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['M', '기울기'],
-          ['8월',  90],
-          ['9월',  88],
-          ['10월',  85.5],
-          ['11월',  84.5],
-          ['12월',  81.2]
+          for (var i = 0;i<jsonArray.size();i++) {
+        	  JsonObject object = (JsonObject)jsonArray.get(i);	  	
+        	  if(i==jsonArray.size()-1){
+        		[object.get("tilt_date").getAsString()+,+object.get("tilt_value").getAsDouble()]
+        	  }else{
+        		[object.get("tilt_date").getAsString()+,+object.get("tilt_value").getAsDouble()],
+        	  }
+          }
         ]);
-
+        
         var options = {
           title: '기울기 변화 그래프',
           curveType: 'function',

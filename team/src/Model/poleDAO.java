@@ -380,39 +380,5 @@ public class poleDAO {
 	return cnt;
 	}
 	
-	public ArrayList<tiltVO> tilt_info(String pole_code) {
-		tiltVO vo = null;
-		ArrayList<tiltVO> tal = new ArrayList<tiltVO>();
-		try {
-			connection();
-
-			String sql = "select * from pole_tilt_info where mac_code = ?";
-			
-			psmt = conn.prepareStatement(sql);
-			
-			psmt.setString(1, pole_code);
-
-			rs = psmt.executeQuery();
-
-			while (rs.next()) {
-				
-				String mac_code=rs.getString("mac_code");
-				double tilt_value=rs.getDouble("tilt_value");
-				Date mac_date=rs.getDate("mac_date");
-
-				vo= new tiltVO(mac_code,tilt_value,mac_date);
-				
-			}
-
-		} catch (Exception e) {
-			System.out.println("조회실패");
-			e.printStackTrace();
-
-		} finally {
-			close();
-		}
-		
-		return tal;
-	}
 
 }

@@ -87,7 +87,7 @@ width : 60px;
 		</nav>
 			<div id="Toggle" style="display:none; border:1px solid black;">
 				<div id="tiltdb"></div>
-				<div id="impactdb"><%= %></div>
+				<div id="impactdb"></div>
 				<div id="cameradb"></div>
 			</div>
 	</div>
