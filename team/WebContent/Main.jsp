@@ -9,7 +9,7 @@
 <%@page import="Model.tiltVO"%>
 <%@page import="Model.impactVO"%>
 <%@page import="Model.cameraVO"%>
-<%@page import="com.mysql.cj.xdevapi.Result"%>ㄴ
+<%@page import="com.mysql.cj.xdevapi.Result"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.ResultSet"%>
@@ -57,11 +57,17 @@
 	String pole_high = request.getParameter("pole_high");
 	String pole_down = request.getParameter("pole_down");
 	String pole_com = request.getParameter("pole_com");
+	String camera_date = request.getParameter("camera_date");
+	String impact_date = request.getParameter("impact_date");
+/* 	int tilt_value = Integer.parseInt(request.getParameter("tilt_value")); */
 
 	String mac_code = request.getParameter("mac_code");
 
-	ArrayList<poleVO> filter = pdao.filter(pole_height, pole_date, emp_id, transformer_yn, pole_office);
-
+	ArrayList<poleVO> filter = pdao.filter(pole_height, pole_date, emp_id, transformer_yn, pole_office, pole_code);
+	
+	ArrayList<tiltVO> tiltalarm = tdao.tiltvalue();
+	ArrayList<cameraVO> camalarm = cdao.cameravalue();
+	ArrayList<impactVO> impalarm = idao.impactvalue();
 	%>
 	<!-- 네비게이션  -->
 	<div id="nav">
@@ -104,7 +110,7 @@
 		<div id="field_area">
 			<form>
 				<fieldset>
-					<h2>광주광역시</h2>
+					<h2 style="text-align : center;">광주광역시</h2>
 					
 					<label>&nbsp;&nbsp;&nbsp;담당 사업소</label>
 					<select name="pole_office">
@@ -124,7 +130,7 @@
 
 					<label>높이</label> <input type="text" name="pole_height"  id="searchtext"> <br>
 						
-						<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;변압기</label>
+						<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;변압기</label>
 						<select name="transformer_yn" id="searchtext"> <br>
 						<option value="">선택</option>
 						<option value="Y">Y</option>
@@ -150,7 +156,8 @@
 						<option value="Y">Y</option>
 						<option value="N">N</option>
 					</select>&nbsp;&nbsp;&nbsp; 
-					
+					<label> 전주번호 </label>
+					<input type="text" name="pole_code">
 					<input type="submit" name="filter" value="검색"
 						class="filter_search" style="float: right; background-color: white; border: 1px solid #ccc;">
 
@@ -162,7 +169,21 @@
 		<!-- 알림메세지  -->
 		<div id="alarm">
 			<h3>알림메세지</h3>
+			<button>충격감지</button><button>모션감지</button><button>기울기감지</button>
+			<div id="impactdiv">
+			<div>
+			<%-- <%for(int i = 0; i<impalarm.size(); i++){ %>
+			<p>충격 감지된 전주번호 <%=impalarm.get(i).getMac_code()%>
+			<p>충격 감지된 시간 <%=impalarm.get(i).getImpact_date()%></p>
+			<%} %> --%>
+			</div>
+			</div>
+			<div id="motiondiv" style="display : none;">
 			<div>알림 내용</div>
+			</div>
+			<div id="tiltdiv" style="display : none;">
+			<div>알림 내용</div>
+			</div>
 		</div>
 		
 	</div>
@@ -174,14 +195,6 @@
 		if (pole_height == null) {
 	%>
 	<div id="wrapper">
-		<div id="img">
-			<img src="./images/search.png" width="40px" height="40px">
-		</div>
-		<div>
-			<input onkeyup="filter()" type="text" id="value"
-				placeholder="전주 번호 입력" class="filter">
-		</div>
-
 		<div class="search_container" style="text-align: center;">
 			<table id="poletable" style="text-align: center; margin: auto; border: 1px solid #ccc;">
 				<tr>
@@ -225,17 +238,6 @@
 	<!-- 검색 후 전주정보 -->
 
 	<div id="min_wrapper">
-
-
-		<div id="img">
-			<img src="./images/search.png" width="40px" height="40px"
-				id="searchimg">
-		</div>
-		<div>
-			<input onkeyup="filter()" type="text" id="value"
-				placeholder="전주 번호 입력" class="filter">
-		</div>
-
 
 		<div class="search_container" style="text-align: center;">
 			<table id="poletable"
