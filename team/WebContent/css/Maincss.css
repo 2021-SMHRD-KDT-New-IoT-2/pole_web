@@ -192,10 +192,11 @@ select > input{
 
 .search_container{
     width: 80%;
-    
+    display : flex;
     margin: 2% auto;
     background-color : #FFFFFF;
-
+	height : 900px;
+	overflow-y : scroll;
 }
 
 #poletable th {
@@ -418,6 +419,7 @@ fieldset {
    float: left;
    width: 28.4%;
    height: 270px;
+   overflow-y:scroll;
 }
 #alarm > h3, div{
    text-align:center;

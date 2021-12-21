@@ -56,7 +56,7 @@ public class poleDAO {
 	
 	//« ≈Õ
 	@SuppressWarnings("null")
-	public ArrayList<poleVO> filter(String pole_height, String pole_date, String emp_id, String transformer_yn, String pole_office) {
+	public ArrayList<poleVO> filter(String pole_height, String pole_date, String emp_id, String transformer_yn, String pole_office, String pole_code) {
 		ArrayList<poleVO> al = new ArrayList<poleVO>();
 		
 		try {		
@@ -81,7 +81,9 @@ public class poleDAO {
 			if (transformer_yn != null || !transformer_yn.equals("")) {
 				addQuery += " AND transformer_yn like '%" + transformer_yn + "%'";
 			}
-			
+			if (pole_code != null || !pole_code.equals("")) {
+				addQuery += " AND pole_code like '%" + pole_code + "%'";
+			}
 			sql += addQuery+"order by pole_date desc";
 			System.out.println(sql);
 			psmt = conn.prepareStatement(sql);
