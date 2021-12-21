@@ -29,29 +29,16 @@
 <title>POLE OF PISA 전주관리 시스템</title>
 <link rel="stylesheet" href="css/pole.css">
 <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
-<script src="./js/jquery-3.6.0.min.js"></script>
-<script src="./js/managePole.js"></script>
+
 </head>
-<style>
-* {
-	font-family: 'Nanum Gothic', sans-serif;
-}
 
-textarea {
-	resize: none;
-	width: 100%;
-	height: 100%;
-}
-
-.tb_name {
-	margin-left: 10px;
-}
-</style>
 <body>
 	<div id="nav">
 		<nav>
 			<!-- if login : LoginMain, else : Main -->
-			<button><a href="Main.jsp" style="text-decoration:none">HOME</a></button>
+			<button>
+				<a href="Main.jsp" style="text-decoration: none">HOME</a>
+			</button>
 			<button id="modal_pole">전주 등록</button>
 			<button id="modal_emp">사용자 등록</button>
 
@@ -64,54 +51,50 @@ textarea {
 
 
 	<header>
-		<div class="logo">
-			<img src="./images/upoplogo.PNG" width="60px" height="60px">
+		<div id="header">
+			<div class="header_img">
+				<img src="./images/upoplogo.PNG" width="100px" height="100px"
+					id="logo">
+			</div>
+			<div class="header_h1">
+				<h1>전주 통합 관리 시스템</h1>
+				<h4>POLE MANAGEMENT SYSTEM</h4>
+			</div>
 		</div>
-		<div class="logo_name">
-			<h2>Utility Pole Of Pisa</h2>
-			<h3>전주관리 시스템</h3>
-		</div>
+
 		<div id="cameraMove">
 			<input type="button" value="카메라 화면 이동">
+
 		</div>
 	</header>
 	<%
-		request.setCharacterEncoding("utf-8");
-		String pole_code = request.getParameter("pole_code");
-		poleDAO pdao = new poleDAO();	
-		poleVO pvo = pdao.pole_selectONE(pole_code);
-		
-		tiltDAO tdao = new tiltDAO();
-		ArrayList<tiltVO> tal = tdao.tilt_info(pole_code);
-		
-		Gson gson1 = new Gson();
-		String result = gson1.toJson(tal);
-		System.out.println(result);
-		
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		String result1 = gson.toJson(tal);
-		System.out.print(result1);
-		
+	request.setCharacterEncoding("utf-8");
+	String pole_code = request.getParameter("pole_code");
+	String pole_comment = request.getParameter("pole_comment");
+	poleDAO pdao = new poleDAO();
+	poleVO pvo = pdao.pole_selectONE(pole_code);
 	%>
 	<section>
-	<!------------------------------------ 모달 --------------------------------------->
+		<!------------------------------------ 모달 --------------------------------------->
 		<div id="modal">
 
 
 			<div id="cameraView">
+			<img src="http://172.30.1.45:80/video_feed">
 			</div>
 
 			<input type="button" name="rol" value="뒤로" id="uncheck" class="rol">
-
-
+			<input type="button" name="buzzer" value="부저 작동" id="buzzer" class="rol"
+			onclick="location.href='http://172.30.1.45/buzzer'">
 			<div class="modal_layer"></div>
 
 		</div>
-<!------------------------------------ 모달 --------------------------------------->
+		<!------------------------------------ 모달 --------------------------------------->
 		<div class="tb_name">
 
-			<p style="font-size: 20px; padding: 20px" >
-				<strong><%=pvo.getPole_code() %>번 전주 상세정보</strong>
+			<p style="font-size: 25px; padding: 20px">
+				<b>- <%=pvo.getPole_code()%>번 전주 상세정보
+				</b>
 			</p>
 		</div>
 		<div class="tb_body">
@@ -146,15 +129,18 @@ textarea {
 			</form>
 		</div>
 		<div class="tb_nav">
-			<input type="button" class="btn1" value="이전"> <input
-				type="submit" class="sub1" value="수정">
+			<input type="button" class="btn1" value="이전"> 
+			<input type="button" id="modal_update" value="수정">
+			
+		<center>
+
 		</div>
 	</section>
-	
+
 	<aside>
-		<div id="curve_chart" style="width: 100%; height: 310px"></div>
+		<div id="curve_chart" style="width: 100%; height: 350px"></div>
 		<p style="font-size: 20px; padding: 20px">
-			<b>&nbsp;&nbsp;특이사항 기록</b>
+			<b>&nbsp;- 특이사항 기록</b>
 		</p>
 
 		<form action="pole_Memo" method="post">
@@ -162,10 +148,24 @@ textarea {
 				<textarea name="pole_memo"></textarea>
 			</div>
 			<div class="text_save">
-				<input type="hidden" name="pole_code" value="<%=pole_code %>">
-				<input type="hidden" name="pole_comment" value="<%=pvo.getPole_comment() %>">
-				<input type="submit" name="save2" value="저장">
+				<input type="hidden" name="pole_code" value="<%=pole_code%>">
+				<input type="hidden" name="pole_comment"
+					value="<%=pvo.getPole_comment()%>">
+				<button type="button" id="Memo_modal_open">기록</button>
 			</div>
+			
+			<!-- ----------------------------메모 모달--------------------------------- -->
+			<div id="Memo_modal">
+				<div class="Memo_area"><input type="text" class = "Memo_area"></div>
+				<div class="Memo_btn">
+					<input type="button" name="rol" value="취소" id="uncheck2"
+						class="rol"> <input type="submit" name="save2" value="저장"
+						class="suc" id="check2">
+				</div>
+				<div class="modal_layer"></div>
+
+			</div>
+			<!-- ----------------------------메모 모달--------------------------------- -->
 		</form>
 
 	</aside>
@@ -173,8 +173,8 @@ textarea {
 
 	<!-- <div id = "footer"> -->
 	<div id="footer">
-		<p style="color: black; font-size: 20px; padding: 20px">
-			<b>사진</b>
+		<p style="color: black; font-size: 20px; text-align: center;">
+			<b>전주 사진</b>
 		</p>
 	</div>
 
@@ -182,15 +182,15 @@ textarea {
 	<div class="slideshow-container">
 
 		<div class="mySlides fade">
-			<img src="./images/poleimg.png" width="450px" height="450px">
+			<img src="./images/poleimg.png" width="500px" height="450px">
 		</div>
 
 		<div class="mySlides fade">
-			<img src="./images/poleimg.png" width="450px" height="450px">
+			<img src="./images/poleimg.png" width="500px" height="450px">
 		</div>
 
 		<div class="mySlides fade">
-			<img src="./images/poleimg.png" width="450px" height="450px">
+			<img src="./images/poleimg.png" width="500px" height="450px">
 		</div>
 
 
@@ -211,66 +211,54 @@ textarea {
 		rel="stylesheet">
 
 	<script>
-        $("#cameraMove").click(function () {
-            $("#modal").fadeIn();
-        });
-        $("#uncheck").click(function () {
-            $("#modal").fadeOut();
-        });
-    </script>
-<!-- 기울기 변화 그래프 소스 ----------------------------------------------------------------------- -->
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <script>
-  
-		const jsonData = JSON.parse('<%=result%>');
-		console.log(JSON.stringify(jsonData));
+
+		$("#cameraMove").click(function() {
+			$("#modal").fadeIn();
+		});
+		$("#uncheck").click(function() {
+			$("#modal").fadeOut();
+		});
 		
-		console.log(jsonData); 
-		console.log("jsondata : ",jsonData);
-		console.log(jsonData.tilt_date);
-		var val = jsonData;
-		var val1 = [];
-		
-		for(var i = 0; i < <%=tal.size() %>;i++){
-			val1=JSON.stringify(jsonData);
-			
+		/* Memo_modal
+		*/
+		$("#Memo_modal_open").click(function() {
+			$("#Memo_modal").fadeIn();
+		});
+		$("#uncheck2").click(function() {
+			$("#Memo_modal").fadeOut();
+		});
+	</script>
+
+	<!-- 기울기 변화 그래프 소스 ----------------------------------------------------------------------- -->
+	<script type="text/javascript"
+		src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript">
+		google.charts.load('current', {
+			'packages' : [ 'corechart' ]
+		});
+		google.charts.setOnLoadCallback(drawChart);
+
+		function drawChart() {
+			var data = google.visualization.arrayToDataTable([ [ 'M', '기울기' ],
+					[ '8월', 90 ], [ '9월', 88 ], [ '10월', 85.5 ],
+					[ '11월', 84.5 ], [ '12월', 81.2 ] ]);
+
+			var options = {
+				title : '기울기 변화 그래프',
+				curveType : 'function',
+				legend : {
+					position : 'bottom'
+				}
+			};
+
+			var chart = new google.visualization.LineChart(document
+					.getElementById('curve_chart'));
+
+			chart.draw(data, options);
 		}
-		
-		console.log("val : "+ typeof val);
-		console.log("val1 : "+ val1['tilt_date']);
-		console.log(typeof jsonData);
-		
-	</script> 
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
 
-      function drawChart() {
-	var data = google.visualization.arrayToDataTable([
-		['월','값'],
-		['1',90],
-		['2',85],
-		['3',80],
-		['4',90]
-		/* 	['10',1]
-			for (var key in jsonData) { 
-				console.log(key, obj[key]);
-			}
- 		*/
-        ]);
-       
-        var options = {
-          title: '기울기 변화 그래프',
-          curveType: 'function',
-          legend: { position: 'bottom' }
-        };
-
-        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-
-        chart.draw(data, options);
-      }
-    </script>
-<!-- 기울기 변화 그래프 소스 ----------------------------------------------------------------------- -->
-
+	</script>
+	<!-- 기울기 변화 그래프 소스 ----------------------------------------------------------------------- -->
 </body>
 </html>
+

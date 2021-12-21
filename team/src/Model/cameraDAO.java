@@ -1,16 +1,16 @@
 package Model;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class cameraDAO {
 	Connection conn = null;
 	PreparedStatement psmt = null;
 	ResultSet rs = null;
-	poleVO vo = null;
+	cameraVO vo = null;
 	int cnt = 0;
 	
 	public void connection() {
@@ -48,26 +48,42 @@ public class cameraDAO {
 
 	} 
 	
-	// 모션감지 업데이트
-	public int camupdate(String mac_code, Date camera_date) {
+	public ArrayList<cameraVO> cameravalue(String camera_date, String mac_code) {
+		
+		cameraVO cvo = new cameraVO();
+		ArrayList<cameraVO> al = new ArrayList<cameraVO>();
+		
 		try {
-			connection();
 			
-			String sql = "UPDATE pole_camera_info SET camera_date = ? where mac_code = ?";
+		connection();
+
+		String sql = "Select * from pole_camera_info";
+		
+		psmt = conn.prepareStatement(sql);
+		
+		psmt.setString(1, mac_code);
+		psmt.setString(2, camera_date);
+
+		rs = psmt.executeQuery();
+		
+		while(rs.next()){
 			
-			psmt = conn.prepareStatement(sql);
+			String getMac_code = rs.getString("mac_code");
+			String getCamera_date = rs.getString("camera_date");
 			
-			psmt.setDate(1, camera_date);
-			psmt.setString(2, mac_code);
+			cvo = new cameraVO(getMac_code, getCamera_date);
 			
-			cnt = psmt.executeUpdate();
+			al.add(cvo);
+			
+			
+			}
+		
 		} catch (Exception e) {
-			System.out.println("모션감지 업데이트 실패");
+			System.out.println();
 			e.printStackTrace();
-		}finally {
-			close();
+			} finally {
+				close();
 		}
-		return cnt;
+		return al;
 	}
-	
 }
