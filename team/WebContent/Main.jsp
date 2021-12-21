@@ -26,6 +26,7 @@
 <link rel="stylesheet" href="css/Maincss.css">
 <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 </head>
+<<<<<<< HEAD
 <style>
 #Toggle {
 	width: 400px;
@@ -34,6 +35,8 @@
 	z-index: 1;
 }
 </style>
+=======
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-IoT-2/pole_web.git
 <body>
 
 	<%
@@ -85,10 +88,30 @@
 				id="togglebtn"><img src="./images/bell.png" class="img"
 				width="30px" height="30px" style="margin-top: 1%;"></a>
 		</nav>
+<<<<<<< HEAD
 		<div id="Toggle" style="display: none; border: 1px solid black;">
+=======
+			<div id="Toggle" style="display:none; border:1px solid black;">
+<<<<<<< HEAD
+				<div id="box1" style="border:1px solid black;">
+				전주번호 <a href="">1234A567</a>에서 기울기 변동 발생
+				</div>
+				<div id="box2" style="border:1px solid black;">
+				전주번호 <a href="">1234A567</a>에서 모션 감지 이상 발생
+				</div>
+				<div id="box3" style="border:1px solid black;">
+				전주번호 <a href="">1234A567</a>에서 충격이 감지됨
+				</div>
+=======
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-IoT-2/pole_web.git
 
 
+<<<<<<< HEAD
 		</div>
+=======
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-IoT-2/pole_web.git
+			</div>
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-IoT-2/pole_web.git
 	</div>
 
 
@@ -103,6 +126,7 @@
 			<h4>POLE MANAGEMENT SYSTEM</h4>
 		</div>
 	</div>
+<<<<<<< HEAD
 	<!--수정부분1217 -->
 
 	<!----------------------------------------------- 사용자 등록 모달 공간 -------------------------------------------->
@@ -387,6 +411,11 @@
 		</div>
 	</center>
 	<!-- --------------------------------------------- 전주 등록 모달 공간 ------------------------------------------ -->
+=======
+	
+	<%@ include file="/modal_assignEmp.jsp"%>
+	<%@ include file="/modal_assignPole.jsp"%>
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-IoT-2/pole_web.git
 
 	<!-- 필터  -->
 	<!-- 수정부분 1217 -->
@@ -564,6 +593,7 @@
 	<link
 		href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"
 		rel="stylesheet">
+<<<<<<< HEAD
 
 	<!-- 사용자 등록 모달 -->
 	<script>
@@ -590,5 +620,18 @@
 			});
 		});
 	</script>
+=======
+	
+	<!-- Scripts -->
+	<!-- 알림창 js -->
+    <script>
+    $(function (){
+    	$("#togglebtn").click(function(){
+    	$("#Toggle").toggle();	
+    	});
+    });
+    </script>
+	<script src="js/modal.js"></script>
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-IoT-2/pole_web.git
 </body>
 </html>
