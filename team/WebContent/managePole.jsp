@@ -30,6 +30,7 @@
 <link rel="stylesheet" href="css/pole.css">
 <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 
+
 </head>
 
 <body>
@@ -206,9 +207,8 @@
 	<!--fonts-->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link
-		href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"
-		rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+	
 
 	<script>
 
