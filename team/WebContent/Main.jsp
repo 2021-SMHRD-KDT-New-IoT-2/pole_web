@@ -67,7 +67,8 @@ width : 60px;
 	String pole_com = request.getParameter("pole_com");
 	
 	String mac_code = request.getParameter("mac_code");
-	String impact_date = request.getParameter("impact_date");
+	ArrayList<poleVO> filter = pdao.filter(pole_height,pole_date,emp_id,transformer_yn,pole_office);
+	/* String impact_date = request.getParameter("impact_date");
 	String camera_date = request.getParameter("camera_date");
 	String tilt_value = request.getParameter("tilt_value");
 	Double tilt_value2 = Double.parseDouble(tilt_value);
@@ -75,7 +76,7 @@ width : 60px;
 	ArrayList<tiltVO> tvo = tdao.tiltvalue(tilt_value2, mac_code);
 	ArrayList<impactVO> ivo = idao.impactvalue(impact_date, mac_code);
 	ArrayList<cameraVO> cvo = cdao.cameravalue(camera_date, mac_code);
-	ArrayList<poleVO> filter = pdao.filter(pole_height,pole_date,emp_id,transformer_yn,pole_office);
+	 */
 %>
 
 	<div id="nav">
@@ -92,15 +93,6 @@ width : 60px;
 		</nav>
 			<div id="Toggle" style="display:none; border:1px solid black;">
 
-			<%for(int i = 0 ; i<tvo.size();i++) { %>
-				<div id="tiltdb"><%=tvo.get(i).getMac_code() %></div>
-				<%} %>
-				<%for(int i = 0 ; i<ivo.size();i++) { %>
-				<div id="impactdb"><%=ivo.get(i).getImpact_date() %></div>
-				<%} %>
-				<%for(int i = 0 ; i<cvo.size();i++) { %>
-				<div id="cameradb"><%=cvo.get(i).getCamera_date() %></div>
-				<%} %>
 
 			</div>
 	</div>
