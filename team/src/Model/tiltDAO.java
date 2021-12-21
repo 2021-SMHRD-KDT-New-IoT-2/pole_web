@@ -49,7 +49,7 @@ public class tiltDAO {
 		
 	} 
 	
-public ArrayList<tiltVO> tiltvalue(String tilt_value, String mac_code) {
+public ArrayList<tiltVO> tiltvalue(int tilt_value, String mac_code) {
 		
 		tiltVO tvo = new tiltVO();
 		ArrayList<tiltVO> al = new ArrayList<tiltVO>();
@@ -63,17 +63,17 @@ public ArrayList<tiltVO> tiltvalue(String tilt_value, String mac_code) {
 		psmt = conn.prepareStatement(sql);
 		
 		psmt.setString(1, mac_code);
-		psmt.setString(2, tilt_value);
+		psmt.setInt(2, tilt_value);
 
 		rs = psmt.executeQuery();
 		
 		while(rs.next()){
 			
 			String getMac_code = rs.getString("mac_code");
-			String getTilt_value = rs.getString("tilt_value");
+			int getTilt_value = rs.getInt("tilt_value");
 			
 			
-			tvo = new tiltVO(getMac_code, getTilt_value);
+			tvo = new tiltVO(getMac_code,getTilt_value);
 			
 			al.add(tvo);
 			}
@@ -86,5 +86,41 @@ public ArrayList<tiltVO> tiltvalue(String tilt_value, String mac_code) {
 		}
 		return al;
 	}
+	//그래프
+	public ArrayList<tiltVO> tilt_info(String pole_code) {
+		tiltVO vo = null;
+		ArrayList<tiltVO> tal = new ArrayList<tiltVO>();
+		try {
+			connection();
+
+			String sql = "select * from pole_tilt_info where mac_code = ?";
+			
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(1, pole_code);
+
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+				
+				int tilt_value=rs.getInt("tilt_value");
+				Date tilt_date=rs.getDate("tilt_date");
+
+				vo= new tiltVO(tilt_value,tilt_date);
+				
+				tal.add(vo);
+			}
+
+		} catch (Exception e) {
+			System.out.println("조회실패");
+			e.printStackTrace();
+
+		} finally {
+			close();
+		}
+		
+		return tal;
+	}
+	
 }
 

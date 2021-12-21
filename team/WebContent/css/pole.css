@@ -18,8 +18,6 @@ p{
 section, aside{
 	margin-top:2.4%;
 }
-/* -------------------�뜝�럥�뿕�뜝�럥�맠 占쎄껀�뜝�띂寃ュ뜝占�--------------------- */
-
 
 nav{
 	width:100%;
@@ -89,8 +87,6 @@ header{
    margin-top:2%;
    background-color: #ffffff;
 }
-/* 수정부분1217 */
-
 
 .header_h1 {
    width: 60%;
@@ -131,10 +127,6 @@ h2,h3 {
     font-size: 25px;
     margin-left: 4%;
 }
-/* -------------------�뜝�럥�뿕�뜝�럥�맠 占쎄껀�뜝�띂寃ュ뜝占�--------------------- */
-
-
-/* -------------------�뜝�럩�눁嶺뚯옚�삕--------------------- */
 
 section{
     float:left; width:50%;
@@ -182,9 +174,6 @@ th, td{
     padding: 7px;
 
 }
-/* -------------------�뜝�럩�눁嶺뚯옚�삕--------------------- */
-
-/* -------------------�뜝�럩沅롳옙紐댐쭗袁좉국--------------------- */
 
 aside{
     float: right;
@@ -436,23 +425,6 @@ background-color: rgb(143, 143, 143);
     z-index: -1;
 }
 
-<<<<<<< HEAD
-
-
-textarea {
-	resize: none;
-	width: 100%;
-	height: 100%;
-}
-
-.tb_name {
-	margin-left: 10px;
-}
-
-=======
-/*------------------------ 특이사항 모달 Memo_modal------------------------------------ */
-
-
 #Memo_modal {
     background-color: white;
     display: none;
@@ -508,4 +480,3 @@ textarea {
     background: rgba(0, 0, 0, 0.705);
     z-index: -1;
 }
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-IoT-2/pole_web.git
