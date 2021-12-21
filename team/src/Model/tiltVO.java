@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class tiltVO {
 	private String mac_code;
-	private double tilt_value;
+	private String tilt_value;
 	private Date tilt_date;
 
 	public String getMac_code() {
@@ -15,11 +15,11 @@ public class tiltVO {
 		this.mac_code = mac_code;
 	}
 
-	public double getTilt_value() {
+	public String getTilt_value() {
 		return tilt_value;
 	}
 
-	public void setTilt_value(double tilt_value) {
+	public void setTilt_value(String tilt_value) {
 		this.tilt_value = tilt_value;
 	}
 
@@ -31,7 +31,7 @@ public class tiltVO {
 		this.tilt_date = tilt_date;
 	}
 
-	public tiltVO(String mac_code, double tilt_value, Date tilt_date) {
+	public tiltVO(String mac_code, String tilt_value, Date tilt_date) {
 		super();
 		this.mac_code = mac_code;
 		this.tilt_value = tilt_value;
@@ -42,7 +42,7 @@ public class tiltVO {
 		
 	}
 
-	public tiltVO(String mac_code, double tilt_value) {
+	public tiltVO(String mac_code, String tilt_value) {
 		super();
 		this.mac_code = mac_code;
 		this.tilt_value = tilt_value;

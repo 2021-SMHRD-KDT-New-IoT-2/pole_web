@@ -195,24 +195,26 @@ public class poleDAO {
 	
 	// 전주 정보 수정
 
-	public int pole_update(String pole_code, String pole_height, String pole_addr, String pole_high, String pole_down,
-			String pole_com, String transformer_yn, String pole_level, String emp_id) {
+	public int pole_update(String pole_code, String pole_height, String pole_addr, String pole_date, String pole_office, String pole_high, String pole_down,
+			String pole_com, String transformer_yn, String pole_level , String emp_id) {
 
 		try {
 
 			connection();
 
-			String sql = "UPDATE pole_info SET pole_height = ?, pole_addr = ?, pole_high = ?, pole_down = ?, pole_com = ?, transformer_yn = ?, pole_level = ?, emp_id = ?  WHERE pole_code = ?";
+			String sql = "UPDATE pole_info SET pole_height = ?, pole_addr = ?, pole_date = ?, pole_office = ?, pole_high = ?, pole_down = ?, pole_com = ?, transformer_yn = ?, pole_level = ?, emp_id = ? WHERE pole_code = ?";
 
 			psmt.setString(1, pole_height);
 			psmt.setString(2, pole_addr);
-			psmt.setString(3, pole_high);
-			psmt.setString(4, pole_down);
-			psmt.setString(5, pole_com);
-			psmt.setString(6, transformer_yn);
-			psmt.setString(7, pole_level);
-			psmt.setString(8, emp_id);
-			psmt.setString(9, pole_code);
+			psmt.setString(3, pole_date);
+			psmt.setString(4, pole_office);
+			psmt.setString(5, pole_high);
+			psmt.setString(6, pole_down);
+			psmt.setString(7, pole_com);
+			psmt.setString(8, transformer_yn);
+			psmt.setString(9, pole_level);
+			psmt.setString(10, emp_id);
+			psmt.setString(11, pole_code);
 
 			cnt = psmt.executeUpdate();
 
@@ -397,7 +399,7 @@ public class poleDAO {
 			while (rs.next()) {
 				
 				String mac_code=rs.getString("mac_code");
-				double tilt_value=rs.getDouble("tilt_value");
+				String tilt_value=rs.getString("tilt_value");
 				Date mac_date=rs.getDate("mac_date");
 
 				vo= new tiltVO(mac_code,tilt_value,mac_date);

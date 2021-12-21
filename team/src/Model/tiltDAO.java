@@ -49,7 +49,7 @@ public class tiltDAO {
 		
 	} 
 	
-public ArrayList<tiltVO> tiltvalue(double tilt_value, String mac_code) {
+public ArrayList<tiltVO> tiltvalue(String tilt_value, String mac_code) {
 		
 		tiltVO tvo = new tiltVO();
 		ArrayList<tiltVO> al = new ArrayList<tiltVO>();
@@ -63,14 +63,14 @@ public ArrayList<tiltVO> tiltvalue(double tilt_value, String mac_code) {
 		psmt = conn.prepareStatement(sql);
 		
 		psmt.setString(1, mac_code);
-		psmt.setDouble(2, tilt_value);
+		psmt.setString(2, tilt_value);
 
 		rs = psmt.executeQuery();
 		
 		while(rs.next()){
 			
 			String getMac_code = rs.getString("mac_code");
-			double getTilt_value = rs.getDouble("tilt_value");
+			String getTilt_value = rs.getString("tilt_value");
 			
 			
 			tvo = new tiltVO(getMac_code, getTilt_value);

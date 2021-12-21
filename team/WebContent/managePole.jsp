@@ -53,21 +53,7 @@
 
 
 </head>
-<style>
-* {
-	font-family: 'Nanum Gothic', sans-serif;
-}
 
-textarea {
-	resize: none;
-	width: 100%;
-	height: 100%;
-}
-
-.tb_name {
-	margin-left: 10px;
-}
-</style>
 <body>
 	<div id="nav">
 		<nav>
@@ -166,8 +152,11 @@ textarea {
 			</form>
 		</div>
 		<div class="tb_nav">
-			<input type="button" class="btn1" value="이전"> <input
-				type="submit" class="sub1" value="수정">
+			<input type="button" class="btn1" value="이전"> 
+			<input type="button" id="modal_update" value="수정">
+			
+		<center>
+
 		</div>
 	</section>
 
@@ -293,12 +282,21 @@ textarea {
 			var chart = new google.visualization.LineChart(document
 					.getElementById('curve_chart'));
 
+<<<<<<< HEAD
+        chart.draw(data, options);
+      }
+    </script>
+<!-- 기울기 변화 그래프 소스 ----------------------------------------------------------------------- -->
+ <!-- modal.js -->
+	<script src="js/modal.js"></script>
+=======
 			chart.draw(data, options);
 		}
 
 	</script>
 	<!-- 기울기 변화 그래프 소스 ----------------------------------------------------------------------- -->
 
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-IoT-2/pole_web.git
 </body>
 </html>
 
