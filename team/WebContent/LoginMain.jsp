@@ -50,7 +50,7 @@ body{
         <div id="copyright">
             <h4 style="color: #ffffff;">관리자를 위한 시스템으로서 인가된 분만 사용 할 수 있습니다.</h3>
             <br>
-            <p style="color: #ffffff;">Copyright 2021, Pole Of Pisa, LTD. All right Reserved.</p>
+            <p style="color: #ffffff; margin-top:-1%;">Copyright 2021, Pole Of Pisa, LTD. All right Reserved.</p>
         </div>
     </footer>
 
