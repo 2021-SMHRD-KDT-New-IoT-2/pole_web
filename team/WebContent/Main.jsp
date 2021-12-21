@@ -25,7 +25,6 @@
 <link rel="stylesheet" href="css/Maincss.css">
 <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 </head>
-
 <style>
 #Toggle {
 	width: 400px;
@@ -75,12 +74,12 @@
 			<button id="modal_emp">사용자 등록</button>
 
 			<!-- href="assignEmp.jsp" -->
-			<a href="LogoutService">로그아웃</a> <a href="javascript:;"
-				id="togglebtn"><img src="./images/bell.png" class="img"
-				width="30px" height="30px" style="margin-top: 1%;"></a>
+
+			<a href="LogoutService">로그아웃</a> 
+			<a href="javascript:;" id="togglebtn"><img src="./images/bell.png" class="img" width="30px" height="30px" style="margin-top: 1%;"></a>
 		</nav>
 			<div id="Toggle">
-		</div>			
+
 	</div>
 	<!-- 네비게이션 끝 -->
 
@@ -96,7 +95,6 @@
 		</div>
 	</div>
 
-	
 	<!-- 사용자등록, 전주등록 modal include -->
 	<%@ include file="/modal_assignEmp.jsp"%>
 	<%@ include file="/modal_assignPole.jsp"%>
@@ -106,46 +104,57 @@
 		<div id="field_area">
 			<form>
 				<fieldset>
-
-					<h2 style="text-align: center;">광주광역시</h2>
-					<label>담당 사업소</label> <select name="pole_office">
+					<h2>광주광역시</h2>
+					
+					<label>&nbsp;&nbsp;&nbsp;담당 사업소</label>
+					<select name="pole_office">
 						<option value="">선택</option>
 						<option value="동구">동구</option>
 						<option value="서구">서구</option>
 						<option value="남구">남구</option>
 						<option value="북구">북구</option>
 						<option value="광산구">광산구</option>
-					</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label>관리자</label>
+					</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					
+				 <label>관리자</label>
 					<input type="text" name="emp_id"
 						style="width: 100px; height: 40px; margin-right: 4%; font-size: 15px;">&nbsp;&nbsp;&nbsp;
-
-
 
 					<label>설치 일자</label> <input type="text" name="pole_date"
 						id="searchtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-					<label>높이</label> <input type="text" name="pole_height"
-						id="searchtext"> <br> <label> 변압기 유무</label> <select
-						name="transformer_yn">
+					<label>높이</label> <input type="text" name="pole_height"  id="searchtext"> <br>
+						
+						<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;변압기</label>
+						<select name="transformer_yn" id="searchtext"> <br>
 						<option value="">선택</option>
 						<option value="Y">Y</option>
 						<option value="N">N</option>
+					</select> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					
+						
+						<label> 고압선 </label> 
+						<select name="pole_high">
+						<option value="">선택</option>
+						<option value="Y">Y</option>
+						<option value="N">N</option>
+					</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-					</select> <label> 고압선 유무</label> <select name="pole_high">
-						<option value="">선택</option>
-						<option value="Y">Y</option>
-						<option value="N">N</option>
 
-					</select> <label> 저압선 유무</label> <select name="pole_down">
+					<label> 저압선</label>
+					 <select name="pole_down">
 						<option value="">선택</option>
 						<option value="Y">Y</option>
 						<option value="N">N</option>
-
-					</select> <label> 통신선 유무</label> <select name="pole_com">
+					</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					
+					 <label> 통신선</label> <select name="pole_com">
 						<option value="">선택</option>
 						<option value="Y">Y</option>
 						<option value="N">N</option>
-					</select>&nbsp;&nbsp;&nbsp; <input type="submit" name="filter" value="검색"
+					</select>&nbsp;&nbsp;&nbsp; 
+					
+					<input type="submit" name="filter" value="검색"
 						class="filter_search" style="float: right; background-color: white; border: 1px solid #ccc;">
 
 				</fieldset>
@@ -284,10 +293,27 @@
 	<!--fonts-->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link
-		href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"
-		rel="stylesheet">
-	
+	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"	rel="stylesheet">
+
+
+	<!-- 사용자 등록 모달 -->
+	<script>
+		$("#modal_emp").click(function() {
+			$("#modal").fadeIn();
+		});
+		$("#uncheck").click(function() {
+			$("#modal").fadeOut();
+		});
+	</script>
+	<script>
+		// 전주 등록 모달
+		$("#modal_pole").click(function() {
+			$("#modal2").fadeIn();
+		});
+		$("#uncheck2").click(function() {
+			$("#modal2").fadeOut();
+		});
+	</script>
 	<!-- Scripts -->
 	<!-- 알림창 toggle js -->
     <script>
