@@ -91,11 +91,7 @@ width : 60px;
 				style="margin-top: 1%;"></a>
 		</nav>
 			<div id="Toggle" style="display:none; border:1px solid black;">
-<<<<<<< HEAD
-				<div id="tiltdb"></div>
-				<div id="impactdb"></div>
-				<div id="cameradb"></div>
-=======
+
 			<%for(int i = 0 ; i<tvo.size();i++) { %>
 				<div id="tiltdb"><%=tvo.get(i).getMac_code() %></div>
 				<%} %>
@@ -105,7 +101,7 @@ width : 60px;
 				<%for(int i = 0 ; i<cvo.size();i++) { %>
 				<div id="cameradb"><%=cvo.get(i).getCamera_date() %></div>
 				<%} %>
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-IoT-2/pole_web.git
+
 			</div>
 	</div>
 
