@@ -1,3 +1,13 @@
+<%@page import="org.json.simple.JSONArray"%>
+<%@page import="com.google.gson.GsonBuilder"%>
+<%@page import="org.json.simple.JSONObject"%>
+<%@page import="com.google.gson.JsonParser"%>
+<%@page import="com.google.gson.JsonIOException"%>
+<%@page import="com.google.gson.JsonObject"%>
+<%@page import="com.google.gson.Gson"%>
+<%@page import="com.google.gson.JsonArray"%>
+<%@page import="Model.tiltVO"%>
+<%@page import="Model.tiltDAO"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
@@ -19,38 +29,6 @@
 <title>POLE OF PISA 전주관리 시스템</title>
 <link rel="stylesheet" href="css/pole.css">
 <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
-
-
-<!-- 기울기 변화 그래프 소스 ----------------------------------------------------------------------- -->
-<script type="text/javascript"
-	src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript">
-	google.charts.load('current', {
-		'packages' : [ 'LineChart' ]
-	});
-	google.charts.setOnLoadCallback(drawChart);
-
-	function drawChart() {
-		var data = google.visualization.arrayToDataTable([ [ 'Year', '기울기' ],
-				[ '8월', 90 ], [ '9월', 88 ], [ '10월', 85.5 ], [ '11월', 84.5 ],
-				[ '12월', 81.2 ] ]);
-
-		var options = {
-			title : '기울기 변화 그래프',
-			curveType : 'function',
-			legend : {
-				position : 'bottom'
-			}
-		};
-
-		var chart = new google.visualization.LineChart(document
-				.getElementById('curve_chart'));
-
-		chart.draw(data, options);
-	}
-</script>
-<!-- 기울기 변화 그래프 소스 ----------------------------------------------------------------------- -->
-
 
 </head>
 
@@ -90,13 +68,12 @@
 		</div>
 	</header>
 	<%
-		request.setCharacterEncoding("utf-8");
+	request.setCharacterEncoding("utf-8");
 	String pole_code = request.getParameter("pole_code");
 	String pole_comment = request.getParameter("pole_comment");
 	poleDAO pdao = new poleDAO();
 	poleVO pvo = pdao.pole_selectONE(pole_code);
 	%>
-
 	<section>
 		<!------------------------------------ 모달 --------------------------------------->
 		<div id="modal">
@@ -226,12 +203,6 @@
 			<input type="button" value="사진 바꾸기">
 		</div>
 	</div>
-
-	<script src="./js/jquery-3.6.0.min.js"></script>
-
-
-	<script src="./js/managePole.js"></script>
-
 	<!--fonts-->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -240,6 +211,7 @@
 		rel="stylesheet">
 
 	<script>
+
 		$("#cameraMove").click(function() {
 			$("#modal").fadeIn();
 		});
@@ -283,10 +255,12 @@
 					.getElementById('curve_chart'));
 
 
-        chart.draw(data, options);
-      }
-    </script>
+			chart.draw(data, options);
+		}
 
+	</script>
+	<!-- 기울기 변화 그래프 소스 ----------------------------------------------------------------------- -->
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-IoT-2/pole_web.git
 </body>
 </html>
 

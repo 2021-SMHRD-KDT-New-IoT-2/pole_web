@@ -34,10 +34,6 @@ public class pole_Memo extends HttpServlet {
 		
 		int cnt = dao.webmemo(pole_memo, pole_comment, pole_code);
 		
-		System.out.println(pole_comment);
-		System.out.println(pole_code);
-		System.out.println(pole_memo);
-		
 		if(cnt>0) {
 			System.out.println("수정성공");
 			

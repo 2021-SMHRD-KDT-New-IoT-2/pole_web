@@ -381,7 +381,7 @@ public class poleDAO {
 	}
 	return cnt;
 	}
-	
+
 	public ArrayList<tiltVO> tilt_info(String pole_code) {
 		tiltVO vo = null;
 		ArrayList<tiltVO> tal = new ArrayList<tiltVO>();
@@ -399,7 +399,7 @@ public class poleDAO {
 			while (rs.next()) {
 				
 				String mac_code=rs.getString("mac_code");
-				String tilt_value=rs.getString("tilt_value");
+				int tilt_value=rs.getInt("tilt_value");
 				Date mac_date=rs.getDate("mac_date");
 
 				vo= new tiltVO(mac_code,tilt_value,mac_date);

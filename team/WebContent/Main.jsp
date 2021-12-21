@@ -9,7 +9,7 @@
 <%@page import="Model.tiltVO"%>
 <%@page import="Model.impactVO"%>
 <%@page import="Model.cameraVO"%>
-<%@page import="com.mysql.cj.xdevapi.Result"%>
+<%@page import="com.mysql.cj.xdevapi.Result"%>ㄴ
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.ResultSet"%>
@@ -61,16 +61,8 @@
 	String mac_code = request.getParameter("mac_code");
 
 	ArrayList<poleVO> filter = pdao.filter(pole_height, pole_date, emp_id, transformer_yn, pole_office);
-/* 	String impact_date = request.getParameter("impact_date");
-	String camera_date = request.getParameter("camera_date");
-	String tilt_value = request.getParameter("tilt_value");
-
-	Double tilt_value2 = Double.parseDouble(tilt_value); */
-
-/* 	ArrayList<tiltVO> tvo = tdao.tiltvalue(tilt_value2, mac_code); */
 
 %>
-	
 	<!-- 네비게이션  -->
 	<div id="nav">
 		<nav>
@@ -82,46 +74,12 @@
 			<button id="modal_emp">사용자 등록</button>
 
 			<!-- href="assignEmp.jsp" -->
+
 			<a href="LogoutService">로그아웃</a> 
 			<a href="javascript:;" id="togglebtn"><img src="./images/bell.png" class="img" width="30px" height="30px" style="margin-top: 1%;"></a>
 		</nav>
 			<div id="Toggle">
-			
-			
-			<%-- <%double btiltvalue = 80.5; %>
-			<%while(true){%>
-			
-				<% if(tilt_value2 != btiltvalue){%>
-					<div id="box1"> 전주번호 <a href=""><%=pvo.getPole_code()%></a> 에서 기울기 변동이 감지 됨
-=======
-<<<<<<< HEAD
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-IoT-2/pole_web.git
-		<div id="Toggle" style="display: none; border: 1px solid black;">
-				<div id="box1" style="border:1px solid black;">
-				전주번호 <a href="">1234A567</a>에서 기울기 변동 발생
-<<<<<<< HEAD
-				</div>
-				<div id="box2" style="border:1px solid black;">
-				전주번호 <a href="">1234A567</a>에서 모션 감지 이상 발생
-				</div>
-				<div id="box3" style="border:1px solid black;">
-				전주번호 <a href="">1234A567</a>에서 충격이 감지됨
-				</div>
-=======
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-IoT-2/pole_web.git
-				</div>
-				<% }else{%>
-				<%} %>
-			<% } %> --%>
-				
-				<div id="box2">
-				전주번호 <a href="">1234A567</a>에서 모션 이상 감지 됨
-				</div>
-				<div id="box3">
-				전주번호 <a href="">1234A567</a> 에서 충격이 감지 됨
-				</div>
 
-		</div>
 	</div>
 	<!-- 네비게이션 끝 -->
 
@@ -137,296 +95,10 @@
 		</div>
 	</div>
 
-
-	<!-- 헤더 끝 -->
-
-	<!----------------------------------------------- 사용자 등록 모달 공간 -------------------------------------------->
-	<center>
-		<div id="modal">
-			<form action="assignEmp" method="post" class="emp_form">
-				<table width="900" height="1000" class="tb_body" cellpadding="0"
-					style="border-collapse: collapse;">
-					<tr height="100">
-
-						<td colspan="3" align="center" style="font-size: 30px;">
-							<div id="empas">
-								<img src="./images/img4.png" width="50px" height="50px">
-								<p>사용자 등록</p>
-							</div>
-						</td>
-					</tr>
-
-					<tr height="7">
-						<td colspan="3">
-							<hr>
-						</td>
-					</tr>
-
-					<tr height="30">
-						<td class="wid1"><img src="./images/check2.png" width="25px"
-							; height="25px";></td>
-						<td>사원번호 부여</td>
-						<td><input type="text" name="emp_id"
-							style="margin-left: 6%; width: 250px;" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
-							href="LoginCheckService" style="text-decoration: none;">중복 검사</a></td>
-					</tr>
-					<tr height="7">
-						<td colspan="3">
-							<hr />
-						</td>
-					</tr>
-					<tr height="30">
-						<td class="wid1"><img src="./images/check2.png" width="25px"
-							; height="25px";></td>
-						<td class="wid2">비밀번호</td>
-						<td><input type="password" name="emp_pw" id="pw"
-							style="margin-left: -20%; width: 250px;" /></td>
-					</tr>
-					<tr height="7">
-						<td colspan="3">
-							<hr />
-						</td>
-					</tr>
-					<tr height="30">
-						<td class="wid1"><img src="./images/check2.png" width="25px"
-							; height="25px";></td>
-						<td class="wid2">비밀번호 확인</td>
-						<td><input type="password" name="wUserPWConfirm" id="pwCheck"
-							style="margin-left: -20%; width: 250px;" /></td>
-					</tr>
-					<tr height="7">
-						<td colspan="3">
-							<hr />
-						</td>
-					</tr>
-					<tr height="30">
-						<td class="wid1"><img src="./images/check2.png" width="25px"
-							; height="25px";></td>
-						<td class="wid2">사원 이름</td>
-						<td><input type="text" name="emp_name"
-							style="margin-left: -20%; width: 250px;" /></td>
-					</tr>
-					<tr height="7">
-						<td colspan="3">
-							<hr />
-						</td>
-					</tr>
-					<tr height="30">
-						<td class="wid1"><img src="./images/check2.png" width="25px"
-							; height="25px";></td>
-						<td class="wid2">사원 연락처</td>
-						<td><input type="tel" name="emp_phone"
-							style="margin-left: -20%; width: 250px;" /></td>
-
-					</tr>
-					<tr height="7">
-						<td colspan="3">
-							<hr />
-						</td>
-					</tr>
-					<tr height="30">
-						<td class="wid1"><img src="./images/check2.png" width="25px"
-							; height="25px";></td>
-						<td class="wid2">사업소 명</td>
-						<td><select name="emp_office"
-							style="width: 250px; margin-left: -120px;">
-								<option>선택하세요</option>
-								<option value="북구">북구</option>
-								<option value="남구">남구</option>
-								<option value="동구">동구</option>
-								<option value="서구">서구</option>
-								<option value="광산구">광산구</option>
-						</select></td>
-					</tr>
-					<tr height="7">
-						<td colspan="3">
-							<hr />
-						</td>
-					</tr>
-					<tr height="30">
-						<td class="wid1"><img src="./images/check2.png" width="25px"
-							; height="25px";></td>
-						<td class="wid2">관리자 여부</td>
-						<td><input type="radio" name="admin_yesno" value="Y"
-							class="input_focus" style="margin-left: -20%; width: 20px;">관리자
-							&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="admin_yesno"
-							class="input_focus" value="N" style="width: 20px;">사용자</td>
-					<tr height="7">
-						<td colspan="3">
-							<hr />
-						</td>
-					</tr>
-
-					<tr height="80">
-						<td colspan="3"><input type="button" name="rol" value="취소하기"
-							id="uncheck" class="rol">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
-							type="submit" value="등록하기" class="suc" id="check"></td>
-					</tr>
-				</table>
-
-			</form>
-
-			<div class="modal_layer"></div>
-		</div>
-	</center>
-	<!----------------------------------------------- 사용자 등록 모달 공간 -------------------------------------------->
-
-	<!----------------------------------------------- 전주 등록 모달 공간 -------------------------------------------->
-	<center>
-		<div id="modal2">
-			<form action="assignpole" method="post" class="pole_form">
-				<table width="600" height="800" class="pole_tb_body" cellpadding="0"
-					style="border-collapse: collapse;">
-					<tr height="100px">
-
-						<td colspan="3" align="center" style="font-size: 30px;">
-							<div id="empas">
-								<img src="./images/pole.png" width="50px" height="50px">
-								<p>전주 등록</p>
-							</div>
-						</td>
-					</tr>
-					<tr height="7">
-						<td colspan="3">
-							<hr />
-						</td>
-					</tr>
-
-					<tr height="25">
-						<td class="wid3"><img src="./images/check2.png" width="25px"
-							; height="25px";></td>
-						<td class="wid4">전주번호</td>
-						<td><input type="text" name="pole_code"
-							style="margin-left: -15%;"></td>
-					</tr>
-
-					<tr height="7">
-						<td colspan="3">
-							<hr />
-						</td>
-					</tr>
-
-					<tr height="25">
-						<td class="wid3"><img src="./images/check2.png" width="25px"
-							; height="25px";></td>
-						<td class="wid4">전주 높이</td>
-						<td><input type="text" name="pole_height"
-							style="margin-left: -15%;" /></td>
-					</tr>
-
-					<tr height="7">
-						<td colspan="3">
-							<hr />
-						</td>
-					</tr>
-
-					<tr height="25">
-						<td class="wid3"><img src="./images/check2.png" width="25px"
-							; height="25px";></td>
-						<td class="wid4">전주 주소</td>
-						<td><input type="text" name="pole_addr"
-							style="margin-left: -15%;" /></td>
-					</tr>
-
-					<tr height="7">
-						<td colspan="3">
-							<hr />
-						</td>
-					</tr>
-
-
-					<tr height="25">
-						<td class="wid3"><img src="./images/check2.png" width="25px"
-							; height="25px";></td>
-						<td class="wid4">담당 사업소</td>
-						<td><select name="pole_office"
-							style="width: 225px; margin-left: -70px;">
-								<option>선택하세요</option>
-								<option value="북구">북구</option>
-								<option value="남구">남구</option>
-								<option value="동구">동구</option>
-								<option value="서구">서구</option>
-								<option value="광산구">광산구</option>
-						</select></td>
-					</tr>
-
-					<tr height="7">
-						<td colspan="3">
-							<hr />
-						</td>
-					</tr>
-
-
-					<tr height="25">
-						<td class="wid3"><img src="./images/check2.png" width="25px"
-							; height="25px";></td>
-						<td class="wid4">담당자 사원번호</td>
-						<td><input type="text" name="emp_id"
-							style="margin-left: -15%;" /></td>
-					</tr>
-
-					<tr height="7">
-						<td colspan="3">
-							<hr />
-						</td>
-					</tr>
-
-
-					<tr height="25">
-						<td class="wid3"><img src="./images/check2.png" width="25px"
-							; height="25px";></td>
-						<td class="wid4">설치 일자</td>
-						<td><input type="text" name="pole_date"
-							style="margin-left: -15%; width: 222px;" /></td>
-					</tr>
-					<tr height="7">
-						<td colspan="3">
-							<hr />
-
-						</td>
-					</tr>
-
-					<tr height="25">
-						<td class="wid3"><img src="./images/check2.png" width="25px"
-							; height="25px";></td>
-						<td colspan="2" style="text-align: center;"><input
-							type="checkbox" class="input_focus" name="transformer_yn"
-							value="Y" style="margin-left: 4%; width: 20px;">변압기 <input
-							type="hidden" name="transformer_yn" value='N'> <input
-							type="checkbox" class="input_focus" name="pole_com" value="Y"
-							style="margin-left: 4%; width: 20px;">통신선 <input
-							type="hidden" name="pole_com" value='N'> <input
-							type="checkbox" class="input_focus" name="pole_high" value="Y"
-							style="margin-left: 4%; width: 20px;">고압선 <input
-							type="hidden" name="pole_high" value='N'> <input
-							type="checkbox" class="input_focus" name="pole_down" value="Y"
-							style="margin-left: 4%; width: 20px;">저압선 <input
-							type="hidden" name="pole_down" value='N'></td>
-					<tr height="7">
-						<td colspan="3">
-							<hr />
-						</td>
-					</tr>
-
-					<tr height="70">
-						<td colspan="3"><input type="button" name="rol" value="취소하기"
-							id="uncheck2" class="rol2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="submit" value="등록하기" class="suc2" id="check2">
-						</td>
-					</tr>
-				</table>
-
-			</form>
-
-			<div class="modal_layer"></div>
-		</div>
-	</center>
-	<!-- --------------------------------------------- 전주 등록 모달 공간 ------------------------------------------ -->
-
 	<!-- 사용자등록, 전주등록 modal include -->
 	<%@ include file="/modal_assignEmp.jsp"%>
 	<%@ include file="/modal_assignPole.jsp"%>
-	<!-- 필터  -->
+
 	<!-- 검색창 필터링  -->
 	<div id="searchBar">
 		<div id="field_area">
@@ -474,7 +146,6 @@
 						<option value="">선택</option>
 						<option value="Y">Y</option>
 						<option value="N">N</option>
-
 					</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					
 					 <label> 통신선</label> <select name="pole_com">
@@ -654,6 +325,5 @@
     </script>
     <!-- modal.js -->
 	<script src="js/modal.js"></script>
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-IoT-2/pole_web.git
 </body>
 </html>
