@@ -28,34 +28,26 @@
 </head>
 <style>
 #Toggle {
-
-width : 400px;
-height : 100%;
-float : right;
-z-index : 1;
+	width: 400px;
+	height: 100%;
+	float: right;
+	z-index: 1;
 }
-
-#searchtext{
-height : 50px;
-width : 60px;
-}ss
 </style>
 <body>
 
 	<%
-	request.setCharacterEncoding("utf-8");
-	poleVO pvo = (poleVO)session.getAttribute("pole");
-	
-	poleDAO pdao = new poleDAO();	
+		request.setCharacterEncoding("utf-8");
+	poleVO pvo = (poleVO) session.getAttribute("pole");
 
-	
+	poleDAO pdao = new poleDAO();
+
 	ArrayList<poleVO> arrpVO = pdao.pole_selectAll();
-	
+
 	tiltDAO tdao = new tiltDAO();
 	impactDAO idao = new impactDAO();
 	cameraDAO cdao = new cameraDAO();
-	
-	
+
 	String pole_code = request.getParameter("pole_code");
 	String pole_height = request.getParameter("pole_height");
 	String pole_date = request.getParameter("pole_date");
@@ -65,36 +57,38 @@ width : 60px;
 	String pole_high = request.getParameter("pole_high");
 	String pole_down = request.getParameter("pole_down");
 	String pole_com = request.getParameter("pole_com");
-	
+
 	String mac_code = request.getParameter("mac_code");
-	ArrayList<poleVO> filter = pdao.filter(pole_height,pole_date,emp_id,transformer_yn,pole_office);
+	ArrayList<poleVO> filter = pdao.filter(pole_height, pole_date, emp_id, transformer_yn, pole_office);
 	/* String impact_date = request.getParameter("impact_date");
 	String camera_date = request.getParameter("camera_date");
 	String tilt_value = request.getParameter("tilt_value");
 	Double tilt_value2 = Double.parseDouble(tilt_value);
-	
+
 	ArrayList<tiltVO> tvo = tdao.tiltvalue(tilt_value2, mac_code);
 	ArrayList<impactVO> ivo = idao.impactvalue(impact_date, mac_code);
 	ArrayList<cameraVO> cvo = cdao.cameravalue(camera_date, mac_code);
 	 */
-%>
+	%>
 
 	<div id="nav">
 		<nav>
 			<!-- if login : LoginMain, else : Main -->
-			<button><a href="Main.jsp" style="text-decoration:none">HOME</a></button>
+			<button>
+				<a href="Main.jsp" style="text-decoration: none">HOME</a>
+			</button>
 			<button id="modal_pole">전주 등록</button>
 			<button id="modal_emp">사용자 등록</button>
-			
+
 			<!-- href="assignEmp.jsp" -->
-			<a href="LogoutService">로그아웃</a> 
-			<a href="javascript:;" id="togglebtn"><img src="./images/bell.png" class="img" width="30px" height="30px"
-				style="margin-top: 1%;"></a>
+			<a href="LogoutService">로그아웃</a> <a href="javascript:;"
+				id="togglebtn"><img src="./images/bell.png" class="img"
+				width="30px" height="30px" style="margin-top: 1%;"></a>
 		</nav>
-			<div id="Toggle" style="display:none; border:1px solid black;">
+		<div id="Toggle" style="display: none; border: 1px solid black;">
 
 
-			</div>
+		</div>
 	</div>
 
 
@@ -189,7 +183,7 @@ width : 60px;
 						<td><input type="tel" name="emp_phone"
 							style="margin-left: -20%; width: 250px;" /></td>
 
-					</tr>		
+					</tr>
 					<tr height="7">
 						<td colspan="3">
 							<hr />
@@ -199,13 +193,14 @@ width : 60px;
 						<td class="wid1"><img src="./images/check2.png" width="25px"
 							; height="25px";></td>
 						<td class="wid2">사업소 명</td>
-						<td><select name = "emp_office" style="width: 250px; margin-left : -120px;">
-						<option >선택하세요</option>
-						<option value="북구">북구</option>
-						<option value="남구">남구</option>
-						<option value="동구">동구</option>
-						<option value="서구">서구</option>
-						<option value="광산구" >광산구</option>
+						<td><select name="emp_office"
+							style="width: 250px; margin-left: -120px;">
+								<option>선택하세요</option>
+								<option value="북구">북구</option>
+								<option value="남구">남구</option>
+								<option value="동구">동구</option>
+								<option value="서구">서구</option>
+								<option value="광산구">광산구</option>
 						</select></td>
 					</tr>
 					<tr height="7">
@@ -245,7 +240,7 @@ width : 60px;
 	<center>
 		<div id="modal2">
 			<form action="assignpole" method="post" class="pole_form">
-				<table width="700" height="800" class="pole_tb_body" cellpadding="0"
+				<table width="600" height="800" class="pole_tb_body" cellpadding="0"
 					style="border-collapse: collapse;">
 					<tr height="100px">
 
@@ -309,13 +304,14 @@ width : 60px;
 						<td class="wid3"><img src="./images/check2.png" width="25px"
 							; height="25px";></td>
 						<td class="wid4">담당 사업소</td>
-						<td><select name = "pole_office" style="width: 225px; margin-left : -70px;">
-						<option >선택하세요</option>
-						<option value="북구">북구</option>
-						<option value="남구">남구</option>
-						<option value="동구">동구</option>
-						<option value="서구">서구</option>
-						<option value="광산구" >광산구</option>
+						<td><select name="pole_office"
+							style="width: 225px; margin-left: -70px;">
+								<option>선택하세요</option>
+								<option value="북구">북구</option>
+								<option value="남구">남구</option>
+								<option value="동구">동구</option>
+								<option value="서구">서구</option>
+								<option value="광산구">광산구</option>
 						</select></td>
 					</tr>
 
@@ -351,7 +347,7 @@ width : 60px;
 					<tr height="7">
 						<td colspan="3">
 							<hr />
-							
+
 						</td>
 					</tr>
 
@@ -398,56 +394,43 @@ width : 60px;
 		<div id="field_area">
 			<form>
 				<fieldset>
-					<h2>광주광역시</h2>
+					<h2 style="text-align: center;">광주광역시</h2>
 					<label>담당 사업소</label> <select name="pole_office">
 						<option value="">선택</option>
 						<option value="동구">동구</option>
 						<option value="서구">서구</option>
 						<option value="남구">남구</option>
 						<option value="북구">북구</option>
-						<option value="광산구">광산구</option>	
-					</select>
-					
-						<label>관리자</label>
-						<input type="text" name="emp_id" style="width : 100px ; height : 50px;">
+						<option value="광산구">광산구</option>
+					</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label>관리자</label>
+					<input type="text" name="emp_id"
+						style="width: 100px; height: 40px; margin-right: 4%; font-size: 15px;">&nbsp;&nbsp;&nbsp;
 
-						<label>설치 일자</label> 
-						<input type="text" name="pole_date" id="searchtext">
-					
-						<label>높이</label>
-						<input type="text" name="pole_height" id="searchtext">
-						
-				
-						<br>
-						<label> 변압기 유무</label> 
-						<select name="transformer_yn">
+
+					<label>설치 일자</label> <input type="text" name="pole_date"
+						id="searchtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+					<label>높이</label> <input type="text" name="pole_height"
+						id="searchtext"> <br> <label> 변압기 유무</label> <select
+						name="transformer_yn">
 						<option value="">선택</option>
 						<option value="Y">Y</option>
 						<option value="N">N</option>
-						</select>
-						
-						<label> 고압선 유무</label> 
-						<select name="pole_high">
+					</select> <label> 고압선 유무</label> <select name="pole_high">
 						<option value="">선택</option>
 						<option value="Y">Y</option>
 						<option value="N">N</option>
-						</select>
-						
-						<label> 저압선 유무</label> 
-						<select name="pole_down">
+					</select> <label> 저압선 유무</label> <select name="pole_down">
 						<option value="">선택</option>
 						<option value="Y">Y</option>
 						<option value="N">N</option>
-						</select>
-						
-						<label> 통신선 유무</label> 
-						<select name="pole_com">
+					</select> <label> 통신선 유무</label> <select name="pole_com">
 						<option value="">선택</option>
 						<option value="Y">Y</option>
 						<option value="N">N</option>
-						</select>
-						<input type="submit" name="filter" value="검색">
-				
+					</select>&nbsp;&nbsp;&nbsp; <input type="submit" name="filter" value="검색"
+						class="filter_search" style="float: right; background-color: white; border: 1px solid #ccc;">
+
 				</fieldset>
 			</form>
 		</div>
@@ -458,7 +441,9 @@ width : 60px;
 	</div>
 
 	<!-- 검색 전 pole_info 전체결과 -->
-	<% if(pole_height==null) {%>
+	<%
+		if (pole_height == null) {
+	%>
 	<div id="wrapper">
 		<div id="img">
 			<img src="./images/search.png" width="40px" height="40px">
@@ -481,32 +466,41 @@ width : 60px;
 					<th>고압선</th>
 					<th>저압선</th>
 					<th>통신선</th>
-					
+
 				</tr>
-				<%for(int i = 0; i<arrpVO.size();i++){ %>
+				<%
+					for (int i = 0; i < arrpVO.size(); i++) {
+				%>
 				<tr>
-					<td><a href="managePole.jsp?pole_code=<%= arrpVO.get(i).getPole_code()%>"><%=arrpVO.get(i).getPole_code() %></a></td>
-					<td><%=arrpVO.get(i).getEmp_id() %></td>
-					<td><%=arrpVO.get(i).getPole_office() %></td>
-					<td><%=arrpVO.get(i).getPole_date() %></td>
-					<td><%=arrpVO.get(i).getPole_height() %></td>
-					<td><%=arrpVO.get(i).getTransformer_yn() %></td>
-					<td><%=arrpVO.get(i).getPole_high() %></td>
-					<td><%=arrpVO.get(i).getPole_down() %></td>
-					<td><%=arrpVO.get(i).getPole_com() %></td>
+					<td><a
+						href="managePole.jsp?pole_code=<%=arrpVO.get(i).getPole_code()%>"><%=arrpVO.get(i).getPole_code()%></a></td>
+					<td><%=arrpVO.get(i).getEmp_id()%></td>
+					<td><%=arrpVO.get(i).getPole_office()%></td>
+					<td><%=arrpVO.get(i).getPole_date()%></td>
+					<td><%=arrpVO.get(i).getPole_height()%></td>
+					<td><%=arrpVO.get(i).getTransformer_yn()%></td>
+					<td><%=arrpVO.get(i).getPole_high()%></td>
+					<td><%=arrpVO.get(i).getPole_down()%></td>
+					<td><%=arrpVO.get(i).getPole_com()%></td>
 				</tr>
-				<%} %>
+				<%
+					}
+				%>
 			</table>
 		</div>
-		
+
 	</div>
-	 <% } else {%> <!-- 검색 후 전주정보 -->
-	
+	<%
+		} else {
+	%>
+	<!-- 검색 후 전주정보 -->
+
 	<div id="min_wrapper">
-	
+
 
 		<div id="img">
-			<img src="./images/search.png" width="40px" height="40px" id="searchimg">
+			<img src="./images/search.png" width="40px" height="40px"
+				id="searchimg">
 		</div>
 		<div>
 			<input onkeyup="filter()" type="text" id="value"
@@ -528,24 +522,31 @@ width : 60px;
 					<th>저압선</th>
 					<th>통신선</th>
 				</tr>
-				<%for(int i = 0; i<filter.size(); i++){ %>
+				<%
+					for (int i = 0; i < filter.size(); i++) {
+				%>
 				<tr>
-					<td><a href="managePole.jsp?pole_code=<%=filter.get(i).getPole_code()%>"><%=filter.get(i).getPole_code() %></a></a></td>
-					<td><%=filter.get(i).getEmp_id() %></td>
-					<td><%=filter.get(i).getPole_office() %></td>
-					<td><%=filter.get(i).getPole_date() %></td>
-					<td><%=filter.get(i).getPole_height() %></td>
-					<td><%=filter.get(i).getTransformer_yn() %></td>
-					<td><%=arrpVO.get(i).getPole_high() %></td>
-					<td><%=arrpVO.get(i).getPole_down() %></td>
-					<td><%=arrpVO.get(i).getPole_com() %></td>
+					<td><a
+						href="managePole.jsp?pole_code=<%=filter.get(i).getPole_code()%>"><%=filter.get(i).getPole_code()%></a></a></td>
+					<td><%=filter.get(i).getEmp_id()%></td>
+					<td><%=filter.get(i).getPole_office()%></td>
+					<td><%=filter.get(i).getPole_date()%></td>
+					<td><%=filter.get(i).getPole_height()%></td>
+					<td><%=filter.get(i).getTransformer_yn()%></td>
+					<td><%=arrpVO.get(i).getPole_high()%></td>
+					<td><%=arrpVO.get(i).getPole_down()%></td>
+					<td><%=arrpVO.get(i).getPole_com()%></td>
 				</tr>
-				<%} %>
+				<%
+					}
+				%>
 			</table>
 		</div>
 
 	</div>
-	<% } %>
+	<%
+		}
+	%>
 
 	<!-- footer -->
 	<div id="footer">
@@ -566,28 +567,28 @@ width : 60px;
 
 	<!-- 사용자 등록 모달 -->
 	<script>
-        $("#modal_emp").click(function () {
-            $("#modal").fadeIn();
-        });
-        $("#uncheck").click(function () {
-            $("#modal").fadeOut();
-        });
-    </script>
+		$("#modal_emp").click(function() {
+			$("#modal").fadeIn();
+		});
+		$("#uncheck").click(function() {
+			$("#modal").fadeOut();
+		});
+	</script>
 	<script>
-        // 전주 등록 모달
-        $("#modal_pole").click(function () {
-            $("#modal2").fadeIn();
-        });
-        $("#uncheck2").click(function () {
-            $("#modal2").fadeOut();
-        });
-    </script>
-    <script>
-    $(function (){
-    	$("#togglebtn").click(function(){
-    	$("#Toggle").toggle();	
-    	});
-    });
-    </script>
+		// 전주 등록 모달
+		$("#modal_pole").click(function() {
+			$("#modal2").fadeIn();
+		});
+		$("#uncheck2").click(function() {
+			$("#modal2").fadeOut();
+		});
+	</script>
+	<script>
+		$(function() {
+			$("#togglebtn").click(function() {
+				$("#Toggle").toggle();
+			});
+		});
+	</script>
 </body>
 </html>

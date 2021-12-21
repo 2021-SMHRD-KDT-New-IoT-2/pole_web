@@ -12,11 +12,7 @@ body {
    
    margin-top:50%;
    }
-   
-   #empas{
-   margin-bottom : 30px;
-   }
-   
+
 
 button{
    cursor:pointer
@@ -85,15 +81,22 @@ footer {
 }
 
 
-input, select {
+select {
    display: inline-block;
-   font-size: 20px;
-   height: 50px;
-   margin: 20px 0 10px 0px;
+	font-size: 15px;
+   width: 100px;
+   height: 40px;
+   margin: 20px 4% 10px 0px;
    color: #444444;
    border: 1px solid #000000;
    border-radius: 3px;
    outline: 0;
+}
+
+select > input{
+	font-size: 15px;
+    width: 100px;
+    height: 40px;
 }
 
 #wrapper {
@@ -125,9 +128,7 @@ input, select {
    width: 100%;
    background-color: #ffffff;
    border-collapse: collapse;
-   text-align: left;
    line-height: 1.5;
-   border: 1px solid rgb(122, 122, 122);
    }
    
   #poletable th {
@@ -149,7 +150,7 @@ input, select {
 
 .search_container{
     width: 80%;
-    /* border : 1px solid black; */
+    
     margin: 2% auto;
     background-color : #FFFFFF;
 
@@ -192,6 +193,22 @@ input, select {
    margin-right: 8px;
 }
 
+#searchtext{
+height : 40px;
+width : 100px;
+font-size: 15px;
+margin-right:4%;
+}
+
+fieldset > .filter_search{
+	margin-right : 6%;
+	margin-top : 1%;
+	padding : 10px;
+	font-size : 15px;
+	width : 80px;
+	height : 40px;
+
+	}
 
 /* 검색창 안에 돋보기 사진 위치 */
 #img {
@@ -200,11 +217,22 @@ input, select {
     margin-bottom: -5%;
 }
 
+#img > img {
+margin-top: 6px;
+    margin-left: 5%;
+}
+
+tbody{
+	border-radius: 10px;
+}
 .filter {
    width: 20%;
+   font-size : 20px;
     text-align: center;
     border: 1px solid #ccc;
-    float: left;
+    height : 50px;
+    float : left;
+    border-radius: 10px;
     margin: 0 auto 1% 40%;
 }
 
@@ -329,7 +357,8 @@ nav>a, button{
 }
 
 fieldset {
-   height: 300px;
+	text-align:left;
+   height: 270px;
    border-radius: 10px;
    border: 1px solid #ccc;
 }
@@ -346,7 +375,7 @@ fieldset {
    border: 1px solid #ccc;
    float: left;
    width: 28.4%;
-   height: 300px;
+   height: 270px;
 }
 #alarm > h3, div{
    text-align:center;
@@ -363,9 +392,11 @@ fieldset {
 }
 
 .emp_form {
-   position: relative;
+	margin-left: 35%;
+   position: absolute;
    margin: 0 auto;
    width: 900px;
+   height: 700px;
    background-color: white;
    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 }
@@ -373,19 +404,13 @@ fieldset {
 table {
    margin: 0 auto;
    width: 800px;
+   height : 600px;
    border-color: hsl(190, 3%, 40%);
 }
 
 .tb_body {
    margin: auto;
    border-bottom: none;
-}
-
-tr, td, th, input {
-   position: relative;
-   text-align: center;
-   font-size: 20px;
-   color: hsl(190, 3%, 40%);;
 }
 
 .wid1 {
@@ -423,7 +448,7 @@ tr, td, th, input {
 /*--------------------------------------------- 사용자 모달창 소스------------------------------------------ */
 #modal {
    display: none;
-   position: relative;
+position: absolute;
    width: 70%;
    height: 70%;
    z-index: 1;
@@ -461,7 +486,7 @@ tr, td, th, input {
 /*--------------------------------------------- 전주등록 모달창 소스------------------------------------------ */
 #modal2 {
    display: none;
-   position: relative;
+   position: absolute;
    width: 70%;
    height: 70%;
    z-index: 1;
@@ -501,16 +526,27 @@ tr, td, th, input {
    margin-bottom: 30px;
 }
 
+#empas{
+	margin-bottom : 30px;
+	font-size: 25px;
+}
+
+#empas > img{
+	margin-top: 5%;
+}
+
 .pole_form {
-   position: relative;
+   position: absolute;
    margin: 0 auto;
-   width: 900px;
+   width: 700px;
+   margin-left: 35%;
    background-color: white;
    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 }
 
 .pole_form>table {
    width: 750px;
+   border-radius: 10px;
 }
 
 .pole_tb_body {
@@ -518,7 +554,7 @@ tr, td, th, input {
    border-bottom: none;
 }
 
-.pole_tb_body>tr, td, th, input {
+.pole_tb_body>tr, td, th{
    position: relative;
    text-align: center;
    font-size: 20px;
