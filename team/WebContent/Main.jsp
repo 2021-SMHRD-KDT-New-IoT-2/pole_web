@@ -25,10 +25,6 @@
 <link rel="stylesheet" href="css/Maincss.css">
 <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 </head>
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
 <style>
 #Toggle {
 	width: 400px;
@@ -65,11 +61,11 @@
 	String mac_code = request.getParameter("mac_code");
 
 	ArrayList<poleVO> filter = pdao.filter(pole_height, pole_date, emp_id, transformer_yn, pole_office);
-	String impact_date = request.getParameter("impact_date");
+/* 	String impact_date = request.getParameter("impact_date");
 	String camera_date = request.getParameter("camera_date");
 	String tilt_value = request.getParameter("tilt_value");
-
-	Double tilt_value2 = Double.parseDouble(tilt_value);
+ */
+	/* Double tilt_value2 = Double.parseDouble(tilt_value); */
 
 /* 	ArrayList<tiltVO> tvo = tdao.tiltvalue(tilt_value2, mac_code); */
 
@@ -86,13 +82,12 @@
 			<button id="modal_emp">사용자 등록</button>
 
 			<!-- href="assignEmp.jsp" -->
-			<a href="LogoutService">로그아웃</a> 
 			<a href="javascript:;" id="togglebtn"><img src="./images/bell.png" class="img" width="30px" height="30px" style="margin-top: 1%;"></a>
 
-			<a href="LogoutService">로그아웃</a> <a href="javascript:;"
-				id="togglebtn"><img src="./images/bell.png" class="img"
-				width="30px" height="30px" style="margin-top: 1%;"></a>
+			<a href="LogoutService">로그아웃</a> <a href="javascript:;" id="togglebtn"><img src="./images/bell.png" class="img" width="30px" height="30px" style="margin-top: 1%;"></a>
 		</nav>
+		
+		
 			<div id="Toggle">
 			
 			
@@ -101,15 +96,12 @@
 			
 				<% if(tilt_value2 != btiltvalue){%>
 					<div id="box1"> 전주번호 <a href=""><%=pvo.getPole_code()%></a> 에서 기울기 변동이 감지 됨
-=======
-<<<<<<< HEAD
-		<div id="Toggle" style="display: none; border: 1px solid black;">
-=======
+					
 			<div id="Toggle" style="display:none; border:1px solid black;">
-<<<<<<< HEAD
+
 				<div id="box1" style="border:1px solid black;">
 				전주번호 <a href="">1234A567</a>에서 기울기 변동 발생
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-IoT-2/pole_web.git
+
 				</div>
 				<% }else{%>
 				<%} %>
@@ -426,27 +418,21 @@
 		</div>
 	</center>
 	<!-- --------------------------------------------- 전주 등록 모달 공간 ------------------------------------------ -->
-=======
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-IoT-2/pole_web.git
 	
 	<!-- 사용자등록, 전주등록 modal include -->
 	<%@ include file="/modal_assignEmp.jsp"%>
 	<%@ include file="/modal_assignPole.jsp"%>
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-IoT-2/pole_web.git
+
 
 	<!-- 검색창 필터링  -->
 	<div id="searchBar">
 		<div id="field_area">
 			<form>
 				<fieldset>
-<<<<<<< HEAD
-					<h2>광주광역시</h2>
-					<label>담당 사업소</label> 
-					<select name="pole_office">
-=======
+
+
 					<h2 style="text-align: center;">광주광역시</h2>
 					<label>담당 사업소</label> <select name="pole_office">
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-IoT-2/pole_web.git
 						<option value="">선택</option>
 						<option value="동구">동구</option>
 						<option value="서구">서구</option>
@@ -457,63 +443,54 @@
 					<input type="text" name="emp_id"
 						style="width: 100px; height: 40px; margin-right: 4%; font-size: 15px;">&nbsp;&nbsp;&nbsp;
 
-<<<<<<< HEAD
 						<label>설치 일자</label> 
 						<input type="text" name="pole_date" id="searchtext">
 					
 						<label>높이</label>
 						<input type="text" name="pole_height" id="searchtext">
 						
-				
 						<br>
+						
+
+					<label>설치 일자</label> 
+					<input type="text" name="pole_date" id="searchtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+					<label>높이</label> 
+					<input type="text" name="pole_height" id="searchtext"> <br> 
+						
 						<label> 변압기 </label> 
 						<select name="transformer_yn">
-=======
-
-					<label>설치 일자</label> <input type="text" name="pole_date"
-						id="searchtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-					<label>높이</label> <input type="text" name="pole_height"
-						id="searchtext"> <br> <label> 변압기 유무</label> <select
-						name="transformer_yn">
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-IoT-2/pole_web.git
 						<option value="">선택</option>
 						<option value="Y">Y</option>
 						<option value="N">N</option>
-<<<<<<< HEAD
 						</select>
 						
+						
+				
 						<label> 고압선 </label> 
 						<select name="pole_high">
-=======
-					</select> <label> 고압선 유무</label> <select name="pole_high">
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-IoT-2/pole_web.git
+
 						<option value="">선택</option>
 						<option value="Y">Y</option>
 						<option value="N">N</option>
-<<<<<<< HEAD
 						</select>
 						
+					
 						<label> 저압선 </label> 
 						<select name="pole_down">
-=======
-					</select> <label> 저압선 유무</label> <select name="pole_down">
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-IoT-2/pole_web.git
 						<option value="">선택</option>
 						<option value="Y">Y</option>
 						<option value="N">N</option>
-<<<<<<< HEAD
+
 						</select>
 						
 						<label> 통신선 </label> 
 						<select name="pole_com">
-=======
-					</select> <label> 통신선 유무</label> <select name="pole_com">
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-IoT-2/pole_web.git
 						<option value="">선택</option>
 						<option value="Y">Y</option>
 						<option value="N">N</option>
-					</select>&nbsp;&nbsp;&nbsp; <input type="submit" name="filter" value="검색"
+					</select>
+					&nbsp;&nbsp;&nbsp; <input type="submit" name="filter" value="검색"
 						class="filter_search" style="float: right; background-color: white; border: 1px solid #ccc;">
 
 				</fieldset>
