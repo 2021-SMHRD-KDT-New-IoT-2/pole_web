@@ -368,8 +368,8 @@ public class poleDAO {
 
 		psmt = conn.prepareStatement(sql);
 
-		psmt.setString(1, pole_comment);
-		psmt.setString(2, pole_memo);
+		psmt.setString(2, pole_comment);
+		psmt.setString(1, pole_memo);
 		psmt.setString(3, pole_code);
 
 		cnt = psmt.executeUpdate();

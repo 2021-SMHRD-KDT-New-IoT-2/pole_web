@@ -71,9 +71,9 @@
 	<%
 	request.setCharacterEncoding("utf-8");
 	String pole_code = request.getParameter("pole_code");
-	String pole_comment = request.getParameter("pole_comment");
 	poleDAO pdao = new poleDAO();
 	poleVO pvo = pdao.pole_selectONE(pole_code);
+	String comment = pvo.getPole_comment();
 	%>
 	<section>
 		<!------------------------------------ 모달 --------------------------------------->
@@ -132,9 +132,6 @@
 		<div class="tb_nav">
 			<input type="button" class="btn1" value="이전"> 
 			<input type="button" id="modal_update" value="수정">
-			
-		<center>
-
 		</div>
 	</section>
 
@@ -143,31 +140,31 @@
 		<p style="font-size: 20px; padding: 20px">
 			<b>&nbsp;- 특이사항 기록</b>
 		</p>
-
-		<form action="pole_Memo" method="post">
+		
 			<div class="text_area">
-				<textarea name="pole_memo"></textarea>
+				<%=comment.replace("-","<br>")%>
+				<% %>
 			</div>
 			<div class="text_save">
-				<input type="hidden" name="pole_code" value="<%=pole_code%>">
-				<input type="hidden" name="pole_comment"
-					value="<%=pvo.getPole_comment()%>">
 				<button type="button" id="Memo_modal_open">기록</button>
 			</div>
 			
 			<!-- ----------------------------메모 모달--------------------------------- -->
 			<div id="Memo_modal">
-				<div class="Memo_area"><input type="text" class = "Memo_area"></div>
-				<div class="Memo_btn">
-					<input type="button" name="rol" value="취소" id="uncheck2"
-						class="rol"> <input type="submit" name="save2" value="저장"
-						class="suc" id="check2">
-				</div>
+				<form action="pole_Memo" method="post">
+					<div class="Memo_area">
+						<input type="text" name="pole_memo" class = "Memo_area"></div>
+						<input type="hidden" name="pole_code" value="<%=pole_code%>">
+						<input type="hidden" name="pole_comment" value="<%=pvo.getPole_comment()%>">
+					<div class="Memo_btn">
+						<input type="button" name="rol" value="취소" id="uncheck2" class="rol">
+						<input type="submit" name="save2" value="저장" class="suc" id="check2">
+					</div>
+				</form>
 				<div class="modal_layer"></div>
 
 			</div>
 			<!-- ----------------------------메모 모달--------------------------------- -->
-		</form>
 
 	</aside>
 
@@ -259,8 +256,7 @@
 		}
 
 	</script>
-	<!-- 기울기 변화 그래프 소스 ----------------------------------------------------------------------- -->
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-IoT-2/pole_web.git
+	<!-- 기울기 변화 그래프 소스 ------------------------------------------------------------------------->
 </body>
 </html>
 
