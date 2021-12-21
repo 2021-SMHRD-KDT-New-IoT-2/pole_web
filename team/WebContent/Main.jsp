@@ -62,7 +62,7 @@
 
 	ArrayList<poleVO> filter = pdao.filter(pole_height, pole_date, emp_id, transformer_yn, pole_office);
 
-%>
+	%>
 	<!-- 네비게이션  -->
 	<div id="nav">
 		<nav>
@@ -78,8 +78,9 @@
 			<a href="LogoutService">로그아웃</a> 
 			<a href="javascript:;" id="togglebtn"><img src="./images/bell.png" class="img" width="30px" height="30px" style="margin-top: 1%;"></a>
 		</nav>
+		
+		
 			<div id="Toggle">
-
 	</div>
 	<!-- 네비게이션 끝 -->
 
@@ -94,7 +95,6 @@
 			<h4>POLE MANAGEMENT SYSTEM</h4>
 		</div>
 	</div>
-
 	<!-- 사용자등록, 전주등록 modal include -->
 	<%@ include file="/modal_assignEmp.jsp"%>
 	<%@ include file="/modal_assignPole.jsp"%>
@@ -119,7 +119,6 @@
 				 <label>관리자</label>
 					<input type="text" name="emp_id"
 						style="width: 100px; height: 40px; margin-right: 4%; font-size: 15px;">&nbsp;&nbsp;&nbsp;
-
 					<label>설치 일자</label> <input type="text" name="pole_date"
 						id="searchtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -130,9 +129,7 @@
 						<option value="">선택</option>
 						<option value="Y">Y</option>
 						<option value="N">N</option>
-					</select> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					
-						
+					</select> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;				
 						<label> 고압선 </label> 
 						<select name="pole_high">
 						<option value="">선택</option>
