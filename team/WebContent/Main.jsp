@@ -26,7 +26,6 @@
 <link rel="stylesheet" href="css/Maincss.css">
 <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 </head>
-<<<<<<< HEAD
 <style>
 #Toggle {
 	width: 400px;
@@ -35,8 +34,6 @@
 	z-index: 1;
 }
 </style>
-=======
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-IoT-2/pole_web.git
 <body>
 
 	<%
@@ -88,11 +85,7 @@
 				id="togglebtn"><img src="./images/bell.png" class="img"
 				width="30px" height="30px" style="margin-top: 1%;"></a>
 		</nav>
-<<<<<<< HEAD
 		<div id="Toggle" style="display: none; border: 1px solid black;">
-=======
-			<div id="Toggle" style="display:none; border:1px solid black;">
-<<<<<<< HEAD
 				<div id="box1" style="border:1px solid black;">
 				전주번호 <a href="">1234A567</a>에서 기울기 변동 발생
 				</div>
@@ -102,16 +95,7 @@
 				<div id="box3" style="border:1px solid black;">
 				전주번호 <a href="">1234A567</a>에서 충격이 감지됨
 				</div>
-=======
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-IoT-2/pole_web.git
-
-
-<<<<<<< HEAD
 		</div>
-=======
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-IoT-2/pole_web.git
-			</div>
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-IoT-2/pole_web.git
 	</div>
 
 
@@ -126,8 +110,7 @@
 			<h4>POLE MANAGEMENT SYSTEM</h4>
 		</div>
 	</div>
-<<<<<<< HEAD
-	<!--수정부분1217 -->
+
 
 	<!----------------------------------------------- 사용자 등록 모달 공간 -------------------------------------------->
 	<center>
@@ -411,12 +394,9 @@
 		</div>
 	</center>
 	<!-- --------------------------------------------- 전주 등록 모달 공간 ------------------------------------------ -->
-=======
-	
+
 	<%@ include file="/modal_assignEmp.jsp"%>
 	<%@ include file="/modal_assignPole.jsp"%>
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-IoT-2/pole_web.git
-
 	<!-- 필터  -->
 	<!-- 수정부분 1217 -->
 	<div id="searchBar">
@@ -424,14 +404,15 @@
 			<form>
 				<fieldset>
 					<h2 style="text-align: center;">광주광역시</h2>
-					<label>담당 사업소</label> <select name="pole_office">
+					<label>&nbsp;&nbsp;&nbsp;담당 사업소</label> <select name="pole_office">
 						<option value="">선택</option>
 						<option value="동구">동구</option>
 						<option value="서구">서구</option>
 						<option value="남구">남구</option>
 						<option value="북구">북구</option>
 						<option value="광산구">광산구</option>
-					</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label>관리자</label>
+					</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				 <label>관리자</label>
 					<input type="text" name="emp_id"
 						style="width: 100px; height: 40px; margin-right: 4%; font-size: 15px;">&nbsp;&nbsp;&nbsp;
 
@@ -440,24 +421,33 @@
 						id="searchtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 					<label>높이</label> <input type="text" name="pole_height"
-						id="searchtext"> <br> <label> 변압기 유무</label> <select
-						name="transformer_yn">
+						id="searchtext"> <br>
+						
+						<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;변압기</label> <select name="transformer_yn">
 						<option value="">선택</option>
 						<option value="Y">Y</option>
 						<option value="N">N</option>
-					</select> <label> 고압선 유무</label> <select name="pole_high">
+					</select> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					
+					<label> 고압선</label> <select name="pole_high">
 						<option value="">선택</option>
 						<option value="Y">Y</option>
 						<option value="N">N</option>
-					</select> <label> 저압선 유무</label> <select name="pole_down">
+					</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					
+					 <label> 저압선</label> <select name="pole_down">
 						<option value="">선택</option>
 						<option value="Y">Y</option>
 						<option value="N">N</option>
-					</select> <label> 통신선 유무</label> <select name="pole_com">
+					</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					
+					 <label> 통신선</label> <select name="pole_com">
 						<option value="">선택</option>
 						<option value="Y">Y</option>
 						<option value="N">N</option>
-					</select>&nbsp;&nbsp;&nbsp; <input type="submit" name="filter" value="검색"
+					</select>&nbsp;&nbsp;&nbsp; 
+					
+					<input type="submit" name="filter" value="검색"
 						class="filter_search" style="float: right; background-color: white; border: 1px solid #ccc;">
 
 				</fieldset>
