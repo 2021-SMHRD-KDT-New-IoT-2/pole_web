@@ -71,7 +71,6 @@ public class cameraDAO {
 			String getMac_code = rs.getString("mac_code");
 			String getCamera_date = rs.getString("camera_date");
 			
-			
 			cvo = new cameraVO(getMac_code, getCamera_date);
 			
 			al.add(cvo);

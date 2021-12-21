@@ -14,8 +14,7 @@
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.DriverManager"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!DOCTYPE html>
 <html>
@@ -26,6 +25,7 @@
 <link rel="stylesheet" href="css/Maincss.css">
 <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 </head>
+
 <body>
 
 	<%
@@ -34,6 +34,7 @@
 	
 	poleDAO pdao = new poleDAO();	
 
+	
 	
 	ArrayList<poleVO> arrpVO = pdao.pole_selectAll();
 	
@@ -54,17 +55,18 @@
 	
 	String mac_code = request.getParameter("mac_code");
 	ArrayList<poleVO> filter = pdao.filter(pole_height,pole_date,emp_id,transformer_yn,pole_office);
+	
 	/* String impact_date = request.getParameter("impact_date");
 	String camera_date = request.getParameter("camera_date");
 	String tilt_value = request.getParameter("tilt_value");
-	Double tilt_value2 = Double.parseDouble(tilt_value);
+	double tilt_value2 = Double.parseDouble(tilt_value); */
 	
-	ArrayList<tiltVO> tvo = tdao.tiltvalue(tilt_value2, mac_code);
+	/* ArrayList<tiltVO> tvo = tdao.tiltvalue(tilt_value, mac_code);
 	ArrayList<impactVO> ivo = idao.impactvalue(impact_date, mac_code);
-	ArrayList<cameraVO> cvo = cdao.cameravalue(camera_date, mac_code);
-	 */
+	ArrayList<cameraVO> cvo = cdao.cameravalue(camera_date, mac_code); */
 %>
-
+	
+	<!-- 네비게이션  -->
 	<div id="nav">
 		<nav>
 			<!-- if login : LoginMain, else : Main -->
@@ -74,29 +76,32 @@
 			
 			<!-- href="assignEmp.jsp" -->
 			<a href="LogoutService">로그아웃</a> 
-			<a href="javascript:;" id="togglebtn"><img src="./images/bell.png" class="img" width="30px" height="30px"
-				style="margin-top: 1%;"></a>
+			<a href="javascript:;" id="togglebtn"><img src="./images/bell.png" class="img" width="30px" height="30px" style="margin-top: 1%;"></a>
 		</nav>
-			<div id="Toggle" style="display:none; border:1px solid black;">
-<<<<<<< HEAD
-				<div id="box1" style="border:1px solid black;">
-				전주번호 <a href="">1234A567</a>에서 기울기 변동 발생
+			<div id="Toggle">
+			
+			
+			<%-- <%double btiltvalue = 80.5; %>
+			<%while(true){%>
+			
+				<% if(tilt_value2 != btiltvalue){%>
+					<div id="box1"> 전주번호 <a href=""><%=pvo.getPole_code()%></a> 에서 기울기 변동이 감지 됨
 				</div>
-				<div id="box2" style="border:1px solid black;">
-				전주번호 <a href="">1234A567</a>에서 모션 감지 이상 발생
+				<% }else{%>
+				<%} %>
+			<% } %> --%>
+				
+				<div id="box2">
+				전주번호 <a href="">1234A567</a>에서 모션 이상 감지 됨
 				</div>
-				<div id="box3" style="border:1px solid black;">
-				전주번호 <a href="">1234A567</a>에서 충격이 감지됨
+				<div id="box3">
+				전주번호 <a href="">1234A567</a> 에서 충격이 감지 됨
 				</div>
-=======
-
-
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-IoT-2/pole_web.git
 			</div>
 	</div>
+	<!-- 네비게이션 끝 -->
 
-
-	<!--수정부분1217 -->
+	<!-- 헤더 -->
 	<div id="header">
 		<div class="header_img">
 			<img src="./images/upoplogo.PNG" width="100px" height="100px"
@@ -107,18 +112,20 @@
 			<h4>POLE MANAGEMENT SYSTEM</h4>
 		</div>
 	</div>
+	<!-- 헤더 끝 -->
 	
+	<!-- 사용자등록, 전주등록 modal include -->
 	<%@ include file="/modal_assignEmp.jsp"%>
 	<%@ include file="/modal_assignPole.jsp"%>
 
-	<!-- 필터  -->
-	<!-- 수정부분 1217 -->
+	<!-- 검색창 필터링  -->
 	<div id="searchBar">
 		<div id="field_area">
 			<form>
 				<fieldset>
 					<h2>광주광역시</h2>
-					<label>담당 사업소</label> <select name="pole_office">
+					<label>담당 사업소</label> 
+					<select name="pole_office">
 						<option value="">선택</option>
 						<option value="동구">동구</option>
 						<option value="서구">서구</option>
@@ -138,28 +145,28 @@
 						
 				
 						<br>
-						<label> 변압기 유무</label> 
+						<label> 변압기 </label> 
 						<select name="transformer_yn">
 						<option value="">선택</option>
 						<option value="Y">Y</option>
 						<option value="N">N</option>
 						</select>
 						
-						<label> 고압선 유무</label> 
+						<label> 고압선 </label> 
 						<select name="pole_high">
 						<option value="">선택</option>
 						<option value="Y">Y</option>
 						<option value="N">N</option>
 						</select>
 						
-						<label> 저압선 유무</label> 
+						<label> 저압선 </label> 
 						<select name="pole_down">
 						<option value="">선택</option>
 						<option value="Y">Y</option>
 						<option value="N">N</option>
 						</select>
 						
-						<label> 통신선 유무</label> 
+						<label> 통신선 </label> 
 						<select name="pole_com">
 						<option value="">선택</option>
 						<option value="Y">Y</option>
@@ -170,12 +177,18 @@
 				</fieldset>
 			</form>
 		</div>
+		
+		
+		<!-- 알림메세지  -->
 		<div id="alarm">
 			<h3>알림메세지</h3>
 			<div>알림 내용</div>
 		</div>
+		
 	</div>
-
+	<!-- 필터 끝  -->
+	
+	
 	<!-- 검색 전 pole_info 전체결과 -->
 	<% if(pole_height==null) {%>
 	<div id="wrapper">
@@ -188,8 +201,7 @@
 		</div>
 
 		<div class="search_container" style="text-align: center;">
-			<table id="poletable"
-				style="text-align: center; margin: auto; border: 1px solid #ccc;">
+			<table id="poletable" style="text-align: center; margin: auto; border: 1px solid #ccc;">
 				<tr>
 					<th>전주번호</th>
 					<th>관리자</th>
@@ -219,7 +231,8 @@
 		</div>
 		
 	</div>
-	 <% } else {%> <!-- 검색 후 전주정보 -->
+	
+	 <% } else {%> <!-- 검색 후 전주정보 표시 -->
 	
 	<div id="min_wrapper">
 	
@@ -279,12 +292,10 @@
 	<!--fonts-->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link
-		href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"
-		rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 	
 	<!-- Scripts -->
-	<!-- 알림창 js -->
+	<!-- 알림창 toggle js -->
     <script>
     $(function (){
     	$("#togglebtn").click(function(){
@@ -292,6 +303,7 @@
     	});
     });
     </script>
+    <!-- modal.js -->
 	<script src="js/modal.js"></script>
 </body>
 </html>
