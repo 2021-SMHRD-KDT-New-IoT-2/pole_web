@@ -78,6 +78,7 @@
 				style="margin-top: 1%;"></a>
 		</nav>
 			<div id="Toggle" style="display:none; border:1px solid black;">
+<<<<<<< HEAD
 				<div id="box1" style="border:1px solid black;">
 				전주번호 <a href="">1234A567</a>에서 기울기 변동 발생
 				</div>
@@ -87,6 +88,10 @@
 				<div id="box3" style="border:1px solid black;">
 				전주번호 <a href="">1234A567</a>에서 충격이 감지됨
 				</div>
+=======
+
+
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-IoT-2/pole_web.git
 			</div>
 	</div>
 
