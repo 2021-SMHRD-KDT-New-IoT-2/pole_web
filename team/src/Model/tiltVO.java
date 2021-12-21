@@ -41,4 +41,12 @@ public class tiltVO {
 	public tiltVO() {
 		
 	}
+
+	public tiltVO(String mac_code, double tilt_value) {
+		super();
+		this.mac_code = mac_code;
+		this.tilt_value = tilt_value;
+	}
+	
+	
 }

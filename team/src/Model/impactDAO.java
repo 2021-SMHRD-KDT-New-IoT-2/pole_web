@@ -48,26 +48,43 @@ public class impactDAO {
 		}
 
 	} 
-	
-	//충격감지 업데이트
-	public int impactupdate(String mac_code, Date impact_date) {
+public ArrayList<impactVO> impactvalue(String impact_date, String mac_code) {
+		
+		impactVO ivo = new impactVO();
+		ArrayList<impactVO> al = new ArrayList<impactVO>();
+		
 		try {
-			connection();
 			
-			String sql = "UPDATE pole_impact_info SET impact_date = ? where mac_code = ?";
+		connection();
+
+		String sql = "Select * from pole_impact_info";
+		
+		psmt = conn.prepareStatement(sql);
+		
+		psmt.setString(1, mac_code);
+		psmt.setString(2, impact_date);
+
+		rs = psmt.executeQuery();
+		
+		while(rs.next()){
 			
-			psmt = conn.prepareStatement(sql);
+			String getMac_code = rs.getString("mac_code");
+			String getImpact_date = rs.getString("impact_date");
 			
-			psmt.setDate(1, impact_date);
-			psmt.setString(2, mac_code);
 			
-			cnt = psmt.executeUpdate();
+			ivo = new impactVO(getMac_code, getImpact_date);
+			
+			al.add(ivo);
+			
+			}
+		
 		} catch (Exception e) {
-			System.out.println("충격감지 업데이트 실패");
+			System.out.println();
 			e.printStackTrace();
-		}finally {
-			close();
+			} finally {
+				close();
 		}
-		return cnt;
+		return al;
 	}
+	
 }
