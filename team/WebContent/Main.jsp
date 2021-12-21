@@ -9,7 +9,7 @@
 <%@page import="Model.tiltVO"%>
 <%@page import="Model.impactVO"%>
 <%@page import="Model.cameraVO"%>
-<%@page import="com.mysql.cj.xdevapi.Result"%>
+<%@page import="com.mysql.cj.xdevapi.Result"%>ㄴ
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.ResultSet"%>
