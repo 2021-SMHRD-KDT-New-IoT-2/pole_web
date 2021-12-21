@@ -256,10 +256,23 @@ textarea {
 		});
 		google.charts.setOnLoadCallback(drawChart);
 
+<<<<<<< HEAD
 		function drawChart() {
 			var data = google.visualization.arrayToDataTable([ [ 'M', '기울기' ],
 					[ '8월', 90 ], [ '9월', 88 ], [ '10월', 85.5 ],
 					[ '11월', 84.5 ], [ '12월', 81.2 ] ]);
+=======
+      
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['M', '기울기']
+          ['8월',  90]
+          ['9월',  88]
+          ['10월',  85.5]
+          ['11월',  84.5]
+          ['12월',  81.2]
+        ]);
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-IoT-2/pole_web.git
 
 			var options = {
 				title : '기울기 변화 그래프',

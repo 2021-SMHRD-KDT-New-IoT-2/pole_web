@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class tiltDAO {
 	Connection conn = null;
@@ -48,27 +49,42 @@ public class tiltDAO {
 		
 	} 
 	
-	// 기울기 업데이트
-	public int tiltupdate(String mac_code, String tilt_value) {
+public ArrayList<tiltVO> tiltvalue(double tilt_value, String mac_code) {
+		
+		tiltVO tvo = new tiltVO();
+		ArrayList<tiltVO> al = new ArrayList<tiltVO>();
+		
 		try {
-			connection();
 			
-			String sql = "UPDATE pole_tilt_info SET tilt_value = ? where mac_code = ?";
+		connection();
+
+		String sql = "Select * from pole_tilt_info";
+		
+		psmt = conn.prepareStatement(sql);
+		
+		psmt.setString(1, mac_code);
+		psmt.setDouble(2, tilt_value);
+
+		rs = psmt.executeQuery();
+		
+		while(rs.next()){
 			
-			psmt = conn.prepareStatement(sql);
+			String getMac_code = rs.getString("mac_code");
+			double getTilt_value = rs.getDouble("tilt_value");
 			
-			psmt.setString(1, tilt_value);
-			psmt.setString(2, mac_code);
 			
-			cnt = psmt.executeUpdate();
+			tvo = new tiltVO(getMac_code, getTilt_value);
+			
+			al.add(tvo);
+			}
+		
 		} catch (Exception e) {
-			System.out.println("기울기 업데이트 실패");
+			System.out.println();
 			e.printStackTrace();
-		}finally {
-			close();
+			} finally {
+				close();
 		}
-		return cnt;
+		return al;
 	}
-	
 }
 

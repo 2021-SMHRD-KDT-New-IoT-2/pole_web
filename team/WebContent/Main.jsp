@@ -56,7 +56,6 @@ width : 60px;
 	cameraDAO cdao = new cameraDAO();
 	
 	
-	
 	String pole_code = request.getParameter("pole_code");
 	String pole_height = request.getParameter("pole_height");
 	String pole_date = request.getParameter("pole_date");
@@ -68,8 +67,14 @@ width : 60px;
 	String pole_com = request.getParameter("pole_com");
 	
 	String mac_code = request.getParameter("mac_code");
+	String impact_date = request.getParameter("impact_date");
+	String camera_date = request.getParameter("camera_date");
 	String tilt_value = request.getParameter("tilt_value");
+	Double tilt_value2 = Double.parseDouble(tilt_value);
 	
+	ArrayList<tiltVO> tvo = tdao.tiltvalue(tilt_value2, mac_code);
+	ArrayList<impactVO> ivo = idao.impactvalue(impact_date, mac_code);
+	ArrayList<cameraVO> cvo = cdao.cameravalue(camera_date, mac_code);
 	ArrayList<poleVO> filter = pdao.filter(pole_height,pole_date,emp_id,transformer_yn,pole_office);
 %>
 
@@ -86,9 +91,21 @@ width : 60px;
 				style="margin-top: 1%;"></a>
 		</nav>
 			<div id="Toggle" style="display:none; border:1px solid black;">
+<<<<<<< HEAD
 				<div id="tiltdb"></div>
 				<div id="impactdb"></div>
 				<div id="cameradb"></div>
+=======
+			<%for(int i = 0 ; i<tvo.size();i++) { %>
+				<div id="tiltdb"><%=tvo.get(i).getMac_code() %></div>
+				<%} %>
+				<%for(int i = 0 ; i<ivo.size();i++) { %>
+				<div id="impactdb"><%=ivo.get(i).getImpact_date() %></div>
+				<%} %>
+				<%for(int i = 0 ; i<cvo.size();i++) { %>
+				<div id="cameradb"><%=cvo.get(i).getCamera_date() %></div>
+				<%} %>
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-IoT-2/pole_web.git
 			</div>
 	</div>
 
