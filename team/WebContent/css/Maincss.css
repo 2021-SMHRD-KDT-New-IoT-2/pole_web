@@ -260,10 +260,6 @@ nav>a, button:active {
    color: #2b2b2b;
 }
 
-nav> a, button:visited {
-   color: #2b2b2b;
-}
-
 ul {
    display: inline-block;
    text-align: center;
@@ -334,10 +330,12 @@ nav>a, button{
 
 fieldset {
    height: 300px;
+   border-radius: 10px;
    border: 1px solid #ccc;
 }
 
 #alarm {
+	border-radius: 10px;
    margin-inline-start: 2px;
    margin-inline-end: 2px;
    padding-block-start: 0.35em;
