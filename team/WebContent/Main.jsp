@@ -152,9 +152,58 @@
 				</form>
 			</div>		
 					
-					<!-- 필터 끝  -->
-			
-					<!-- 알림메세지  -->
+					<label>&nbsp;&nbsp;&nbsp;담당 사업소</label>
+					<select name="pole_office">
+						<option value="">선택</option>
+						<option value="동구">동구</option>
+						<option value="서구">서구</option>
+						<option value="남구">남구</option>
+						<option value="북구">북구</option>
+						<option value="광산구">광산구</option>
+					</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					
+				 <label>관리자</label>
+					<input type="text" name="emp_id"
+						style="width: 100px; height: 40px; margin-right: 4%; font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<label>설치 일자</label> <input type="text" name="pole_date" id="searchtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+					<label>높이</label> <input type="text" name="pole_height"  id="searchtext"> <br>
+						
+						<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;변압기</label>
+						<select name="transformer_yn" id="searchtext"> <br>
+						<option value="">선택</option>
+						<option value="Y">Y</option>
+						<option value="N">N</option>
+					</select> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;				
+						<label> 고압선 </label> 
+						<select name="pole_high">
+						<option value="">선택</option>
+						<option value="Y">Y</option>
+						<option value="N">N</option>
+					</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+					<label> 저압선</label>
+					 <select name="pole_down">
+						<option value="">선택</option>
+						<option value="Y">Y</option>
+						<option value="N">N</option>
+					</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					
+					 <label> 통신선</label> <select name="pole_com">
+						<option value="">선택</option>
+						<option value="Y">Y</option>
+						<option value="N">N</option>
+					</select>&nbsp;&nbsp;
+					<input type="text" name="pole_code" class="filter" placeholder="전주 번호 검색"	>
+					 <input type="submit" name="pole_code" value = "검색" class="filter_search" style="float: right; color: black; background-color: white; border: 1px solid #ccc;">
+
+				</fieldset>
+			</form>
+		</div>
+		
+		
+		<!-- 알림메세지  -->
 		<div id="alarm">
 
 			<button id="btnimpt">충격감지</button>

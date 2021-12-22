@@ -387,8 +387,8 @@ public class poleDAO {
 
 		psmt = conn.prepareStatement(sql);
 
-		psmt.setString(1, pole_comment);
-		psmt.setString(2, pole_memo);
+		psmt.setString(2, pole_comment);
+		psmt.setString(1, pole_memo);
 		psmt.setString(3, pole_code);
 
 		cnt = psmt.executeUpdate();
@@ -402,7 +402,6 @@ public class poleDAO {
 	}
 
 	public ArrayList<tiltVO> tilt_info(String pole_code) {
-		tiltVO vo = null;
 		ArrayList<tiltVO> tal = new ArrayList<tiltVO>();
 		try {
 			connection();
@@ -421,7 +420,7 @@ public class poleDAO {
 				int tilt_value=rs.getInt("tilt_value");
 				String mac_date=rs.getString("mac_date");
 
-				vo= new tiltVO(mac_code,tilt_value,mac_date);
+			tiltVO vo= new tiltVO(mac_code,tilt_value,mac_date);
 				
 			}
 

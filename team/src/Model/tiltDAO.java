@@ -89,7 +89,7 @@ public ArrayList<tiltVO> tiltvalue() {
 		try {
 			connection();
 
-			String sql = "select * from pole_tilt_info where mac_code = ?";
+			String sql = "select * from pole_tilt_info where mac_code = ? order by tilt_value desc";
 			
 			psmt = conn.prepareStatement(sql);
 			
