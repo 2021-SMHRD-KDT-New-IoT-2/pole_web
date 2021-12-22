@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<center>
+	
 		<div id="modal">
 			<form action="assignEmp" method="post" class="emp_form">
 				<table class="tb_body" cellpadding="2"
@@ -123,7 +123,7 @@
 					</tr>
 
 					<tr height="80">
-						<td colspan="3"><input type="button" name="rol" value="취소하기"
+						<td colspan="3"><input type="button" name="" value="취소하기"
 							id="uncheck" class="rol">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
 							type="submit" value="등록하기" class="suc" id="check"></td>
 					</tr>
@@ -133,7 +133,6 @@
 
 			<div class="modal_layer"></div>
 		</div>
-	</center>
 	<!----------------------------------------------- 사용자 등록 모달 공간 -------------------------------------------->
 </body>
 </html>
