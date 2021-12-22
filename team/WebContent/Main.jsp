@@ -52,6 +52,7 @@
 	String tilt_date = request.getParameter("tilt_date");
 	
 	String mac_code = request.getParameter("mac_code");
+	String pole_level = request.getParameter("pole_level");
 
 	ArrayList<poleVO> filter = pdao.filter(pole_height, pole_date, emp_id, transformer_yn, pole_office, pole_high, pole_down, pole_com, pole_code);
 	ArrayList<tiltVO> t_alarm = tdao.tiltvalue();
@@ -207,6 +208,7 @@
 			<table id="poletable"
 				style="text-align: center; margin: auto; border: 1px solid #ccc;">
 				<tr>
+					<th>위험도</th>
 					<th>전주번호</th>
 					<th>관리자</th>
 					<th>담당 사업소</th>
@@ -217,14 +219,19 @@
 					<th>저압선</th>
 					<th>통신선</th>
 					<th>현재 기울기</th>
+					
 
 				</tr>
-				<%
+					<%
 						for (int i = 0; i < arrpVO.size(); i++) {
 					%>
 				<tr>
-					<td><a
-						href="managePole.jsp?pole_code=<%=arrpVO.get(i).getPole_code()%>"><%=arrpVO.get(i).getPole_code()%></a></td>
+					<%if(arrpVO.get(i).getPole_level() == null){ %>
+					<td>　</td>
+					<%}else{ %>
+					<td><%=arrpVO.get(i).getPole_level()%></td>
+					<%} %>
+					<td><a href="managePole.jsp?pole_code=<%=arrpVO.get(i).getPole_code()%>"><%=arrpVO.get(i).getPole_code()%></a></td>
 					<td><%=arrpVO.get(i).getEmp_id()%></td>
 					<td><%=arrpVO.get(i).getPole_office()%></td>
 					<td><%=arrpVO.get(i).getPole_date()%></td>
@@ -254,6 +261,7 @@
 			<table id="poletable"
 				style="text-align: center; margin: auto; border: 2px solid black;">
 				<tr>
+					<th>위험도</th>
 					<th>전주번호</th>
 					<th>관리자</th>
 					<th>담당 사업소</th>
@@ -269,6 +277,7 @@
 						for (int i = 0; i < filter.size(); i++) {
 					%>
 				<tr>
+					<td><%=arrpVO.get(i).getPole_level() %></td>
 					<td><a href="managePole.jsp?pole_code=<%=filter.get(i).getPole_code()%>"><%=filter.get(i).getPole_code()%></a></td>
 					<td><%=filter.get(i).getEmp_id()%></td>
 					<td><%=filter.get(i).getPole_office()%></td>
