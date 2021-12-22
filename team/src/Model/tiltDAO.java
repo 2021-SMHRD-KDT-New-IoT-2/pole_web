@@ -1,7 +1,6 @@
 package Model;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -47,9 +46,32 @@ public class tiltDAO {
 			e2.printStackTrace();
 		}
 		
-	} 
+	}
 	
-public ArrayList<tiltVO> tiltvalue(double tilt_value, String mac_code) {
+	public int insert_tilt(String mac_code) {
+		try {
+			
+			connection();
+			
+			String sql = "insert into pole_tilt_info(mac_code,tilt_value) value (?,90)";
+			
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(1, mac_code);
+			
+			cnt = psmt.executeUpdate();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("등록실패");
+		}finally {
+			close();
+		}
+		
+		return cnt;
+	}
+	
+public ArrayList<tiltVO> tiltvalue() {
 		
 		tiltVO tvo = new tiltVO();
 		ArrayList<tiltVO> al = new ArrayList<tiltVO>();
@@ -58,22 +80,19 @@ public ArrayList<tiltVO> tiltvalue(double tilt_value, String mac_code) {
 			
 		connection();
 
-		String sql = "Select * from pole_tilt_info";
+		String sql = "Select * from pole_tilt_info order by tilt_date desc";
 		
 		psmt = conn.prepareStatement(sql);
-		
-		psmt.setString(1, mac_code);
-		psmt.setDouble(2, tilt_value);
 
 		rs = psmt.executeQuery();
 		
 		while(rs.next()){
 			
 			String getMac_code = rs.getString("mac_code");
-			double getTilt_value = rs.getDouble("tilt_value");
+			String getTilt_date = rs.getString("tilt_date");
+			int getTilt_value = rs.getInt("tilt_value");
 			
-			
-			tvo = new tiltVO(getMac_code, getTilt_value);
+			tvo = new tiltVO(getMac_code,getTilt_date,getTilt_value);
 			
 			al.add(tvo);
 			}
@@ -86,5 +105,41 @@ public ArrayList<tiltVO> tiltvalue(double tilt_value, String mac_code) {
 		}
 		return al;
 	}
+	//그래프
+	public ArrayList<tiltVO> tilt_info(String mac_code) {
+		tiltVO vo = null;
+		ArrayList<tiltVO> tal = new ArrayList<tiltVO>();
+		try {
+			connection();
+
+			String sql = "select * from pole_tilt_info where mac_code = ? order by tilt_value desc";
+			
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(1, mac_code);
+
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+				
+				int tilt_value=rs.getInt("tilt_value");
+				String tilt_date=rs.getString("tilt_date");
+
+				vo= new tiltVO(tilt_value,tilt_date);
+				
+				tal.add(vo);
+			}
+
+		} catch (Exception e) {
+			System.out.println("조회실패");
+			e.printStackTrace();
+
+		} finally {
+			close();
+		}
+		
+		return tal;
+	}
+	
 }
 

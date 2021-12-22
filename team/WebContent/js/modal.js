@@ -13,3 +13,10 @@
         $("#uncheck2").click(function () {
             $("#modal2").fadeOut();
         });
+		
+		$("#modal_update").click(function () {
+            $("#modalupdate").fadeIn();
+        });
+        $("#uncheck").click(function () {
+            $("#modalupdate").fadeOut();
+        });

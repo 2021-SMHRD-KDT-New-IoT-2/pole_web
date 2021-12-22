@@ -48,7 +48,7 @@ public class cameraDAO {
 
 	} 
 	
-	public ArrayList<cameraVO> cameravalue(String camera_date, String mac_code) {
+	public ArrayList<cameraVO> cameravalue() {
 		
 		cameraVO cvo = new cameraVO();
 		ArrayList<cameraVO> al = new ArrayList<cameraVO>();
@@ -57,12 +57,11 @@ public class cameraDAO {
 			
 		connection();
 
-		String sql = "Select * from pole_camera_info";
+		String sql = "Select * from pole_camera_info order by camera_date desc";
 		
 		psmt = conn.prepareStatement(sql);
 		
-		psmt.setString(1, mac_code);
-		psmt.setString(2, camera_date);
+
 
 		rs = psmt.executeQuery();
 		
@@ -70,7 +69,6 @@ public class cameraDAO {
 			
 			String getMac_code = rs.getString("mac_code");
 			String getCamera_date = rs.getString("camera_date");
-			
 			
 			cvo = new cameraVO(getMac_code, getCamera_date);
 			
