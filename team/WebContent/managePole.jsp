@@ -81,6 +81,10 @@
 	String comment = pvo.getPole_comment();
 
 	%>
+
+	
+	
+	
 	<section>
 		<!------------------------------------ 모달 --------------------------------------->
 		<div id="modal">
@@ -105,7 +109,7 @@
 			</p>
 		</div>
 		<div class="tb_body">
-			<form action="Main.jsp" name="pole_tb" class="fom_tb" method="post">
+			<form action="Main.jsp" name="pole_tb" class="form_tb" method="post">
 				<table id="pole_tb">
 					<tr>
 						<th>전주 번호</th>
@@ -177,7 +181,7 @@
 				<input type="hidden" name="pole_comment"
 					value="<%=pvo.getPole_comment()%>">
 				<div class="Memo_btn">
-					<input type="button" name="rol" value="취소" id="uncheck" class="rol">
+					<input type="button" name="rol" value="취소" id="uncheck2" class="rol">
 					<input type="submit" name="save2" value="저장" class="suc"
 						id="check2">
 				</div>
@@ -239,11 +243,13 @@
 		$("#Memo_modal_open").click(function() {
 			$("#Memo_modal").fadeIn();
 		});
-		$("#uncheck").click(function() {
+		$("#uncheck2").click(function() {
 			$("#Memo_modal").fadeOut();
 		});
 		
 		</script>
+		<!-- modal.js -->
+	<script src="js/modal.js"></script>
 
 	<script>
 		

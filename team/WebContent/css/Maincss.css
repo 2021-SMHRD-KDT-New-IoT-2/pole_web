@@ -599,27 +599,28 @@ table>td>input {
 	width: 25%;
 }
 
-.suc2, .rol2 {
-	height: auto;
-	display: inline-block;
-	text-transform: uppercase;
-	margin-bottom: 1.5%;
-	cursor: pointer;
-	background: #002c5f;
-	box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
-	padding: 10px 25px;
-	border: 0px;
-	color: #fff;
-	font-size: 15px;
-	margin-bottom: 4%;
+.suc, .rol {
+   height: auto;
+   display: inline-block;
+   text-transform: uppercase;
+   margin-bottom: 1.5%;
+   cursor: pointer;
+   background: #002c5f; 
+   box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+   padding: 10px 25px;
+   border: 0px;
+   color: #fff;
+   font-size: 15px;
+   margin-bottom: 4%;
+
 }
 
-.suc2:hover {
-	color: #000e1f;
+.suc:hover {
+   color: #000e1f;
 }
 
-.rol2:hover {
-	color: #000e1f;
+.rol:hover {
+   color: #000e1f;
 }
 /*-----------------------------------------�쟾二� �벑濡� �뀒�씠釉�------------------------------------------ */
 input:focus {

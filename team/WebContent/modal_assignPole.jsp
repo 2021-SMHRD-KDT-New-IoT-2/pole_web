@@ -11,7 +11,6 @@
 </style>
 <body>
 	<!----------------------------------------------- 전주 등록 모달 공간 -------------------------------------------->
-	<center>
 		<div id="modal2">
 			<form action="assignpole" method="post" class="pole_form">
 				<table class="pole_tb_body" cellpadding="2"
@@ -148,8 +147,8 @@
 
 					<tr height="70">
 						<td colspan="3"><input type="button" name="rol" value="취소하기"
-							id="uncheck2" class="rol2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="submit" value="등록하기" class="suc2" id="check2">
+							id="uncheck2" class="rol">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="submit" value="등록하기" class="suc" id="check">
 						</td>
 					</tr>
 				</table>
@@ -158,7 +157,6 @@
 
 			<div class="modal_layer"></div>
 		</div>
-	</center>
 	<!-- --------------------------------------------- 전주 등록 모달 공간 ------------------------------------------ -->
 </body>
 </html>
