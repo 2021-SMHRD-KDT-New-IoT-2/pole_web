@@ -70,6 +70,7 @@
 			<button id="modal_emp">사용자 등록</button>
 			<a href="LogoutService">로그아웃</a>
 		</nav>
+	</div>
 		<!-- 네비게이션 끝 -->
 
 		<!-- 헤더 -->
@@ -109,14 +110,15 @@
 							id="searchtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 						<label>높이</label> <input type="text" name="pole_height"
-							id="searchtext"> <br> <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;변압기</label>
+							id="searchtext"> <br> <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;변압기</label>
 						<select name="transformer_yn" id="searchtext">
+						
 							<br>
 							<option value="">선택</option>
 							<option value="Y">Y</option>
 							<option value="N">N</option>
 						</select>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<label> 고압선 </label> <select name="pole_high">
 							<option value="">선택</option>
 							<option value="Y">Y</option>
@@ -126,15 +128,14 @@
 							<option value="">선택</option>
 							<option value="Y">Y</option>
 							<option value="N">N</option>
-						</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> 통신선</label> <select
+						</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> 통신선</label> <select
 							name="pole_com">
 							<option value="">선택</option>
 							<option value="Y">Y</option>
 							<option value="N">N</option>
-						</select>&nbsp;&nbsp;&nbsp; <label> 전주번호 </label> 
-						<input type="text" name="pole_code">
-						<input type="submit" name="filter" value="검색" class="filter_search"
-							style="float: right; background-color: white; border: 1px solid #ccc;">
+						</select>&nbsp;&nbsp;&nbsp;
+						<input type="text" name="pole_code" class="filter" placeholder="전주 번호 검색"   >
+                <input type="submit" name="pole_code" value = "검색" class="filter_search" style="float: right; color: black; background-color: white; border: 1px solid #ccc;">
 					</fieldset>
 				</form>
 			</div>		
