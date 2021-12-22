@@ -1,7 +1,6 @@
 package Model;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -67,9 +66,10 @@ public ArrayList<tiltVO> tiltvalue() {
 		while(rs.next()){
 			
 			String getMac_code = rs.getString("mac_code");
+			String getTilt_date = rs.getString("tilt_date");
 			int getTilt_value = rs.getInt("tilt_value");
 			
-			tvo = new tiltVO(getMac_code,getTilt_value);
+			tvo = new tiltVO(getMac_code,getTilt_date,getTilt_value);
 			
 			al.add(tvo);
 			}
@@ -83,7 +83,7 @@ public ArrayList<tiltVO> tiltvalue() {
 		return al;
 	}
 	//±×·¡ÇÁ
-	public ArrayList<tiltVO> tilt_info(String pole_code) {
+	public ArrayList<tiltVO> tilt_info(String mac_code) {
 		tiltVO vo = null;
 		ArrayList<tiltVO> tal = new ArrayList<tiltVO>();
 		try {
@@ -93,14 +93,14 @@ public ArrayList<tiltVO> tiltvalue() {
 			
 			psmt = conn.prepareStatement(sql);
 			
-			psmt.setString(1, pole_code);
+			psmt.setString(1, mac_code);
 
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {
 				
 				int tilt_value=rs.getInt("tilt_value");
-				Date tilt_date=rs.getDate("tilt_date");
+				String tilt_date=rs.getString("tilt_date");
 
 				vo= new tiltVO(tilt_value,tilt_date);
 				

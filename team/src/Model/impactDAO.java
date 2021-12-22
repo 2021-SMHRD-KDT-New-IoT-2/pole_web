@@ -57,7 +57,7 @@ public ArrayList<impactVO> impactvalue() {
 			
 		connection();
 
-		String sql = "Select * from pole_impact_info";
+		String sql = "Select * from pole_impact_info order by impact_date desc";
 		
 		psmt = conn.prepareStatement(sql);
 		rs = psmt.executeQuery();

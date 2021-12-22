@@ -44,9 +44,7 @@
 			<button id="modal_emp">사용자 등록</button>
 
 			<!-- href="assignEmp.jsp" -->
-			<a href="LogoutService">로그아웃</a> <a href=""><img
-				src="./images/bell.png" class="img" width="30px" height="30px"
-				style="margin-top: 1%;"></a>
+			<a href="LogoutService">로그아웃</a>
 		</nav>
 	</div>
 

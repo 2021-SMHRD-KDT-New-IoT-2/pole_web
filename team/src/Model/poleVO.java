@@ -184,6 +184,21 @@ public class poleVO {
 		this.mac_code = mac_code;
 		this.pole_comment = pole_comment;
 	}
+
+
+	public poleVO(String pole_code, String pole_height, String pole_date, String emp_id, String transformer_yn,
+			String pole_com, String pole_high, String pole_down, String pole_office) {
+		super();
+		this.pole_code = pole_code;
+		this.pole_height = pole_height;
+		this.pole_date = pole_date;
+		this.emp_id = emp_id;
+		this.transformer_yn = transformer_yn;
+		this.pole_com = pole_com;
+		this.pole_high = pole_high;
+		this.pole_down = pole_down;
+		this.pole_office = pole_office;
+	}
 	
 
 	
