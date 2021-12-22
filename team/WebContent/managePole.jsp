@@ -45,7 +45,9 @@
 			<button id="modal_emp">사용자 등록</button>
 
 			<!-- href="assignEmp.jsp" -->
-			<a href="LogoutService">로그아웃</a>
+			<a href="LogoutService">로그아웃</a> <a href=""><img
+				src="./images/bell.png" class="img" width="30px" height="30px"
+				style="margin-top: 1%;"></a>
 		</nav>
 	</div>
 
@@ -143,7 +145,12 @@
 		</p>
 		
 			<div class="text_area">
+			<%System.out.print(pvo.getPole_comment()); %>
+			<%if(pvo.getPole_comment()!=null){ %>
 				<%=comment.replace("-","<br>")%>
+			<%}else{ %>
+				정보없음
+			<%} %>
 			</div>
 			<div class="text_save">
 				<button type="button" id="Memo_modal_open">기록</button>
