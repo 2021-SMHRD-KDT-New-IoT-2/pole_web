@@ -80,7 +80,7 @@ public ArrayList<tiltVO> tiltvalue() {
 			
 		connection();
 
-		String sql = "Select * from pole_tilt_info";
+		String sql = "Select * from pole_tilt_info order by tilt_date desc";
 		
 		psmt = conn.prepareStatement(sql);
 
