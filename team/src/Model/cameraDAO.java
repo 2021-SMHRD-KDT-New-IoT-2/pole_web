@@ -57,7 +57,7 @@ public class cameraDAO {
 			
 		connection();
 
-		String sql = "Select * from pole_camera_info";
+		String sql = "Select * from pole_camera_info order by camera_date desc";
 		
 		psmt = conn.prepareStatement(sql);
 		

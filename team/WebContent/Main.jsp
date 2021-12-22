@@ -46,6 +46,7 @@
 	String pole_high = request.getParameter("pole_high");
 	String pole_down = request.getParameter("pole_down");
 	String pole_com = request.getParameter("pole_com");
+	String now_tilt = request.getParameter("now_tilt");
 	
 	String camera_date = request.getParameter("camera_date");
 	String impact_date = request.getParameter("impact_date");
@@ -53,7 +54,7 @@
 	
 	String mac_code = request.getParameter("mac_code");
 
-	ArrayList<poleVO> filter = pdao.filter(pole_height, pole_date, emp_id, transformer_yn, pole_office, pole_high, pole_down, pole_com, pole_code);
+	ArrayList<poleVO> filter = pdao.filter(pole_height, pole_date, emp_id, transformer_yn, pole_office, pole_high, pole_down, pole_com, pole_code, now_tilt);
 	ArrayList<tiltVO> t_alarm = tdao.tiltvalue();
 	ArrayList<cameraVO> c_alarm = cdao.cameravalue();
 	ArrayList<impactVO> i_alarm = idao.impactvalue();
@@ -134,6 +135,7 @@
 							<option value="Y">Y</option>
 							<option value="N">N</option>
 						</select>&nbsp;&nbsp;&nbsp;
+						<input type="text" name="now_tilt">
 						<input type="text" name="pole_code" class="filter" placeholder="전주 번호 검색"   >
                 <input type="submit" name="pole_code" value = "검색" class="filter_search" style="float: right; color: black; background-color: white; border: 1px solid #ccc;">
 					</fieldset>
@@ -146,46 +148,50 @@
 			<button id="btnimpt">충격감지</button>
 			<button id="btnmtn">모션감지</button>
 			<button id="btntt">기울기감지</button>
-
-			<div id="impactdiv">
-				<div id="impt_table">
+					
+					
+					<div id="impactdiv">
 					<%
 					for (int i = 0; i < i_alarm.size(); i++) {
 					%>
+					<div id="alarmback">
 					<br>
 					<%=i_alarm.get(i).getImpact_date()%>에 
 					<b><a href="managePole.jsp?pole_code=<%=i_alarm.get(i).getMac_code()%>"><%=i_alarm.get(i).getMac_code()%></a></b>에서
 					충격이 감지 됨
 					<br>
-					<%}%></div>
-			</div>
+					</div>
+					<%}%>
+					</div>
+					
 
 			<div id="motiondiv">
-				<div id="mtn_table">
 					<%
 					for (int i = 0; i < c_alarm.size(); i++) {
 					%>
+					<div id="alarmback">
 					<br>
 					<%=c_alarm.get(i).getCamera_date()%>에
 					<b><a href="managePole.jsp?pole_code=<%=c_alarm.get(i).getMac_code()%>"><%=c_alarm.get(i).getMac_code()%></a></b>에서
 					 모션이 감지 됨
 					<br>
+					</div>
 					<%}%>
-				</div>
 			</div>
 
 			<div id="tiltdiv">
-				<div id="tt_table">
 					<%
 					for (int i = 0; i < t_alarm.size(); i++) {
 					%>
+					<div id="alarmback">
 					<br>
-					<b><a href="managePole.jsp?pole_code=<%=t_alarm.get(i).getMac_code()%>"><%=t_alarm.get(i).getMac_code()%></a></b>에서
-					<%=t_alarm.get(i).getTilt_date()%>에 기울기 변화가 감지 됨
+					<%=t_alarm.get(i).getTilt_date()%>에
+					<b><a href="managePole.jsp?pole_code=<%=t_alarm.get(i).getMac_code()%>"><%=t_alarm.get(i).getMac_code()%></a></b>에서 기울기 변화가 감지 됨
 					<br>
 					(현재 기울기 : <%=t_alarm.get(i).getTilt_value() %>)
-					<%}%></div>
-			</div>
+					</div>
+					<%}%>
+					</div>
 		</div>
 			
 		</div>
@@ -212,6 +218,7 @@
 					<th>고압선</th>
 					<th>저압선</th>
 					<th>통신선</th>
+					<th>현재 기울기</th>
 
 				</tr>
 				<%
@@ -228,6 +235,7 @@
 					<td><%=arrpVO.get(i).getPole_high()%></td>
 					<td><%=arrpVO.get(i).getPole_down()%></td>
 					<td><%=arrpVO.get(i).getPole_com()%></td>
+					<td><%=arrpVO.get(i).getNow_tilt()%></td>
 				</tr>
 					<%
 						}

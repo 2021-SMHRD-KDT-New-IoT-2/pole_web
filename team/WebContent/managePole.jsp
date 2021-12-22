@@ -114,6 +114,7 @@
 						<th>통신선 유무</th>
 						<th>변압기 유무</th>
 						<th>관리등급</th>
+						<th>현재 기울기</th>
 					</tr>
 
 					<tr>
@@ -127,6 +128,7 @@
 						<td><%=pvo.getPole_com()%></td>
 						<td><%=pvo.getTransformer_yn()%></td>
 						<td><%=pvo.getPole_level()%></td>
+						<td><%=pvo.getNow_tilt()%></td>
 					</tr>
 				</table>
 			</form>

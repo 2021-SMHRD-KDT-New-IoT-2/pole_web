@@ -56,7 +56,7 @@ public class poleDAO {
 	
 	//필터
 	@SuppressWarnings("null")
-	public ArrayList<poleVO> filter(String pole_height, String pole_date, String emp_id, String transformer_yn, String pole_office, String pole_high, String pole_down, String pole_com, String pole_code) {
+	public ArrayList<poleVO> filter(String pole_height, String pole_date, String emp_id, String transformer_yn, String pole_office, String pole_high, String pole_down, String pole_com, String pole_code,String now_tilt) {
 		
 		ArrayList<poleVO> al = new ArrayList<poleVO>();
 		
@@ -64,7 +64,7 @@ public class poleDAO {
 			vo = new poleVO();
 			
 			connection();
-			String sql = "select * from pole_info where 1=1";
+			String sql = "select *,(select tilt_value from pole_tilt_info where pole_tilt_info.mac_code=pole_info.mac_code order by tilt_date desc limit 1) as now_tilt from pole_info where 1=1";
 			
 			// 조건이 추가 될 때마다 쿼리를 추가
 			String addQuery = "";
@@ -96,6 +96,9 @@ public class poleDAO {
 			if (pole_code != null || !pole_code.equals("")) {
 				addQuery += " AND pole_code like '%" + pole_code + "%'";
 			}
+			if (now_tilt != null || !now_tilt.equals("")) {
+				addQuery += " AND now_tilt like '%" + now_tilt + "%'";
+			}
 			
 			sql += addQuery+"order by pole_date desc";
 			System.out.println(sql);
@@ -118,8 +121,9 @@ public class poleDAO {
 				String getpole_down = rs.getString("pole_down");
 				String getpole_com = rs.getString("pole_com");
 				String getpole_code = rs.getString("pole_code");
+				String getnow_tilt = rs.getString("now_tilt");
 				
-				vo = new poleVO(getpole_code, getpole_height, getpole_date, getemp_id, gettransformer_yn, getpole_com, getpole_high, getpole_down, getpole_office);
+				vo = new poleVO(getpole_code, getpole_height, getpole_date, getemp_id, gettransformer_yn, getpole_com, getpole_high, getpole_down, getpole_office,getnow_tilt);
 				
 				al.add(vo);
 			}
@@ -250,7 +254,7 @@ public class poleDAO {
 
 	}
 
-	// 전주정보 관리
+	// 메인 전주 리스트
 
 	public ArrayList<poleVO> pole_selectAll() {
 
@@ -260,8 +264,8 @@ public class poleDAO {
 
 			connection();
 
-			String sql = "select * from pole_info order by pole_date desc";
-			
+			String sql = "select *,(select tilt_value from pole_tilt_info where pole_tilt_info.mac_code=pole_info.mac_code order by tilt_date desc limit 1) as now_tilt from pole_info;";
+
 			psmt = conn.prepareStatement(sql);
 
 			rs = psmt.executeQuery();
@@ -282,8 +286,9 @@ public class poleDAO {
 				String getPole_eday = rs.getString("pole_eday");
 				String getPole_office= rs.getString("pole_office");
 				String getPole_level = rs.getString("pole_level");
+				String now_tilt = rs.getString("now_tilt");
 
-				vo = new poleVO(getPole_code, getMac_code, getPole_height, getPole_addr, getPole_date, getEmp_id, getTransformer_yn, getPole_com, getpole_high, getpole_down, getPole_comment, getPole_eday, getPole_level, getPole_office);
+				vo = new poleVO(getPole_code, getMac_code, getPole_height, getPole_addr, getPole_date, getEmp_id, getTransformer_yn, getPole_com, getpole_high, getpole_down, getPole_comment, getPole_eday, getPole_level, getPole_office,now_tilt);
 
 
 //	   	            vo값을 al에 add
@@ -302,18 +307,19 @@ public class poleDAO {
 		return al;
 	}
 	
-	// 전주정보
+	// 전주 상세정보 페이지
 
 		public poleVO pole_selectONE(String pole_code) {
 
 			try {
 				connection();
 
-				String sql = "select * from pole_info where pole_code = ?";
+				String sql = "select *,(select tilt_value from pole_tilt_info where pole_tilt_info.mac_code=pole_info.mac_code and mac_code = ? order by tilt_date desc limit 1) as now_tilt from pole_info where pole_code = ?";
 				
 				psmt = conn.prepareStatement(sql);
 				
 				psmt.setString(1, pole_code);
+				psmt.setString(2, pole_code);
 
 				rs = psmt.executeQuery();
 
@@ -333,8 +339,9 @@ public class poleDAO {
 					String getPole_eday = rs.getString("pole_eday");
 					String getPole_office= rs.getString("pole_office");
 					String getPole_level = rs.getString("pole_level");
+					String now_tilt = rs.getString("now_tilt");
 
-					vo = new poleVO(getPole_code, getMac_code, getPole_height, getPole_addr, getPole_date, getEmp_id, getTransformer_yn, getPole_com, getpole_high, getpole_down, getPole_comment, getPole_eday,getPole_level, getPole_office);
+					vo = new poleVO(getPole_code, getMac_code, getPole_height, getPole_addr, getPole_date, getEmp_id, getTransformer_yn, getPole_com, getpole_high, getpole_down, getPole_comment, getPole_eday,getPole_level, getPole_office,now_tilt);
 
 				}
 

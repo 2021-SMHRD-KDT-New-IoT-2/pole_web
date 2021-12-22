@@ -17,17 +17,6 @@ body {
    margin-top:50%;
    }
 
-   #Toggle{
-	position : absolute;
-	display:none; 
-	background-color : white;
-	margin-left : 77%;
-	height : 50%;
-	overflow-y : auto;
-	width : 400px;
-	border: 1px solid black;
-	}
-
 	#searchtext{
 	height : 50px;
 	width : 60px;
@@ -403,17 +392,27 @@ fieldset {
 }
 
 #alarm {
-	border-radius: 10px;
    margin-inline-start: 2px;
    margin-inline-end: 2px;
    padding-block-start: 0.35em;
    padding-inline-start: 0.75em;
    padding-inline-end: 0.75em;
    padding-block-end: 0.625em;
-   border: 1px solid #ccc;
    width: 28.4%;
    height: 270px;
    overflow-y:scroll;
+}
+
+#impactdiv, #motiondiv, #tiltdiv{
+	padding : 10px;
+}
+
+#alarmback {
+	border-radius : 10px;
+	padding : 20px;
+	margin-bottom : 2%;
+	border:1px solid #ccc;
+	font-size : 15px;
 }
 #alarm > h3, div{
    text-align:center;
