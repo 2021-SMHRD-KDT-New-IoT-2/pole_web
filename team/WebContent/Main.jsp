@@ -24,15 +24,6 @@
 <link rel="stylesheet" href="css/Maincss.css">
 <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 </head>
-<style>
-#Toggle {
-	width: 400px;
-	height: 100%;
-	float: right;
-	z-index: 1;
-}
-</style>
-
 <body>
 
 	<%
@@ -60,8 +51,6 @@
 	String impact_date = request.getParameter("impact_date");
 	String tilt_date = request.getParameter("tilt_date");
 	
-	/* 	int tilt_value = Integer.parseInt(request.getParameter("tilt_value")); */
-
 	String mac_code = request.getParameter("mac_code");
 
 	ArrayList<poleVO> filter = pdao.filter(pole_height, pole_date, emp_id, transformer_yn, pole_office, pole_high, pole_down, pole_com, pole_code);
@@ -69,6 +58,7 @@
 	ArrayList<cameraVO> c_alarm = cdao.cameravalue();
 	ArrayList<impactVO> i_alarm = idao.impactvalue();
 	%>
+	
 	<!-- 네비게이션  -->
 	<div id="nav">
 		<nav>
@@ -80,9 +70,6 @@
 			<button id="modal_emp">사용자 등록</button>
 			<a href="LogoutService">로그아웃</a>
 		</nav>
-
-		<div id="Toggle"></div>
-	</div>
 		<!-- 네비게이션 끝 -->
 
 		<!-- 헤더 -->
@@ -151,57 +138,6 @@
 					</fieldset>
 				</form>
 			</div>		
-					
-					<label>&nbsp;&nbsp;&nbsp;담당 사업소</label>
-					<select name="pole_office">
-						<option value="">선택</option>
-						<option value="동구">동구</option>
-						<option value="서구">서구</option>
-						<option value="남구">남구</option>
-						<option value="북구">북구</option>
-						<option value="광산구">광산구</option>
-					</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					
-				 <label>관리자</label>
-					<input type="text" name="emp_id"
-						style="width: 100px; height: 40px; margin-right: 4%; font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<label>설치 일자</label> <input type="text" name="pole_date" id="searchtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-					<label>높이</label> <input type="text" name="pole_height"  id="searchtext"> <br>
-						
-						<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;변압기</label>
-						<select name="transformer_yn" id="searchtext"> <br>
-						<option value="">선택</option>
-						<option value="Y">Y</option>
-						<option value="N">N</option>
-					</select> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;				
-						<label> 고압선 </label> 
-						<select name="pole_high">
-						<option value="">선택</option>
-						<option value="Y">Y</option>
-						<option value="N">N</option>
-					</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-
-					<label> 저압선</label>
-					 <select name="pole_down">
-						<option value="">선택</option>
-						<option value="Y">Y</option>
-						<option value="N">N</option>
-					</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					
-					 <label> 통신선</label> <select name="pole_com">
-						<option value="">선택</option>
-						<option value="Y">Y</option>
-						<option value="N">N</option>
-					</select>&nbsp;&nbsp;
-					<input type="text" name="pole_code" class="filter" placeholder="전주 번호 검색"	>
-					 <input type="submit" name="pole_code" value = "검색" class="filter_search" style="float: right; color: black; background-color: white; border: 1px solid #ccc;">
-
-				</fieldset>
-			</form>
-		</div>
-		
 		
 		<!-- 알림메세지  -->
 		<div id="alarm">
@@ -384,40 +320,34 @@
 			});
 		</script>
 	<!-- Scripts -->
-	<!-- 알림창 toggle js -->
-	<script>
-			$(function() {
-				$("#togglebtn").click(function() {
-					$("#Toggle").toggle();
-				});
-			});
-		</script>
 	<!-- modal.js -->
 	<script src="js/modal.js"></script>
+	
+	<!-- alarm.js -->
 	<script>
 			$(document).ready(function() {
-				$('#impactdiv').show(); //페이지를 로드할 때 표시할 요소
-				$('#motiondiv').hide(); //페이지를 로드할 때 숨길 요소
+				$('#impactdiv').show(); 
+				$('#motiondiv').hide();
 				$('#tiltdiv').hide();
 
 				$('#btnimpt').click(function() {
 					$('#motiondiv').hide();
 					$('#tiltdiv').hide();
-					$('#impactdiv').show(); //클릭 시 두 번째 요소 표시
+					$('#impactdiv').show(); 
 					return false;
 				});
 
 				$('#btnmtn').click(function() {
 					$('#impactdiv').hide();
 					$('#tiltdiv').hide();
-					$('#motiondiv').show(); //클릭 시 두 번째 요소 표시
+					$('#motiondiv').show();
 					return false;
 				});
 
 				$('#btntt').click(function() {
 					$('#motiondiv').hide();
 					$('#impactdiv').hide();
-					$('#tiltdiv').show(); //클릭 시 두 번째 요소 표시
+					$('#tiltdiv').show(); 
 					return false;
 				});
 			});
