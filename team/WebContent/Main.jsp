@@ -113,7 +113,7 @@
 							id="searchtext"> <br> <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;변압기</label>
 						<select name="transformer_yn" id="searchtext">
 						
-							<br>
+							
 							<option value="">선택</option>
 							<option value="Y">Y</option>
 							<option value="N">N</option>

@@ -81,18 +81,17 @@
 
 
 			<div id="cameraView">
-				<img src="http://172.30.1.45:80/video_feed">
+			<img src="http://172.30.1.45:80/video_feed">
 			</div>
 
 			<input type="button" name="rol" value="뒤로" id="uncheck" class="rol">
-			<input type="button" name="buzzer" value="부저 작동" id="buzzer"
-				class="rol" onclick="location.href='http://172.30.1.45/buzzer'">
+			<input type="button" name="buzzer" value="부저 작동" id="buzzer" class="rol"
+			onclick="location.href='http://172.30.1.45/buzzer'">
 			<div class="modal_layer"></div>
 
 		</div>
 		<!------------------------------------ 모달 --------------------------------------->
-		
-		<div class="tb_name">		
+		<div class="tb_name">
 
 			<p style="font-size: 25px; padding: 20px">
 				<b>- <%=pvo.getPole_code()%>번 전주 상세정보
@@ -132,11 +131,13 @@
 		</div>
 		<div class="tb_nav">
 			<input type="button" id="modal_update" value="수정">
+			<!-------------------전주 수정 모달 ----------------------------->
+				<%@ include file="/UpdatePole.jsp"%>
 		</div>
 	</section>
 
 	<aside>
-		<div id="curve_chart" style="width: 100%; height: 350px"></div>
+		<%-- <div id="curve_chart" style="width: 100%; height: 350px"></div>
 		<p style="font-size: 20px; padding: 20px">
 			<b>&nbsp;- 특이사항 기록</b>
 		</p>
@@ -146,7 +147,7 @@
 			</div>
 			<div class="text_save">
 				<button type="button" id="Memo_modal_open">기록</button>
-			</div>
+			</div> --%>
 			
 			<!-- ----------------------------메모 모달--------------------------------- -->
 			<div id="Memo_modal">
@@ -162,34 +163,8 @@
 				</form>
 				<div class="modal_layer"></div>
 
-
-		<div class="text_area">
-			<%=comment.replace("-","<br>")%>
-			<% %>
-		</div>
-		<div class="text_save">
-			<button type="button" id="Memo_modal_open">기록</button>
-		</div>
-
-		<!-- ----------------------------메모 모달--------------------------------- -->
-		<div id="Memo_modal">
-			<form action="pole_Memo" method="post">
-				<div class="Memo_area">
-					<input type="text" name="pole_memo" class="Memo_area">
-				</div>
-				<input type="hidden" name="pole_code" value="<%=pole_code%>">
-				<input type="hidden" name="pole_comment"
-					value="<%=pvo.getPole_comment()%>">
-				<div class="Memo_btn">
-					<input type="button" name="rol" value="취소" id="uncheck2"
-						class="rol"> <input type="submit" name="save2" value="저장"
-						class="suc" id="check2">
-				</div>
-			</form>
-			<div class="modal_layer"></div>
-
-		</div>
-		<!-- ----------------------------메모 모달--------------------------------- -->
+			</div>
+			<!-- ----------------------------메모 모달--------------------------------- -->
 
 	</aside>
 
@@ -229,10 +204,8 @@
 	<!--fonts-->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link
-		href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"
-		rel="stylesheet">
-
+	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+	
 
 	<script>
 
