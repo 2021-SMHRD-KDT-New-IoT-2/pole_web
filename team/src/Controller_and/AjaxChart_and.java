@@ -1,4 +1,4 @@
-package Controller;
+package Controller_and;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,11 +15,13 @@ import com.google.gson.Gson;
 import Model.tiltDAO;
 import Model.tiltVO;
 
-@WebServlet("/AjaxChart")
-public class AjaxChart extends HttpServlet {
+@WebServlet("/AjaxChart_and")
+public class AjaxChart_and extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+		response.setCharacterEncoding("utf-8");
+		
 		String pole_code = request.getParameter("pole_code");
 		tiltDAO tdao = new tiltDAO();
 		ArrayList<tiltVO> tal = tdao.tilt_info(pole_code);
