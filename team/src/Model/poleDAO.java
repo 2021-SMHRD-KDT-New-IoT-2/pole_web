@@ -56,7 +56,7 @@ public class poleDAO {
 	
 	//« ≈Õ
 	@SuppressWarnings("null")
-	public ArrayList<poleVO> filter(String pole_height, String pole_date, String emp_id, String transformer_yn, String pole_office, String pole_high, String pole_down, String pole_com, String pole_code,String now_tilt) {
+	public ArrayList<poleVO> filter(String pole_height, String pole_date, String emp_id, String transformer_yn, String pole_office, String pole_high, String pole_down, String pole_com, String pole_code) {
 		
 		ArrayList<poleVO> al = new ArrayList<poleVO>();
 		
@@ -96,9 +96,6 @@ public class poleDAO {
 			if (pole_code != null || !pole_code.equals("")) {
 				addQuery += " AND pole_code like '%" + pole_code + "%'";
 			}
-			if (now_tilt != null || !now_tilt.equals("")) {
-				addQuery += " AND now_tilt like '%" + now_tilt + "%'";
-			}
 			
 			sql += addQuery+"order by pole_date desc";
 			System.out.println(sql);
@@ -121,9 +118,9 @@ public class poleDAO {
 				String getpole_down = rs.getString("pole_down");
 				String getpole_com = rs.getString("pole_com");
 				String getpole_code = rs.getString("pole_code");
-				String getnow_tilt = rs.getString("now_tilt");
+				String now_tilt = rs.getString("now_tilt");
 				
-				vo = new poleVO(getpole_code, getpole_height, getpole_date, getemp_id, gettransformer_yn, getpole_com, getpole_high, getpole_down, getpole_office,getnow_tilt);
+				vo = new poleVO(getpole_code, getpole_height, getpole_date, getemp_id, gettransformer_yn, getpole_com, getpole_high, getpole_down, getpole_office,now_tilt);
 				
 				al.add(vo);
 			}

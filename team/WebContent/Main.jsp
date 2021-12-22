@@ -46,7 +46,6 @@
 	String pole_high = request.getParameter("pole_high");
 	String pole_down = request.getParameter("pole_down");
 	String pole_com = request.getParameter("pole_com");
-	String now_tilt = request.getParameter("now_tilt");
 	
 	String camera_date = request.getParameter("camera_date");
 	String impact_date = request.getParameter("impact_date");
@@ -54,7 +53,7 @@
 	
 	String mac_code = request.getParameter("mac_code");
 
-	ArrayList<poleVO> filter = pdao.filter(pole_height, pole_date, emp_id, transformer_yn, pole_office, pole_high, pole_down, pole_com, pole_code, now_tilt);
+	ArrayList<poleVO> filter = pdao.filter(pole_height, pole_date, emp_id, transformer_yn, pole_office, pole_high, pole_down, pole_com, pole_code);
 	ArrayList<tiltVO> t_alarm = tdao.tiltvalue();
 	ArrayList<cameraVO> c_alarm = cdao.cameravalue();
 	ArrayList<impactVO> i_alarm = idao.impactvalue();
@@ -135,7 +134,6 @@
 							<option value="Y">Y</option>
 							<option value="N">N</option>
 						</select>&nbsp;&nbsp;&nbsp;
-						<input type="text" name="now_tilt">
 						<input type="text" name="pole_code" class="filter" placeholder="전주 번호 검색"   >
                 <input type="submit" name="pole_code" value = "검색" class="filter_search" style="float: right; color: black; background-color: white; border: 1px solid #ccc;">
 					</fieldset>
@@ -265,6 +263,7 @@
 					<th>고압선</th>
 					<th>저압선</th>
 					<th>통신선</th>
+					<th>현재 기울기</th>
 				</tr>
 				<%
 						for (int i = 0; i < filter.size(); i++) {
@@ -279,6 +278,7 @@
 					<td><%=filter.get(i).getPole_high()%></td>
 					<td><%=filter.get(i).getPole_down()%></td>
 					<td><%=filter.get(i).getPole_com()%></td>
+					<td><%=filter.get(i).getNow_tilt()%></td>
 				</tr>
 				<%
 						}
