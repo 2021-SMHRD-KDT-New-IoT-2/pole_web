@@ -64,7 +64,7 @@ nav>a, button{
 }
 
 .header_img {
-   text-align: right;
+    text-align: right;
     height: 100px;
     margin-top: 0.5%;
     width: 37.6%;
@@ -480,3 +480,113 @@ background-color: rgb(143, 143, 143);
     background: rgba(0, 0, 0, 0.705);
     z-index: -1;
 }
+
+
+
+
+/*----------------------------------------UpdatePole.modal----------------------------------------------- */
+#modal3 {
+   display: none;
+   position: absolute;
+   width: 70%;
+   height: 70%;
+   z-index: 1;
+   margin-top: -40%;
+}
+
+#modal3 h2 {
+   margin: 0;
+}
+
+#modal3 button {
+   display: inline-block;
+   width: 100px;
+   margin-left: calc(100% - 100px - 10px);
+}
+
+#modal3 .modal_content {
+   width: 300px;
+   margin: 100px auto;
+   padding: 20px 10px;
+   background: #fff;
+   border: 2px solid #666;
+}
+
+#modal3 .modal_layer {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: rgba(105, 105, 105, 0.705);
+   z-index: -1;   
+}
+
+#empas{
+	font-size: 25px;
+}
+
+#empas > img{
+	margin-top: 5%;
+}
+
+.pole_form {
+   position: absolute;
+   margin: 0 auto;
+   width: 700px;
+   margin-left: 35%;
+   background-color: white;
+   box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+.pole_form>table {
+   width: 750px;
+   border-radius: 10px;
+}
+
+.pole_tb_body {
+   margin: auto;
+   border-bottom: none;
+}
+
+.pole_tb_body>tr, td, th{
+   position: relative;
+   text-align: center;
+   font-size: 20px;
+   color: hsl(190, 3%, 40%);;
+}
+
+.wid5 {
+   width: 20%;
+}
+
+.wid6 {
+   width: 25%;
+}
+
+.suc3, .rol3 {
+   height: auto;
+   display: inline-block;
+   text-transform: uppercase;
+   margin-bottom: 1.5%;
+   cursor: pointer;
+   background: #002c5f; 
+   box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+   padding: 10px 25px;
+   border: 0px;
+   color: #fff;
+   font-size: 18px;
+   margin-bottom: 4%;
+}
+
+.suc3:hover {
+   color: #000e1f;
+}
+
+.rol3:hover {
+   color: #000e1f;
+}
+
+/*-----------------------------------------UpdatePole.modal------------------------------------------ */
+
+

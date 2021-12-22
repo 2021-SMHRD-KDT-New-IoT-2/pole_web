@@ -26,8 +26,9 @@
 <meta charset="EUC-KR">
 <link rel="shorcut icon" type="image/x-icon"
 	href="./images/upoplogo.PNG" type="text/css">
-<title>POLE OF PISA 전주관리 시스템</title>
+<title>전주 상세정보</title>
 <link rel="stylesheet" href="css/pole.css">
+
 <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 
 
@@ -130,8 +131,9 @@
 			</form>
 		</div>
 		<div class="tb_nav">
-			<input type="button" class="btn1" value="이전"> 
 			<input type="button" id="modal_update" value="수정">
+			<!-------------------전주 수정 모달 ----------------------------->
+				<%@ include file="/UpdatePole.jsp"%>
 		</div>
 	</section>
 
@@ -216,13 +218,20 @@
 			$("#modal").fadeOut();
 		});
 		
-		/* Memo_modal
-		*/
+		/* Memo_modal */
 		$("#Memo_modal_open").click(function() {
 			$("#Memo_modal").fadeIn();
 		});
 		$("#uncheck2").click(function() {
 			$("#Memo_modal").fadeOut();
+		});
+		
+		/* UpdatePole_modal */
+		$("#modal_update").click(function() {
+			$("#modal3").fadeIn();
+		});
+		$("#uncheck3").click(function() {
+			$("#modal3").fadeOut();
 		});
 	</script>
 
