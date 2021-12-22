@@ -47,7 +47,30 @@ public class tiltDAO {
 			e2.printStackTrace();
 		}
 		
-	} 
+	}
+	
+	public int insert_tilt(String mac_code) {
+		try {
+			
+			connection();
+			
+			String sql = "insert into pole_tilt_info(mac_code,tilt_value) value (?,90)";
+			
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(1, mac_code);
+			
+			cnt = psmt.executeUpdate();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("등록실패");
+		}finally {
+			close();
+		}
+		
+		return cnt;
+	}
 	
 public ArrayList<tiltVO> tiltvalue() {
 		
