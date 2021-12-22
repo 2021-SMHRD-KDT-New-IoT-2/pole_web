@@ -4,7 +4,7 @@
 <html>
 <head>
 <link rel="shorcut icon" type="image/x-icon" href="./images/upoplogo.PNG" type="text/css">
-<title>POLE OF PISA 전주관리 시스템</title>
+<title>전주관리 시스템 로그인</title>
 <link rel="stylesheet" href="css/logincss.css">
 </head>
 <style>
@@ -19,7 +19,7 @@ body{
  	}
 
 </style>
-<body>
+<body>n    
     <section class="form">
         <table class="tb"> 
             <tr>

@@ -1,8 +1,12 @@
 body {
    background-color: #ffffff;
    
-} 
-   *{font-family: 'Nanum Gothic', sans-serif;}
+	} 
+   *{
+   
+   font-family: 'Nanum Gothic', sans-serif;
+   
+   }
    
    .number {   
       text-align : center;
@@ -12,11 +16,41 @@ body {
    
    margin-top:50%;
    }
-   
-   #empas{
-   margin-bottom : 30px;
-   }
-   
+
+   #Toggle{
+	position : absolute;
+	display:none; 
+	background-color : white;
+	margin-left : 77%;
+	height : 50%;
+	overflow-y : auto;
+	width : 400px;
+	border: 1px solid black;
+	}
+
+	#searchtext{
+	height : 50px;
+	width : 60px;
+	
+	}
+
+	#box1{
+	width : 400px;
+	height : 15%;
+	border : 1px solid black;
+	}
+
+	#box2{
+	width : 400px;
+	height : 15%;
+	border : 1px solid black;
+	}
+
+	#box3{
+	width : 400px;
+	height : 15%;
+	border : 1px solid black;
+	}
 
 button{
    cursor:pointer
@@ -85,16 +119,19 @@ footer {
 }
 
 
-input, select {
+select {
    display: inline-block;
-   font-size: 20px;
-   height: 50px;
-   margin: 20px 0 10px 0px;
+	font-size: 15px;
+	
+   width: 100px;
+   height: 40px;
+   margin: 20px 4% 10px 0px;
    color: #444444;
    border: 1px solid #000000;
    border-radius: 3px;
    outline: 0;
 }
+
 
 #wrapper {
    width: 100%;
@@ -103,7 +140,7 @@ input, select {
    padding: 0px;
 }
 
-/* ------------footer 공간-------------- */
+/* ------------footer 怨듦컙-------------- */
 
 #footer {
    clear: both;
@@ -118,16 +155,14 @@ input, select {
 
 /* ------------------------------------- */
 
-/* -------테이블 붙이는중-------- */
+/* -------�뀒�씠釉� 遺숈씠�뒗以�-------- */
 
    
 #poletable {
    width: 100%;
    background-color: #ffffff;
    border-collapse: collapse;
-   text-align: left;
    line-height: 1.5;
-   border: 1px solid rgb(122, 122, 122);
    }
    
   #poletable th {
@@ -149,10 +184,11 @@ input, select {
 
 .search_container{
     width: 80%;
-    /* border : 1px solid black; */
+    display : flex;
     margin: 2% auto;
     background-color : #FFFFFF;
-
+	height : 900px;
+	overflow-y : scroll;
 }
 
 #poletable th {
@@ -192,28 +228,59 @@ input, select {
    margin-right: 8px;
 }
 
+#searchtext{
+height : 40px;
+width : 100px;
+font-size: 15px;
+margin-right:4%;
+}
 
-/* 검색창 안에 돋보기 사진 위치 */
+fieldset > .filter_search{
+	margin-right : 5%;
+	margin-top : 1%;
+	padding : 10px;
+	border-radius: 3px;
+	font-size : 15px;
+	width : 80px;
+	height : 40px;
+
+	}
+
+/* 寃��깋李� �븞�뿉 �룍蹂닿린 �궗吏� �쐞移� */
 #img {
     margin-top: 26.3%;
     margin-left: -23%;
     margin-bottom: -5%;
 }
 
-.filter {
-   width: 20%;
-    text-align: center;
-    border: 1px solid #ccc;
-    float: left;
-    margin: 0 auto 1% 40%;
+#img > img {
+margin-top: 6px;
+    margin-left: 5%;
 }
 
+tbody{
+	border-radius: 10px;
+}
+
+fieldset > .filter {
+    width: 20%;
+    font-size : 18px;
+    text-align: center;
+    border: 1px solid #ccc;
+    height : 40px;
+    border-radius: 3px;
+    margin: 1% auto;
+    margin-left:62%;
+}
+fieldset > input{
+	    border: 1px solid black;
+}
 /* -----------nav-------------  */
 #header {
    margin-top:2%;
    background-color: #ffffff;
 }
-/* 수정부분1217 */
+/* �닔�젙遺�遺�1217 */
 h1 {
    text-align: left;
    font-size: 42px;
@@ -241,7 +308,7 @@ h1 {
    font-size: 25px;
 }
 
-/* 수정부분1217 */
+/* �닔�젙遺�遺�1217 */
 nav>a, button {
    background-color: #4e1f1f00;
    border: none;
@@ -257,10 +324,6 @@ nav>a, button:hover {
 }
 
 nav>a, button:active {
-   color: #2b2b2b;
-}
-
-nav> a, button:visited {
    color: #2b2b2b;
 }
 
@@ -318,7 +381,7 @@ nav>a, button{
 
 /* -----------Searchfilter-------------  */
 
-/* 수정부분 1217 */
+/* �닔�젙遺�遺� 1217 */
 #searchBar {
    float: left;
    width: 100%;
@@ -333,69 +396,62 @@ nav>a, button{
 }
 
 fieldset {
-   height: 300px;
+	text-align:left;
+   height: 270px;
+   border-radius: 10px;
    border: 1px solid #ccc;
 }
 
 #alarm {
+	border-radius: 10px;
    margin-inline-start: 2px;
    margin-inline-end: 2px;
    padding-block-start: 0.35em;
    padding-inline-start: 0.75em;
    padding-inline-end: 0.75em;
    padding-block-end: 0.625em;
-   min-inline-size: min-content;
    border: 1px solid #ccc;
-   float: left;
    width: 28.4%;
-   height: 300px;
+   height: 270px;
+   overflow-y:scroll;
 }
 #alarm > h3, div{
    text-align:center;
 }
 
-/* 수정부분 1217 */
+/* �닔�젙遺�遺� 1217 */
 #Searchfilter {
    text-align: center;
 }
 
-/*-----------------------------------------사용자 등록 테이블------------------------------------------ */
-#modal>img {
-   margin-bottom: 30px;
-}
-
+/*-----------------------------------------�궗�슜�옄 �벑濡� �뀒�씠釉�------------------------------------------ */
 .emp_form {
-   position: relative;
-   margin: 0 auto;
-   width: 900px;
+    width: 700px;
+    margin-left: 40%;
+   position: absolute;
+   height: 700px;
    background-color: white;
    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 }
 
-table {
+.emp_form > table {
    margin: 0 auto;
-   width: 800px;
    border-color: hsl(190, 3%, 40%);
 }
 
 .tb_body {
    margin: auto;
    border-bottom: none;
-}
-
-tr, td, th, input {
-   position: relative;
-   text-align: center;
-   font-size: 20px;
-   color: hsl(190, 3%, 40%);;
+   width: 90%;
+   height: 700px;
 }
 
 .wid1 {
-   width: 5%;
+   width: 20%;
 }
 
 .wid2 {
-   width: 20%;
+   width: 15%;
 }
 
 .suc, .rol {
@@ -409,7 +465,7 @@ tr, td, th, input {
    padding: 10px 25px;
    border: 0px;
    color: #fff;
-   font-size: 18px;
+   font-size: 15px;
    margin-bottom: 4%;
 }
 
@@ -420,12 +476,12 @@ tr, td, th, input {
 .rol:hover {
    color: #000e1f;
 }
-/*-----------------------------------------사용자 등록 테이블------------------------------------------ */
+/*-----------------------------------------�궗�슜�옄 �벑濡� �뀒�씠釉�------------------------------------------ */
 
-/*--------------------------------------------- 사용자 모달창 소스------------------------------------------ */
+/*--------------------------------------------- �궗�슜�옄 紐⑤떖李� �냼�뒪------------------------------------------ */
 #modal {
    display: none;
-   position: relative;
+position: absolute;
    width: 70%;
    height: 70%;
    z-index: 1;
@@ -458,12 +514,12 @@ tr, td, th, input {
    background: rgba(105, 105, 105, 0.705);
    z-index: -1;
 }
-/*--------------------------------------------- 사용자 모달창 소스------------------------------------------ */
+/*--------------------------------------------- �궗�슜�옄 紐⑤떖李� �냼�뒪------------------------------------------ */
 
-/*--------------------------------------------- 전주등록 모달창 소스------------------------------------------ */
+/*--------------------------------------------- �쟾二쇰벑濡� 紐⑤떖李� �냼�뒪------------------------------------------ */
 #modal2 {
    display: none;
-   position: relative;
+   position: absolute;
    width: 70%;
    height: 70%;
    z-index: 1;
@@ -496,39 +552,68 @@ tr, td, th, input {
    background: rgba(105, 105, 105, 0.705);
    z-index: -1;
 }
-/*--------------------------------------------- 전주등록 모달창 소스------------------------------------------ */
+/*--------------------------------------------- �쟾二쇰벑濡� 紐⑤떖李� �냼�뒪------------------------------------------ */
 
-/*-----------------------------------------전주 등록 테이블------------------------------------------ */
+/*-----------------------------------------�쟾二� �벑濡� �뀒�씠釉�------------------------------------------ */
 #modal>img {
    margin-bottom: 30px;
 }
 
+#empas{
+	font-size: 25px;
+}
+
+#empas > img{
+	margin-top: 5%;
+}
+
 .pole_form {
-   position: relative;
-   margin: 0 auto;
-   width: 900px;
+   position: absolute;
+   width: 700px;
+   margin-left: 40%;
    background-color: white;
    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 }
 
 .pole_form>table {
-   width: 750px;
+   border-radius: 10px;
 }
-
 .pole_tb_body {
    margin: auto;
    border-bottom: none;
+   width: 90%;
+   height: 700px;
 }
 
-.pole_tb_body>tr, td, th, input {
-   position: relative;
+.pole_tb_body> a{
+	position: relative;
    text-align: center;
-   font-size: 20px;
+   font-size: 15px;
+}
+.pole_tb_body>td{
+	
+	width:20%;
+	position: relative;
+   text-align: center;
+   font-size: 15px;
    color: hsl(190, 3%, 40%);;
 }
-
+.pole_tb_body>tr, td, th{
+   position: relative;
+   text-align: center;
+   font-size: 15px;
+   color: hsl(190, 3%, 40%);;
+}
+table > td > input{
+	margin-left: 6%;
+	width: 200px;
+	height: 30px;
+}
+.pole_tb_body>hr{
+	width:400px;
+}
 .wid3 {
-   width: 15%;
+   width: 20%;
 }
 
 .wid4 {
@@ -546,7 +631,7 @@ tr, td, th, input {
    padding: 10px 25px;
    border: 0px;
    color: #fff;
-   font-size: 18px;
+   font-size: 15px;
    margin-bottom: 4%;
 }
 
@@ -557,7 +642,7 @@ tr, td, th, input {
 .rol2:hover {
    color: #000e1f;
 }
-/*-----------------------------------------전주 등록 테이블------------------------------------------ */
+/*-----------------------------------------�쟾二� �벑濡� �뀒�씠釉�------------------------------------------ */
 input:focus {
    outline: 2px solid #013e83;
 }
@@ -565,3 +650,4 @@ input:focus {
 .input_focus:focus {
    outline: none;
 }
+

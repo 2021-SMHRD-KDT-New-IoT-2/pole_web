@@ -48,7 +48,7 @@ public class impactDAO {
 		}
 
 	} 
-public ArrayList<impactVO> impactvalue(String impact_date, String mac_code) {
+public ArrayList<impactVO> impactvalue() {
 		
 		impactVO ivo = new impactVO();
 		ArrayList<impactVO> al = new ArrayList<impactVO>();
@@ -57,13 +57,9 @@ public ArrayList<impactVO> impactvalue(String impact_date, String mac_code) {
 			
 		connection();
 
-		String sql = "Select * from pole_impact_info";
+		String sql = "Select * from pole_impact_info order by impact_date desc";
 		
 		psmt = conn.prepareStatement(sql);
-		
-		psmt.setString(1, mac_code);
-		psmt.setString(2, impact_date);
-
 		rs = psmt.executeQuery();
 		
 		while(rs.next()){
