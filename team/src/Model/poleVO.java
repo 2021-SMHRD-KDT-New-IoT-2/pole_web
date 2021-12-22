@@ -21,7 +21,7 @@ public class poleVO {
 		
 	}
 	
-	public poleVO(String pole_code,String pole_office, String pole_high, String pole_down, String pole_com, String transformer_yn, String pole_level, String emp_id) {
+	public poleVO(String pole_code,String pole_office, String pole_high, String pole_down, String pole_com, String transformer_yn, String emp_id) {
 		
 		this.pole_code = pole_code;
 		this.pole_office = pole_office;
@@ -29,7 +29,6 @@ public class poleVO {
 		this.pole_down = pole_down;
 		this.pole_com = pole_com;
 		this.transformer_yn = transformer_yn;
-		this.pole_level = pole_level;
 		this.emp_id = emp_id;
 	}
 	

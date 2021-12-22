@@ -25,19 +25,18 @@ public class updatePole extends HttpServlet {
 		String pole_down = request.getParameter("pole_down");
 		String pole_com = request.getParameter("pole_com");
 		String transformer_yn = request.getParameter("transformer_yn");
-		String pole_level = request.getParameter("pole_level");
 		String emp_id = request.getParameter("emp_id");
 		
 		poleDAO dao = new poleDAO();
 		
-		int cnt = dao.pole_update(pole_code,pole_office, pole_high, pole_down, pole_com, transformer_yn, pole_level, emp_id);
+		int cnt = dao.pole_update(pole_code,pole_office, pole_high, pole_down, pole_com, transformer_yn, emp_id);
 		
 
 		if(cnt>0) {
 			System.out.println("수정성공");
 			
 			//수정된 값 출력하도록 세션수정
-			poleVO vo2 = new poleVO(pole_code,pole_office, pole_high, pole_down, pole_com, transformer_yn, pole_level, emp_id);
+			poleVO vo2 = new poleVO(pole_code,pole_office, pole_high, pole_down, pole_com, transformer_yn, emp_id);
 			
 			session.setAttribute("pole", vo2);
 			
