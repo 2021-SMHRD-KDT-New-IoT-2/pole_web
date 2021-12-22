@@ -19,7 +19,7 @@ body{
  	}
 
 </style>
-<body>n    
+<body>
     <section class="form">
         <table class="tb"> 
             <tr>
