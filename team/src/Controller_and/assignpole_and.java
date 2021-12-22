@@ -24,7 +24,7 @@ public class assignpole_and extends HttpServlet {
 		request.setCharacterEncoding("UTF-8"); // 안드로이드는 UTF-8
 		
 		String pole_code = request.getParameter("pole_code");
-		String mac_code = request.getParameter("mac_code");
+		String mac_code = request.getParameter("pole_code");
 		String pole_height = request.getParameter("pole_height");
 		String pole_addr = request.getParameter("pole_addr");
 		String pole_high = request.getParameter("pole_high");
