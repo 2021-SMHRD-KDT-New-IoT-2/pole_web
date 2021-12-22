@@ -56,13 +56,6 @@ nav {
 	display: block;
 }
 
-nav>a, button{
-	font-size: 20px;
-	margin-right: 3%;
-	text-decoration: none;
-	color: #5b5b5b;
-}
-
 .header_img {
     text-align: right;
     height: 100px;
@@ -485,6 +478,13 @@ background-color: rgb(143, 143, 143);
 
 
 /*----------------------------------------UpdatePole.modal----------------------------------------------- */
+/*
+#modal3_area{
+	display: none;
+	border:solid 1px black;
+}
+*/
+
 #modal3 {
    display: none;
    position: absolute;

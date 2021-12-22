@@ -149,8 +149,8 @@
 
 						<tr height="70">
 							<td colspan="3"><input type="button" name="rol" value="취소하기"
-								id="uncheck2" class="rol2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type="submit" value="등록하기" class="suc2" id="check2">
+								id="uncheck3" class="rol3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="submit" value="등록하기" class="suc3" id="check3">
 							</td>
 						</tr>
 					</table>
