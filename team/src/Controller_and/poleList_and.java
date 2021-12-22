@@ -24,13 +24,12 @@ public class poleList_and extends HttpServlet {
       response.setCharacterEncoding("UTF-8");
       
       poleDAO dao = new poleDAO();
-      poleVO vo = new poleVO();
       ArrayList<poleVO> al = dao.pole_selectAll();
       
       // memberList 메소드를 만든 후 아래에서 반복문을 통해 콘솔에 회원정보를 출력
       for (int i = 0; i < al.size(); i++) {
          System.out.println(al.get(i).toString());
-         
+
       }
       PrintWriter out = response.getWriter();
       response.setCharacterEncoding("UTF-8");

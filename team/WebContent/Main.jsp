@@ -324,7 +324,7 @@
 			$("#modal_pole").click(function() {
 				$("#modal2").fadeIn();
 			});
-			$("#uncheck2").click(function() {
+			$("#uncheck").click(function() {
 				$("#modal2").fadeOut();
 			});
 		</script>
