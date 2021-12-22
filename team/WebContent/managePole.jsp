@@ -30,6 +30,12 @@
 <link rel="stylesheet" href="css/pole.css">
 
 <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+<!--fonts-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"
+	rel="stylesheet">
 
 
 </head>
@@ -45,9 +51,7 @@
 			<button id="modal_emp">사용자 등록</button>
 
 			<!-- href="assignEmp.jsp" -->
-			<a href="LogoutService">로그아웃</a> <a href=""><img
-				src="./images/bell.png" class="img" width="30px" height="30px"
-				style="margin-top: 1%;"></a>
+			<a href="LogoutService">로그아웃</a>
 		</nav>
 	</div>
 
@@ -77,18 +81,22 @@
 	String comment = pvo.getPole_comment();
 
 	%>
+
+	
+	
+	
 	<section>
 		<!------------------------------------ 모달 --------------------------------------->
 		<div id="modal">
 
 
 			<div id="cameraView">
-			<img src="http://172.30.1.45:80/video_feed">
+				<img src="http://172.30.1.45:80/video_feed">
 			</div>
 
 			<input type="button" name="rol" value="뒤로" id="uncheck" class="rol">
-			<input type="button" name="buzzer" value="부저 작동" id="buzzer" class="rol"
-			onclick="location.href='http://172.30.1.45/buzzer'">
+			<input type="button" name="buzzer" value="부저 작동" id="buzzer"
+				class="rol" onclick="location.href='http://172.30.1.45/buzzer'">
 			<div class="modal_layer"></div>
 
 		</div>
@@ -101,7 +109,7 @@
 			</p>
 		</div>
 		<div class="tb_body">
-			<form action="Main.jsp" name="pole_tb" class="fom_tb" method="post">
+			<form action="Main.jsp" name="pole_tb" class="form_tb" method="post">
 				<table id="pole_tb">
 					<tr>
 						<th>전주 번호</th>
@@ -114,6 +122,7 @@
 						<th>통신선 유무</th>
 						<th>변압기 유무</th>
 						<th>관리등급</th>
+						<th>현재 기울기</th>
 					</tr>
 
 					<tr>
@@ -127,14 +136,20 @@
 						<td><%=pvo.getPole_com()%></td>
 						<td><%=pvo.getTransformer_yn()%></td>
 						<td><%=pvo.getPole_level()%></td>
+						<td><%=pvo.getNow_tilt()%></td>
 					</tr>
 				</table>
 			</form>
 		</div>
 		<div class="tb_nav">
 			<input type="button" id="modal_update" value="수정">
-			<!-------------------전주 수정 모달 ----------------------------->
-				<%@ include file="/UpdatePole.jsp"%>
+
+
+			<!-- 전주 수정 모달 -------------------------------------------------------------------------------------------------------------------- -->
+			<%@ include file="/UpdatePole.jsp"%>
+			<!-- 전주 수정 모달 -------------------------------------------------------------------------------------------------------------------- -->
+
+
 		</div>
 	</section>
 
@@ -143,35 +158,38 @@
 		<p style="font-size: 20px; padding: 20px">
 			<b>&nbsp;- 특이사항 기록</b>
 		</p>
-		
-			<div class="text_area">
+
+		<div class="text_area">
 			<%System.out.print(pvo.getPole_comment()); %>
 			<%if(pvo.getPole_comment()!=null){ %>
-				<%=comment.replace("-","<br>")%>
+			<%=comment.replace("-","<br>")%>
 			<%}else{ %>
-				정보없음
+			정보없음
 			<%} %>
-			</div>
-			<div class="text_save">
-				<button type="button" id="Memo_modal_open">기록</button>
-			</div>
-			
-			<!-- ----------------------------메모 모달--------------------------------- -->
-			<div id="Memo_modal">
-				<form action="pole_Memo" method="post">
-					<div class="Memo_area">
-						<input type="text" name="pole_memo" class = "Memo_area"></div>
-						<input type="hidden" name="pole_code" value="<%=pole_code%>">
-						<input type="hidden" name="pole_comment" value="<%=pvo.getPole_comment()%>">
-					<div class="Memo_btn">
-						<input type="button" name="rol" value="취소" id="uncheck2" class="rol">
-						<input type="submit" name="save2" value="저장" class="suc" id="check2">
-					</div>
-				</form>
-				<div class="modal_layer"></div>
+		</div>
+		<div class="text_save">
+			<button type="button" id="Memo_modal_open">기록</button>
+		</div>
 
-			</div>
-			<!-- ----------------------------메모 모달--------------------------------- -->
+		<!-- ----------------------------메모 모달--------------------------------- -->
+		<div id="Memo_modal">
+			<form action="pole_Memo" method="post">
+				<div class="Memo_area">
+					<input type="text" name="pole_memo" class="Memo_area">
+				</div>
+				<input type="hidden" name="pole_code" value="<%=pole_code%>">
+				<input type="hidden" name="pole_comment"
+					value="<%=pvo.getPole_comment()%>">
+				<div class="Memo_btn">
+					<input type="button" name="rol" value="취소" id="uncheck2" class="rol">
+					<input type="submit" name="save2" value="저장" class="suc"
+						id="check2">
+				</div>
+			</form>
+			<div class="modal_layer"></div>
+
+		</div>
+		<!-- ----------------------------메모 모달--------------------------------- -->
 
 	</aside>
 
@@ -209,12 +227,6 @@
 		</div>
 	</div>
 	<script src="./js/managePole.js"></script>
-	
-	<!--fonts-->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
-	
 
 	<script>
 
@@ -224,7 +236,9 @@
 		$("#uncheck").click(function() {
 			$("#modal").fadeOut();
 		});
-		
+		</script>
+
+	<script>
 		/* Memo_modal */
 		$("#Memo_modal_open").click(function() {
 			$("#Memo_modal").fadeIn();
@@ -233,16 +247,23 @@
 			$("#Memo_modal").fadeOut();
 		});
 		
+		</script>
+		<!-- modal.js -->
+	<script src="js/modal.js"></script>
+
+	<script>
+		
 		/* UpdatePole_modal */
 		$("#modal_update").click(function() {
 			$("#modal3").fadeIn();
 		});
-		$("#uncheck3").click(function() {
+		$("#uncheck").click(function() {
 			$("#modal3").fadeOut();
 		});
 	</script>
-		
-	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+	<script type="text/javascript"
+		src="https://www.gstatic.com/charts/loader.js"></script>
 	<script type="text/javascript">
 		// ajax 이용해서 페이지 열릴때, 바로 함수실행
 		

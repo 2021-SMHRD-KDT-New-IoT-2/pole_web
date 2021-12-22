@@ -52,6 +52,7 @@
 	String tilt_date = request.getParameter("tilt_date");
 	
 	String mac_code = request.getParameter("mac_code");
+	String pole_level = request.getParameter("pole_level");
 
 	ArrayList<poleVO> filter = pdao.filter(pole_height, pole_date, emp_id, transformer_yn, pole_office, pole_high, pole_down, pole_com, pole_code);
 	ArrayList<tiltVO> t_alarm = tdao.tiltvalue();
@@ -146,46 +147,50 @@
 			<button id="btnimpt">충격감지</button>
 			<button id="btnmtn">모션감지</button>
 			<button id="btntt">기울기감지</button>
-
-			<div id="impactdiv">
-				<div id="impt_table">
+					
+					
+					<div id="impactdiv">
 					<%
 					for (int i = 0; i < i_alarm.size(); i++) {
 					%>
+					<div id="alarmback">
 					<br>
 					<%=i_alarm.get(i).getImpact_date()%>에 
 					<b><a href="managePole.jsp?pole_code=<%=i_alarm.get(i).getMac_code()%>"><%=i_alarm.get(i).getMac_code()%></a></b>에서
 					충격이 감지 됨
 					<br>
-					<%}%></div>
-			</div>
+					</div>
+					<%}%>
+					</div>
+					
 
 			<div id="motiondiv">
-				<div id="mtn_table">
 					<%
 					for (int i = 0; i < c_alarm.size(); i++) {
 					%>
+					<div id="alarmback">
 					<br>
 					<%=c_alarm.get(i).getCamera_date()%>에
 					<b><a href="managePole.jsp?pole_code=<%=c_alarm.get(i).getMac_code()%>"><%=c_alarm.get(i).getMac_code()%></a></b>에서
 					 모션이 감지 됨
 					<br>
+					</div>
 					<%}%>
-				</div>
 			</div>
 
 			<div id="tiltdiv">
-				<div id="tt_table">
 					<%
 					for (int i = 0; i < t_alarm.size(); i++) {
 					%>
+					<div id="alarmback">
 					<br>
-					<b><a href="managePole.jsp?pole_code=<%=t_alarm.get(i).getMac_code()%>"><%=t_alarm.get(i).getMac_code()%></a></b>에서
-					<%=t_alarm.get(i).getTilt_date()%>에 기울기 변화가 감지 됨
+					<%=t_alarm.get(i).getTilt_date()%>에
+					<b><a href="managePole.jsp?pole_code=<%=t_alarm.get(i).getMac_code()%>"><%=t_alarm.get(i).getMac_code()%></a></b>에서 기울기 변화가 감지 됨
 					<br>
 					(현재 기울기 : <%=t_alarm.get(i).getTilt_value() %>)
-					<%}%></div>
-			</div>
+					</div>
+					<%}%>
+					</div>
 		</div>
 			
 		</div>
@@ -203,6 +208,7 @@
 			<table id="poletable"
 				style="text-align: center; margin: auto; border: 1px solid #ccc;">
 				<tr>
+					<th>위험도</th>
 					<th>전주번호</th>
 					<th>관리자</th>
 					<th>담당 사업소</th>
@@ -212,14 +218,20 @@
 					<th>고압선</th>
 					<th>저압선</th>
 					<th>통신선</th>
+					<th>현재 기울기</th>
+					
 
 				</tr>
-				<%
+					<%
 						for (int i = 0; i < arrpVO.size(); i++) {
 					%>
 				<tr>
-					<td><a
-						href="managePole.jsp?pole_code=<%=arrpVO.get(i).getPole_code()%>"><%=arrpVO.get(i).getPole_code()%></a></td>
+					<%if(arrpVO.get(i).getPole_level() == null){ %>
+					<td>　</td>
+					<%}else{ %>
+					<td><%=arrpVO.get(i).getPole_level()%></td>
+					<%} %>
+					<td><a href="managePole.jsp?pole_code=<%=arrpVO.get(i).getPole_code()%>"><%=arrpVO.get(i).getPole_code()%></a></td>
 					<td><%=arrpVO.get(i).getEmp_id()%></td>
 					<td><%=arrpVO.get(i).getPole_office()%></td>
 					<td><%=arrpVO.get(i).getPole_date()%></td>
@@ -228,6 +240,7 @@
 					<td><%=arrpVO.get(i).getPole_high()%></td>
 					<td><%=arrpVO.get(i).getPole_down()%></td>
 					<td><%=arrpVO.get(i).getPole_com()%></td>
+					<td><%=arrpVO.get(i).getNow_tilt()%></td>
 				</tr>
 					<%
 						}
@@ -248,6 +261,7 @@
 			<table id="poletable"
 				style="text-align: center; margin: auto; border: 2px solid black;">
 				<tr>
+					<th>위험도</th>
 					<th>전주번호</th>
 					<th>관리자</th>
 					<th>담당 사업소</th>
@@ -257,11 +271,13 @@
 					<th>고압선</th>
 					<th>저압선</th>
 					<th>통신선</th>
+					<th>현재 기울기</th>
 				</tr>
 				<%
 						for (int i = 0; i < filter.size(); i++) {
 					%>
 				<tr>
+					<td><%=arrpVO.get(i).getPole_level() %></td>
 					<td><a href="managePole.jsp?pole_code=<%=filter.get(i).getPole_code()%>"><%=filter.get(i).getPole_code()%></a></td>
 					<td><%=filter.get(i).getEmp_id()%></td>
 					<td><%=filter.get(i).getPole_office()%></td>
@@ -271,6 +287,7 @@
 					<td><%=filter.get(i).getPole_high()%></td>
 					<td><%=filter.get(i).getPole_down()%></td>
 					<td><%=filter.get(i).getPole_com()%></td>
+					<td><%=filter.get(i).getNow_tilt()%></td>
 				</tr>
 				<%
 						}
@@ -316,7 +333,7 @@
 			$("#modal_pole").click(function() {
 				$("#modal2").fadeIn();
 			});
-			$("#uncheck2").click(function() {
+			$("#uncheck").click(function() {
 				$("#modal2").fadeOut();
 			});
 		</script>

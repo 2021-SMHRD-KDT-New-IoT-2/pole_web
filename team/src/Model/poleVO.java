@@ -1,7 +1,5 @@
 package Model;
 
-import java.sql.Date;
-
 public class poleVO {
 	private String pole_code;
 	private String mac_code;
@@ -17,7 +15,23 @@ public class poleVO {
 	private String pole_eday;
 	private String pole_level;
 	private String pole_office;
+	private String now_tilt;
 	
+	public poleVO() {
+		
+	}
+	
+	public poleVO(String pole_code,String pole_office, String pole_high, String pole_down, String pole_com, String transformer_yn, String pole_level, String emp_id) {
+		
+		this.pole_code = pole_code;
+		this.pole_office = pole_office;
+		this.pole_high = pole_high;
+		this.pole_down = pole_down;
+		this.pole_com = pole_com;
+		this.transformer_yn = transformer_yn;
+		this.pole_level = pole_level;
+		this.emp_id = emp_id;
+	}
 	
 	public poleVO(String pole_code, String pole_height, String pole_addr, String pole_date, String transformer_yn,
 			String pole_com, String pole_high, String pole_down, String pole_level, String pole_office, String emp_id) {
@@ -35,27 +49,75 @@ public class poleVO {
 		this.emp_id = emp_id;
 	}
 
+	public poleVO(String pole_code, String mac_code, String pole_height, String pole_addr, String pole_date,
+			String emp_id, String transformer_yn, String pole_com, String pole_high, String pole_down,
+			String pole_comment, String pole_eday, String pole_level, String pole_office, String now_tilt) {
+		super();
+		this.pole_code = pole_code;
+		this.mac_code = mac_code;
+		this.pole_height = pole_height;
+		this.pole_addr = pole_addr;
+		this.pole_date = pole_date;
+		this.emp_id = emp_id;
+		this.transformer_yn = transformer_yn;
+		this.pole_com = pole_com;
+		this.pole_high = pole_high;
+		this.pole_down = pole_down;
+		this.pole_comment = pole_comment;
+		this.pole_eday = pole_eday;
+		this.pole_level = pole_level;
+		this.pole_office = pole_office;
+		this.now_tilt = now_tilt;
+	}
+
+	public poleVO(String pole_code, String pole_office, String emp_id, String pole_date, String pole_height, String transformer_yn) {
+		super();
+		this.pole_code = pole_code;
+		this.pole_office = pole_office;
+		this.emp_id = emp_id;
+		this.pole_date = pole_date;
+		this.pole_height = pole_height;
+		this.transformer_yn = transformer_yn;	
+	}
+
+	public poleVO(String mac_code, String pole_comment) {
+		super();
+		this.mac_code = mac_code;
+		this.pole_comment = pole_comment;
+	}
+
+	/* 필터VO */
+	public poleVO(String pole_code, String pole_height, String pole_date, String emp_id, String transformer_yn,
+			String pole_com, String pole_high, String pole_down, String pole_office, String now_tilt) {
+		super();
+		this.pole_code = pole_code;
+		this.pole_height = pole_height;
+		this.pole_date = pole_date;
+		this.emp_id = emp_id;
+		this.transformer_yn = transformer_yn;
+		this.pole_com = pole_com;
+		this.pole_high = pole_high;
+		this.pole_down = pole_down;
+		this.pole_office = pole_office;
+		this.now_tilt = now_tilt;
+	}
+	/* 필터VO */
 
 	public String getPole_level() {
 		return pole_level;
 	}
 
-
 	public void setPole_level(String pole_level) {
 		this.pole_level = pole_level;
 	}
-
 
 	public String getPole_office() {
 		return pole_office;
 	}
 
-
 	public void setPole_office(String pole_office) {
 		this.pole_office = pole_office;
 	}
-
-
 
 	public String getPole_code() {
 		return pole_code;
@@ -129,7 +191,12 @@ public class poleVO {
 	public void setPole_eday(String pole_eday) {
 		this.pole_eday = pole_eday;
 	}
-
+	public String getNow_tilt() {
+		return now_tilt;
+	}
+	public void setNow_tilt(String now_tilt) {
+		this.now_tilt = now_tilt;
+	}
 
 	@Override
 	public String toString() {
@@ -139,68 +206,5 @@ public class poleVO {
 				+ ", pole_comment=" + pole_comment + ", pole_eday=" + pole_eday + ", pole_level=" + pole_level
 				+ ", pole_office=" + pole_office + "]";
 	}
-
-
-	public poleVO(String pole_code, String mac_code, String pole_height, String pole_addr, String pole_date,
-			String emp_id, String transformer_yn, String pole_com, String pole_high, String pole_down,
-			String pole_comment, String pole_eday, String pole_level, String pole_office) {
-		super();
-		this.pole_code = pole_code;
-		this.mac_code = mac_code;
-		this.pole_height = pole_height;
-		this.pole_addr = pole_addr;
-		this.pole_date = pole_date;
-		this.emp_id = emp_id;
-		this.transformer_yn = transformer_yn;
-		this.pole_com = pole_com;
-		this.pole_high = pole_high;
-		this.pole_down = pole_down;
-		this.pole_comment = pole_comment;
-		this.pole_eday = pole_eday;
-		this.pole_level = pole_level;
-		this.pole_office = pole_office;
-	}
-
-
-	public poleVO(String pole_code, String pole_office, String emp_id, String pole_date, String pole_height, String transformer_yn) {
-		super();
-		this.pole_code = pole_code;
-		this.pole_office = pole_office;
-		this.emp_id = emp_id;
-		this.pole_date = pole_date;
-		this.pole_height = pole_height;
-		this.transformer_yn = transformer_yn;
-		
-	}
-
-
-	public poleVO() {
-		
-	}
-
-
-	public poleVO(String mac_code, String pole_comment) {
-		super();
-		this.mac_code = mac_code;
-		this.pole_comment = pole_comment;
-	}
-
-
-	public poleVO(String pole_code, String pole_height, String pole_date, String emp_id, String transformer_yn,
-			String pole_com, String pole_high, String pole_down, String pole_office) {
-		super();
-		this.pole_code = pole_code;
-		this.pole_height = pole_height;
-		this.pole_date = pole_date;
-		this.emp_id = emp_id;
-		this.transformer_yn = transformer_yn;
-		this.pole_com = pole_com;
-		this.pole_high = pole_high;
-		this.pole_down = pole_down;
-		this.pole_office = pole_office;
-	}
-	
-
-	
 }
 

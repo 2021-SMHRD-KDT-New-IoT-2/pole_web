@@ -64,7 +64,7 @@ public class poleDAO {
 			vo = new poleVO();
 			
 			connection();
-			String sql = "select * from pole_info where 1=1";
+			String sql = "select *,(select tilt_value from pole_tilt_info where pole_tilt_info.mac_code=pole_info.mac_code order by tilt_date desc limit 1) as now_tilt from pole_info where 1=1";
 			
 			// 조건이 추가 될 때마다 쿼리를 추가
 			String addQuery = "";
@@ -118,8 +118,9 @@ public class poleDAO {
 				String getpole_down = rs.getString("pole_down");
 				String getpole_com = rs.getString("pole_com");
 				String getpole_code = rs.getString("pole_code");
+				String now_tilt = rs.getString("now_tilt");
 				
-				vo = new poleVO(getpole_code, getpole_height, getpole_date, getemp_id, gettransformer_yn, getpole_com, getpole_high, getpole_down, getpole_office);
+				vo = new poleVO(getpole_code, getpole_height, getpole_date, getemp_id, gettransformer_yn, getpole_com, getpole_high, getpole_down, getpole_office,now_tilt);
 				
 				al.add(vo);
 			}
@@ -209,31 +210,27 @@ public class poleDAO {
 		}
 		return cnt;
 	}
-
-	
 	
 	// 전주 정보 수정
-
-	public int pole_update(String pole_code, String pole_height, String pole_addr, String pole_date, String pole_office, String pole_high, String pole_down,
+//전주번호 높이,주소,설치일자,
+	public int pole_update(String pole_code,String pole_office, String pole_high, String pole_down,
 			String pole_com, String transformer_yn, String pole_level , String emp_id) {
 
 		try {
 
 			connection();
 
-			String sql = "UPDATE pole_info SET pole_height = ?, pole_addr = ?, pole_date = ?, pole_office = ?, pole_high = ?, pole_down = ?, pole_com = ?, transformer_yn = ?, pole_level = ?, emp_id = ? WHERE pole_code = ?";
+			String sql = "UPDATE pole_info SET pole_office = ?, pole_high = ?, pole_down = ?, pole_com = ?, transformer_yn = ?, pole_level = ?, emp_id = ? WHERE pole_code = ?";
 
-			psmt.setString(1, pole_height);
-			psmt.setString(2, pole_addr);
-			psmt.setString(3, pole_date);
-			psmt.setString(4, pole_office);
-			psmt.setString(5, pole_high);
-			psmt.setString(6, pole_down);
-			psmt.setString(7, pole_com);
-			psmt.setString(8, transformer_yn);
-			psmt.setString(9, pole_level);
-			psmt.setString(10, emp_id);
-			psmt.setString(11, pole_code);
+			
+			psmt.setString(1, pole_office);
+			psmt.setString(2, pole_high);
+			psmt.setString(3, pole_down);
+			psmt.setString(4, pole_com);
+			psmt.setString(5, transformer_yn);
+			psmt.setString(6, pole_level);
+			psmt.setString(7, emp_id);
+			psmt.setString(8, pole_code);
 
 			cnt = psmt.executeUpdate();
 
@@ -250,7 +247,7 @@ public class poleDAO {
 
 	}
 
-	// 전주정보 관리
+	// 메인 전주 리스트
 
 	public ArrayList<poleVO> pole_selectAll() {
 
@@ -260,8 +257,8 @@ public class poleDAO {
 
 			connection();
 
-			String sql = "select * from pole_info order by pole_date desc";
-			
+			String sql = "select *,(select tilt_value from pole_tilt_info where pole_tilt_info.mac_code=pole_info.mac_code order by tilt_date desc limit 1) as now_tilt from pole_info;";
+
 			psmt = conn.prepareStatement(sql);
 
 			rs = psmt.executeQuery();
@@ -282,8 +279,9 @@ public class poleDAO {
 				String getPole_eday = rs.getString("pole_eday");
 				String getPole_office= rs.getString("pole_office");
 				String getPole_level = rs.getString("pole_level");
+				String now_tilt = rs.getString("now_tilt");
 
-				vo = new poleVO(getPole_code, getMac_code, getPole_height, getPole_addr, getPole_date, getEmp_id, getTransformer_yn, getPole_com, getpole_high, getpole_down, getPole_comment, getPole_eday, getPole_level, getPole_office);
+				vo = new poleVO(getPole_code, getMac_code, getPole_height, getPole_addr, getPole_date, getEmp_id, getTransformer_yn, getPole_com, getpole_high, getpole_down, getPole_comment, getPole_eday, getPole_level, getPole_office,now_tilt);
 
 
 //	   	            vo값을 al에 add
@@ -302,18 +300,19 @@ public class poleDAO {
 		return al;
 	}
 	
-	// 전주정보
+	// 전주 상세정보 페이지
 
 		public poleVO pole_selectONE(String pole_code) {
 
 			try {
 				connection();
 
-				String sql = "select * from pole_info where pole_code = ?";
+				String sql = "select *,(select tilt_value from pole_tilt_info where pole_tilt_info.mac_code=pole_info.mac_code and mac_code = ? order by tilt_date desc limit 1) as now_tilt from pole_info where pole_code = ?";
 				
 				psmt = conn.prepareStatement(sql);
 				
 				psmt.setString(1, pole_code);
+				psmt.setString(2, pole_code);
 
 				rs = psmt.executeQuery();
 
@@ -333,8 +332,9 @@ public class poleDAO {
 					String getPole_eday = rs.getString("pole_eday");
 					String getPole_office= rs.getString("pole_office");
 					String getPole_level = rs.getString("pole_level");
+					String now_tilt = rs.getString("now_tilt");
 
-					vo = new poleVO(getPole_code, getMac_code, getPole_height, getPole_addr, getPole_date, getEmp_id, getTransformer_yn, getPole_com, getpole_high, getpole_down, getPole_comment, getPole_eday,getPole_level, getPole_office);
+					vo = new poleVO(getPole_code, getMac_code, getPole_height, getPole_addr, getPole_date, getEmp_id, getTransformer_yn, getPole_com, getpole_high, getpole_down, getPole_comment, getPole_eday,getPole_level, getPole_office,now_tilt);
 
 				}
 
