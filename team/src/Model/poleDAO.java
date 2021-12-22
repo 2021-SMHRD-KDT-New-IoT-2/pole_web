@@ -56,34 +56,47 @@ public class poleDAO {
 	
 	//필터
 	@SuppressWarnings("null")
-	public ArrayList<poleVO> filter(String pole_height, String pole_date, String emp_id, String transformer_yn, String pole_office, String pole_code) {
+	public ArrayList<poleVO> filter(String pole_height, String pole_date, String emp_id, String transformer_yn, String pole_office, String pole_high, String pole_down, String pole_com, String pole_code) {
+		
 		ArrayList<poleVO> al = new ArrayList<poleVO>();
 		
 		try {		
 			vo = new poleVO();
+			
 			connection();
 			String sql = "select * from pole_info where 1=1";
+			
 			// 조건이 추가 될 때마다 쿼리를 추가
 			String addQuery = "";
 			
-			if (pole_office != null || !pole_office.equals("")) {
-				addQuery += " AND pole_office like'%" + pole_office + "%'";
-			}
-			if (emp_id != null || !emp_id.equals("")) {
-				addQuery += " AND emp_id like '%" + emp_id + "%'";
+			if (pole_height != null || !pole_height.equals("")) {
+				addQuery += " AND pole_height like '%" + pole_height + "%'";
 			}
 			if (pole_date != null || !pole_date.equals("")) {
 				addQuery += " AND pole_date like '%" + pole_date + "%'";
 			}
-			if (pole_height != null || !pole_height.equals("")) {
-				addQuery += " AND pole_height like '%" + pole_height + "%'";
-			}
+			if (emp_id != null || !emp_id.equals("")) {
+				addQuery += " AND emp_id like '%" + emp_id + "%'";
+			}	
 			if (transformer_yn != null || !transformer_yn.equals("")) {
 				addQuery += " AND transformer_yn like '%" + transformer_yn + "%'";
+			}
+			if (pole_office != null || !pole_office.equals("")) {
+				addQuery += " AND pole_office like'%" + pole_office + "%'";
+			}					
+			if (pole_high != null || !pole_high.equals("")) {
+				addQuery += " AND pole_high like '%" + pole_high + "%'";
+			}
+			if (pole_down != null || !pole_down.equals("")) {
+				addQuery += " AND pole_down like '%" + pole_down + "%'";
+			}
+			if (pole_com != null || !pole_com.equals("")) {
+				addQuery += " AND pole_com like '%" + pole_com + "%'";
 			}
 			if (pole_code != null || !pole_code.equals("")) {
 				addQuery += " AND pole_code like '%" + pole_code + "%'";
 			}
+			
 			sql += addQuery+"order by pole_date desc";
 			System.out.println(sql);
 			psmt = conn.prepareStatement(sql);
@@ -95,14 +108,18 @@ public class poleDAO {
 			while(rs.next()) {
 				
 				//해원
-				String getpole_code = rs.getString("pole_code");
+				
 				String getpole_office = rs.getString("pole_office");
 				String getemp_id = rs.getString("emp_id");		
 				String getpole_date = rs.getString("pole_date");
 				String getpole_height = rs.getString("pole_height");
 				String gettransformer_yn = rs.getString("transformer_yn");	
-
-				vo = new poleVO(getpole_code,getpole_office, getemp_id, getpole_date, getpole_height, gettransformer_yn);
+				String getpole_high = rs.getString("pole_high");
+				String getpole_down = rs.getString("pole_down");
+				String getpole_com = rs.getString("pole_com");
+				String getpole_code = rs.getString("pole_code");
+				
+				vo = new poleVO(getpole_code, getpole_height, getpole_date, getemp_id, gettransformer_yn, getpole_com, getpole_high, getpole_down, getpole_office);
 				
 				al.add(vo);
 			}
@@ -385,7 +402,6 @@ public class poleDAO {
 	}
 
 	public ArrayList<tiltVO> tilt_info(String pole_code) {
-		tiltVO vo = null;
 		ArrayList<tiltVO> tal = new ArrayList<tiltVO>();
 		try {
 			connection();
@@ -402,9 +418,9 @@ public class poleDAO {
 				
 				String mac_code=rs.getString("mac_code");
 				int tilt_value=rs.getInt("tilt_value");
-				Date mac_date=rs.getDate("mac_date");
+				String mac_date=rs.getString("mac_date");
 
-				vo= new tiltVO(mac_code,tilt_value,mac_date);
+			tiltVO vo= new tiltVO(mac_code,tilt_value,mac_date);
 				
 			}
 

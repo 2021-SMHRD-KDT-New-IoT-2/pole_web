@@ -1,29 +1,35 @@
 package Model;
 
-import java.sql.Date;
 
 public class tiltVO {
 	private String mac_code;
+	private String tilt_date;
 	private int tilt_value;
-	private Date tilt_date;
 	
 	public tiltVO() {
 		super();
 	}
 		
+	public tiltVO(String mac_code, String tilt_date, int tilt_value) {
+		super();
+		this.mac_code = mac_code;
+		this.tilt_date = tilt_date;
+		this.tilt_value = tilt_value;
+	}
+
 	public tiltVO(String mac_code, int tilt_value) {
 		super();
 		this.mac_code = mac_code;
 		this.tilt_value = tilt_value;
 	}
 
-	public tiltVO(int tilt_value, Date tilt_date) {
+	public tiltVO(int tilt_value, String tilt_date) {
 		super();
 		this.tilt_value = tilt_value;
 		this.tilt_date = tilt_date;
 	}
 	
-	public tiltVO(String mac_code, int tilt_value, Date tilt_date) {
+	public tiltVO(String mac_code, int tilt_value, String tilt_date) {
 		super();
 		this.mac_code = mac_code;
 		this.tilt_value = tilt_value;
@@ -46,11 +52,11 @@ public class tiltVO {
 		this.tilt_value = tilt_value;
 	}
 	
-	public Date getTilt_date() {
+	public String getTilt_date() {
 		return tilt_date;
 	}
 	
-	public void setTilt_date(Date tilt_date) {
+	public void setTilt_date(String tilt_date) {
 		this.tilt_date = tilt_date;
 	}
 	

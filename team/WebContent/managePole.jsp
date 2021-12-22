@@ -45,9 +45,7 @@
 			<button id="modal_emp">사용자 등록</button>
 
 			<!-- href="assignEmp.jsp" -->
-			<a href="LogoutService">로그아웃</a> <a href=""><img
-				src="./images/bell.png" class="img" width="30px" height="30px"
-				style="margin-top: 1%;"></a>
+			<a href="LogoutService">로그아웃</a>
 		</nav>
 	</div>
 
@@ -75,6 +73,7 @@
 	poleDAO pdao = new poleDAO();
 	poleVO pvo = pdao.pole_selectONE(pole_code);
 	String comment = pvo.getPole_comment();
+
 	%>
 	<section>
 		<!------------------------------------ 모달 --------------------------------------->
@@ -141,6 +140,28 @@
 		<p style="font-size: 20px; padding: 20px">
 			<b>&nbsp;- 특이사항 기록</b>
 		</p>
+		
+			<div class="text_area">
+				<%=comment.replace("-","<br>")%>
+			</div>
+			<div class="text_save">
+				<button type="button" id="Memo_modal_open">기록</button>
+			</div>
+			
+			<!-- ----------------------------메모 모달--------------------------------- -->
+			<div id="Memo_modal">
+				<form action="pole_Memo" method="post">
+					<div class="Memo_area">
+						<input type="text" name="pole_memo" class = "Memo_area"></div>
+						<input type="hidden" name="pole_code" value="<%=pole_code%>">
+						<input type="hidden" name="pole_comment" value="<%=pvo.getPole_comment()%>">
+					<div class="Memo_btn">
+						<input type="button" name="rol" value="취소" id="uncheck2" class="rol">
+						<input type="submit" name="save2" value="저장" class="suc" id="check2">
+					</div>
+				</form>
+				<div class="modal_layer"></div>
+
 
 		<div class="text_area">
 			<%=comment.replace("-","<br>")%>
@@ -238,20 +259,47 @@
 			$("#modal3").fadeOut();
 		});
 	</script>
+		
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript">
+		// ajax 이용해서 페이지 열릴때, 바로 함수실행
+		
+		$.ajax({
+			
+			url : 'AjaxTest',
+			type : 'get',
+			data : {'pole_code' : '<%=pole_code%>'},
+			dataType : 'json',
+			success : function(res){
+				dataArray = new Array();
+				dataArray.push(['month', 'tilt'])
+				for(let i = 0;i<Object.keys(res).length;i++){
+					data = [res[i].tilt_date,res[i].tilt_value]
+					dataArray.push(data)
+				}				
+				chart(dataArray)
+			},
+			error : function(){
+				alert('차트 로딩 실패');
+			}
+			
+		})
+	
+	</script>
 
 	<!-- 기울기 변화 그래프 소스 ----------------------------------------------------------------------- -->
-	<script type="text/javascript"
-		src="https://www.gstatic.com/charts/loader.js"></script>
+
 	<script type="text/javascript">
+	
+	function chart(dataArray) {
+
 		google.charts.load('current', {
 			'packages' : [ 'corechart' ]
 		});
 		google.charts.setOnLoadCallback(drawChart);
 
 		function drawChart() {
-			var data = google.visualization.arrayToDataTable([ [ 'M', '기울기' ],
-					[ '8월', 90 ], [ '9월', 88 ], [ '10월', 85.5 ],
-					[ '11월', 84.5 ], [ '12월', 81.2 ] ]);
+			var data = google.visualization.arrayToDataTable(dataArray);
 
 			var options = {
 				title : '기울기 변화 그래프',
@@ -266,6 +314,7 @@
 
 
 			chart.draw(data, options);
+			}
 		}
 
 	</script>
