@@ -127,7 +127,7 @@
 						style="width: 100px; height: 40px; margin-right: 4%; font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<label>설치 일자</label> <input type="text" name="pole_date" id="searchtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-					<label>높이</label> <input type="text" name="pole_height"  id="searchtext"> <br>
+					<label>높이</label> <input type="text" name="pole_height"  id="searchtext" style="margin-right: 1%;"> <br>
 						
 						<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;변압기</label>
 						<select name="transformer_yn" id="searchtext"> <br>
@@ -150,7 +150,7 @@
 						<option value="N">N</option>
 					</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					
-					 <label> 통신선</label> <select name="pole_com">
+					 <label> 통신선</label> <select name="pole_com" style="margin-right: 1%;">
 						<option value="">선택</option>
 						<option value="Y">Y</option>
 						<option value="N">N</option>
