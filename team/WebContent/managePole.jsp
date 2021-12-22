@@ -139,7 +139,7 @@
 	</section>
 
 	<aside>
-		<%-- <div id="curve_chart" style="width: 100%; height: 350px"></div>
+		<div id="curve_chart" style="width: 100%; height: 350px"></div>
 		<p style="font-size: 20px; padding: 20px">
 			<b>&nbsp;- 특이사항 기록</b>
 		</p>
@@ -154,7 +154,7 @@
 			</div>
 			<div class="text_save">
 				<button type="button" id="Memo_modal_open">기록</button>
-			</div> --%>
+			</div>
 			
 			<!-- ----------------------------메모 모달--------------------------------- -->
 			<div id="Memo_modal">
@@ -208,6 +208,8 @@
 			<input type="button" value="사진 바꾸기">
 		</div>
 	</div>
+	<script src="./js/managePole.js"></script>
+	
 	<!--fonts-->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

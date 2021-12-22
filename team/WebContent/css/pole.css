@@ -122,7 +122,8 @@ h2,h3 {
 }
 
 section{
-    float:left; width:50%;
+    float:left; 
+    width:50%;
     height:700px;
     color: black;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
@@ -234,7 +235,6 @@ h1{
 #footer{
     margin: 3% 20% -1%;
     text-align: center;
-
     float: left;
     position:relative;
     width: 60%;
@@ -250,9 +250,11 @@ h1{
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
     text-align: center; 
 } 
+
 .mySlides > img{
     margin-top: 3%;
 }
+
 #curve_chart{
 	padding:20px;
 }
