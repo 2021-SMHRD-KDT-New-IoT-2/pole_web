@@ -124,24 +124,23 @@
 					
 				 <label>관리자</label>
 					<input type="text" name="emp_id"
-						style="width: 100px; height: 40px; margin-right: 4%; font-size: 15px;">&nbsp;&nbsp;&nbsp;
-					<label>설치 일자</label> <input type="text" name="pole_date"
-						id="searchtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						style="width: 100px; height: 40px; margin-right: 4%; font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<label>설치 일자</label> <input type="text" name="pole_date" id="searchtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 					<label>높이</label> <input type="text" name="pole_height"  id="searchtext"> <br>
 						
-						<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;변압기</label>
+						<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;변압기</label>
 						<select name="transformer_yn" id="searchtext"> <br>
 						<option value="">선택</option>
 						<option value="Y">Y</option>
 						<option value="N">N</option>
-					</select> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;				
+					</select> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;				
 						<label> 고압선 </label> 
 						<select name="pole_high">
 						<option value="">선택</option>
 						<option value="Y">Y</option>
 						<option value="N">N</option>
-					</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
 					<label> 저압선</label>
@@ -155,11 +154,9 @@
 						<option value="">선택</option>
 						<option value="Y">Y</option>
 						<option value="N">N</option>
-					</select>&nbsp;&nbsp;&nbsp; 
-					<label> 전주번호 </label>
-					<input type="text" name="pole_code">
-					<input type="submit" name="filter" value="검색"
-						class="filter_search" style="float: right; background-color: white; border: 1px solid #ccc;">
+					</select>&nbsp;&nbsp;
+					<input type="text" name="pole_code" class="filter" placeholder="전주 번호 검색"	>
+					 <input type="submit" name="pole_code" value = "검색" class="filter_search" style="float: right; color: black; background-color: white; border: 1px solid #ccc;">
 
 				</fieldset>
 			</form>

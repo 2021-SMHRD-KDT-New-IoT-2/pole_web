@@ -6,12 +6,15 @@
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 </head>
+<style>
+
+</style>
 <body>
 	<!----------------------------------------------- 전주 등록 모달 공간 -------------------------------------------->
 	<center>
 		<div id="modal2">
 			<form action="assignpole" method="post" class="pole_form">
-				<table width="700" height="800" class="pole_tb_body" cellpadding="0"
+				<table class="pole_tb_body" cellpadding="2"
 					style="border-collapse: collapse;">
 					<tr height="100px">
 
@@ -33,7 +36,7 @@
 							; height="25px";></td>
 						<td class="wid4">전주번호</td>
 						<td><input type="text" name="pole_code"
-							style="margin-left: -15%;"></td>
+							style="margin-left: -5%; height:30px;"></td>
 					</tr>
 
 					<tr height="7">
@@ -47,7 +50,7 @@
 							; height="25px";></td>
 						<td class="wid4">전주 높이</td>
 						<td><input type="text" name="pole_height"
-							style="margin-left: -15%;" /></td>
+							style="margin-left: -5%; height:30px;" /></td>
 					</tr>
 
 					<tr height="7">
@@ -61,7 +64,7 @@
 							; height="25px";></td>
 						<td class="wid4">전주 주소</td>
 						<td><input type="text" name="pole_addr"
-							style="margin-left: -15%;" /></td>
+							style="margin-left: -5%; height:30px;" /></td>
 					</tr>
 
 					<tr height="7">
@@ -75,7 +78,7 @@
 						<td class="wid3"><img src="./images/check2.png" width="25px"
 							; height="25px";></td>
 						<td class="wid4">담당 사업소</td>
-						<td><select name = "pole_office" style="width: 225px; margin-left : -70px;">
+						<td><select name = "pole_office" style="margin: 0 0 0 -6%; width:150px; height:30px">
 						<option >선택하세요</option>
 						<option value="북구">북구</option>
 						<option value="남구">남구</option>
@@ -97,7 +100,7 @@
 							; height="25px";></td>
 						<td class="wid4">담당자 사원번호</td>
 						<td><input type="text" name="emp_id"
-							style="margin-left: -15%;" /></td>
+							style="margin-left: -5%; height:30px;" /></td>
 					</tr>
 
 					<tr height="7">
@@ -112,7 +115,7 @@
 							; height="25px";></td>
 						<td class="wid4">설치 일자</td>
 						<td><input type="text" name="pole_date"
-							style="margin-left: -15%; width: 222px;" /></td>
+							style="margin-left: -5%; height:30px;" /></td>
 					</tr>
 					<tr height="7">
 						<td colspan="3">
