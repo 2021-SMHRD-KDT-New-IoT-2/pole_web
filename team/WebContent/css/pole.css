@@ -30,10 +30,6 @@ nav{
    width:40%;
    display: block;
 	margin-left: 72.2%;
-/*
-	margin-top: 1.9%;
-	margin-bottom : 2%;
-	display: block; */
 }
 
 nav>a, button {
@@ -121,12 +117,12 @@ h2,h3 {
 section{
     float:left; 
     width:50%;
-    height:700px;
+    height:800px;
     color: black;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 }
 
-table{
+#pole_tb{
     width: 90%;
     height: 480px;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
@@ -134,22 +130,26 @@ table{
     margin: 0 auto;
     }
 
-#pole_tb {
-    background-color: #ffffff;
-    color: #000000;
-    text-align: center;
-}
 
-tr {
+#pole_tb > tbody > tr {
     width: 50%;
     float: left;
+    color:black;
 }
-th, td{
+#pole_tb > tbody >tr > th{
 	margin-left: 30%;
     padding: 5%;
     display: flex;
     font-size: 18px;
 }
+
+#pole_tb > tbody >tr > td{
+	margin-left: 30%;
+    padding: 5%;
+    display: flex;
+    font-size: 18px;
+}
+
 
 .tb_nav{ 
     margin : auto;
@@ -170,7 +170,7 @@ aside{
     float: right;
     width: 50%;
     color: black;
-    height:700px;
+    height:800px;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 }
 
@@ -330,7 +330,7 @@ h1{
 #cameraMove > input{
 		background: none;
 		color: #5b5b5b;
-		font-size:18px;
+		font-size:20px;
 		border:none;
 		cursor: pointer;
 }
@@ -344,16 +344,6 @@ h1{
     margin-left: -7%;
     font-size: 15px;
 }
-#camera{
-background-color: rgb(143, 143, 143);
-	border : none;
-	color : white;
-	font-size:20px;
-	padding : 10px;
-	width : 150px;
-	margin-right:5%;
-    margin-top: 3%;
- }
 #uncheck, #buzzer{
 	background-color: rgb(143, 143, 143);
 	border : none;
@@ -366,13 +356,12 @@ background-color: rgb(143, 143, 143);
     margin-top: 3%;
 }
 
-/* ------------------------------------------------------------------------------*/
 #cameraMove{
 	background : none;
 }
 
 
-#modal {
+#camera_modal {
     display: none;
     margin-left: 30%;
     position: absolute;
@@ -381,17 +370,17 @@ background-color: rgb(143, 143, 143);
     z-index: 1;
 }
 
-#modal h2 {
+#camera_modal h2 {
     margin: 0;
 }
 
-#modal button {
+#camera_modal button {
     display: inline-block;
     width: 100px;
     margin-left: calc(100% - 100px - 10px);
 }
 
-#modal .modal_content {
+#camera_modal .modal_content {
     width: 300px;
     margin: 100px auto;
     padding: 20px 10px;
@@ -399,7 +388,7 @@ background-color: rgb(143, 143, 143);
     border: 2px solid #666;
 }
 
-#modal .modal_layer {
+#camera_modal .modal_layer {
     position: fixed;
     top: 0;
     left: 0;
@@ -409,6 +398,8 @@ background-color: rgb(143, 143, 143);
     z-index: -1;
 }
 
+
+/* ------------------------------------------------------------------------------*/
 #Memo_modal {
     background-color: white;
     display: none;
@@ -419,15 +410,15 @@ background-color: rgb(143, 143, 143);
     z-index: 1;
 }
 
-#check2{
-	background-color: rgb(143, 143, 143);
-	border : none;
-	color : white;
-	font-size:20px;
-	padding : 10px;
-	width : 100px;
-    margin-top: 3%;
-    margin-left: 10%;
+#check2, #uncheck2 {
+    background-color: rgb(143, 143, 143);
+    border: none;
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+    width: 100px;
+    margin-top: 5%;
+    margin-left: 5%;
 }
 
 .Memo_area > input{
@@ -464,124 +455,3 @@ background-color: rgb(143, 143, 143);
     background: rgba(0, 0, 0, 0.705);
     z-index: -1;
 }
-
-
-
-
-/*----------------------------------------UpdatePole.modal----------------------------------------------- */
-/*
-#modal3_area{
-	display: none;
-	border:solid 1px black;
-}
-*/
-
-#modal3 {
-    display: none;
-    position: absolute;
-    width: 100%;
-    height: 700px;
-    z-index: 1;
-}
-
-#modal3 h2 {
-   margin: 0;
-}
-
-#modal3 button {
-   display: inline-block;
-   width: 100px;
-   margin-left: calc(100% - 100px - 10px);
-}
-
-#modal3 .modal_content {
-   width: 300px;
-   margin: 100px auto;
-   padding: 20px 10px;
-   background: #fff;
-   border: 2px solid #666;
-}
-
-#modal3 .modal_layer {
-   position: fixed;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   background: rgba(105, 105, 105, 0.705);
-   z-index: -1;   
-}
-
-#empas{
-	font-size: 25px;
-}
-
-#empas > img{
-	margin-top: 5%;
-}
-
-.pole_form {
-   position: absolute;
-   margin: 0 auto;
-   width: 700px;
-   margin-left: 35%;
-   background-color: white;
-   box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
-}
-
-.pole_form>table {
-   width: 750px;
-   border-radius: 10px;
-}
-
-.pole_tb_body {
-
-   margin: auto;
-   border-bottom: none;
-   width: 90%;
-   height: 700px;
-   background:black;
-
-}
-
-.pole_tb_body>tr, td, th{
-   position: relative;
-   text-align: center;
-   font-size: 20px;
-   color: hsl(190, 3%, 40%);;
-}
-
-.wid5 {
-   width: 20%;
-}
-
-.wid6 {
-   width: 25%;
-}
-
-.suc3, .rol3 {
-   height: auto;
-   display: inline-block;
-   text-transform: uppercase;
-   margin-bottom: 1.5%;
-   cursor: pointer;
-   background: #002c5f; 
-   box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
-   padding: 10px 25px;
-   border: 0px;
-   color: #fff;
-   font-size: 18px;
-   margin-bottom: 4%;
-}
-
-.suc3:hover {
-   color: #000e1f;
-}
-
-.rol3:hover {
-   color: #000e1f;
-}
-
-/*-----------------------------------------UpdatePole.modal------------------------------------------ */
-
-
