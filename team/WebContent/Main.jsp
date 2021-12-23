@@ -30,7 +30,7 @@
 	border: none;
 	border-radius: 10px;
 	width: 31.5%;
-	height: 20%;
+	height: 16%;
 	font-size: 15px;
 	background-color: #ffffff;
 	border: #ccc solid 1px;
@@ -238,7 +238,7 @@
 	<div id="wrapper">
 		<div class="search_container" style="text-align: center;">
 			<table id="poletable"
-				style="text-align: center; margin: auto; border: 1px solid #ccc;">
+				style="text-align: center; margin: auto;">
 				<tr>
 					<th>위험도</th>
 					<th>전주번호</th>
@@ -303,7 +303,7 @@
 
 		<div class="search_container" style="text-align: center;">
 			<table id="poletable"
-				style="text-align: center; margin: auto; border: 2px solid black;">
+				style="text-align: center; margin: auto; margin-top: 4%;">
 				<tr>
 					<th>위험도</th>
 					
