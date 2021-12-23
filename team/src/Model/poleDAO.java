@@ -118,7 +118,7 @@ public class poleDAO {
 				String getpole_down = rs.getString("pole_down");
 				String getpole_com = rs.getString("pole_com");
 				String getpole_code = rs.getString("pole_code");
-				String now_tilt = rs.getString("now_tilt");
+				int now_tilt = rs.getInt("now_tilt");
 				
 				vo = new poleVO(getpole_code, getpole_height, getpole_date, getemp_id, gettransformer_yn, getpole_com, getpole_high, getpole_down, getpole_office,now_tilt);
 				
@@ -276,7 +276,7 @@ public class poleDAO {
 				String getPole_eday = rs.getString("pole_eday");
 				String getPole_office= rs.getString("pole_office");
 				String getPole_level = rs.getString("pole_level");
-				String now_tilt = rs.getString("now_tilt");
+				int now_tilt = rs.getInt("now_tilt");
 
 				vo = new poleVO(getPole_code, getMac_code, getPole_height, getPole_addr, getPole_date, getEmp_id, getTransformer_yn, getPole_com, getpole_high, getpole_down, getPole_comment, getPole_eday, getPole_level, getPole_office,now_tilt);
 
@@ -329,7 +329,7 @@ public class poleDAO {
 					String getPole_eday = rs.getString("pole_eday");
 					String getPole_office= rs.getString("pole_office");
 					String getPole_level = rs.getString("pole_level");
-					String now_tilt = rs.getString("now_tilt");
+					int now_tilt = rs.getInt("now_tilt");
 
 					vo = new poleVO(getPole_code, getMac_code, getPole_height, getPole_addr, getPole_date, getEmp_id, getTransformer_yn, getPole_com, getpole_high, getpole_down, getPole_comment, getPole_eday,getPole_level, getPole_office,now_tilt);
 
@@ -354,7 +354,7 @@ public class poleDAO {
 		try {
 			connection();
 
-			String sql = "DELETE from pole_info where pole_num = ? ";
+			String sql = "DELETE from pole_info where pole_code = ? ";
 
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, pole_code);
@@ -367,11 +367,9 @@ public class poleDAO {
 		} finally {
 
 			close();
-
 		}
 
 		return cnt;
-
 	}
 	
 	// 전주 상세 페이지 메모 등록

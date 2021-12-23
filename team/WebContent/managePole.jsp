@@ -10,7 +10,7 @@
 <%@page import="Model.tiltDAO"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+	pageEncoding="UTF-8"%>
 <%@page import="Model.poleDAO"%>
 <%@page import="Model.poleVO"%>
 <%@page import="java.util.ArrayList"%>
@@ -20,13 +20,14 @@
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.DriverManager"%>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!DOCTYPE html>
 <html id="html" style="position: relative; display: grid;">
 <head>
 <meta charset="EUC-KR">
 <link rel="shorcut icon" type="image/x-icon"
 	href="./images/upoplogo.PNG" type="text/css">
-<title>ÀüÁÖ »ó¼¼Á¤º¸</title>
+<title>ì „ì£¼ ìƒì„¸ì •ë³´</title>
 <link rel="stylesheet" href="css/pole.css">
 
 <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
@@ -36,10 +37,25 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"
 	rel="stylesheet">
+	
+	    <style>
+        .suc:hover {color: #000e1f;}
 
+        .rol:hover {color: #000e1f;}
 
+        #update_modal .modal_layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.705);
+            z-index: -1;
+        }
+    </style>
+	
+	
 </head>
-
 <body>
 	<div id="nav">
 		<nav>
@@ -47,11 +63,11 @@
 			<button>
 				<a href="Main.jsp" style="text-decoration: none">HOME</a>
 			</button>
-			<button id="modal_pole">ÀüÁÖ µî·Ï</button>
-			<button id="modal_emp">»ç¿ëÀÚ µî·Ï</button>
+			<button id="modal_pole">ì „ì£¼ ë“±ë¡</button>
+			<button id="modal_emp">ì‚¬ìš©ì ë“±ë¡</button>
 
 			<!-- href="assignEmp.jsp" -->
-			<a href="LogoutService">·Î±×¾Æ¿ô</a>
+			<a href="LogoutService">ë¡œê·¸ì•„ì›ƒ</a>
 		</nav>
 	</div>
 
@@ -63,66 +79,62 @@
 					id="logo">
 			</div>
 			<div class="header_h1">
-				<h1>ÀüÁÖ ÅëÇÕ °ü¸® ½Ã½ºÅÛ</h1>
+				<h1>ì „ì£¼ í†µí•© ê´€ë¦¬ ì‹œìŠ¤í…œ</h1>
 				<h4>POLE MANAGEMENT SYSTEM</h4>
 			</div>
 		</div>
 
 		<div id="cameraMove">
-			<input type="button" value="Ä«¸Ş¶ó È­¸é ÀÌµ¿">
+			<input type="button" value="ì¹´ë©”ë¼ í™”ë©´ ì´ë™">
 
 		</div>
 	</header>
 	<%
-	request.setCharacterEncoding("utf-8");
-	String pole_code = request.getParameter("pole_code");
-	poleDAO pdao = new poleDAO();
-	poleVO pvo = pdao.pole_selectONE(pole_code);
-	String comment = pvo.getPole_comment();
+   request.setCharacterEncoding("utf-8");
+   String pole_code = request.getParameter("pole_code");
+   poleDAO pdao = new poleDAO();
+   poleVO pvo = pdao.pole_selectONE(pole_code);
+   String comment = pvo.getPole_comment();
 
-	%>
-
-	
-	
-	
+   %>
 	<section>
-		<!------------------------------------ ¸ğ´Ş --------------------------------------->
-		<div id="modal">
+		<!------------------------------------ ëª¨ë‹¬ --------------------------------------->
+		<div id="camera_modal">
 
 
 			<div id="cameraView">
 				<img src="http://172.30.1.45:80/video_feed">
 			</div>
 
-			<input type="button" name="rol" value="µÚ·Î" id="uncheck" class="rol">
-			<input type="button" name="buzzer" value="ºÎÀú ÀÛµ¿" id="buzzer"
+			<input type="button" name="rol" value="ë’¤ë¡œ" id="uncheck" class="rol">
+			<input type="button" name="buzzer" value="ë¶€ì € ì‘ë™" id="buzzer"
 				class="rol" onclick="location.href='http://172.30.1.45/buzzer'">
 			<div class="modal_layer"></div>
 
 		</div>
-		<!------------------------------------ ¸ğ´Ş --------------------------------------->
+		<!------------------------------------ ëª¨ë‹¬ --------------------------------------->
 		<div class="tb_name">
 
 			<p style="font-size: 25px; padding: 20px">
-				<b>- <%=pvo.getPole_code()%>¹ø ÀüÁÖ »ó¼¼Á¤º¸
+				&nbsp;&nbsp;<b>- <%=pvo.getPole_code()%>ë²ˆ ì „ì£¼ ìƒì„¸ì •ë³´
 				</b>
 			</p>
 		</div>
 		<div class="tb_body">
-			<form action="Main.jsp" name="pole_tb" class="form_tb" method="post">
+			<form action="Main.jsp" name="pole_tb" class="fom_tb" method="post">
 				<table id="pole_tb">
 					<tr>
-						<th>ÀüÁÖ ¹øÈ£</th>
-						<th>ÀüÁÖ ³ôÀÌ</th>
-						<th>ÀüÁÖ ÁÖ¼Ò</th>
-						<th>¼³Ä¡ ÀÏÀÚ</th>
-						<th>°üÇÒ Áö±¸</th>
-						<th>°í¾Ğ¼± À¯¹«</th>
-						<th>Àú¾Ğ¼± À¯¹«</th>
-						<th>Åë½Å¼± À¯¹«</th>
-						<th>º¯¾Ğ±â À¯¹«</th>
-						<th>°ü¸®µî±Ş</th>
-						<th>ÇöÀç ±â¿ï±â</th>
+						<th>ì „ì£¼ ë²ˆí˜¸</th>
+						<th>ì „ì£¼ ë†’ì´</th>
+						<th>ì „ì£¼ ì£¼ì†Œ</th>
+						<th>ì„¤ì¹˜ ì¼ì</th>
+						<th>ê´€í•  ì§€êµ¬</th>
+						<th>ê³ ì••ì„  ìœ ë¬´</th>
+						<th>ì €ì••ì„  ìœ ë¬´</th>
+						<th>í†µì‹ ì„  ìœ ë¬´</th>
+						<th>ë³€ì••ê¸° ìœ ë¬´</th>
+						<th>ê´€ë¦¬ë“±ê¸‰</th>
+						<th>í˜„ì¬ ê¸°ìš¸ê¸°</th>
 					</tr>
 
 					<tr>
@@ -136,192 +148,283 @@
 						<td><%=pvo.getPole_com()%></td>
 						<td><%=pvo.getTransformer_yn()%></td>
 						<td><%=pvo.getPole_level()%></td>
-						<td><%=pvo.getNow_tilt()%></td>
+						<td><%=pvo.getNow_tilt() %></td>
 					</tr>
 				</table>
 			</form>
 		</div>
 		<div class="tb_nav">
-			<input type="button" id="modal_update" value="¼öÁ¤">
+			<input type="button" id="update_modal_open" value="ìˆ˜ì •">
 
 
-			<!-- ÀüÁÖ ¼öÁ¤ ¸ğ´Ş -------------------------------------------------------------------------------------------------------------------- -->
-			<%@ include file="/UpdatePole.jsp"%>
-			<!-- ÀüÁÖ ¼öÁ¤ ¸ğ´Ş -------------------------------------------------------------------------------------------------------------------- -->
+			<!-- ì „ì£¼ ìˆ˜ì • ëª¨ë‹¬ -------------------------------------------------------------------------------------------------------------------- -->
+			<div id="update_modal"
+				style="display: none; position: absolute; width: 80%; z-index: 1;">
+				<form action="" method="post" name="update_pole"
+					style="width: 50%; background: white; position: absolute; box-shadow: 0 0 3px rgba(0, 0, 0, 0.3); margin-left:25%; margin-top:-50%;">
+					<table cellpadding="0"
+						style="border-collapse: collapse; width: 80%; height: 500px; margin: auto;">
 
 
-		</div>
-	</section>
+						<td colspan="3" align="center"
+							style="font-size: 20px; height: 50px; text-align: center; color: hsl(190, 3%, 40%);">ì „ì£¼
+							ìˆ˜ì •</td>
 
-	<aside>
-		<div id="curve_chart" style="width: 100%; height: 350px"></div>
-		<p style="font-size: 20px; padding: 20px">
-			<b>&nbsp;- Æ¯ÀÌ»çÇ× ±â·Ï</b>
-		</p>
 
-		<div class="text_area">
-			<%System.out.print(pvo.getPole_comment()); %>
-			<%if(pvo.getPole_comment()!=null){ %>
-			<%=comment.replace("-","<br>")%>
-			<%}else{ %>
-			Á¤º¸¾øÀ½
-			<%} %>
-		</div>
-		<div class="text_save">
-			<button type="button" id="Memo_modal_open">±â·Ï</button>
-		</div>
+						<tr height="7" style="color: hsl(190, 3%, 40%);">
+							<td colspan="3">
+								<hr>
+							</td>
+						</tr>
 
-		<!-- ----------------------------¸Ş¸ğ ¸ğ´Ş--------------------------------- -->
-		<div id="Memo_modal">
-			<form action="pole_Memo" method="post">
-				<div class="Memo_area">
-					<input type="text" name="pole_memo" class="Memo_area">
-				</div>
-				<input type="hidden" name="pole_code" value="<%=pole_code%>">
-				<input type="hidden" name="pole_comment"
+						<tr height="30"
+							style="font-size: 15px; text-align: center; color: hsl(190, 3%, 40%);">
+							<td style="width: 15%;"><img src="./images/check2.png"
+								width="25px" height="25px"></td>
+							<td style="width: 25%; font-size:17px;">ê´€í•  ì§€ì—­</td>
+							<td><input type="text" name="User_ID" style="width: 150px; height:30px;" />
+						</tr>
+						<tr height="7" style="color: hsl(190, 3%, 40%);">
+							<td colspan="3">
+								<hr />
+							</td>
+						</tr>
+
+						<tr height="30"
+							style="font-size: 15px; text-align: center; color: hsl(190, 3%, 40%);">
+							<td style="width: 15%;"><img src="./images/check2.png"
+								width="25px" height="25px"></td>
+							<td style="width: 25%; font-size:17px;">ë‹´ë‹¹ì</td>
+							<td><input type="text" name="User_ID" style="width: 150px; height:30px;" />
+						</tr>
+						<tr height="7" style="color: hsl(190, 3%, 40%);">
+							<td colspan="3">
+								<hr />
+							</td>
+						</tr>
+						<tr height="30"
+							style="font-size: 15px; text-align: center; color: hsl(190, 3%, 40%);">
+							<td style="width: 15%;"><img src="./images/check2.png"
+								width="25px" height="25px"></td>
+							<td style="width: 25%; font-size:17px;" >ë‹´ë‹¹ì ì‚¬ì› ë²ˆí˜¸</td>
+							<td><input type="text" name="wUserName"
+								style="width: 150px; height:30px;" /></td>
+						</tr>
+						<tr height="7" style="color: hsl(190, 3%, 40%);">
+							<td colspan="3">
+								<hr />
+							</td>
+						</tr>
+
+						<tr height="25"
+							style="font-size: 17px; text-align: center; color: hsl(190, 3%, 40%);">
+							<td style="width: 15%;"><img src="./images/check2.png"
+								width="25px" height="25px"></td>
+							<td colspan="2" style="text-align: center;"><input
+								type="checkbox" name="transformer_yn" value="Y"
+								style="margin-left: 4%; width: 20px;">ë³€ì••ê¸° <input
+								type="hidden" name="transformer_yn" value='N'> <input
+								type="checkbox" name="pole_com" value="Y"
+								style="margin-left: 4%; width: 20px;">í†µì‹ ì„  <input
+								type="hidden" name="pole_com" value='N'> <input
+								type="checkbox" name="pole_high" value="Y"
+								style="margin-left: 4%; width: 20px;">ê³ ì••ì„  <input
+								type="hidden" name="pole_high" value='N'> <input
+								type="checkbox" name="pole_down" value="Y"
+								style="margin-left: 4%; width: 20px;">ì €ì••ì„  <input
+								type="hidden" name="pole_down" value='N'></td>
+							<tr height="7" style="color: hsl(190, 3%, 40%);">
+                    <td colspan="3">
+                        <hr />
+                    </td>
+                </tr>
+
+
+
+                <tr height="60"
+							style="font-size: 15px; text-align: center; color: hsl(190, 3%, 40%);">
+                    <td colspan="3"><input type="button" name="rol"
+								value="ì·¨ì†Œí•˜ê¸°" id="modal_uncheck" class="rol"
+								style="border: 0px; height: auto; display: inline-block; text-transform: uppercase; margin-bottom: 1.5%; cursor: pointer; background:  #002C5F; box-shadow: 0 0 3px rgba(0, 0, 0, 0.3); padding: 10px 25px; color: #fff; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="submit" name="suc" value="ìˆ˜ì •í•˜ê¸°"
+								class="suc" id="modal_check"
+								style="border: 0px; height: auto; display: inline-block; text-transform: uppercase; margin-bottom: 1.5%; cursor: pointer; background:  #002C5F; box-shadow: 0 0 3px rgba(0, 0, 0, 0.3); padding: 10px 25px; color: #fff; font-size: 14px;">
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+        <div class="modal_layer"></div>
+
+    </div>
+         <!-- ì „ì£¼ ìˆ˜ì • ëª¨ë‹¬ -------------------------------------------------------------------------------------------------------------------- --></div>
+   </section>
+
+   <aside>
+      <div id="curve_chart" style="width: 100%; height: 350px"></div>
+      <p style="font-size: 20px; padding: 20px">
+         <b>&nbsp;- íŠ¹ì´ì‚¬í•­ ê¸°ë¡</b>
+      </p>
+
+      <div class="text_area">
+         <%System.out.print(pvo.getPole_comment()); %>
+         <%if(pvo.getPole_comment()!=null){ %>
+         <%=comment.replace("-","<br>")%>
+         <%}else{ %>
+         	ì •ë³´ì—†ìŒ
+         <%} %>
+      </div>
+      <div class="text_save">
+         <button type="button" id="Memo_modal_open">ê¸°ë¡</button>
+      </div>
+
+      <!-- ----------------------------ë©”ëª¨ ëª¨ë‹¬--------------------------------- -->
+      <div id="Memo_modal">
+         <form action="pole_Memo" method="post">
+            <div class="Memo_area">
+               <input type="text" name="pole_memo" class="Memo_area">
+            </div>
+            <input type="hidden" name="pole_code" value="<%=pole_code%>">
+            <input type="hidden" name="pole_comment"
 					value="<%=pvo.getPole_comment()%>">
-				<div class="Memo_btn">
-					<input type="button" name="rol" value="Ãë¼Ò" id="uncheck2" class="rol">
-					<input type="submit" name="save2" value="ÀúÀå" class="suc"
+            <div class="Memo_btn">
+               <input type="button" name="rol" value="ì·¨ì†Œ" id="uncheck2"
+						class="rol">
+               <input type="submit" name="save2" value="ì €ì¥" class="suc"
 						id="check2">
-				</div>
-			</form>
-			<div class="modal_layer"></div>
+            </div>
+         </form>
+         <div class="modal_layer"></div>
 
-		</div>
-		<!-- ----------------------------¸Ş¸ğ ¸ğ´Ş--------------------------------- -->
+      </div>
+      <!-- ----------------------------ë©”ëª¨ ëª¨ë‹¬--------------------------------- -->
 
-	</aside>
-
-
-	<!-- <div id = "footer"> -->
-	<div id="footer">
-		<p style="color: black; font-size: 20px; text-align: center;">
-			<b>ÀüÁÖ »çÁø</b>
-		</p>
-	</div>
+   </aside>
 
 
-	<div class="slideshow-container">
-
-		<div class="mySlides fade">
-			<img src="./images/poleimg.png" width="500px" height="450px">
-		</div>
-
-		<div class="mySlides fade">
-			<img src="./images/poleimg.png" width="500px" height="450px">
-		</div>
-
-		<div class="mySlides fade">
-			<img src="./images/poleimg.png" width="500px" height="450px">
-		</div>
+   <!-- <div id = "footer"> -->
+   <div id="footer">
+      <p style="color: black; font-size: 20px; text-align: center;">
+         <b>ì „ì£¼ ì‚¬ì§„</b>
+      </p>
+   </div>
 
 
-		<div class="dots" style="text-align: center">
-			<span class="dot" onclick="currentSlide(1)"></span> <span class="dot"
-				onclick="currentSlide(2)"></span> <span class="dot"
+   <div class="slideshow-container">
+
+      <div class="mySlides fade">
+         <img src="./images/poleimg.png" width="500px" height="450px">
+      </div>
+
+      <div class="mySlides fade">
+         <img src="./images/poleimg.png" width="500px" height="450px">
+      </div>
+
+      <div class="mySlides fade">
+         <img src="./images/poleimg.png" width="500px" height="450px">
+      </div>
+
+
+      <div class="dots" style="text-align: center">
+         <span class="dot" onclick="currentSlide(1)"></span> <span
+				class="dot" onclick="currentSlide(2)"></span> <span class="dot"
 				onclick="currentSlide(3)"></span>
-		</div>
-		<div class="img_save">
-			<input type="button" value="»çÁø ¹Ù²Ù±â">
-		</div>
-	</div>
-	<script src="./js/managePole.js"></script>
+      </div>
+      <div class="img_save">
+         <input type="button" value="ì‚¬ì§„ ë°”ê¾¸ê¸°">
+      </div>
+   </div>
+   <script src="./js/managePole.js"></script>
 
-	<script>
+   <script>
 
-		$("#cameraMove").click(function() {
-			$("#modal").fadeIn();
-		});
-		$("#uncheck").click(function() {
-			$("#modal").fadeOut();
-		});
-		</script>
+      $("#cameraMove").click(function() {
+         $("#camera_modal").fadeIn();
+      });
+      $("#uncheck").click(function() {
+         $("#camera_modal").fadeOut();
+      });
+      </script>
 
-	<script>
-		/* Memo_modal */
-		$("#Memo_modal_open").click(function() {
-			$("#Memo_modal").fadeIn();
-		});
-		$("#uncheck2").click(function() {
-			$("#Memo_modal").fadeOut();
-		});
-		
-		</script>
-		<!-- modal.js -->
-	<script src="js/modal.js"></script>
+   <script>
+      /* Memo_modal */
+      $("#Memo_modal_open").click(function() {
+         $("#Memo_modal").fadeIn();
+      });
+      $("#uncheck2").click(function() {
+         $("#Memo_modal").fadeOut();
+      });
+      
+      </script>
 
-	<script>
-		
-		/* UpdatePole_modal */
-		$("#modal_update").click(function() {
-			$("#modal3").fadeIn();
-		});
-		$("#uncheck").click(function() {
-			$("#modal3").fadeOut();
-		});
-	</script>
+    <script>
+        $("#update_modal_open").click(function () {
+            $("#update_modal").fadeIn();
+        });
+        $("#modal_uncheck").click(function () {
+            $("#update_modal").fadeOut();
+        });
+    </script>
 
-	<script type="text/javascript"
+   <script type="text/javascript"
 		src="https://www.gstatic.com/charts/loader.js"></script>
-	<script type="text/javascript">
-		// ajax ÀÌ¿ëÇØ¼­ ÆäÀÌÁö ¿­¸±¶§, ¹Ù·Î ÇÔ¼ö½ÇÇà
-		
-		$.ajax({
-			
-			url : 'AjaxTest',
-			type : 'get',
-			data : {'pole_code' : '<%=pole_code%>'},
-			dataType : 'json',
-			success : function(res){
-				dataArray = new Array();
-				dataArray.push(['month', 'tilt'])
-				for(let i = 0;i<Object.keys(res).length;i++){
-					data = [res[i].tilt_date,res[i].tilt_value]
-					dataArray.push(data)
-				}				
-				chart(dataArray)
-			},
-			error : function(){
-				alert('Â÷Æ® ·Îµù ½ÇÆĞ');
-			}
-			
-		})
-	
-	</script>
+   <script type="text/javascript">
+      // ajax ì´ìš©í•´ì„œ í˜ì´ì§€ ì—´ë¦´ë•Œ, ë°”ë¡œ í•¨ìˆ˜ì‹¤í–‰
+      
+      $.ajax({
+         
+         url : 'AjaxChart',
+         type : 'get',
+         data : {'pole_code' : '<%=pole_code%>'},
+         dataType : 'json',
+         success : function(res){
+            dataArray = new Array();
+            dataArray.push(['month', 'tilt'])           
+            for(let i = Object.keys(res).length-1; i>=0;i--){
+                data = [res[i].tilt_date,res[i].tilt_value]
+                dataArray.push(data)
+             }            
+            chart(dataArray)
+         },
+         error : function(){
+            alert('ì°¨íŠ¸ ë¡œë”© ì‹¤íŒ¨');
+         }
+         
+      })
+   
+   </script>
 
-	<!-- ±â¿ï±â º¯È­ ±×·¡ÇÁ ¼Ò½º ----------------------------------------------------------------------- -->
+   <!-- ê¸°ìš¸ê¸° ë³€í™” ê·¸ë˜í”„ ì†ŒìŠ¤ ----------------------------------------------------------------------- -->
 
-	<script type="text/javascript">
-	
-	function chart(dataArray) {
+   <script type="text/javascript">
+   
+   function chart(dataArray) {
 
-		google.charts.load('current', {
-			'packages' : [ 'corechart' ]
-		});
-		google.charts.setOnLoadCallback(drawChart);
+      google.charts.load('current', {
+         'packages' : [ 'corechart' ]
+      });
+      google.charts.setOnLoadCallback(drawChart);
 
-		function drawChart() {
-			var data = google.visualization.arrayToDataTable(dataArray);
+      function drawChart() {
+         var data = google.visualization.arrayToDataTable(dataArray);
 
-			var options = {
-				title : '±â¿ï±â º¯È­ ±×·¡ÇÁ',
-				curveType : 'function',
-				legend : {
-					position : 'bottom'
-				}
-			};
+         var options = {
+            title : 'ê¸°ìš¸ê¸° ë³€í™” ê·¸ë˜í”„',
+            curveType : 'function',
+            legend : {
+               position : 'bottom'
+            }
+         };
 
-			var chart = new google.visualization.LineChart(document
-					.getElementById('curve_chart'));
+         var chart = new google.visualization.LineChart(document
+               .getElementById('curve_chart'));
 
 
-			chart.draw(data, options);
-			}
-		}
+         chart.draw(data, options);
+         }
+      }
 
-	</script>
-	<!-- ±â¿ï±â º¯È­ ±×·¡ÇÁ ¼Ò½º ------------------------------------------------------------------------->
+   </script>
+   <!-- ê¸°ìš¸ê¸° ë³€í™” ê·¸ë˜í”„ ì†ŒìŠ¤ ------------------------------------------------------------------------->
 </body>
 </html>
-
