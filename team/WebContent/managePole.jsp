@@ -136,7 +136,7 @@
 						<td><%=pvo.getPole_com()%></td>
 						<td><%=pvo.getTransformer_yn()%></td>
 						<td><%=pvo.getPole_level()%></td>
-						<td><%=pvo.getNow_tilt()%></td>
+						<td><%=pvo.getNow_tilt() %></td>
 					</tr>
 				</table>
 			</form>

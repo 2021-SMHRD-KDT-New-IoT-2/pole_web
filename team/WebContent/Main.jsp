@@ -46,7 +46,7 @@
 <body>
 
 	<%
-		request.setCharacterEncoding("utf-8");
+	request.setCharacterEncoding("utf-8");
 	poleVO pvo = (poleVO) session.getAttribute("pole");
 
 	poleDAO pdao = new poleDAO();
@@ -72,7 +72,7 @@
 
 	String mac_code = request.getParameter("mac_code");
 	String pole_level = request.getParameter("pole_level");
-
+	
 	ArrayList<poleVO> filter = pdao.filter(pole_height, pole_date, emp_id, transformer_yn, pole_office, pole_high,
 			pole_down, pole_com, pole_code);
 	ArrayList<tiltVO> t_alarm = tdao.tiltvalue();
@@ -259,19 +259,16 @@
 				%>
 				<tr>
 					<%
-						if (arrpVO.get(i).getPole_level().equals("주의")) {
+						if (arrpVO.get(i).getNow_tilt()>80 && arrpVO.get(i).getNow_tilt()<85 ) {
 					%>
-					<td><img src="./images/middlesign.png" width="35px"
-						; height="35px"></td>
+					<td><img src="./images/middlesign.png" width="35px" height="35px"></td>
+
 					<%
-						}
-					%>
-					<%
-						if (arrpVO.get(i).getPole_level().equals("꼴싫") || arrpVO.get(i).getPole_level().equals("위험")) {
+						} else if (arrpVO.get(i).getNow_tilt()<79 ) {
 					%>
 					<td><img src="./images/high.png" width="40px" height="40px"></td>
 					<%
-						} else if (arrpVO.get(i).getPole_level().equals("안전")) {
+						} else if (arrpVO.get(i).getNow_tilt()>=86 || arrpVO.get(i).getNow_tilt()<=90) {
 					%>
 					<td><img src="./images/checked.png" width="30px" height="30px"></td>
 					<%
@@ -309,6 +306,7 @@
 				style="text-align: center; margin: auto; border: 2px solid black;">
 				<tr>
 					<th>위험도</th>
+					
 					<th>전주번호</th>
 					<th>관리자</th>
 					<th>담당 사업소</th>
