@@ -42,6 +42,12 @@
 #btnimpt:hover, #btnmtn:hover, #btntt:hover {
 	background: hsl(190, 3%, 40%);;
 }
+
+#wrapper{
+background-image : url("./images/birdscut.png");
+background-repeat : no-repeat;
+background-size : cover;
+}
 </style>
 <body>
 
@@ -274,8 +280,7 @@
 					<%
 						}
 					%>
-					<td><a
-						href="managePole.jsp?pole_code=<%=arrpVO.get(i).getPole_code()%>"><%=arrpVO.get(i).getPole_code()%></a></td>
+					<td><a href="managePole.jsp?pole_code=<%=arrpVO.get(i).getPole_code()%>"><%=arrpVO.get(i).getPole_code()%></a></td>
 					<td><%=arrpVO.get(i).getEmp_id()%></td>
 					<td><%=arrpVO.get(i).getPole_office()%></td>
 					<td><%=arrpVO.get(i).getPole_date()%></td>
@@ -302,11 +307,9 @@
 	<div id="min_wrapper">
 
 		<div class="search_container" style="text-align: center;">
-			<table id="poletable"
-				style="text-align: center; margin: auto; border: 2px solid black;">
+			<table id="poletable" style="text-align: center; margin: auto; border: 2px solid black;">
 				<tr>
 					<th>위험도</th>
-					
 					<th>전주번호</th>
 					<th>관리자</th>
 					<th>담당 사업소</th>
@@ -318,11 +321,26 @@
 					<th>통신선</th>
 					<th>현재 기울기</th>
 				</tr>
-				<%
+					<%
 					for (int i = 0; i < filter.size(); i++) {
 				%>
 				<tr>
-					<td><%=arrpVO.get(i).getPole_level()%></td>
+					<%
+						if (filter.get(i).getNow_tilt()>80 && filter.get(i).getNow_tilt()<85 ) {
+					%>
+					<td><img src="./images/middlesign.png" width="35px" height="35px"></td>
+
+					<%
+						} else if (filter.get(i).getNow_tilt()<79 ) {
+					%>
+					<td><img src="./images/high.png" width="40px" height="40px"></td>
+					<%
+						} else if (filter.get(i).getNow_tilt()>=86 || arrpVO.get(i).getNow_tilt()<=90) {
+					%>
+					<td><img src="./images/checked.png" width="30px" height="30px"></td>
+					<%
+						}
+					%>
 					<td><a
 						href="managePole.jsp?pole_code=<%=filter.get(i).getPole_code()%>"><%=filter.get(i).getPole_code()%></a></td>
 					<td><%=filter.get(i).getEmp_id()%></td>
@@ -349,10 +367,8 @@
 	<!-- footer -->
 	<div id="footer">
 		<div class="copyright" style="text-align: center;">
-			<h3 style="color: rgba(202, 202, 202, 0.733)">관리자를 위한 시스템으로서 인가된
-				분만 사용 할 수 있습니다.</h3>
-			<p style="color: rgba(202, 202, 202, 0.733)">Copyright 2021, Pole
-				Of Pisa, LTD. All right Reserved.</p>
+			<h3 style="color: rgba(202, 202, 202, 0.733)">관리자를 위한 시스템으로서 인가된 분만 사용 할 수 있습니다.</h3>
+			<p style="color: rgba(202, 202, 202, 0.733)">Copyright 2021, Pole Of Pisa, LTD. All right Reserved.</p>
 		</div>
 	</div>
 
