@@ -19,7 +19,9 @@ import Model.tiltVO;
 public class AjaxChart extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+
+		response.setCharacterEncoding("utf-8");
+		
 		String pole_code = request.getParameter("pole_code");
 		tiltDAO tdao = new tiltDAO();
 		ArrayList<tiltVO> tal = tdao.tilt_info(pole_code);
