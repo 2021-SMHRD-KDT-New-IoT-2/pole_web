@@ -103,12 +103,11 @@
 
 
 			<div id="cameraView">
-				<img src="http://172.30.1.45:80/video_feed">
+				<img src="http://172.30.1.42:80/camera">
 			</div>
 
 			<input type="button" name="rol" value="뒤로" id="uncheck" class="rol">
-			<input type="button" name="buzzer" value="부저 작동" id="buzzer"
-				class="rol" onclick="location.href='http://172.30.1.45/buzzer'">
+			<button type="button" id="buzzer" value="부저 작동"></button>
 			<div class="modal_layer"></div>
 
 		</div>
@@ -426,5 +425,24 @@
 
    </script>
    <!-- 기울기 변화 그래프 소스 ------------------------------------------------------------------------->
+   
+   <!---------------------------------------- 부저 ---------------------------------------->
+	<script>
+	
+	 $("#buzzer").on('click',function(){
+	  			$.ajax({
+	  				url : "http://172.30.1.42/buzzer",
+	  				type : "get",
+	  				success : function(res){
+	  					location.href="http://localhost:8087/team/managePole.jsp?<%=pole_code%>";
+	  				},
+	  				error : function(){
+	  					alert('부저작동 성공.');
+	  				}
+	  			});
+	  		});
+	 
+	</script>
+ <!---------------------------------------- 부저 ---------------------------------------->
 </body>
 </html>
