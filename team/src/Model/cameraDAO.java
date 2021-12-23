@@ -57,7 +57,7 @@ public class cameraDAO {
 			
 		connection();
 
-		String sql = "Select * from pole_camera_info order by camera_date desc";
+		String sql = "Select mac_code,date_add(camera_date, interval 9 hour)as camera_date from pole_camera_info order by camera_date desc limit 30";
 		
 		psmt = conn.prepareStatement(sql);
 		

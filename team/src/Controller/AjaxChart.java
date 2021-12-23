@@ -26,6 +26,11 @@ public class AjaxChart extends HttpServlet {
 		tiltDAO tdao = new tiltDAO();
 		ArrayList<tiltVO> tal = tdao.tilt_info(pole_code);
 		
+		System.out.println(tal.get(1).getTilt_date());
+		System.out.println(tal.get(2).getTilt_date());
+		System.out.println(tal.get(3).getTilt_date());
+		System.out.println(tal.get(4).getTilt_date());
+		
 		Gson gson = new Gson();
 		
 		response.setCharacterEncoding("utf-8");

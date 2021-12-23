@@ -271,7 +271,7 @@
          <%if(pvo.getPole_comment()!=null){ %>
          <%=comment.replace("-","<br>")%>
          <%}else{ %>
-         정보없음
+         	정보없음
          <%} %>
       </div>
       <div class="text_save">
@@ -373,17 +373,17 @@
       
       $.ajax({
          
-         url : 'AjaxTest',
+         url : 'AjaxChart',
          type : 'get',
          data : {'pole_code' : '<%=pole_code%>'},
          dataType : 'json',
          success : function(res){
             dataArray = new Array();
-            dataArray.push(['month', 'tilt'])
-            for(let i = 0;i<Object.keys(res).length;i++){
-               data = [res[i].tilt_date,res[i].tilt_value]
-               dataArray.push(data)
-            }            
+            dataArray.push(['month', 'tilt'])           
+            for(let i = Object.keys(res).length-1; i>=0;i--){
+                data = [res[i].tilt_date,res[i].tilt_value]
+                dataArray.push(data)
+             }            
             chart(dataArray)
          },
          error : function(){
