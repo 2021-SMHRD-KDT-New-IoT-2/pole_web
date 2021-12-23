@@ -116,7 +116,7 @@
 		<div class="tb_name">
 
 			<p style="font-size: 25px; padding: 20px">
-				<b>- <%=pvo.getPole_code()%>번 전주 상세정보
+				&nbsp;&nbsp;<b>- <%=pvo.getPole_code()%>번 전주 상세정보
 				</b>
 			</p>
 		</div>

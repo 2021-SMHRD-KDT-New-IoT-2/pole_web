@@ -156,14 +156,15 @@ section{
     text-align: center;
 }
 .tb_nav > input{ 
-    margin : 0 50px;  
-    margin-top: 1%;  
+    margin: 0 50px;
+    margin-top: 2%;
     color: white;
     background-color: #002C5F;
-    width: 80px;
-    font-size: 15px;
-    padding: 7px;
-
+    width: 120px;
+    border: 0;
+    border-radius: 5px;
+    font-size: 17px;
+    padding: 10px;
 }
 
 aside{
@@ -207,13 +208,15 @@ h1{
 
 }
 .text_save > button{
-    margin : 0 50px;  
-    margin-top: 1%;  
+    margin: 0 50px;
+    margin-top: 2%;
     color: white;
     background-color: #002C5F;
-    width: 80px;
-    font-size: 15px;
-    padding: 7px;
+    width: 120px;
+    border: 0;
+    border-radius: 5px;
+    font-size: 17px;
+    padding: 10px;
 }
 
 
@@ -345,15 +348,19 @@ h1{
     font-size: 15px;
 }
 #uncheck, #buzzer{
-	background-color: rgb(143, 143, 143);
-	border : none;
-	color : white;
-	font-size:20px;
-	padding : 10px;
-	width : 120px;
 	margin-right:5%;
-	margin-left: 0.9%;
-    margin-top: 3%;
+	margin-left: 0.6%;
+    margin-top: 1%;
+    
+    
+    border: none;
+    color: white;
+    background-color: #ffffff54;
+    width: 120px;
+    border: 0;
+    border-radius: 5px;
+    font-size: 17px;
+    padding: 10px;
 }
 
 #cameraMove{
@@ -411,14 +418,16 @@ h1{
 }
 
 #check2, #uncheck2 {
-    background-color: rgb(143, 143, 143);
-    border: none;
     color: white;
-    font-size: 20px;
-    padding: 10px;
-    width: 100px;
     margin-top: 5%;
-    margin-left: 5%;
+    margin-left: 7.5%;
+    background-color: #ffffff54;
+    width: 120px;
+    border: 0;
+    border-radius: 5px;
+    font-size: 17px;
+    padding: 10px;
+    
 }
 
 .Memo_area > input{
@@ -426,6 +435,7 @@ h1{
 	font-size:15px;
     background-color: white;
     margin-left: -15%;
+    border-radius: 5px;
     width: 30%;
     border:none;
     height: 350px;

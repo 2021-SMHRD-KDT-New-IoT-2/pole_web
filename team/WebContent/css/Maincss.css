@@ -165,10 +165,7 @@ select {
 }
 
 .search_container {
-	width: 80%;
-	display: flex;
-	margin: 2% auto;
-	background-color: #FFFFFF;
+	border: 1px solid #ccc;
 	height: auto;
 	overflow-y: scroll;
 }
@@ -192,7 +189,7 @@ select {
 
 .search_container {
 	width: 80%;
-	/* border : 1px solid black; */
+
 	margin: 2% auto;
 	display: flex;
 	background-color: #FFFFFF;
@@ -219,7 +216,7 @@ select {
 
 fieldset>.filter_search {
 	margin-right: 5%;
-	margin-top: 1%;
+	margin-top: 2%;
 	padding: 10px;
 	border-radius: 3px;
 	font-size: 15px;
@@ -245,13 +242,13 @@ tbody {
 
 fieldset>.filter {
 	width: 20%;
-	font-size: 18px;
+	font-size: 15px;
 	text-align: center;
 	border: 1px solid #ccc;
 	height: 40px;
 	border-radius: 3px;
-	margin: 1% auto;
-	margin-left: 62%;
+	margin: 2% auto;
+	margin-left: 63%;
 }
 
 fieldset>input {
@@ -360,7 +357,7 @@ nav>a, nav>button {
 
 fieldset {
 	text-align: left;
-	height: 270px;
+	height: 300px;
 	border-radius: 10px;
 	border: 1px solid #ccc;
 }
@@ -373,7 +370,7 @@ fieldset {
 	padding-inline-end: 0.75em;
 	padding-block-end: 0.625em;
 	width: 30%;
-	height: 270px;
+	height: 300px;
 	overflow-y: scroll;
 }
 
@@ -383,7 +380,7 @@ fieldset {
 
 #alarmback {
 	border-radius: 10px;
-	padding: 20px;
+	padding: 17px;
 	margin-bottom: 2%;
 	border: 1px solid #ccc;
 	font-size: 15px;
