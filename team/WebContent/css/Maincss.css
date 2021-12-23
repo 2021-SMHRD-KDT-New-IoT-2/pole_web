@@ -1,605 +1,600 @@
 body {
-   background-color: #ffffff;
-   
-	} 
-   *{
-   
-   font-family: 'Nanum Gothic', sans-serif;
-   
-   }
-   
-   .number {   
-      text-align : center;
-   }
-
-   #footer {
-   
-   margin-top:50%;
-   }
-
-	#searchtext{
-	height : 50px;
-	width : 60px;
-	
-	}
-
-	#box1{
-	width : 400px;
-	height : 15%;
-	border : 1px solid black;
-	}
-
-	#box2{
-	width : 400px;
-	height : 15%;
-	border : 1px solid black;
-	}
-
-	#box3{
-	width : 400px;
-	height : 15%;
-	border : 1px solid black;
-	}
-
-button{
-   cursor:pointer
-}
-
-#logincheck{
-    width: 100%;
-    text-align: right;
-    float : right;
-    margin-right: 10%;
-    margin-bottom: -10%;
-   }
-
-
-#loginsection{
-    position:relative;
-    width:100%;
-    height:600px;
-    background-color:#9785857c;
-    text-align:center;
-    margin-top:30%;
-    left:50%;
-    transform: translate(-50%,-50%);
-
+	background-color: #ffffff;
 }
 
 * {
-   font-family: 'Nanum Gothic', sans-serif;
+	font-family: 'Nanum Gothic', sans-serif;
 }
 
 .number {
-   text-align: center;
+	text-align: center;
 }
 
-footer {
-   margin-top: 10%;
+#footer {
+	margin-top: 50%;
+}
+
+#searchtext {
+	height: 50px;
+	width: 60px;
+}
+
+a {
+	text-decoration: none
+}
+
+#box1 {
+	width: 400px;
+	height: 15%;
+	border: 1px solid black;
+}
+
+#box2 {
+	width: 400px;
+	height: 15%;
+	border: 1px solid black;
+}
+
+#box3 {
+	width: 400px;
+	height: 15%;
+	border: 1px solid black;
+}
+
+button {
+	cursor: pointer
 }
 
 #logincheck {
-   width: 100%;
-   text-align: right;
-   float: right;
-   margin-right: 10%;
-   margin-bottom: -10%;
+	width: 100%;
+	text-align: right;
+	float: right;
+	margin-right: 10%;
+	margin-bottom: -10%;
 }
 
 #loginsection {
-   position: relative;
-   width: 100%;
-   height: 600px;
-   background-color: #9785857c;
-   text-align: center;
-   margin-top: 30%;
-   left: 50%;
-   transform: translate(-50%, -50%);
+	position: relative;
+	width: 100%;
+	height: 600px;
+	background-color: #9785857c;
+	text-align: center;
+	margin-top: 30%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+* {
+	font-family: 'Nanum Gothic', sans-serif;
+	box-sizing: border-box;
+}
+
+.number {
+	text-align: center;
+}
+
+footer {
+	margin-top: 10%;
+}
+
+#logincheck {
+	width: 100%;
+	text-align: right;
+	float: right;
+	margin-right: 10%;
+	margin-bottom: -10%;
+}
+
+#loginsection {
+	position: relative;
+	width: 100%;
+	height: 600px;
+	background-color: #9785857c;
+	text-align: center;
+	margin-top: 30%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 #user_id, #user_pw {
-   border-bottom: 2px solid #adadad;
-   padding: 20px 20px;
-   border: none;
-   outline: none;
-   color: #636e72;
-   font-size: 16px;
-   height: 25px;
+	border-bottom: 2px solid #adadad;
+	padding: 20px 20px;
+	border: none;
+	outline: none;
+	color: #636e72;
+	font-size: 16px;
+	height: 25px;
 }
-
 
 select {
-   display: inline-block;
+	display: inline-block;
 	font-size: 15px;
-	
-   width: 100px;
-   height: 40px;
-   margin: 20px 4% 10px 0px;
-   color: #444444;
-   border: 1px solid #000000;
-   border-radius: 3px;
-   outline: 0;
+	width: 100px;
+	height: 40px;
+	margin: 20px 4% 10px 0px;
+	color: #444444;
+	border: 1px solid #000000;
+	border-radius: 3px;
+	outline: 0;
 }
 
-
 #wrapper {
-   width: 100%;
-   height: 50%;
-   margin: 10px auto;
-   padding: 0px;
+	width: 100%;
+	height: 50%;
+	margin: 10px auto;
+	padding: 0px;
 }
 
 /* ------------footer 怨듦컙-------------- */
-
 #footer {
-   clear: both;
-   text-align: center;
+	clear: both;
+	text-align: center;
 }
 
 .copyright {
-   width: 80%;
-   margin: 0 auto;
-   background-color: #FFFFFF;
+	width: 80%;
+	margin: 0 auto;
+	background-color: #FFFFFF;
 }
 
 /* ------------------------------------- */
 
 /* -------�뀒�씠釉� 遺숈씠�뒗以�-------- */
-
-   
 #poletable {
-   width: 100%;
-   background-color: #ffffff;
-   border-collapse: collapse;
-   line-height: 1.5;
-   }
-   
-  #poletable th {
-    
-    padding: 10px;
-    font-weight: bold;
-    vertical-align: top;
-    font-size: 20px;
-  }
-  #poletable td {
-    padding: 10px;
-    vertical-align: top;
-    font-size: 18px;
-  }
-  #poletable .even {
-    background: #efefef;
-  }
-
-
-.search_container{
-    width: 80%;
-    display : flex;
-    margin: 2% auto;
-    background-color : #FFFFFF;
-	height : 900px;
-	overflow-y : scroll;
+	width: 100%;
+	background-color: #ffffff;
+	border-collapse: collapse;
+	line-height: 1.5;
 }
 
 #poletable th {
-   padding: 10px;
-   font-weight: bold;
-   vertical-align: top;
-   font-size: 20px;
+	padding: 10px;
+	font-weight: bold;
+	vertical-align: top;
+	font-size: 20px;
 }
 
 #poletable td {
-   padding: 10px;
-   vertical-align: top;
-   font-size: 18px;
+	padding: 10px;
+	vertical-align: top;
+	font-size: 18px;
 }
 
 #poletable .even {
-   background: #efefef;
+	background: #efefef;
 }
 
 .search_container {
-   width: 80%;
-   /* border : 1px solid black; */
-   margin: 2% auto;
-   display: flex;
-   background-color: #FFFFFF;
+	border: 1px solid #ccc;
+	height: auto;
+	overflow-y: scroll;
+}
+
+#poletable th {
+	padding: 10px;
+	font-weight: bold;
+	vertical-align: top;
+	font-size: 20px;
+}
+
+#poletable td {
+	padding: 10px;
+	vertical-align: top;
+	font-size: 18px;
+}
+
+#poletable .even {
+	background: #efefef;
+}
+
+.search_container {
+	width: 80%;
+
+	margin: 2% auto;
+	display: flex;
+	background-color: #FFFFFF;
 }
 
 .icon {
-   width: 25px;
-   height: 25px;
-   background: #e9b13a;
-   color: white;
-   font-size: 20px;
-   text-align: center;
-   line-height: 25px;
-   border-radius: 50%;
-   margin-right: 8px;
+	width: 25px;
+	height: 25px;
+	background: #e9b13a;
+	color: white;
+	font-size: 20px;
+	text-align: center;
+	line-height: 25px;
+	border-radius: 50%;
+	margin-right: 8px;
 }
 
-#searchtext{
-height : 40px;
-width : 100px;
-font-size: 15px;
-margin-right:4%;
+#searchtext {
+	height: 40px;
+	width: 100px;
+	font-size: 15px;
+	margin-right: 4%;
 }
 
-fieldset > .filter_search{
-	margin-right : 5%;
-	margin-top : 1%;
-	padding : 10px;
+fieldset>.filter_search {
+	margin-right: 5%;
+	margin-top: 2%;
+	padding: 10px;
 	border-radius: 3px;
-	font-size : 15px;
-	width : 80px;
-	height : 40px;
-
-	}
+	font-size: 15px;
+	width: 80px;
+	height: 40px;
+}
 
 /* 寃��깋李� �븞�뿉 �룍蹂닿린 �궗吏� �쐞移� */
 #img {
-    margin-top: 26.3%;
-    margin-left: -23%;
-    margin-bottom: -5%;
+	margin-top: 26.3%;
+	margin-left: -23%;
+	margin-bottom: -5%;
 }
 
-#img > img {
-margin-top: 6px;
-    margin-left: 5%;
+#img>img {
+	margin-top: 6px;
+	margin-left: 5%;
 }
 
-tbody{
+tbody {
 	border-radius: 10px;
 }
 
-fieldset > .filter {
-    width: 20%;
-    font-size : 18px;
-    text-align: center;
-    border: 1px solid #ccc;
-    height : 40px;
-    border-radius: 3px;
-    margin: 1% auto;
-    margin-left:62%;
+fieldset>.filter {
+	width: 20%;
+	font-size: 15px;
+	text-align: center;
+	border: 1px solid #ccc;
+	height: 40px;
+	border-radius: 3px;
+	margin: 2% auto;
+	margin-left: 63%;
 }
-fieldset > input{
-	    border: 1px solid black;
+
+fieldset>input {
+	border: 1px solid black;
 }
 /* -----------nav-------------  */
 #header {
-   margin-top:2%;
-   background-color: #ffffff;
+	margin-top: 2%;
+	background-color: #ffffff;
 }
 /* �닔�젙遺�遺�1217 */
 h1 {
-   text-align: left;
-   font-size: 42px;
+	text-align: left;
+	font-size: 42px;
 }
 
 .header_img {
-   text-align: right;
-   height: 100px;
-   width: 40%;
-   float: left;
+	text-align: right;
+	height: 100px;
+	width: 40%;
+	float: left;
 }
 
 .header_h1 {
-   width: 60%;
-   height: 60px;
-   margin-top: -0.5%;
-   float: left;
-   height: 100px;
+	width: 60%;
+	height: 60px;
+	margin-top: -0.5%;
+	float: left;
+	height: 100px;
 }
 
 .header_h1>h4 {
-   float:left;
-   margin-top: -2%;
-   margin-left: 2%;
-   font-size: 25px;
+	float: left;
+	margin-top: -2%;
+	margin-left: 2%;
+	font-size: 25px;
 }
 
 /* �닔�젙遺�遺�1217 */
 nav>a, button:hover {
-   color: #5b5b5b;
+	color: #5b5b5b;
 }
 
 .number:hover {
-   color: #5b5b5b;
+	color: #5b5b5b;
 }
 
 nav>a, button:active {
-   color: #2b2b2b;
+	color: #2b2b2b;
 }
 
 ul {
-   display: inline-block;
-   text-align: center;
+	display: inline-block;
+	text-align: center;
 }
 
 nav {
-
-   margin-left: 65%;
-   margin-top: 2%;
-   display: block;
+	margin-left: 65%;
+	margin-top: 2%;
+	display: block;
 }
 
-nav>a, button{
-   font-size: 20px;
-   margin-right: 7%;
-   text-decoration: none;
-   color: #5b5b5b;
-   background-color: #4e1f1f00;
-   border: none;
+nav>a, nav>button {
+	font-size: 20px;
+	margin-right: 7%;
+	text-decoration: none;
+	color: #5b5b5b;
+	background-color: #4e1f1f00;
+	border: none;
 }
 /* -----------nav-------------  */
-
 .icons>.bg {
-   background-color: #4970a6cc;
+	background-color: #4970a6cc;
 }
 
 .icons>.bg2 {
-   background-color: #4970a6;
+	background-color: #4970a6;
 }
 
 .icons {
-   display: flex;
-   width: 100%;
+	display: flex;
+	width: 100%;
 }
 
 .icons>li {
-   flex: 1;
-   margin-top: 5%;
-   text-align: center;
+	flex: 1;
+	margin-top: 5%;
+	text-align: center;
 }
 
 /* -----------Searchfilter-------------  */
 
 /* �닔�젙遺�遺� 1217 */
 #searchBar {
-   float: left;
-   width: 100%;
-   margin-top: 3%;
+	float: left;
+	width: 100%;
+	margin-top: 3%;
 }
 
 #field_area {
-   width: 50%;
-   margin-left: 10%;
-   float: left;
-   text-align: center;
+	width: 50%;
+	margin-left: 10%;
+	float: left;
+	text-align: center;
 }
 
 fieldset {
-	text-align:left;
-   height: 270px;
-   border-radius: 10px;
-   border: 1px solid #ccc;
+	text-align: left;
+	height: 300px;
+	border-radius: 10px;
+	border: 1px solid #ccc;
 }
 
 #alarm {
-   margin-inline-start: 2px;
-   margin-inline-end: 2px;
-   padding-block-start: 0.35em;
-   padding-inline-start: 0.75em;
-   padding-inline-end: 0.75em;
-   padding-block-end: 0.625em;
-   width: 28.4%;
-   height: 270px;
-   overflow-y:scroll;
+	margin-inline-start: 2px;
+	margin-inline-end: 2px;
+	/* padding-block-start: 0.35em; */
+	padding-inline-start: 0.75em;
+	padding-inline-end: 0.75em;
+	padding-block-end: 0.625em;
+	width: 30%;
+	height: 300px;
+	overflow-y: scroll;
 }
 
-#impactdiv, #motiondiv, #tiltdiv{
-	padding : 10px;
+#impactdiv, #motiondiv, #tiltdiv {
+	padding: 10px;
 }
 
 #alarmback {
-	border-radius : 10px;
-	padding : 20px;
-	margin-bottom : 2%;
-	border:1px solid #ccc;
-	font-size : 15px;
+	border-radius: 10px;
+	padding: 17px;
+	margin-bottom: 2%;
+	border: 1px solid #ccc;
+	font-size: 15px;
 }
-#alarm > h3, div{
-   text-align:center;
+
+#alarm>h3, div {
+	text-align: center;
 }
 
 /* �닔�젙遺�遺� 1217 */
 #Searchfilter {
-   text-align: center;
+	text-align: center;
 }
 
-/*-----------------------------------------�궗�슜�옄 �벑濡� �뀒�씠釉�------------------------------------------ */
+/*-----------------------------------------�궗�슜�옄 �벑濡� �뀒�씠釉�------------------------------------------------------------------------------------------------------------*/
 .emp_form {
-    width: 700px;
-    margin-left: 40%;
-   position: absolute;
-   height: 700px;
-   background-color: white;
-   box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+	width: 700px;
+	margin-left: 40%;
+	position: absolute;
+	height: 700px;
+	background-color: white;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 }
 
-.emp_form > table {
-   margin: 0 auto;
-   border-color: hsl(190, 3%, 40%);
+.emp_form>table {
+	margin: 0 auto;
+	border-color: hsl(190, 3%, 40%);
 }
 
 .tb_body {
-   margin: auto;
-   border-bottom: none;
-   width: 90%;
-   height: 700px;
+	margin: auto;
+	border-bottom: none;
+	width: 90%;
+	height: 700px;
 }
 
 .wid1 {
-   width: 20%;
+	width: 20%;
 }
 
 .wid2 {
-   width: 15%;
+	width: 15%;
 }
 
 .suc, .rol {
-   height: auto;
-   display: inline-block;
-   text-transform: uppercase;
-   margin-bottom: 1.5%;
-   cursor: pointer;
-   background: #002c5f;
-   box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
-   padding: 10px 25px;
-   border: 0px;
-   color: #fff;
-   font-size: 15px;
-   margin-bottom: 4%;
+	height: auto;
+	display: inline-block;
+	text-transform: uppercase;
+	margin-bottom: 1.5%;
+	cursor: pointer;
+	background: #002c5f;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+	padding: 10px 25px;
+	border: 0px;
+	color: #fff;
+	font-size: 15px;
+	margin-bottom: 4%;
 }
 
 .suc:hover {
-   color: #000e1f;
+	color: #000e1f;
 }
 
 .rol:hover {
-   color: #000e1f;
+	color: #000e1f;
 }
-/*-----------------------------------------�궗�슜�옄 �벑濡� �뀒�씠釉�------------------------------------------ */
+/*-----------------------------------------�궗�슜�옄 �벑濡� �뀒�씠釉�----------------------------------------------------------------------------------------------------------------------- */
 
 /*--------------------------------------------- �궗�슜�옄 紐⑤떖李� �냼�뒪------------------------------------------ */
 #modal {
-   display: none;
-position: absolute;
-   width: 70%;
-   height: 70%;
-   z-index: 1;
+	display: none;
+	position: absolute;
+	width: 70%;
+	height: 70%;
+	z-index: 1;
 }
 
 #modal h2 {
-   margin: 0;
+	margin: 0;
+
 }
 
 #modal button {
-   display: inline-block;
-   width: 100px;
-   margin-left: calc(100% - 100px - 10px);
+	display: inline-block;
+	width: 100px;
+	margin-left: calc(100% - 100px - 10px);
 }
 
 #modal .modal_content {
-   width: 300px;
-   margin: 100px auto;
-   padding: 20px 10px;
-   background: #fff;
-   border: 2px solid #666;
+	width: 300px;
+	margin: 100px auto;
+	padding: 20px 10px;
+	background: #fff;
+	border: 2px solid #666;
 }
 
 #modal .modal_layer {
-   position: fixed;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   background: rgba(105, 105, 105, 0.705);
-   z-index: -1;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(105, 105, 105, 0.705);
+	z-index: -1;
 }
 /*--------------------------------------------- �궗�슜�옄 紐⑤떖李� �냼�뒪------------------------------------------ */
 
 /*--------------------------------------------- �쟾二쇰벑濡� 紐⑤떖李� �냼�뒪------------------------------------------ */
 #modal2 {
-   display: none;
-   position: absolute;
-   width: 70%;
-   height: 70%;
-   z-index: 1;
+	display: none;
+	position: absolute;
+	width: 70%;
+	height: 70%;
+	z-index: 1;
 }
 
 #modal2 h2 {
-   margin: 0;
+	margin: 0;
 }
 
 #modal2 button {
-   display: inline-block;
-   width: 100px;
-   margin-left: calc(100% - 100px - 10px);
+	display: inline-block;
+	width: 100px;
+	margin-left: calc(100% - 100px - 10px);
 }
 
 #modal2 .modal_content {
-   width: 300px;
-   margin: 100px auto;
-   padding: 20px 10px;
-   background: #fff;
-   border: 2px solid #666;
+	width: 300px;
+	margin: 100px auto;
+	padding: 20px 10px;
+	background: #fff;
+	border: 2px solid #666;
 }
 
 #modal2 .modal_layer {
-   position: fixed;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   background: rgba(105, 105, 105, 0.705);
-   z-index: -1;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(105, 105, 105, 0.705);
+	z-index: -1;
 }
 /*--------------------------------------------- �쟾二쇰벑濡� 紐⑤떖李� �냼�뒪------------------------------------------ */
 
 /*-----------------------------------------�쟾二� �벑濡� �뀒�씠釉�------------------------------------------ */
 #modal>img {
-   margin-bottom: 30px;
+	margin-bottom: 30px;
 }
 
-#empas{
+#empas {
 	font-size: 25px;
 }
 
-#empas > img{
+#empas>img {
 	margin-top: 5%;
 }
 
 .pole_form {
-   position: absolute;
-   width: 700px;
-   margin-left: 40%;
-   background-color: white;
-   box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+	position: absolute;
+	width: 700px;
+	margin-left: 40%;
+	background-color: white;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 }
 
 .pole_form>table {
-   border-radius: 10px;
-}
-.pole_tb_body {
-   margin: auto;
-   border-bottom: none;
-   width: 90%;
-   height: 700px;
+	border-radius: 10px;
 }
 
-.pole_tb_body> a{
+.pole_tb_body {
+	margin: auto;
+	border-bottom: none;
+	width: 90%;
+	height: 700px;
+}
+
+.pole_tb_body>a {
 	position: relative;
-   text-align: center;
-   font-size: 15px;
+	text-align: center;
+	font-size: 15px;
 }
-.pole_tb_body>td{
-	
-	width:20%;
+
+.pole_tb_body>td {
+	width: 20%;
 	position: relative;
-   text-align: center;
-   font-size: 15px;
-   color: hsl(190, 3%, 40%);;
+	text-align: center;
+	font-size: 15px;
+	color: hsl(190, 3%, 40%);;
 }
-.pole_tb_body>tr, td, th{
-   position: relative;
-   text-align: center;
-   font-size: 15px;
-   color: hsl(190, 3%, 40%);;
+
+.pole_tb_body>tr, td, th {
+	position: relative;
+	text-align: center;
+	font-size: 15px;
+	color: hsl(190, 3%, 40%);;
 }
-table > td > input{
+
+table>td>input {
 	margin-left: 6%;
 	width: 200px;
 	height: 30px;
 }
-.pole_tb_body>hr{
-	width:400px;
+
+.pole_tb_body>hr {
+	width: 400px;
 }
+
 .wid3 {
-   width: 20%;
+	width: 20%;
 }
 
 .wid4 {
-   width: 25%;
+	width: 25%;
 }
 
 .suc, .rol {
@@ -615,6 +610,7 @@ table > td > input{
    color: #fff;
    font-size: 15px;
    margin-bottom: 4%;
+
 }
 
 .suc:hover {
@@ -626,10 +622,9 @@ table > td > input{
 }
 /*-----------------------------------------�쟾二� �벑濡� �뀒�씠釉�------------------------------------------ */
 input:focus {
-   outline: 2px solid #013e83;
+	outline: 2px solid #013e83;
 }
 
 .input_focus:focus {
-   outline: none;
+	outline: none;
 }
-

@@ -56,8 +56,8 @@ public ArrayList<impactVO> impactvalue() {
 		try {
 			
 		connection();
-
-		String sql = "Select * from pole_impact_info order by impact_date desc";
+		//Select mac_code,date_add(impact_date, interval 9 hour)as impact_date from pole_impact_info order by impact_date desc limit 30
+		String sql = "Select mac_code,date_add(impact_date, interval 9 hour)as impact_date from pole_impact_info order by impact_date desc limit 30";
 		
 		psmt = conn.prepareStatement(sql);
 		rs = psmt.executeQuery();

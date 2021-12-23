@@ -80,7 +80,7 @@ public ArrayList<tiltVO> tiltvalue() {
 			
 		connection();
 
-		String sql = "Select * from pole_tilt_info order by tilt_date desc";
+		String sql = "Select mac_code,date_add(tilt_date, interval 9 hour)as tilt_date, tilt_value from pole_tilt_info order by tilt_date desc limit 30";
 		
 		psmt = conn.prepareStatement(sql);
 
@@ -111,8 +111,7 @@ public ArrayList<tiltVO> tiltvalue() {
 		ArrayList<tiltVO> tal = new ArrayList<tiltVO>();
 		try {
 			connection();
-
-			String sql = "select * from pole_tilt_info where mac_code = ? order by tilt_value desc";
+			String sql = "select mac_code,tilt_value,date_add(tilt_date, interval 9 hour)as tilt_date from pole_tilt_info where mac_code = ? order by tilt_date desc limit 10";
 			
 			psmt = conn.prepareStatement(sql);
 			

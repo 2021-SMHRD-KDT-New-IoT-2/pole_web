@@ -15,7 +15,7 @@ public class poleVO {
 	private String pole_eday;
 	private String pole_level;
 	private String pole_office;
-	private String now_tilt;
+	private int now_tilt;
 	
 	public poleVO() {
 		
@@ -50,7 +50,7 @@ public class poleVO {
 
 	public poleVO(String pole_code, String mac_code, String pole_height, String pole_addr, String pole_date,
 			String emp_id, String transformer_yn, String pole_com, String pole_high, String pole_down,
-			String pole_comment, String pole_eday, String pole_level, String pole_office, String now_tilt) {
+			String pole_comment, String pole_eday, String pole_level, String pole_office, int now_tilt) {
 		super();
 		this.pole_code = pole_code;
 		this.mac_code = mac_code;
@@ -87,7 +87,7 @@ public class poleVO {
 
 	/* « ≈ÕVO */
 	public poleVO(String pole_code, String pole_height, String pole_date, String emp_id, String transformer_yn,
-			String pole_com, String pole_high, String pole_down, String pole_office, String now_tilt) {
+			String pole_com, String pole_high, String pole_down, String pole_office, int now_tilt) {
 		super();
 		this.pole_code = pole_code;
 		this.pole_height = pole_height;
@@ -190,13 +190,12 @@ public class poleVO {
 	public void setPole_eday(String pole_eday) {
 		this.pole_eday = pole_eday;
 	}
-	public String getNow_tilt() {
+	public int getNow_tilt() {
 		return now_tilt;
 	}
-	public void setNow_tilt(String now_tilt) {
+	public void setNow_tilt(int now_tilt) {
 		this.now_tilt = now_tilt;
 	}
-
 	@Override
 	public String toString() {
 		return "poleVO [pole_code=" + pole_code + ", mac_code=" + mac_code + ", pole_height=" + pole_height
