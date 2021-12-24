@@ -31,9 +31,9 @@
 					<tr height="30">
 						<td class="wid1"><img src="./images/check2.png" width="25px"
 							; height="25px";></td>
-						<td>사원번호 부여</td>
+						<td style="width:20%;">사원번호 부여</td>
 						<td><input type="text" name="emp_id"
-							style="margin-left: 9%; height:30px;" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+							style="margin-left: 13%; height:30px;" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
 							href="LoginCheckService" style="text-decoration: none;">중복 검사</a></td>
 					</tr>
 					<tr height="7">
