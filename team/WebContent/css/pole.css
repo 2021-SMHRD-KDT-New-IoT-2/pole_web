@@ -1,7 +1,12 @@
+@font-face {
+    font-family: 'neon';
+    src: url('./fonts/SF-Pro.ttf') format('truetype');
+}
+
 *{
-    margin:0 auto;
-    font-family: 'Nanum Gothic', sans-serif;
-    }
+	margin : 0 auto;
+	font-family : neon;
+}
 
 body{
     width:80%;

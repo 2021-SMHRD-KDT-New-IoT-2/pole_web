@@ -2,21 +2,18 @@ body {
 	background-color: #ffffff;
 }
 
+@font-face {
+	font-family: 'neon';
+	src: url('./fonts/SF-Pro.ttf') format('truetype');
+}
+
 * {
-	font-family: 'Nanum Gothic', sans-serif;
+	margin: 0;
+	font-family: neon;
 }
 
 .number {
 	text-align: center;
-}
-
-#footer {
-	margin-top: 50%;
-}
-
-#searchtext {
-	height: 50px;
-	width: 60px;
 }
 
 a {
@@ -149,15 +146,10 @@ select {
 
 #poletable th {
 	padding: 10px;
-	font-weight: bold;
-	vertical-align: top;
-	font-size: 20px;
-}
-
-#poletable td {
-	padding: 10px;
-	vertical-align: top;
-	font-size: 18px;
+	color: wheat;
+	height:55px;
+    background: #000000bd;
+    font-size: 17px;
 }
 
 #poletable .even {
@@ -168,13 +160,6 @@ select {
 	border: 1px solid #ccc;
 	height: auto;
 	overflow-y: scroll;
-}
-
-#poletable th {
-	padding: 10px;
-	font-weight: bold;
-	vertical-align: top;
-	font-size: 20px;
 }
 
 #poletable td {
@@ -189,7 +174,6 @@ select {
 
 .search_container {
 	width: 80%;
-
 	margin: 2% auto;
 	display: flex;
 	background-color: #FFFFFF;
@@ -215,13 +199,20 @@ select {
 }
 
 fieldset>.filter_search {
-	margin-right: 5%;
-	margin-top: 2%;
 	padding: 10px;
 	border-radius: 3px;
 	font-size: 15px;
 	width: 80px;
 	height: 40px;
+	display : block;
+}
+.filter_search{
+	padding: 10px;
+	border-radius: 3px;
+	font-size: 15px;
+	width: 80px;
+	height: 40px;
+	margin : 0.5% 0.5%;	
 }
 
 /* 寃��깋李� �븞�뿉 �룍蹂닿린 �궗吏� �쐞移� */
@@ -240,29 +231,17 @@ tbody {
 	border-radius: 10px;
 }
 
-fieldset>.filter {
-	width: 20%;
-	font-size: 15px;
-	text-align: center;
-	border: 1px solid #ccc;
-	height: 40px;
-	border-radius: 3px;
-	margin: 2% auto;
-	margin-left: 63%;
-}
-
-fieldset>input {
-	border: 1px solid black;
-}
 /* -----------nav-------------  */
 #header {
-	margin-top: 2%;
+	margin-top: 5%;
+    height: 180px;
 	background-color: #ffffff;
 }
 /* �닔�젙遺�遺�1217 */
 h1 {
 	text-align: left;
 	font-size: 42px;
+	margin-bottom: 2%;
 }
 
 .header_img {
@@ -273,11 +252,11 @@ h1 {
 }
 
 .header_h1 {
-	width: 60%;
-	height: 60px;
-	margin-top: -0.5%;
-	float: left;
-	height: 100px;
+    width: 60%;
+    margin-top: 0.8%;
+    margin-left: -1.5%;
+    float: left;
+    height: 100px;
 }
 
 .header_h1>h4 {
@@ -299,25 +278,37 @@ nav>a, button:hover {
 nav>a, button:active {
 	color: #2b2b2b;
 }
-
+nav > .filter {
+	font-size: 15px;
+	text-align: center;
+	border: 1px solid #ccc;
+	height: 40px;
+	border-radius: 3px;
+	margin: 2% auto;
+}
 ul {
 	display: inline-block;
 	text-align: center;
 }
 
 nav {
-	margin-left: 65%;
-	margin-top: 2%;
-	display: block;
+   text-align: right;
+   background: #000000bd;
+   width: 100%;
+   position: fixed;
+   background: #000000d6;
+   height: 60px;
+   display: block;
 }
 
 nav>a, nav>button {
-	font-size: 20px;
-	margin-right: 7%;
-	text-decoration: none;
-	color: #5b5b5b;
-	background-color: #4e1f1f00;
-	border: none;
+   font-size: 15px;
+   margin-right: 4%;
+   margin-top: 1%;
+   text-decoration: none;
+   background: none;
+   color: wheat;
+   border: none;
 }
 /* -----------nav-------------  */
 .icons>.bg {
@@ -360,6 +351,7 @@ fieldset {
 	height: 300px;
 	border-radius: 10px;
 	border: 1px solid #ccc;
+	margin-bottom: 5%;
 }
 
 #alarm {
@@ -380,7 +372,7 @@ fieldset {
 
 #alarmback {
 	border-radius: 10px;
-	padding: 17px;
+	padding: 15px;
 	margin-bottom: 2%;
 	border: 1px solid #ccc;
 	font-size: 15px;
@@ -460,7 +452,6 @@ fieldset {
 
 #modal h2 {
 	margin: 0;
-
 }
 
 #modal button {
@@ -598,27 +589,26 @@ table>td>input {
 }
 
 .suc, .rol {
-   height: auto;
-   display: inline-block;
-   text-transform: uppercase;
-   margin-bottom: 1.5%;
-   cursor: pointer;
-   background: #002c5f; 
-   box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
-   padding: 10px 25px;
-   border: 0px;
-   color: #fff;
-   font-size: 15px;
-   margin-bottom: 4%;
-
+	height: auto;
+	display: inline-block;
+	text-transform: uppercase;
+	margin-bottom: 1.5%;
+	cursor: pointer;
+	background: #002c5f;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+	padding: 10px 25px;
+	border: 0px;
+	color: #fff;
+	font-size: 15px;
+	margin-bottom: 4%;
 }
 
 .suc:hover {
-   color: #000e1f;
+	color: #000e1f;
 }
 
 .rol:hover {
-   color: #000e1f;
+	color: #000e1f;
 }
 /*-----------------------------------------�쟾二� �벑濡� �뀒�씠釉�------------------------------------------ */
 input:focus {

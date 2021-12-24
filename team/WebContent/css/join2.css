@@ -1,5 +1,10 @@
+@font-face {
+    font-family: 'neon';
+    src: url('./fonts/SF-Pro.ttf') format('truetype');
+}
+
 *{
-    font-family: 'Nanum Gothic', sans-serif;
+	font-family : neon;
 }
 body{
     /*background:  #002652;*/
