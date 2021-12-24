@@ -4,6 +4,11 @@
 }
 
 *{
+	margin : 0 auto;
+	font-family : neon;
+}
+
+*{
    margin : 0 auto;
    font-family : neon;
 }
@@ -204,7 +209,7 @@ h1{
     height: 163px;
     border : 1px;
     margin-bottom : 10px;
-    
+    overflow-y: auto;
 }
 .text_save{  
     margin: 0 auto;

@@ -7,13 +7,18 @@ body {
    src: url('./fonts/SF-Pro.ttf') format('truetype');
 }
 
+@font-face {
+	font-family: 'neon';
+	src: url('./fonts/SF-Pro.ttf') format('truetype');
+}
+
 * {
-   margin: 0;
-   font-family: neon;
+	margin: 0;
+	font-family: neon;
 }
 
 .number {
-   text-align: center;
+	text-align: center;
 }
 
 a {
@@ -146,9 +151,9 @@ select {
 }
 
 #poletable th {
-   padding: 10px;
-   color: wheat;
-   height:55px;
+	padding: 10px;
+	color: wheat;
+	height:55px;
     background: #000000bd;
     font-size: 17px;
 }
@@ -158,9 +163,9 @@ select {
 }
 
 .search_container {
-   border: 1px solid #ccc;
-   height: auto;
-   overflow-y: scroll;
+	border: 1px solid #ccc;
+	height: auto;
+	overflow-y: scroll;
 }
 
 #poletable td {
@@ -174,10 +179,10 @@ select {
 }
 
 .search_container {
-   width: 80%;
-   margin: 2% auto;
-   display: flex;
-   background-color: #FFFFFF;
+	width: 80%;
+	margin: 2% auto;
+	display: flex;
+	background-color: #FFFFFF;
 }
 
 .icon {
@@ -201,20 +206,20 @@ select {
 }
 
 fieldset>.filter_search {
-   padding: 10px;
-   border-radius: 3px;
-   font-size: 15px;
-   width: 80px;
-   height: 40px;
-   display : block;
+	padding: 10px;
+	border-radius: 3px;
+	font-size: 15px;
+	width: 80px;
+	height: 40px;
+	display : block;
 }
 .filter_search{
-   padding: 10px;
-   border-radius: 3px;
-   font-size: 15px;
-   width: 80px;
-   height: 40px;
-   margin : 0.5% 0.5%;   
+	padding: 10px;
+	border-radius: 3px;
+	font-size: 15px;
+	width: 80px;
+	height: 40px;
+	margin : 0.5% 0.5%;	
 }
 
 /* 寃  깋李   븞 뿉  룍蹂닿린  궗吏   쐞移  */
@@ -235,15 +240,15 @@ tbody {
 
 /* -----------nav-------------  */
 #header {
-   margin-top: 5%;
+	margin-top: 5%;
     height: 180px;
-   background-color: #ffffff;
+	background-color: #ffffff;
 }
 /*  닔 젙遺 遺 1217 */
 h1 {
-   text-align: left;
-   font-size: 42px;
-   margin-bottom: 2%;
+	text-align: left;
+	font-size: 42px;
+	margin-bottom: 2%;
 }
 
 .header_img {
@@ -281,12 +286,12 @@ nav>a, button:active {
    color: #2b2b2b;
 }
 nav > .filter {
-   font-size: 15px;
-   text-align: center;
-   border: 1px solid #ccc;
-   height: 40px;
-   border-radius: 3px;
-   margin: 2% auto;
+	font-size: 15px;
+	text-align: center;
+	border: 1px solid #ccc;
+	height: 40px;
+	border-radius: 3px;
+	margin: 2% auto;
 }
 ul {
    display: inline-block;
@@ -304,7 +309,7 @@ nav {
 }
 
 nav>a, nav>button {
-   font-size: 17px;
+   font-size: 15px;
    margin-right: 4%;
    margin-top: 1%;
    text-decoration: none;
@@ -349,11 +354,11 @@ nav>a, nav>button {
 }
 
 fieldset {
-   text-align: left;
-   height: 300px;
-   border-radius: 10px;
-   border: 1px solid #ccc;
-   margin-bottom: 5%;
+	text-align: left;
+	height: 300px;
+	border-radius: 10px;
+	border: 1px solid #ccc;
+	margin-bottom: 5%;
 }
 
 #alarm {
@@ -373,11 +378,11 @@ fieldset {
 }
 
 #alarmback {
-   border-radius: 10px;
-   padding: 15px;
-   margin-bottom: 2%;
-   border: 1px solid #ccc;
-   font-size: 15px;
+	border-radius: 10px;
+	padding: 15px;
+	margin-bottom: 2%;
+	border: 1px solid #ccc;
+	font-size: 15px;
 }
 
 #alarm>h3, div {
@@ -416,30 +421,201 @@ fieldset {
 }
 
 .wid2 {
-   width: 15%;
+	width: 15%;
 }
 
 .suc, .rol {
-   height: auto;
-   display: inline-block;
-   text-transform: uppercase;
-   margin-bottom: 1.5%;
-   cursor: pointer;
-   background: #002c5f;
-   box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
-   padding: 10px 25px;
-   border: 0px;
-   color: #fff;
-   font-size: 15px;
-   margin-bottom: 4%;
+	height: auto;
+	display: inline-block;
+	text-transform: uppercase;
+	margin-bottom: 1.5%;
+	cursor: pointer;
+	background: #002c5f;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+	padding: 10px 25px;
+	border: 0px;
+	color: #fff;
+	font-size: 15px;
+	margin-bottom: 4%;
 }
 
 .suc:hover {
-   color: #000e1f;
+	color: #000e1f;
 }
 
 .rol:hover {
-   color: #000e1f;
+	color: #000e1f;
+}
+/*-----------------------------------------�궗�슜�옄 �벑濡� �뀒�씠釉�----------------------------------------------------------------------------------------------------------------------- */
+
+/*--------------------------------------------- �궗�슜�옄 紐⑤떖李� �냼�뒪------------------------------------------ */
+#modal {
+	display: none;
+	position: absolute;
+	width: 70%;
+	height: 70%;
+	z-index: 1;
+}
+
+#modal h2 {
+	margin: 0;
+}
+
+#modal button {
+	display: inline-block;
+	width: 100px;
+	margin-left: calc(100% - 100px - 10px);
+}
+
+#modal .modal_content {
+	width: 300px;
+	margin: 100px auto;
+	padding: 20px 10px;
+	background: #fff;
+	border: 2px solid #666;
+}
+
+#modal .modal_layer {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(105, 105, 105, 0.705);
+	z-index: -1;
+}
+/*--------------------------------------------- �궗�슜�옄 紐⑤떖李� �냼�뒪------------------------------------------ */
+
+/*--------------------------------------------- �쟾二쇰벑濡� 紐⑤떖李� �냼�뒪------------------------------------------ */
+#modal2 {
+	display: none;
+	position: absolute;
+	width: 70%;
+	height: 70%;
+	z-index: 1;
+}
+
+#modal2 h2 {
+	margin: 0;
+}
+
+#modal2 button {
+	display: inline-block;
+	width: 100px;
+	margin-left: calc(100% - 100px - 10px);
+}
+
+#modal2 .modal_content {
+	width: 300px;
+	margin: 100px auto;
+	padding: 20px 10px;
+	background: #fff;
+	border: 2px solid #666;
+}
+
+#modal2 .modal_layer {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(105, 105, 105, 0.705);
+	z-index: -1;
+}
+/*--------------------------------------------- �쟾二쇰벑濡� 紐⑤떖李� �냼�뒪------------------------------------------ */
+
+/*-----------------------------------------�쟾二� �벑濡� �뀒�씠釉�------------------------------------------ */
+#modal>img {
+	margin-bottom: 30px;
+}
+
+#empas {
+	font-size: 25px;
+}
+
+#empas>img {
+	margin-top: 5%;
+}
+
+.pole_form {
+	position: absolute;
+	width: 700px;
+	margin-left: 40%;
+	background-color: white;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+.pole_form>table {
+	border-radius: 10px;
+}
+
+.pole_tb_body {
+	margin: auto;
+	border-bottom: none;
+	width: 90%;
+	height: 700px;
+}
+
+.pole_tb_body>a {
+	position: relative;
+	text-align: center;
+	font-size: 15px;
+}
+
+.pole_tb_body>td {
+	width: 20%;
+	position: relative;
+	text-align: center;
+	font-size: 15px;
+	color: hsl(190, 3%, 40%);;
+}
+
+.pole_tb_body>tr, td, th {
+	position: relative;
+	text-align: center;
+	font-size: 15px;
+	color: hsl(190, 3%, 40%);;
+}
+
+table>td>input {
+	margin-left: 6%;
+	width: 200px;
+	height: 30px;
+}
+
+.pole_tb_body>hr {
+	width: 400px;
+}
+
+.wid3 {
+	width: 20%;
+}
+
+.wid4 {
+	width: 25%;
+}
+
+.suc, .rol {
+	height: auto;
+	display: inline-block;
+	text-transform: uppercase;
+	margin-bottom: 1.5%;
+	cursor: pointer;
+	background: #002c5f;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+	padding: 10px 25px;
+	border: 0px;
+	color: #fff;
+	font-size: 15px;
+	margin-bottom: 4%;
+}
+
+.suc:hover {
+	color: #000e1f;
+}
+
+.rol:hover {
+	color: #000e1f;
 }
 /*----------------------------------------- 궗 슜 옄  벑濡   뀒 씠釉 ----------------------------------------------------------------------------------------------------------------------- */
 

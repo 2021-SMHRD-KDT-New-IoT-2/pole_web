@@ -13,8 +13,7 @@
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.DriverManager"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-   pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!DOCTYPE html>
 <html>
@@ -82,11 +81,9 @@
    String pole_high = request.getParameter("pole_high");
    String pole_down = request.getParameter("pole_down");
    String pole_com = request.getParameter("pole_com");
-
    String camera_date = request.getParameter("camera_date");
    String impact_date = request.getParameter("impact_date");
    String tilt_date = request.getParameter("tilt_date");
-
    String mac_code = request.getParameter("mac_code");
    String pole_level = request.getParameter("pole_level");
    
@@ -99,16 +96,15 @@
 <!-- 네비게이션  -->
    <div id="nav" style="height: 60px;">
       <nav>
-      <p style="width:10%; float:left; color:wheat; font-size:20px; font-family: 'Noto Sans KR', sans-serif; margin: 0.8% 0% 0% 6%;">Utility Of Pole</p>
-         <!-- if login : LoginMain, else : Main -->
+      <p style="float:left; color:wheat; font-size:20px; margin: 0.8% 0% 0% 6%;">Utility Pole Of Pisa</p>
          <button>
-            <a href="Main.jsp" style="color: wheat;text-decoration: none;">HOME</a>
+            <a href="Main.jsp" style="color: wheat; text-decoration: none;"> HOME</a>
          </button>
          <button id="modal_pole">전주 등록</button>
          <button id="modal_emp">사용자 등록</button>
          <a href="LogoutService" style="margin-right: 11%;">로그아웃</a>
       </nav>
-         <div class="nav_img"></div>
+         <div class="nav_img">
          <img src="./images/bar.png" width="100%" height="60px">      
       </div>
    </div>
@@ -125,6 +121,7 @@
          <p style="font-size: 30px; margin-left : -60%;">POLE MANAGEMENT SYSTEM</p>
       </div>
    </div>
+   
    <!-- 사용자등록, 전주등록 modal include -->
    <%@ include file="/modal_assignEmp.jsp"%>
    <%@ include file="/modal_assignPole.jsp"%>
@@ -134,42 +131,42 @@
       <div id="field_area">
          <form action="Main.jsp" method="get">
             <fieldset>
-            <div class="fieldset_head" style="width:100%; background:black; color:white;">
-               <p style="text-align: center;">광주광역시</p>
+            <div class="fieldset_head" style="width:100%; height : 40px; background:#000000bd; color:white; border-radius : 10px;">
+               <p style="text-align: center; line-height : 2.5; color:wheat;">광주광역시</p>
                </div>
 
-               <label>담당 사업소</label> <select name="pole_office">
+               <label>&nbsp;&nbsp;&nbsp;담당 사업소</label> <select name="pole_office">
                   <option value="">선택</option>
                   <option value="동구">동구</option>
                   <option value="서구">서구</option>
                   <option value="남구">남구</option>
                   <option value="북구">북구</option>
                   <option value="광산구">광산구</option>
-               </select><label>관리자</label> <input
+               </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label>관리자</label> <input
                   type="text" name="emp_id"
-                  style="width: 120px; height: 40px; margin-right: 4%; font-size: 15px; text-align:center;">
+                  style="width: 100px; height: 40px; margin-right: 4%; font-size: 15px;">&nbsp;&nbsp;&nbsp;
                <label>설치 일자</label> <input type="text" name="pole_date"
-                  id="searchtext">
+                  id="searchtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                <label>높이</label> <input type="text" name="pole_height"
-                  id="searchtext"> <br> <label>변압기</label>
+                  id="searchtext"> <br> <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;변압기</label>
                <select name="transformer_yn" id="searchtext">
 
 
                   <option value="">선택</option>
                   <option value="Y">Y</option>
                   <option value="N">N</option>
-               </select>  <label> 고압선 </label> <select
+               </select> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> 고압선 </label> <select
                   name="pole_high">
                   <option value="">선택</option>
                   <option value="Y">Y</option>
                   <option value="N">N</option>
-               </select><label> 저압선</label> <select
+               </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> 저압선</label> <select
                   name="pole_down">
                   <option value="">선택</option>
                   <option value="Y">Y</option>
                   <option value="N">N</option>
-               </select> <label>
+               </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label>
                   통신선</label> <select name="pole_com">
                   <option value="">선택</option>
                   <option value="Y">Y</option>
@@ -248,8 +245,7 @@
       </div>
 
    </div>
-
-
+   <!-- 알림메세지 끝 -->
 
 
    <!-- 검색 전 pole_info 전체결과 -->
@@ -276,6 +272,43 @@
             </tr>
             <%
                for (int i = 0; i < arrpVO.size(); i++) {
+            %>
+            
+            <% if(arrpVO.get(i).getNow_tilt()<79) { %>
+            
+            <tr style="background: wheat;">
+               <%
+                  if (arrpVO.get(i).getNow_tilt()>80 && arrpVO.get(i).getNow_tilt()<85 ) {
+               %>
+               <td><img src="./images/middlesign.png" width="35px"
+                  height="35px"></td>
+
+               <%
+                  } else if (arrpVO.get(i).getNow_tilt()<79 ) {
+               %>
+               <td><img src="./images/high.png" width="40px" height="40px"></td>
+               <%
+                  } else if (arrpVO.get(i).getNow_tilt()>=86 || arrpVO.get(i).getNow_tilt()<=90) {
+               %>
+               <td><img src="./images/checked.png" width="30px" height="30px"></td>
+               <%
+                  }
+               %>
+               <td><a
+                  href="managePole.jsp?pole_code=<%=arrpVO.get(i).getPole_code()%>"><%=arrpVO.get(i).getPole_code()%></a></td>
+               <td><%=arrpVO.get(i).getEmp_id()%></td>
+               <td><%=arrpVO.get(i).getPole_office()%></td>
+               <td><%=arrpVO.get(i).getPole_date()%></td>
+               <td><%=arrpVO.get(i).getPole_height()%></td>
+               <td><%=arrpVO.get(i).getTransformer_yn()%></td>
+               <td><%=arrpVO.get(i).getPole_high()%></td>
+               <td><%=arrpVO.get(i).getPole_down()%></td>
+               <td><%=arrpVO.get(i).getPole_com()%></td>
+               <td><%=arrpVO.get(i).getNow_tilt()%></td>
+            </tr>
+            
+            <%
+            }else{
             %>
             <tr>
                <%
@@ -307,18 +340,17 @@
                <td><%=arrpVO.get(i).getPole_com()%></td>
                <td><%=arrpVO.get(i).getNow_tilt()%></td>
             </tr>
-            <%
-               }
-            %>
+         <%} %>
+   <%} %>
          </table>
       </div>
-
    </div>
 
+
+   <!-- 검색 후 전주정보 -->
    <%
       } else {
    %>
-   <!-- 검색 후 전주정보 -->
 
    <div id="min_wrapper">
 
@@ -374,13 +406,11 @@
             <%
                }
             %>
+         <%} %>
          </table>
       </div>
    </div>
 
-   <%
-      }
-   %>
 
    <!-- footer -->
    <div id="footer">

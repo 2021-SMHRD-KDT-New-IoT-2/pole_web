@@ -8,10 +8,6 @@
 <link rel="stylesheet" href="css/logincss.css">
 </head>
 <style>
-    *{
-        font-family: 'Nanum Gothic', sans-serif;
-    }
-    
 body{
     background-size: cover;
     background-image: url("./images/ppt3.png");
@@ -54,9 +50,6 @@ body{
         </div>
     </footer>
 
-    <!--fonts-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+   
 </body>
 </html>
