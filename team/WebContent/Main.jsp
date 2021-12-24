@@ -13,12 +13,14 @@
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.DriverManager"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="UTF-8"%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="shorcut icon" type="image/x-icon" href="./images/upoplogo.PNG" type="text/css">
+<link rel="shorcut icon" type="image/x-icon"
+	href="./images/upoplogo.PNG" type="text/css">
 <title>POLE OF PISA 전주관리 시스템</title>
 <link rel="stylesheet" href="css/Maincss.css">
 <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
@@ -31,83 +33,86 @@
 
 * {
 	font-family: neon;
-	}
+}
 
 #btnimpt, #btnmtn, #btntt {
 	border-radius: 10px;
 	width: 31.5%;
 	height: 16%;
-	font-size: 15px;
 	border: #ccc solid 1px;
 	padding: 10px;
+	font-size: 15px;
 	color: wheat;
-    background: #000000bd;
+	background: #000000bd;
 	-webkit-transition: all 0.1s ease;
 }
+
 #btnimpt:hover, #btnmtn:hover, #btntt:hover {
 	background: #000000d6;
-	color : white;
+	color: white;
 }
 
 #select_line {
 	margin-left: 5%;
-	margin-bottom : 2%;
+	margin-bottom: 2%;
 }
 
 #footer {
 	margin-top: 40%;
 }
-
 </style>
 <body>
 
 	<%
-	request.setCharacterEncoding("utf-8");
-	poleVO pvo = (poleVO) session.getAttribute("pole");
+   request.setCharacterEncoding("utf-8");
+   poleVO pvo = (poleVO) session.getAttribute("pole");
 
-	poleDAO pdao = new poleDAO();
-	ArrayList<poleVO> arrpVO = pdao.pole_selectAll();
+   poleDAO pdao = new poleDAO();
+   ArrayList<poleVO> arrpVO = pdao.pole_selectAll();
 
-	tiltDAO tdao = new tiltDAO();
-	impactDAO idao = new impactDAO();
-	cameraDAO cdao = new cameraDAO();
+   tiltDAO tdao = new tiltDAO();
+   impactDAO idao = new impactDAO();
+   cameraDAO cdao = new cameraDAO();
 
-	String pole_code = request.getParameter("pole_code");
-	String pole_height = request.getParameter("pole_height");
-	String pole_date = request.getParameter("pole_date");
-	String emp_id = request.getParameter("emp_id");
-	String transformer_yn = request.getParameter("transformer_yn");
-	String pole_office = request.getParameter("pole_office");
-	String pole_high = request.getParameter("pole_high");
-	String pole_down = request.getParameter("pole_down");
-	String pole_com = request.getParameter("pole_com");
-	String camera_date = request.getParameter("camera_date");
-	String impact_date = request.getParameter("impact_date");
-	String tilt_date = request.getParameter("tilt_date");
-	String mac_code = request.getParameter("mac_code");
-	String pole_level = request.getParameter("pole_level");
-	
-	ArrayList<poleVO> filter = pdao.filter(pole_height, pole_date, emp_id, transformer_yn, pole_office, pole_high, pole_down, pole_com, pole_code);
-	ArrayList<tiltVO> t_alarm = tdao.tiltvalue();
-	ArrayList<cameraVO> c_alarm = cdao.cameravalue();
-	ArrayList<impactVO> i_alarm = idao.impactvalue();
-	%>
+   String pole_code = request.getParameter("pole_code");
+   String pole_height = request.getParameter("pole_height");
+   String pole_date = request.getParameter("pole_date");
+   String emp_id = request.getParameter("emp_id");
+   String transformer_yn = request.getParameter("transformer_yn");
+   String pole_office = request.getParameter("pole_office");
+   String pole_high = request.getParameter("pole_high");
+   String pole_down = request.getParameter("pole_down");
+   String pole_com = request.getParameter("pole_com");
+   String camera_date = request.getParameter("camera_date");
+   String impact_date = request.getParameter("impact_date");
+   String tilt_date = request.getParameter("tilt_date");
+   String mac_code = request.getParameter("mac_code");
+   String pole_level = request.getParameter("pole_level");
+   
+   ArrayList<poleVO> filter = pdao.filter(pole_height, pole_date, emp_id, transformer_yn, pole_office, pole_high, pole_down, pole_com, pole_code);
+   ArrayList<tiltVO> t_alarm = tdao.tiltvalue();
+   ArrayList<cameraVO> c_alarm = cdao.cameravalue();
+   ArrayList<impactVO> i_alarm = idao.impactvalue();
+   %>
 
-<!-- 네비게이션  -->
-   <div id="nav" style="height: 60px;">
-      <nav>
-      <p style="float:left; color:wheat; font-size:20px; margin: 0.8% 0% 0% 6%;">Utility Pole Of Pisa</p>
-         <button>
-            <a href="Main.jsp" style="color: wheat; text-decoration: none;"> HOME</a>
-         </button>
-         <button id="modal_pole">전주 등록</button>
-         <button id="modal_emp">사용자 등록</button>
-         <a href="LogoutService" style="margin-right: 11%;">로그아웃</a>
-      </nav>
-      	<div class="nav_img">
-      	<img src="./images/bar.png" width="100%" height="60px">		
+	<!-- 네비게이션  -->
+	<div id="nav" style="height: 60px;">
+		<nav>
+			<p
+				style="float: left; color: wheat; font-size: 20px; margin: 0.8% 0% 0% 6%;">Utility
+				Pole Of Pisa</p>
+			<button>
+				<a href="Main.jsp" style="color: wheat; text-decoration: none;">
+					HOME</a>
+			</button>
+			<button id="modal_pole">전주 등록</button>
+			<button id="modal_emp">사용자 등록</button>
+			<a href="LogoutService" style="margin-right: 11%;">로그아웃</a>
+		</nav>
+		<div class="nav_img">
+			<img src="./images/bar.png" width="100%" height="60px">
 		</div>
-   </div>
+	</div>
 
 	<!-- 헤더 -->
 	<div id="header">
@@ -116,81 +121,102 @@
 				id="logo">
 		</div>
 		<div class="header_h1">
-			<b style="font-size: 40px; margin-left : -60%;">전주 통합 관리 시스템</b>
-			<br>
-			<p style="font-size: 30px; margin-left : -60%;">POLE MANAGEMENT SYSTEM</p>
+			<b style="font-size: 40px; margin-left: -60%;">전주 통합 관리 시스템</b> <br>
+			<p style="font-size: 30px; margin-left: -60%;">POLE MANAGEMENT
+				SYSTEM</p>
 		</div>
 	</div>
-	
+
 	<!-- 사용자등록, 전주등록 modal include -->
 	<%@ include file="/modal_assignEmp.jsp"%>
 	<%@ include file="/modal_assignPole.jsp"%>
 
 	<!-- 검색창 필터링  -->
-   <div id="searchBar">
-      <div id="field_area">
-         <form action="Main.jsp" method="get">
-            <fieldset>
-            <div class="fieldset_head" style="width:100%; height : 40px; background:#000000bd; color:white; border-radius : 10px;">
-               <p style="text-align: center; line-height : 2.5; color:wheat;">광주광역시</p>
-               </div>
+	<div id="searchBar">
+		<div id="field_area">
+			<form action="Main.jsp" method="get">
+				<fieldset>
+					<div class="fieldset_head"
+						style="width: 100%; height: 40px; background: #000000bd; color: white; border-radius: 10px;">
+						<p style="text-align: center; line-height: 2.5; color: wheat;">광주광역시</p>
+					</div>
 
-               <label>&nbsp;&nbsp;&nbsp;담당 사업소</label> <select name="pole_office">
-                  <option value="">선택</option>
-                  <option value="동구">동구</option>
-                  <option value="서구">서구</option>
-                  <option value="남구">남구</option>
-                  <option value="북구">북구</option>
-                  <option value="광산구">광산구</option>
-               </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label>관리자</label> <input
-                  type="text" name="emp_id"
-                  style="width: 100px; height: 40px; margin-right: 4%; font-size: 15px;">&nbsp;&nbsp;&nbsp;
-               <label>설치 일자</label> <input type="text" name="pole_date"
-                  id="searchtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<label>&nbsp;&nbsp;&nbsp;담당 사업소</label> <select name="pole_office">
+						<option value="">선택</option>
+						<option value="동구">동구</option>
+						<option value="서구">서구</option>
+						<option value="남구">남구</option>
+						<option value="북구">북구</option>
+						<option value="광산구">광산구</option>
+					</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label>관리자</label> <input
+						type="text" name="emp_id"
+						style="width: 100px; height: 40px; margin-right: 4%; font-size: 15px;">&nbsp;&nbsp;&nbsp;
+					<label>설치 일자</label> <input type="text" name="pole_date"
+						id="searchtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-               <label>높이</label> <input type="text" name="pole_height"
-                  id="searchtext"> <br> <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;변압기</label>
-               <select name="transformer_yn" id="searchtext">
+					<label>높이</label> <input type="text" name="pole_height"
+						id="searchtext"> <br> <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;변압기</label>
+					<select name="transformer_yn" id="searchtext">
 
 
-                  <option value="">선택</option>
-                  <option value="Y">Y</option>
-                  <option value="N">N</option>
-               </select> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> 고압선 </label> <select
-                  name="pole_high">
-                  <option value="">선택</option>
-                  <option value="Y">Y</option>
-                  <option value="N">N</option>
-               </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> 저압선</label> <select
-                  name="pole_down">
-                  <option value="">선택</option>
-                  <option value="Y">Y</option>
-                  <option value="N">N</option>
-               </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label>
-                  통신선</label> <select name="pole_com">
-                  <option value="">선택</option>
-                  <option value="Y">Y</option>
-                  <option value="N">N</option>
-               </select>&nbsp;&nbsp;&nbsp; <input type="text" name="pole_code"
-                  class="filter" placeholder="전주 번호 검색" style="height: 40px; float:left; width:120px; margin-left: 70%; margin-top: 2.5%; text-align:center;"> <input
-                  type="submit" name="pole_code" value="검색" class="filter_search"
-                  style="float: right; color: black; background-color: white; border: 1px solid #ccc; margin-right: 4.7%; width: 100px; ">
-            </fieldset>
-         </form>
-      </div>
+						<option value="">선택</option>
+						<option value="Y">Y</option>
+						<option value="N">N</option>
+					</select> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> 고압선 </label> <select
+						name="pole_high">
+						<option value="">선택</option>
+						<option value="Y">Y</option>
+						<option value="N">N</option>
+					</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> 저압선</label> <select
+						name="pole_down">
+						<option value="">선택</option>
+						<option value="Y">Y</option>
+						<option value="N">N</option>
+					</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label>
+						통신선</label> <select name="pole_com">
+						<option value="">선택</option>
+						<option value="Y">Y</option>
+						<option value="N">N</option>
+					</select>&nbsp;&nbsp;&nbsp; <input type="text" name="pole_code"
+						class="filter" placeholder="전주 번호 검색"
+						style="height: 40px; float: left; width: 120px; margin-left: 70%; margin-top: 2.5%; text-align: center;">
+					<input type="submit" name="pole_code" value="검색"
+						class="filter_search"
+						style="float: right; color: black; background-color: white; border: 1px solid #ccc; margin-right: 4.7%; width: 100px;">
+				</fieldset>
+			</form>
+		</div>
 
 
 		<!-- 알림메세지  -->
 		<div id="alarm">
-			<button id="btnimpt">충격감지 <div><img src="./images/thunder.png" width="20px" height="20px" style="float:right; margin-right:13%; margin-top:-14%"></div></button>
-			<button id="btnmtn">모션감지<div><img src="./images/photo.png" width="20px" height="20px" style="float:right; margin-right:13%; margin-top:-14%"></div></button>
-			<button id="btntt">기울기감지<div><img src="./images/bell.png" width="20px" height="20px" style="float:right; margin-right:8%; margin-top:-14%"></div></button>
+			<button id="btnimpt">
+				충격감지
+				<div>
+					<img src="./images/thunder.png" width="20px" height="20px"
+						style="float: right; margin-right: 13%; margin-top: -14%">
+				</div>
+			</button>
+			<button id="btnmtn">
+				모션감지
+				<div>
+					<img src="./images/photo.png" width="20px" height="20px"
+						style="float: right; margin-right: 13%; margin-top: -14%">
+				</div>
+			</button>
+			<button id="btntt">
+				기울기감지
+				<div>
+					<img src="./images/bell.png" width="20px" height="20px"
+						style="float: right; margin-right: 8%; margin-top: -14%">
+				</div>
+			</button>
 
 
 			<div id="impactdiv">
 				<%
-					for (int i = 0; i < i_alarm.size(); i++) {
-				%>
+               for (int i = 0; i < i_alarm.size(); i++) {
+            %>
 				<div id="alarmback">
 					<img src="./images/thunder.png" width="30px" height="30px"
 						style="float: left; margin-top: -1%">
@@ -201,15 +227,15 @@
 					</div>
 				</div>
 				<%
-					}
-				%>
+               }
+            %>
 			</div>
 
 
 			<div id="motiondiv">
 				<%
-					for (int i = 0; i < c_alarm.size(); i++) {
-				%>
+               for (int i = 0; i < c_alarm.size(); i++) {
+            %>
 				<div id="alarmback">
 					<img src="./images/photo.png" width="30px" height="30px"
 						style="float: left; margin-top: -1%">
@@ -220,14 +246,14 @@
 					</div>
 				</div>
 				<%
-					}
-				%>
+               }
+            %>
 			</div>
 
 			<div id="tiltdiv">
 				<%
-					for (int i = 0; i < t_alarm.size(); i++) {
-				%>
+               for (int i = 0; i < t_alarm.size(); i++) {
+            %>
 				<div id="alarmback">
 					<img src="./images/bell.png" width="30px" height="30px"
 						style="float: left; margin-top: -1%">
@@ -239,8 +265,8 @@
 					</div>
 				</div>
 				<%
-					}
-				%>
+               }
+            %>
 			</div>
 		</div>
 
@@ -250,8 +276,8 @@
 
 	<!-- 검색 전 pole_info 전체결과 -->
 	<%
-		if (pole_height == null) {
-	%>
+      if (pole_height == null) {
+   %>
 	<div id="wrapper">
 		<div class="search_container" style="text-align: center;">
 			<table id="poletable" style="text-align: center; margin: auto;">
@@ -271,29 +297,29 @@
 
 				</tr>
 				<%
-					for (int i = 0; i < arrpVO.size(); i++) {
-				%>
-				
+               for (int i = 0; i < arrpVO.size(); i++) {
+            %>
+
 				<% if(arrpVO.get(i).getNow_tilt()<79) { %>
-				
+
 				<tr style="background: wheat;">
 					<%
-						if (arrpVO.get(i).getNow_tilt()>80 && arrpVO.get(i).getNow_tilt()<85 ) {
-					%>
+                  if (arrpVO.get(i).getNow_tilt()>80 && arrpVO.get(i).getNow_tilt()<85 ) {
+               %>
 					<td><img src="./images/middlesign.png" width="35px"
 						height="35px"></td>
 
 					<%
-						} else if (arrpVO.get(i).getNow_tilt()<79 ) {
-					%>
+                  } else if (arrpVO.get(i).getNow_tilt()<79 ) {
+               %>
 					<td><img src="./images/high.png" width="40px" height="40px"></td>
 					<%
-						} else if (arrpVO.get(i).getNow_tilt()>=86 || arrpVO.get(i).getNow_tilt()<=90) {
-					%>
+                  } else if (arrpVO.get(i).getNow_tilt()>=86 || arrpVO.get(i).getNow_tilt()<=90) {
+               %>
 					<td><img src="./images/checked.png" width="30px" height="30px"></td>
 					<%
-						}
-					%>
+                  }
+               %>
 					<td><a
 						href="managePole.jsp?pole_code=<%=arrpVO.get(i).getPole_code()%>"><%=arrpVO.get(i).getPole_code()%></a></td>
 					<td><%=arrpVO.get(i).getEmp_id()%></td>
@@ -306,28 +332,28 @@
 					<td><%=arrpVO.get(i).getPole_com()%></td>
 					<td><%=arrpVO.get(i).getNow_tilt()%></td>
 				</tr>
-				
+
 				<%
-				}else{
-				%>
+            }else{
+            %>
 				<tr>
 					<%
-						if (arrpVO.get(i).getNow_tilt()>80 && arrpVO.get(i).getNow_tilt()<85 ) {
-					%>
+                  if (arrpVO.get(i).getNow_tilt()>80 && arrpVO.get(i).getNow_tilt()<85 ) {
+               %>
 					<td><img src="./images/middlesign.png" width="35px"
 						height="35px"></td>
 
 					<%
-						} else if (arrpVO.get(i).getNow_tilt()<79 ) {
-					%>
+                  } else if (arrpVO.get(i).getNow_tilt()<79 ) {
+               %>
 					<td><img src="./images/high.png" width="40px" height="40px"></td>
 					<%
-						} else if (arrpVO.get(i).getNow_tilt()>=86 || arrpVO.get(i).getNow_tilt()<=90) {
-					%>
+                  } else if (arrpVO.get(i).getNow_tilt()>=86 || arrpVO.get(i).getNow_tilt()<=90) {
+               %>
 					<td><img src="./images/checked.png" width="30px" height="30px"></td>
 					<%
-						}
-					%>
+                  }
+               %>
 					<td><a
 						href="managePole.jsp?pole_code=<%=arrpVO.get(i).getPole_code()%>"><%=arrpVO.get(i).getPole_code()%></a></td>
 					<td><%=arrpVO.get(i).getEmp_id()%></td>
@@ -340,8 +366,8 @@
 					<td><%=arrpVO.get(i).getPole_com()%></td>
 					<td><%=arrpVO.get(i).getNow_tilt()%></td>
 				</tr>
-			<%} %>
-	<%} %>
+				<%} %>
+				<%} %>
 			</table>
 		</div>
 	</div>
@@ -349,8 +375,8 @@
 
 	<!-- 검색 후 전주정보 -->
 	<%
-		} else {
-	%>
+      } else {
+   %>
 
 	<div id="min_wrapper">
 
@@ -371,26 +397,26 @@
 					<th>현재 기울기</th>
 				</tr>
 				<%
-					for (int i = 0; i < filter.size(); i++) {
-				%>
+               for (int i = 0; i < filter.size(); i++) {
+            %>
 				<tr>
 					<%
-						if (filter.get(i).getNow_tilt()>80 && filter.get(i).getNow_tilt()<85 ) {
-					%>
+                  if (filter.get(i).getNow_tilt()>80 && filter.get(i).getNow_tilt()<85 ) {
+               %>
 					<td><img src="./images/middlesign.png" width="35px"
 						height="35px"></td>
 
 					<%
-						} else if (filter.get(i).getNow_tilt()<79 ) {
-					%>
+                  } else if (filter.get(i).getNow_tilt()<79 ) {
+               %>
 					<td><img src="./images/high.png" width="40px" height="40px"></td>
 					<%
-						} else if (filter.get(i).getNow_tilt()>=86 || arrpVO.get(i).getNow_tilt()<=90) {
-					%>
+                  } else if (filter.get(i).getNow_tilt()>=86 || arrpVO.get(i).getNow_tilt()<=90) {
+               %>
 					<td><img src="./images/checked.png" width="30px" height="30px"></td>
 					<%
-						}
-					%>
+                  }
+               %>
 					<td><a
 						href="managePole.jsp?pole_code=<%=filter.get(i).getPole_code()%>"><%=filter.get(i).getPole_code()%></a></td>
 					<td><%=filter.get(i).getEmp_id()%></td>
@@ -404,9 +430,9 @@
 					<td><%=filter.get(i).getNow_tilt()%></td>
 				</tr>
 				<%
-					}
-				%>
-			<%} %>
+               }
+            %>
+				<%} %>
 			</table>
 		</div>
 	</div>
@@ -426,54 +452,54 @@
 	<!-- 사용자 등록 모달 -->
 
 	<script>
-		$("#modal_emp").click(function() {
-			$("#modal").fadeIn();
-		});
-		$("#uncheck").click(function() {
-			$("#modal").fadeOut();
-		});
-	</script>
+      $("#modal_emp").click(function() {
+         $("#modal").fadeIn();
+      });
+      $("#uncheck").click(function() {
+         $("#modal").fadeOut();
+      });
+   </script>
 	<script>
-		// 전주 등록 모달
-		$("#modal_pole").click(function() {
-			$("#modal2").fadeIn();
-		});
-		$("#uncheck").click(function() {
-			$("#modal2").fadeOut();
-		});
-	</script>
+      // 전주 등록 모달
+      $("#modal_pole").click(function() {
+         $("#modal2").fadeIn();
+      });
+      $("#uncheck").click(function() {
+         $("#modal2").fadeOut();
+      });
+   </script>
 	<!-- Scripts -->
 	<!-- modal.js -->
 	<script src="js/modal.js"></script>
 
 	<!-- alarm.js -->
 	<script>
-		$(document).ready(function() {
-			$('#impactdiv').show();
-			$('#motiondiv').hide();
-			$('#tiltdiv').hide();
+      $(document).ready(function() {
+         $('#impactdiv').show();
+         $('#motiondiv').hide();
+         $('#tiltdiv').hide();
 
-			$('#btnimpt').click(function() {
-				$('#motiondiv').hide();
-				$('#tiltdiv').hide();
-				$('#impactdiv').show();
-				return false;
-			});
+         $('#btnimpt').click(function() {
+            $('#motiondiv').hide();
+            $('#tiltdiv').hide();
+            $('#impactdiv').show();
+            return false;
+         });
 
-			$('#btnmtn').click(function() {
-				$('#impactdiv').hide();
-				$('#tiltdiv').hide();
-				$('#motiondiv').show();
-				return false;
-			});
+         $('#btnmtn').click(function() {
+            $('#impactdiv').hide();
+            $('#tiltdiv').hide();
+            $('#motiondiv').show();
+            return false;
+         });
 
-			$('#btntt').click(function() {
-				$('#motiondiv').hide();
-				$('#impactdiv').hide();
-				$('#tiltdiv').show();
-				return false;
-			});
-		});
-	</script>
+         $('#btntt').click(function() {
+            $('#motiondiv').hide();
+            $('#impactdiv').hide();
+            $('#tiltdiv').show();
+            return false;
+         });
+      });
+   </script>
 </body>
 </html>
