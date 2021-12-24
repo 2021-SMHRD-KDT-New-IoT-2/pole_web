@@ -373,7 +373,7 @@
 				<%
 					for (int i = 0; i < filter.size(); i++) {
 				%>
-				<tr>
+				<tr style="background: wheat;">
 					<%
 						if (filter.get(i).getNow_tilt()>80 && filter.get(i).getNow_tilt()<85 ) {
 					%>
