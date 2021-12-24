@@ -104,7 +104,9 @@
 			</div>
 
 			<input type="button" name="rol" value="뒤로" id="uncheck" class="rol">
+
 			<button type="button" id="buzzer" value="부저 작동"></button>
+
 			<div class="modal_layer"></div>
 
 		</div>

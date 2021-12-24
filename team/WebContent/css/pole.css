@@ -8,6 +8,10 @@
 	font-family : neon;
 }
 
+*{
+   margin : 0 auto;
+   font-family : neon;
+}
 body{
     width:80%;
     margin:0 auto;
