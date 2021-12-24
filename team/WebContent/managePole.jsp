@@ -108,7 +108,7 @@
 
 			<input type="button" name="rol" value="뒤로" id="uncheck" class="rol">
 			<input type="button" name="buzzer" value="부저 작동" id="buzzer"
-				class="rol" onclick="location.href='http://172.30.1.45/buzzer'">
+				class="rol" onclick="location.href='http://172.30.1.42/buzzer'">
 			<div class="modal_layer"></div>
 
 		</div>
