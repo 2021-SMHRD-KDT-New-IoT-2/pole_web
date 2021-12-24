@@ -29,16 +29,13 @@
 	href="./images/upoplogo.PNG" type="text/css">
 <title>전주 상세정보</title>
 <link rel="stylesheet" href="css/pole.css">
-
 <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
-<!--fonts-->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"
-	rel="stylesheet">
 	
 	    <style>
+	    @font-face {
+   		font-family: 'neon';
+   	 	src: url('./fonts/SF-Pro.ttf') format('truetype');
+			}
         .suc:hover {color: #000e1f;}
 
         .rol:hover {color: #000e1f;}

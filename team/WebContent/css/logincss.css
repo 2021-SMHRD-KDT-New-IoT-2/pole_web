@@ -1,6 +1,11 @@
-	logincss.css
-	/*공통태그*/
-	
+@font-face {
+    font-family: 'neon';
+    src: url('./fonts/SF-Pro.ttf') format('truetype');
+}
+
+*{
+	font-family : neon;
+}
 	
 	body {
     background: #002c5f;
