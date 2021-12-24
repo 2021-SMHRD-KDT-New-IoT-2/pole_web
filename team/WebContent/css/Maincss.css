@@ -3,8 +3,8 @@ body {
 }
 
 @font-face {
-   font-family: 'neon';
-   src: url('./fonts/SF-Pro.ttf') format('truetype');
+	font-family: 'neon';
+	src: url('./fonts/AppleSDGothicNeoL.ttf') format('truetype');
 }
 
 @font-face {
@@ -132,12 +132,12 @@ select {
 #footer {
    clear: both;
    text-align: center;
+   margin-top : 40%;
 }
 
 .copyright {
    width: 80%;
    margin: 0 auto;
-   background-color: #FFFFFF;
 }
 
 /* ------------------------------------- */
@@ -164,7 +164,7 @@ select {
 
 .search_container {
 	border: 1px solid #ccc;
-	height: auto;
+	height: 800px;
 	overflow-y: scroll;
 }
 
@@ -264,6 +264,7 @@ h1 {
     margin-left: -1.5%;
     float: left;
     height: 100px;
+    color : #555555;
 }
 
 .header_h1>h4 {
@@ -382,7 +383,7 @@ fieldset {
 
 #alarmback {
 	border-radius: 10px;
-	padding: 15px;
+	padding: 25px;
 	margin-bottom: 2%;
 	border: 1px solid #ccc;
 	font-size: 15px;
