@@ -354,7 +354,7 @@ public class poleDAO {
 		try {
 			connection();
 
-			String sql = "DELETE from pole_info where pole_num = ? ";
+			String sql = "DELETE from pole_info where pole_code = ? ";
 
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, pole_code);
@@ -367,11 +367,9 @@ public class poleDAO {
 		} finally {
 
 			close();
-
 		}
 
 		return cnt;
-
 	}
 	
 	// 전주 상세 페이지 메모 등록
