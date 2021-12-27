@@ -67,7 +67,6 @@ public ArrayList<impactVO> impactvalue() {
 			String getMac_code = rs.getString("mac_code");
 			String getImpact_date = rs.getString("impact_date");
 			
-			
 			ivo = new impactVO(getMac_code, getImpact_date);
 			
 			al.add(ivo);
