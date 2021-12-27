@@ -124,15 +124,18 @@ margin-top: 5%;
 	<!-- 네비게이션  -->
 	<div id="nav" style="height: 60px;">
 		<nav>
-			<p
-				style="float: left; color: wheat; font-size: 20px; margin: 0.8% 0% 0% 6%;">Utility
-				Pole Of Pisa</p>
-			<button>
-				<a href="Main.jsp" style="color: wheat; text-decoration: none;">HOME</a>
+				<p
+				style="float: left; color: wheat; font-size: 20px; margin: 0.8% 0% 0% 4%;">
+				UTILITY POLE OF PISA
+				</p>
+			<button type="button" onclick="location.href='Main.jsp'">
+			HOME
 			</button>
 			<button id="modal_pole">전주 등록</button>
 			<button id="modal_emp">사용자 등록</button>
-			<a href="LogoutService" style="margin-right: 11%;">로그아웃</a>
+			<button type="button" onclick="location.href='LogoutService'">
+			로그아웃
+			</button>
 		</nav>
 		<div class="nav_img">
 			<img src="./images/bar.png" width="100%" height="60px">
@@ -147,8 +150,7 @@ margin-top: 5%;
 		</div>
 		<div class="header_h1">
 			<b style="font-size: 40px; margin-left: -60%;">전주 통합 관리 시스템</b> <br>
-			<b style="font-size: 30px; margin-left: -60%;">POLE MANAGEMENT
-				SYSTEM</b>
+			<b style="font-size: 30px; margin-left: -60%;">POLE MANAGEMENT SYSTEM</b>
 		</div>
 	</div>
 
@@ -161,74 +163,108 @@ margin-top: 5%;
       <div id="field_area">
          <form action="Main.jsp" method="get">
             <fieldset>
-            <div class="fieldset_head" style="width:100%; height : 40px; background:#000000bd; color:white; border-radius : 10px;">
-               <p style="text-align: center; line-height : 2.5; color:wheat;">광주광역시</p>
-               </div>
-
-               <label>담당 사업소</label> 
-               <select name="pole_office">
-                  <option value="">선택</option>
+            <div class="fieldset_head">
+               <b><p style="text-align: center; line-height : 1.75; font-size : 25px; color:#555555;">광주광역시<select name="pole_office" style="border:none; background:none;">
+                  <option value="">사업소 선택</option>
                   <option value="동구">동구</option>
                   <option value="서구">서구</option>
                   <option value="남구">남구</option>
                   <option value="북구">북구</option>
                   <option value="광산구">광산구</option>
-               </select>
+               </select></p> 
+               </b>
+              
+               </div>
+
+ 
+              	<div id="select_box" style="margin-top:3%">
+             	<label>전주번호</label>
+               <input type="text" name="pole_code" class="filter" style="width: 120px; height: 40px; margin-right: 4%;"> 
                
                <label>관리자</label>
-               <input type="text" name="emp_id" style="width: 100px; height: 40px; margin-right: 4%; font-size: 15px;">
+               <input type="text" name="emp_id" style="width: 120px; height: 40px; margin-right: 4%; font-size: 15px;">
                
-               <label>설치 일자</label> 
+               <label>설치일자</label> 
                <input type="text" name="pole_date" id="searchtext">
 
                <label>높이</label> <input type="text" name="pole_height" id="searchtext"> <br> 
+               </div>
                
-               <label>변압기</label>
+               <div id="select_box2">
+               <label>　변압기</label>
                <select name="transformer_yn" id="searchtext">
                   <option value="">선택</option>
                   <option value="Y">Y</option>
                   <option value="N">N</option>
-               </select> 
-               <label> 고압선 </label> 
+               </select>
+               <label> 고압선 </label>
                <select name="pole_high">
                   <option value="">선택</option>
                   <option value="Y">Y</option>
                   <option value="N">N</option>
-               </select> 
+               </select>
                
-               <label> 저압선</label> 
-               <select name="pole_down">
+               <label>　저압선</label>
+               <select name="pole_down" style="margin-right:2%;">
                   <option value="">선택</option>
                   <option value="Y">Y</option>
                   <option value="N">N</option>
                </select>
                
-               <label> 통신선</label> 
-               <select name="pole_com">
+               <label>　통신선</label>
+               <select name="pole_com" >
                   <option value="">선택</option>
                   <option value="Y">Y</option>
                   <option value="N">N</option>
                </select>
-               <input type="text" name="pole_code" class="filter" placeholder="전주 번호 검색" style="height: 40px; float:left; width:120px; margin-left: 70%; margin-top: 2.5%; text-align:center;"> 
-               <input type="submit" name="pole_code" value="검색" class="filter_search" style="float: right; color: black; background-color: white; border: 1px solid #ccc; margin-right: 4.7%; width: 100px; ">
+              </div>
+               <input type="submit" name="pole_code" value="검색" class="filter_search" style="float: right; background-color : #FFFFFF; border: 1px solid #ccc; border-radius : 10px; width: 100px; margin-right:45%; margin-top:2%; ">
             </fieldset>
          </form>
       </div>
 
 		<!-- 알림메세지  -->
 		<div id="alarm">
+			<button id="btntt">
+			기울기감지
+			</button>
 			<button id="btnimpt">
 				충격감지
 			</button>
 			<button id="btnmtn">
 				모션감지
 			</button>
-			<button id="btntt">
-				기울기감지
-			</button>
 
 
+			
+			<div id="tiltdiv">
+				<%
+               for (int i = 0; i < t_alarm.size(); i++) {
+            %>
+				<div id="alarmback">
+					<img src="./images/bell.png" width="30px" height="30px"
+						style="float: left; margin-top: -1%">
+						
+					<div id="alarm_msg">			
+					<%if(t_alarm.get(i).getTilt_value() < 79){ %>		
+						<%=t_alarm.get(i).getTilt_date()%>에 <b><a href="managePole.jsp?pole_code=<%=t_alarm.get(i).getMac_code()%>"><%=t_alarm.get(i).getMac_code()%></a></b>에서
+						<br>
+						<b style="color:red;">기준치를 벗어난</b> 기울기 변화가 감지 됨 <br> 
+						<b >(현재 기울기 : <b style="color:red;"><%=t_alarm.get(i).getTilt_value()%></b>)</b>
+						<%}else{ %>
+						<%=t_alarm.get(i).getTilt_date()%>에 <b><a href="managePole.jsp?pole_code=<%=t_alarm.get(i).getMac_code()%>"><%=t_alarm.get(i).getMac_code()%></a></b>에서
+						기울기 변화가 감지 됨 <br> <b>(현재 기울기 : <%=t_alarm.get(i).getTilt_value()%>)
+						<%} %>
+						</b>
+					
+					</div>
+				</div>
+				<%
+               }
+            %>
+			</div>
 			<div id="impactdiv">
+			
 				<%
                for (int i = 0; i < i_alarm.size(); i++) {
             %>
@@ -265,31 +301,7 @@ margin-top: 5%;
             %>
 			</div>
 
-			<div id="tiltdiv">
-				<%
-               for (int i = 0; i < t_alarm.size(); i++) {
-            %>
-				<div id="alarmback">
-					<img src="./images/bell.png" width="30px" height="30px"
-						style="float: left; margin-top: -1%">
-						
-					<div id="alarm_msg">			
-					<%if(t_alarm.get(i).getTilt_value() < 79){ %>		
-						<%=t_alarm.get(i).getTilt_date()%>에 <b><a href="managePole.jsp?pole_code=<%=t_alarm.get(i).getMac_code()%>"><%=t_alarm.get(i).getMac_code()%></a></b>에서
-						<br>
-						<b style="color:red;">기준치를 벗어난</b> 기울기 변화가 감지 됨 <br> 
-						<b>(현재 기울기 : <%=t_alarm.get(i).getTilt_value()%>)</b>
-						<%}else{ %>
-						<%=t_alarm.get(i).getTilt_date()%>에 <b><a href="managePole.jsp?pole_code=<%=t_alarm.get(i).getMac_code()%>"><%=t_alarm.get(i).getMac_code()%></a></b>에서
-						기울기 변화가 감지 됨 <br> <b>(현재 기울기 : <%=t_alarm.get(i).getTilt_value()%>)
-						<%} %>
-						</b>
-					</div>
-				</div>
-				<%
-               }
-            %>
-			</div>
+			
 		</div>
 
 	</div>
@@ -322,10 +334,9 @@ margin-top: 5%;
             %>
             <tr>
                <%
-                  if (arrpVO.get(i).getNow_tilt()>80 && arrpVO.get(i).getNow_tilt()<85 ) {
+                  if (arrpVO.get(i).getNow_tilt()>=80 && arrpVO.get(i).getNow_tilt()<85 ) {
                %>
-               <td><img src="./images/middlesign.png" width="35px"
-                  height="35px"></td>
+               <td><img src="./images/middlesign.png" width="35px"  height="35px"></td>
 
                <%
                   } else if (arrpVO.get(i).getNow_tilt()<79 ) {
@@ -465,9 +476,9 @@ margin-top: 5%;
 	<!-- alarm.js -->
 	<script>
       $(document).ready(function() {
-         $('#impactdiv').show();
+         $('#tiltdiv').show();
          $('#motiondiv').hide();
-         $('#tiltdiv').hide();
+         $('#impactdiv').hide();
 
          $('#btnimpt').click(function() {
             $('#motiondiv').hide();

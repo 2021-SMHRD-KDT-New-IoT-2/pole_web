@@ -26,6 +26,7 @@ p {
 
 section, aside {
 	margin-top: 2.3%;
+	padding : 10px;
 }
 
 button, a, input {
@@ -52,31 +53,16 @@ h1 {
 	float: left;
 }
 
-.header_h1 {
-	width: 60%;
-	margin-top: 0.8%;
-	margin-left: -1.5%;
-	float: left;
-	height: 100px;
-}
-
-.header_h1>p {
-	float: left;
-	margin-top: -0.5%;
-	margin-left: 2%;
-	font-size: 25px;
-}
-
 /*  닔 젙遺 遺 1217 */
-nav>a, button:hover {
-	color: #5b5b5b;
+nav>button>a:hover, nav>button:hover, nav>a:hover {
+	color: #555555;
 }
 
 .number:hover {
 	color: #5b5b5b;
 }
 
-nav>a, button:active {
+nav>button>a, button:active {
 	color: #2b2b2b;
 }
 
@@ -92,7 +78,7 @@ nav {
 
 nav>a, nav>button {
 	font-size: 20px;
-	font-weight: 900;
+	font-weight: 500;
 	margin-right: 4%;
 	margin-top: 0.7%;
 	text-decoration: none;
@@ -128,18 +114,18 @@ h2, h3 {
 
 section {
 	float: left;
-	width: 40%;
-	margin-left:10%;
-	height: 800px;
+	width: 32%;
+	margin-left: 15%;
+	height: 780px;
 	color: black;
-	box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 0 3px rgb(0 0 0/ 30%);
 }
 
 #pole_tb {
 	width: 90%;
-	height: 480px;
+	height: 370px;
 	box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
-	border-radius: 10px;
+	border-radius: 5px;
 	margin: 0 auto;
 }
 
@@ -151,16 +137,16 @@ section {
 
 #pole_tb>tbody>tr>th {
 	margin-left: 30%;
-	padding: 5%;
+	padding: 3%;
 	display: flex;
-	font-size: 18px;
+	font-size: 16px;
 }
 
 #pole_tb>tbody>tr>td {
 	margin-left: 30%;
-	padding: 5%;
+	padding: 3%;
 	display: flex;
-	font-size: 18px;
+	font-size: 16px;
 }
 
 .tb_nav {
@@ -181,12 +167,54 @@ section {
 }
 
 aside {
-	float: right;
-	width: 40%;
-	margin-right:10%;
-	color: black;
-	height: 800px;
+	float: left;
+	width: 32%;
+	margin-left: 5%;
+	height: 780px;
 	box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+	color: black;
+}
+
+aside>.pole_img {
+	border: none;
+	width: 200px;
+	height: 200px;
+	float: left;
+}
+
+#alarm {
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+	width: 20%;
+	float: left;
+	margin-left: 2%;
+	height: 710px;
+	overflow-y: scroll;
+}
+
+.alarm_head {
+	height: 60px;
+	width: 20%;
+	margin-top: 1.8%;
+	margin-left: 2%;
+	float: left;
+}
+
+#impactdiv, #motiondiv, #tiltdiv {
+	padding: 2px;
+}
+
+#alarmback {
+	border-radius: 10px;
+	border: 1px solid #ccc;
+	padding: 11px;
+	color: black;
+	margin-bottom: 2%;
+	font-size: 15px;
+	width: 90%;
+}
+
+#alarm>h3, div {
+	text-align: center;
 }
 
 h1 {
@@ -211,14 +239,13 @@ h1 {
 	margin: 0 auto;
 	box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 	width: 90%;
-	height: 163px;
+	height: 145px;
+	border-radius: 5px;
 	border: 1px;
-	margin-bottom: 10px;
 	overflow-y: auto;
 }
 
 .text_save {
-	margin: 0 auto;
 	text-align: center;
 }
 
@@ -266,28 +293,8 @@ h1 {
 	margin-top: 3%;
 }
 
-#curve_chart {
-	padding: 20px;
-}
-
 .dots {
 	margin-top: 3%;
-}
-
-.img_save {
-	height: 200px;
-}
-
-.img_save>input {
-	margin: 0 50px;
-	margin-top: 2%;
-	font-size: 15px;
-	border:none;
-	color: wheat;
-	background: #000000bd;
-	border-radius: 5px;
-	width: 100px;
-	padding: 7px;
 }
 
 /* The dots/bullets/indicators */
@@ -329,11 +336,12 @@ h1 {
 #cameraMove {
 	width: 10%;
 	padding: 10px;
-	margin-top: -4%;
 	float: right;
+	margin-top: -8%;
 }
 
 #cameraMove>input {
+	margin-left: -150%;
 	background: none;
 	color: #5b5b5b;
 	font-size: 15px;
@@ -406,18 +414,19 @@ h1 {
 /* ------------------------------------------------------------------------------*/
 #Memo_modal {
 	background-color: white;
-	display: none;
 	position: absolute;
 	width: 100%;
+	margin-left: -45%;
 	height: 700px;
-	margin-top: -30%;
+	margin-top: -20%;
 	z-index: 1;
+	display: none;
 }
 
 #check2, #uncheck2 {
 	color: white;
 	margin-top: 5%;
-	margin-left: 7.5%;
+	margin-left: 12.5%;
 	font-size: 15px;
 	color: wheat;
 	background: #000000bd;
@@ -439,7 +448,7 @@ h1 {
 }
 
 .Memo_btn {
-	margin-left: -10%;
+	margin-left: 25%;
 	width: 30%;
 	height: 30%;
 }
