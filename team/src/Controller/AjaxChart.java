@@ -35,6 +35,7 @@ public class AjaxChart extends HttpServlet {
 		out.print(gson.toJson(tal));
 		
 	
+		
 	
 	}
 
