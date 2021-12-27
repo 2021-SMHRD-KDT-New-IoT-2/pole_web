@@ -395,7 +395,7 @@ margin-top: 5%;
             %>
             <tr>
                <%
-                  if (filter.get(i).getNow_tilt()>80 && filter.get(i).getNow_tilt()<85 ) {
+                  if (filter.get(i).getNow_tilt()>=80 && filter.get(i).getNow_tilt()<85 ) {
                %>
                <td><img src="./images/middlesign.png" width="35px"
                   height="35px"></td>
@@ -405,7 +405,7 @@ margin-top: 5%;
                %>
                <td><img src="./images/high.png" width="40px" height="40px"></td>
                <%
-                  } else if (filter.get(i).getNow_tilt()>=86 || arrpVO.get(i).getNow_tilt()<=90) {
+                  } else if (filter.get(i).getNow_tilt()>=85 || arrpVO.get(i).getNow_tilt()<=90) {
                %>
                <td><img src="./images/checked.png" width="30px" height="30px"></td>
                <%
