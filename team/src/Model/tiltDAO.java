@@ -140,5 +140,80 @@ public ArrayList<tiltVO> tiltvalue() {
 		return tal;
 	}
 	
+	public ArrayList<tiltVO> tilt_info_and(String mac_code) {
+		tiltVO vo = null;
+		ArrayList<tiltVO> tal = new ArrayList<tiltVO>();
+		try {
+			connection();
+			String sql = "select mac_code,tilt_value,date_add(tilt_date, interval 9 hour)as tilt_date from pole_tilt_info where mac_code = ? order by tilt_date desc limit 10";
+			//select p.*,t.* from pole_info p,pole_tilt_info t where p.mac_code = t.mac_code && t.mac_code = 'testcode1';
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(1, mac_code);
+
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+				
+				int tilt_value=rs.getInt("tilt_value");
+				String tilt_date=rs.getString("tilt_date");
+
+				vo= new tiltVO(tilt_value,tilt_date);
+				
+				tal.add(vo);
+			}
+
+		} catch (Exception e) {
+			System.out.println("조회실패");
+			e.printStackTrace();
+
+		} finally {
+			close();
+		}
+		
+		return tal;
+	}
+
+	/*---------------------------------------- 모든알람---------------------------------------- */
+	public ArrayList<tiltVO> al_all_info() {
+		tiltVO vo = null;
+		ArrayList<tiltVO> tal = new ArrayList<tiltVO>();
+		try {
+			connection();
+		
+			String sql = "select distinct m.mac_code,t.tilt_date,t.tilt_value,c.camera_date,i.impact_date "
+					+ "from machine_info m left join pole_tilt_info t on m.mac_code = t.mac_code "
+					+ "left join pole_camera_info c on m.mac_code = c.mac_code "
+					+ "left join pole_impact_info i on m.mac_code = i.mac_code "
+					+ "order by tilt_date desc limit 30";
+			psmt = conn.prepareStatement(sql);
+
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+				
+				String mac_code = rs.getString("mac_code");
+				int tilt_value=rs.getInt("tilt_value");
+				String tilt_date=rs.getString("tilt_date");
+				String camera_date=rs.getString("camera_date");
+				String impact_date=rs.getString("impact_date");
+	
+
+				vo= new tiltVO(mac_code,tilt_date,tilt_value,camera_date,impact_date);
+				
+				tal.add(vo);
+			}
+
+		} catch (Exception e) {
+			System.out.println("조회실패");
+			e.printStackTrace();
+
+		} finally {
+			close();
+		}
+		
+		return tal;
+	}
+	/*---------------------------------------- 모든알람---------------------------------------- */
 }
 
