@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.xml.ws.Response;
 
 import Model.poleDAO;
+import Model.tiltDAO;
 
  
 
@@ -35,19 +36,31 @@ public class assignpole_and extends HttpServlet {
 		String pole_level = request.getParameter("pole_level");
 		String pole_office = request.getParameter("pole_office");
 		String pole_date = request.getParameter("pole_date");
-
+		
+		tiltDAO tao = new tiltDAO();
 		poleDAO dao = new poleDAO();
 		
 		int cnt = dao.addmachine(mac_code);
 
+		cnt = tao.insert_tilt(mac_code);
+		
+		if(cnt>0) {
+			System.out.println("기본값 설정 성공!");
+		} else {
+			System.out.println("fail");
+		}
+		
+		PrintWriter out = response.getWriter();
+		
 		cnt = dao.addpole(pole_code, mac_code, pole_height, pole_addr, pole_high, pole_down, pole_com, transformer_yn, pole_level, emp_id, pole_office, pole_date);
 		if(cnt>0) {
 			System.out.println("가입성공!");
 		} else {
 			System.out.println("가입실패!");
+			out.print("fail");
 		}
 		response.setCharacterEncoding("UTF-8");
-		PrintWriter out = response.getWriter();
+		
 		
 	}
 

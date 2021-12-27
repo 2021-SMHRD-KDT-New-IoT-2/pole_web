@@ -28,7 +28,6 @@ public class deletePole_and extends HttpServlet {
 		System.out.println("delete ¼­ºí¸´ µé¾î¿È");
 
 		poleDAO dao = new poleDAO();
-		System.out.println("code:"+pole_code);
 		int cnt=dao.pole_delete(pole_code);
 		/*try {
 			cnt = dao.pole_delete(pole_code);

@@ -33,14 +33,15 @@ public class updatePole_and extends HttpServlet {
 		
 		int cnt = dao.pole_update(pole_code,pole_office, pole_high, pole_down, pole_com, transformer_yn, emp_id);
 		
-
+		PrintWriter out = response.getWriter();
 		if(cnt>0) {
 			System.out.println("수정성공");
 		}else {
 			System.out.println("수정실패");
+			out.print("fail");
 		}
 		request.setCharacterEncoding("UTF-8"); // 안드로이드는 UTF-8
-		PrintWriter out = response.getWriter();
+	
 	}
 
 }
