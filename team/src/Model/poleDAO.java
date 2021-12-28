@@ -429,5 +429,42 @@ public class poleDAO {
 		
 		return tal;
 	}
+	
+	
+	
+	// 전주 정보 수정 and
+		public int pole_update_and(String pole_code,String pole_office, String pole_high, String pole_down,
+				String pole_com, String transformer_yn, String emp_id, String pole_comment) {
+
+			try {
+
+				connection();
+
+				String sql = "UPDATE pole_info SET pole_office = ?, pole_high = ?, pole_down = ?, pole_com = ?, transformer_yn = ?, emp_id = ?, pole_comment = ? WHERE pole_code = ?";
+
+				psmt = conn.prepareStatement(sql);
+				
+				psmt.setString(1, pole_office);
+				psmt.setString(2, pole_high);
+				psmt.setString(3, pole_down);
+				psmt.setString(4, pole_com);
+				psmt.setString(5, transformer_yn);
+				psmt.setString(6, emp_id);
+				psmt.setString(7, pole_comment);
+				psmt.setString(8, pole_code);
+
+				cnt = psmt.executeUpdate();
+
+			} catch (Exception e) {
+				System.out.println("수정실패");
+				e.printStackTrace();
+
+			} finally {
+				close();
+			}
+			return cnt;
+
+		}
+
 
 }

@@ -27,11 +27,12 @@ public class updatePole_and extends HttpServlet {
 		String pole_com = request.getParameter("pole_com");
 		String transformer_yn = request.getParameter("transformer_yn");
 		String emp_id = request.getParameter("emp_id");
+		String pole_comment = request.getParameter("pole_comment");
 		
 		
 		poleDAO dao = new poleDAO();
 		
-		int cnt = dao.pole_update(pole_code,pole_office, pole_high, pole_down, pole_com, transformer_yn, emp_id);
+		int cnt = dao.pole_update_and(pole_code, pole_office, pole_high, pole_down, pole_com, transformer_yn, emp_id, pole_comment);
 		
 		PrintWriter out = response.getWriter();
 		if(cnt>0) {

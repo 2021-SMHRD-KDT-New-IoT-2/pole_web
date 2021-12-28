@@ -100,6 +100,23 @@ public class poleVO {
 		this.pole_office = pole_office;
 		this.now_tilt = now_tilt;
 	}
+	
+	
+	
+	
+	public poleVO(String pole_code,String pole_office, String pole_high, String pole_down, String pole_com, String transformer_yn, String emp_id, String pole_comment) {
+		
+		this.pole_code = pole_code;
+		this.pole_office = pole_office;
+		this.pole_high = pole_high;
+		this.pole_down = pole_down;
+		this.pole_com = pole_com;
+		this.transformer_yn = transformer_yn;
+		this.emp_id = emp_id;
+		this.pole_comment = pole_comment;
+	}
+	
+	
 	/* « ≈ÕVO */
 
 	public String getPole_level() {

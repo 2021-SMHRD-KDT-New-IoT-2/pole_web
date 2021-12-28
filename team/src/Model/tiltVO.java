@@ -38,6 +38,13 @@ public class tiltVO {
 		this.tilt_value = tilt_value;
 		this.tilt_date = tilt_date;
 	}
+	
+	   public tiltVO(String mac_code, String tilt_date) {
+		      super();
+		      this.mac_code = mac_code;
+		      this.tilt_date = tilt_date;
+		   }
+	   
 	/*---------------------------------------- 모든알람---------------------------------------- */
 	public tiltVO(String mac_code, String tilt_date, int tilt_value, String camera_date, String impact_date) {
 		super();
