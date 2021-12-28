@@ -328,7 +328,9 @@
          dataType : 'json',
          success : function(res){
          let labels = res.map(item => item.tilt_date);
+         let tdate = labels.reverse().map(item => item.tilt_date);
          let values = res.map(item => item.tilt_value);
+         let tvalues = values.reverse().map(item => item.tilt_value);
          const data = {
               labels: labels,
               datasets: [{ 
